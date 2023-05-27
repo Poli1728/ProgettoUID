@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+<Pane fx:id="pane" styleClass="external-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.WelcomePageController">
+   <children>
+      <AnchorPane fx:id="ancorPane" styleClass="container-level-2" layoutX="200.0" layoutY="61.0" prefHeight="277.0" prefWidth="200.0">
+         <children>
+            <StackPane fx:id="stackPane" styleClass="container-level-2" prefHeight="277.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="continueButton" styleClass="primaryButton" mnemonicParsing="false" onAction="#actionContinueButton" text="Continue" StackPane.alignment="BOTTOM_CENTER" />
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
