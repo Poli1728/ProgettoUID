@@ -54,9 +54,11 @@ public class SceneHandler {
 
 
     public void launchTutorialFirstOpening() {
-        //da eseguire solo alla prima apertura dell'app
-        //mostrare un mini welcome
-        //creazione dell'account dell'owner
+        /*da eseguire solo alla prima apertura dell'app
+             mostrare un mini welcome
+             creazione dell'account dell'owner
+             ~ Mario
+        */
 
         loadFXML("fxml/LoginView.fxml");
         stage.setMinWidth(300);
@@ -68,21 +70,22 @@ public class SceneHandler {
     }
 
     public void launchCreateAccountOwner() {
-        //da utilizzare esclusivamente in contemporanea con launchTutorialFirstOpening()
+        //da utilizzare esclusivamente in contemporanea con launchTutorialFirstOpening() ~ Mario
     }
 
     public void launchLogin() {
         loadFXML("fxml/LoginView.fxml");
-        stage.setMinWidth(300);
-        stage.setMinHeight(200);
-        stage.setWidth(300);
-        stage.setHeight(200);
+        // Ho modificato le dimensioni, le ho adattate alle dimensioni attuali della view ~ Marco
+        stage.setMinWidth(900);
+        stage.setMinHeight(700);
+        stage.setWidth(900);
+        stage.setHeight(700);
         stage.setResizable(false);
     }
 
 
     public void launchSideBar() {
-        //da vedere se passare height and width come params per scegliere se utilizzare la sBar con solo icone o con icone+testo
+        //da vedere se passare height and width come params per scegliere se utilizzare la sBar con solo icone o con icone+testo ~ Mario
     }
 
     public void launchDashboard() {

@@ -14,6 +14,7 @@ public class LoginController {
     @FXML
     private Button accediButton;
 
+    //Funzione dedicata all'accesso dell'utente  ~ Marco
     @FXML
     void Accedi(ActionEvent event) {
         if (UsernameField.getText().equals("Marco") && PasswordField.getText().equals("Marco")){

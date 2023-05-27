@@ -6,11 +6,13 @@ import javafx.scene.layout.Pane;
 
 public class HomeController {
     @FXML
-    private Button ProfiloButton;
+    private Button ProfiloButton; //Inutile, mi sono dimenticato di toglierlo ~ Marco
 
     @FXML
     private Pane ViewPane;
+    // Pane dove carichiamo le varie view per la dashboard ecc ecc ~ Marco
 
+    // Le funzioni qui sotto fanno tutte la stessa cosa, quindi vedrò di fare una sola funzione ~ Marco
     @FXML
     void ApriAppuntamenti(ActionEvent event) {
 
@@ -48,7 +50,7 @@ public class HomeController {
 
     @FXML
     void Esci(ActionEvent event) {
-
+        System.exit(0);
     }
 
 }
