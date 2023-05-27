@@ -1,4 +1,4 @@
-package com.calendly.calendly;
+package com.calendly.calendly.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

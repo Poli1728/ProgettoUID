@@ -6,4 +6,6 @@ module com.calendly.calendly {
 
     opens com.calendly.calendly to javafx.fxml;
     exports com.calendly.calendly;
+    exports com.calendly.calendly.Controller;
+    opens com.calendly.calendly.Controller to javafx.fxml;
 }
