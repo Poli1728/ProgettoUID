@@ -1,0 +1,86 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"3e5fc6b9-e585-42b7-a8ab-649e1dad7d70\" name=\"Changes\" comment=\"Costruzione scheletro codice\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/calendly/calendly/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/calendly/calendly/Main.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"importingSettings\">\n      <MavenImportingSettings>\n        <option name=\"workspaceImportEnabled\" value=\"true\" />\n      </MavenImportingSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"2QNlOQuhC405Ic5zpGGDEcQmiWV\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml\" />\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/calendly/calendly\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"com.calendly.calendly\" />\n      <recent name=\"com.calendly\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"run\" type=\"Application\" factoryName=\"Application\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.calendly.calendly.Main\" />\n      <module name=\"Calendly\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"3e5fc6b9-e585-42b7-a8ab-649e1dad7d70\" name=\"Changes\" comment=\"\" />\n      <created>1685201888491</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1685201888491</updated>\n    </task>\n    <servers />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0d2a17d11ce9a8fa2cb10ee8cc35cbee1354946f)
++++ b/.idea/workspace.xml	(date 1685213858815)
+@@ -4,17 +4,29 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Costruzione scheletro codice">
++    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Add SceneHandlerClass">
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/dark.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/light.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Main.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="HighlightingSettingsPerFile">
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
+   <component name="MavenImportPreferences">
+     <option name="importingSettings">
+@@ -64,6 +76,18 @@
+       <option name="presentableId" value="Default" />
+       <updated>1685201888491</updated>
+     </task>
++    <task id="LOCAL-00001" summary="Add SceneHandlerClass">
++      <created>1685213206628</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1685213206628</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Add SceneHandlerClass" />
++    <option name="LAST_COMMIT_MESSAGE" value="Add SceneHandlerClass" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/com/calendly/calendly/Settings.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/calendly/calendly/Settings.java b/src/main/java/com/calendly/calendly/Settings.java
+new file mode 100644
+--- /dev/null	(date 1685213858307)
++++ b/src/main/java/com/calendly/calendly/Settings.java	(date 1685213858307)
+@@ -0,0 +1,10 @@
++package com.calendly.calendly;
++
++public class Settings {
++
++    //TODO inserire fonts and styles
++    public final static String[] styles = {};
++    public final static String[] fonts = {};
++
++
++}
+diff --git a/src/main/resources/com/calendly/calendly/css/light.css b/src/main/resources/com/calendly/calendly/css/light.css
+new file mode 100644
+diff --git a/src/main/resources/com/calendly/calendly/css/dark.css b/src/main/resources/com/calendly/calendly/css/dark.css
+new file mode 100644

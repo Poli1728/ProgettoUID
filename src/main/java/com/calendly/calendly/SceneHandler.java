@@ -2,11 +2,15 @@ package com.calendly.calendly;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.util.Objects;
 
 public class SceneHandler {
+
+    private final String INIT_TITLE = "Calendly";
+    private final boolean FIRST_TIME_OPENED = true;  //TODO da spostare tramite lettura in DB o altro
 
     private static final SceneHandler instance = new SceneHandler();
     private Stage stage;
@@ -16,34 +20,72 @@ public class SceneHandler {
         return instance;
     }
 
-    private SceneHandler() {}
+    private SceneHandler() {
+    }
 
     public void init(Stage stage) {
         if (this.stage == null) {
             this.stage = stage;
-            this.stage.setTitle("Calendly");
-            createBrowserView();
+            this.stage.setTitle(this.INIT_TITLE);
+
+            this.launchTutorialFirstOpening();
+
             this.stage.setScene(scene);
+
+            for (String font : Settings.fonts)
+                Font.loadFont(Objects.requireNonNull(SceneHandler.class.getResource(font)).toExternalForm(), 10);
+            for (String style : Settings.styles)
+                scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm());
+
             this.stage.show();
         }
     }
 
-    private <T> T loadRootFromFXML(String resourceName) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SceneHandler.class.getResource(resourceName));
-        return fxmlLoader.load();
-    }
-    public void createBrowserView() {
+    private void loadFXML(String resourceName) {
         try {
-            if(scene == null)
-                scene = new Scene(loadRootFromFXML("LoginView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(SceneHandler.class.getResource(resourceName));
+            if (scene == null)
+                scene = new Scene(fxmlLoader.load());
             else
-                scene.setRoot(loadRootFromFXML("LoginView.fxml"));
-            stage.setMinWidth(900);
-            stage.setMinHeight(700);
-            stage.setWidth(900);
-            stage.setHeight(700);
-        } catch (IOException ignored) {
-        }
+                scene.setRoot(fxmlLoader.load());
+
+        } catch (IOException e) { }
+    }
+
+
+    public void launchTutorialFirstOpening() {
+        //da eseguire solo alla prima apertura dell'app
+        //mostrare un mini welcome
+        //creazione dell'account dell'owner
+
+        loadFXML("fxml/LoginView.fxml");
+        stage.setMinWidth(300);
+        stage.setMinHeight(200);
+        stage.setWidth(300);
+        stage.setHeight(200);
+        stage.setResizable(false);
+
+    }
+
+    public void launchCreateAccountOwner() {
+        //da utilizzare esclusivamente in contemporanea con launchTutorialFirstOpening()
+    }
+
+    public void launchLogin() {
+        loadFXML("fxml/LoginView.fxml");
+        stage.setMinWidth(300);
+        stage.setMinHeight(200);
+        stage.setWidth(300);
+        stage.setHeight(200);
+        stage.setResizable(false);
+    }
+
+
+    public void launchSideBar() {
+        //da vedere se passare height and width come params per scegliere se utilizzare la sBar con solo icone o con icone+testo
+    }
+
+    public void launchDashboard() {
     }
 
 }
