@@ -1,8 +1,6 @@
 package com.calendly.calendly;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -10,11 +8,9 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello Hello!");
-        stage.setScene(scene);
-        stage.show();
+        SceneHandler.getInstance().init(stage);
+        //SceneHandler.getInstance().launchTutorialFirstOpening();
+
     }
 
     public static void main(String[] args) {
