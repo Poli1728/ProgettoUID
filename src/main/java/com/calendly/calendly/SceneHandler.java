@@ -1,5 +1,6 @@
 package com.calendly.calendly;
 
+import com.calendly.calendly.Controller.WelcomePageController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
@@ -15,6 +16,7 @@ public class SceneHandler {
     private static final SceneHandler instance = new SceneHandler();
     private Stage stage;
     private static Scene scene;
+    private FXMLLoader loader;
 
     public static SceneHandler getInstance() {
         return instance;
@@ -35,13 +37,20 @@ public class SceneHandler {
     }
 
     private void loadFXML(String resourceName) {
+        
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(SceneHandler.class.getResource(resourceName));
             if (scene == null)
                 scene = new Scene(fxmlLoader.load());
             else
                 scene.setRoot(fxmlLoader.load());
-        } catch (IOException e) { }
+
+            loader = fxmlLoader;
+
+        } catch (IOException e) {
+
+        }
+
     }
 
 
@@ -51,7 +60,9 @@ public class SceneHandler {
         //creazione dell'account dell'owner
 
         loadFXML("fxml/WelcomePage.fxml");
+        WelcomePageController controller = loader.getController();
         setWindowDimension();
+        controller.init();
     }
 
     public void launchCreateAccountOwner() {
