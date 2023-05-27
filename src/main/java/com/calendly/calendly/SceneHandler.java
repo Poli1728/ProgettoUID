@@ -43,7 +43,7 @@ public class SceneHandler {
 
     private void loadFXML(String resourceName) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(SceneHandler.class.getResource("fxml/hello-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(SceneHandler.class.getResource(resourceName));
             if (scene == null)
                 scene = new Scene(fxmlLoader.load());
             else
@@ -58,7 +58,7 @@ public class SceneHandler {
         //mostrare un mini welcome
         //creazione dell'account dell'owner
 
-        loadFXML("fxml/hello-view.fxml");
+        loadFXML("fxml/LoginView.fxml");
         stage.setMinWidth(300);
         stage.setMinHeight(200);
         stage.setWidth(300);
@@ -72,7 +72,7 @@ public class SceneHandler {
     }
 
     public void launchLogin() {
-        loadFXML("fxml/hello-view.fxml");
+        loadFXML("fxml/LoginView.fxml");
         stage.setMinWidth(300);
         stage.setMinHeight(200);
         stage.setWidth(300);
