@@ -1,0 +1,25 @@
+* {
+    systemGray6: #1c1c1e;
+    systemGray5: #2c2c2e;
+    systemGray4: #3a3a3c;
+    systemGray3: #48484a;
+    systemGray2: #48484a;
+    systemGray:  #8e8e93;
+
+    systemBlue:  #0a84ff;
+    blueLight:   #2290ff;
+    systemCyan:  #5ac8f5;
+
+
+    white:       #f0f0f0;
+
+
+    primaryBackgroundColor: systemGray6;
+    secondaryBackgroundColor: systemGray5;
+
+    primaryTextColor: white;
+
+
+    primaryBackgroundButtonColor: systemBlue;
+    primaryOnHoverButtonColor:    blueLight;
+}

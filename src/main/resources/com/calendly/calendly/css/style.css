@@ -1,0 +1,23 @@
+* {
+    -fx-text-fill: primaryTextColor;
+}
+
+.external-pane {
+    -fx-background-color: primaryBackgroundColor;
+}
+
+.container-level-2 {
+    -fx-background-color: secondaryBackgroundColor;
+    -fx-background-radius: 10px;
+    -fx-width: 50%;
+}
+
+.primaryButton {
+    -fx-background-color: primaryBackgroundButtonColor;
+    -fx-background-radius: 30px;
+}
+
+.primaryButton:hover{
+    -fx-background-color: blueLight;
+}
+
