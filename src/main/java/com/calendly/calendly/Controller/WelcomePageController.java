@@ -37,8 +37,9 @@ public class WelcomePageController {
             return;
         this.stage = stage;
         Scene scene = stackPane.getScene();
+
         configPane(scene);
-        configContinueButton(scene);
+        configContinueButton();
         configStackPane(scene);
     }
 
@@ -73,24 +74,9 @@ public class WelcomePageController {
     }
 
 
-    private void configContinueButton(Scene scene) {
+    private void configContinueButton() {
         continueButton.prefWidthProperty().bind(stackPane.widthProperty().divide(3).multiply(2.5));
         continueButton.prefHeightProperty().bind(stackPane.heightProperty().divide(5).multiply(0.3));
-
-
-        double y = scene.getHeight()/3 - stackPane.getHeight()/2*0.5;
-        System.out.println(continueButton.getLayoutY());
-        continueButton.setLayoutY(y);
-
-        /*
-
-        scene.heightProperty().addListener(((observableValue, oldValue, newValue) -> {
-            double y = scene.getHeight()/3 - stackPane.getHeight()/2;
-            continueButton.setLayoutY(50);
-            System.out.println(y);
-            System.out.println(" --- ");
-        }));
-         */
     }
 
 
