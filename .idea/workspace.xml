@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Update in Settings Class">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Update WelcomePage.fxml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/WelcomePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/WelcomePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685226275629</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update WelcomePage.fxml">
+      <created>1685230367627</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685230367627</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -137,6 +145,7 @@
     <MESSAGE value="Update SceneHandler pt.2. Aggiunta classe Settings" />
     <MESSAGE value="Aggiornamenti su SceneHandler, css files, WelcomePage, Settings" />
     <MESSAGE value="Update in Settings Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update in Settings Class" />
+    <MESSAGE value="Update WelcomePage.fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update WelcomePage.fxml" />
   </component>
 </project>

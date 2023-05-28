@@ -9,6 +9,7 @@
 .container-level-2 {
     -fx-background-color: secondaryBackgroundColor;
     -fx-background-radius: 10px;
+    -fx-width: 50%;
 }
 
 .primaryButton {
