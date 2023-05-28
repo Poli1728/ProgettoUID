@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.Light;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -68,14 +69,30 @@ public class WelcomePageController {
             stackPane.setLayoutY(y);
         });
 
-        stackPane.setAlignment(Pos.CENTER_LEFT);
+        stackPane.setAlignment(Pos.CENTER);
     }
 
 
     private void configContinueButton(Scene scene) {
         continueButton.prefWidthProperty().bind(stackPane.widthProperty().divide(3).multiply(2.5));
         continueButton.prefHeightProperty().bind(stackPane.heightProperty().divide(5).multiply(0.3));
+
+
+        double y = scene.getHeight()/3 - stackPane.getHeight()/2*0.5;
+        System.out.println(continueButton.getLayoutY());
+        continueButton.setLayoutY(y);
+
+        /*
+
+        scene.heightProperty().addListener(((observableValue, oldValue, newValue) -> {
+            double y = scene.getHeight()/3 - stackPane.getHeight()/2;
+            continueButton.setLayoutY(50);
+            System.out.println(y);
+            System.out.println(" --- ");
+        }));
+         */
     }
+
 
 
 }
