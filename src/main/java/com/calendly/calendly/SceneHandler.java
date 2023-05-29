@@ -1,6 +1,7 @@
 package com.calendly.calendly;
 
 import com.calendly.calendly.Controller.HomeController;
+import com.calendly.calendly.Controller.LoginController;
 import com.calendly.calendly.Controller.WelcomePageController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -73,7 +74,10 @@ public class SceneHandler {
 
     public void launchLogin() {
         loadFXML("fxml/LoginView.fxml");
+        LoginController controller = loader.getController();
         setWindowDimension();
+        controller.init(stage);
+
     }
 
 

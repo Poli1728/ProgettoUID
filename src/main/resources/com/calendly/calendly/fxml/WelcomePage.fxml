@@ -13,7 +13,8 @@
               <Button fx:id="continueButton" mnemonicParsing="false" onAction="#actionContinueButton" styleClass="primaryButton" text="Continue" StackPane.alignment="BOTTOM_CENTER">
                <StackPane.margin>
                   <Insets bottom="25.0" />
-               </StackPane.margin></Button>
+               </StackPane.margin>
+              </Button>
            </children>
         </StackPane>
    </children>

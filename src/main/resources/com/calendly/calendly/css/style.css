@@ -1,14 +1,15 @@
 * {
     -fx-text-fill: primaryTextColor;
+    -fx-background-radius: 10px;
 }
 
 .external-pane {
     -fx-background-color: primaryBackgroundColor;
+    -fx-background-radius: 0px;
 }
 
 .container-level-2 {
     -fx-background-color: secondaryBackgroundColor;
-    -fx-background-radius: 10px;
     -fx-width: 50%;
 }
 
@@ -23,7 +24,6 @@
 
 .loginField {
     -fx-background-color: thirdBackgroundColor;
-    ;
 }
 
 
