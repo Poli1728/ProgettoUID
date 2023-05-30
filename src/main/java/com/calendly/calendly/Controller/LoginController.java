@@ -1,41 +1,32 @@
 package com.calendly.calendly.Controller;
 import com.calendly.calendly.SceneHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class LoginController {
-
     @FXML
     private AnchorPane ancorPane;
-
     @FXML
     private Pane pane;
-
+    @FXML
+    private Label loginLabel;
     @FXML
     private Label usernameLabel;
-
     @FXML
     private Label passwordLabel;
-
     @FXML
     private PasswordField passwordField;
-
     @FXML
     private TextField usernameField;
-
     @FXML
     private Button accediButton;
-
-
 
 
 
@@ -47,6 +38,7 @@ public class LoginController {
             SceneHandler.getInstance().launchHome();
         }
     }
+
 
     @FXML
     void initialize() {
@@ -72,6 +64,7 @@ public class LoginController {
 
 
     private Stage stage;
+
     public void init(Stage stage) {
         if (stage == null)
             return;
@@ -80,6 +73,8 @@ public class LoginController {
 
         configPane(scene);
         configAccediButton(scene);
+        configLoginLabelsAndFields(scene);
+        configFields(scene);
 
     }
 
@@ -89,7 +84,7 @@ public class LoginController {
         //tipo: if (x > MAXSIZE)
         //          width = MAXSIZE
 
-        pane.setMaxSize(500, 700);
+        pane.setMaxSize(200, 300);
 
         pane.prefWidthProperty().bind(scene.widthProperty().divide(3).multiply(1.5));
         pane.prefHeightProperty().bind(scene.heightProperty().divide(3).multiply(2.5));
@@ -110,43 +105,91 @@ public class LoginController {
 
     }
 
+    private void configLoginLabelsAndFields(Scene scene) {
+
+        Platform.runLater(() -> {
+            loginLabel.layoutXProperty().bind(pane.widthProperty().divide(2).subtract(loginLabel.getPrefWidth()/2));
+            loginLabel.layoutYProperty().bind(pane.heightProperty().divide(3));
+
+            double value = 0.5;
+
+            usernameLabel.prefWidthProperty().bind(accediButton.widthProperty());
+            usernameLabel.prefHeightProperty().bind(accediButton.heightProperty());
+            usernameLabel.layoutXProperty().bind(accediButton.layoutXProperty());
+            usernameLabel.layoutYProperty().bind(loginLabel.layoutYProperty().add(loginLabel.getHeight()).add(50));
+            System.out.println(loginLabel.getPrefHeight());
+
+
+            usernameField.prefWidthProperty().bind(accediButton.widthProperty());
+            usernameField.prefHeightProperty().bind(accediButton.heightProperty());
+            usernameField.layoutXProperty().bind(accediButton.layoutXProperty());
+            usernameField.layoutYProperty().bind(usernameLabel.layoutYProperty().add(usernameLabel.getHeight()).add(20));
+
+            System.out.println(usernameLabel.getLayoutX() + " " +usernameLabel.getHeight() + " " + 20);
+            System.out.println(usernameField.getLayoutY());
+
+            passwordLabel.prefWidthProperty().bind(accediButton.widthProperty());
+            passwordLabel.prefHeightProperty().bind(accediButton.heightProperty());
+            passwordLabel.layoutXProperty().bind(accediButton.layoutXProperty());
+            passwordLabel.layoutYProperty().bind(usernameField.layoutYProperty().add(usernameField.getHeight()).add(40));
+
+            passwordField.prefWidthProperty().bind(accediButton.widthProperty());
+            passwordField.prefHeightProperty().bind(accediButton.heightProperty());
+            passwordField.layoutXProperty().bind(accediButton.layoutXProperty());
+            passwordField.layoutYProperty().bind(passwordLabel.layoutYProperty().add(passwordLabel.getHeight()).add(20));
+
+        });
+
+    }
+
+    private void configFields(Scene scene) {
+
+
+    }
+
+    private enum dir {WIDTH, HEIGHT};
 
     private void configAccediButton(Scene scene) {
-
         //todo considerare la max size quando si assegna layout x e y
         //tipo: if (x > MAXSIZE)
         //          width = MAXSIZE
 
-
-        accediButton.setMaxSize(400, 70);
+        accediButton.setMaxSize(250, 70);
 
         accediButton.prefWidthProperty().bind(pane.widthProperty().divide(3).multiply(2.5));
         accediButton.prefHeightProperty().bind(pane.heightProperty().divide(5).multiply(0.3));
 
-        double xx = pane.getPrefWidth()/2 - (pane.getPrefWidth() / 3 * 2.5)/2;
-        double yy = pane.getPrefHeight() - (pane.getPrefHeight() / 5 * 0.3);
-
+        double xx = pane.getPrefWidth()/2 - accediButtonSize(dir.WIDTH)/2;
+        double yy = pane.getPrefHeight() - accediButtonSize(dir.HEIGHT)*0.7;
         accediButton.setLayoutX(xx);
         accediButton.setLayoutY(yy);
 
-        /*   - non rimuovere -
-        System.out.println(xx);
-        System.out.println(yy);
-
-        System.out.println(pane.getWidth() + " " + pane.getHeight());
-        System.out.println(pane.getPrefWidth() + " " + pane.getPrefHeight());
-        System.out.println(accediButton.getWidth() + " " + accediButton.getHeight());
-        System.out.println(accediButton.getPrefWidth() + " " + accediButton.getPrefHeight());
-        */
-
         scene.widthProperty().addListener((obs, oldValue, newValue) -> {
-            double x = pane.getWidth()/2 - accediButton.getPrefWidth()/2;
+            double x = pane.getWidth()/2 - accediButton.getWidth()/2;
             accediButton.setLayoutX(x);
         });
         scene.heightProperty().addListener((observableValue, oldValue, newValue) -> {
             double y = pane.getHeight() - accediButton.getHeight() - accediButton.getHeight()*0.7;
             accediButton.setLayoutY(y);
         });
+    }
+
+    private double accediButtonSize(dir direc) {
+        double prefSize;
+        double maxSize;
+        if (direc == dir.WIDTH) {
+            prefSize = pane.getPrefWidth() / 3 * 2.5;
+            maxSize = accediButton.getMaxWidth();
+        } else {
+            prefSize = pane.getPrefHeight() / 5 * 0.3;
+            maxSize = accediButton.getMaxHeight();
+        }
+
+        if (prefSize >= maxSize) {
+            return maxSize;
+        }
+
+        return prefSize;
     }
 
 }
