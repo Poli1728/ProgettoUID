@@ -27,21 +27,39 @@
 }
 
 .sidebar {
+    -fx-background-color: secondaryBackgroundColor;
     -fx-background-radius: 0px 10px 10px 0px;
 }
 
 .sidebar-button {
-    -fx-background-color: secondaryBackgroundColor;
-}
-
-.sidebar-button:hover {
     -fx-background-color: thirdBackgroundColor;
 }
 
+.sidebar-button:hover {
+    -fx-background-color: fourthBackgroundColor;
+}
+
+.sidebar-logout-button {
+    -fx-background-color: fourthBackgroundColor;
+
+}
+
+.sidebar-logout-button {
+    -fx-background-color: fourthBackgroundColor;
+    -fx-text-fill: systemRed;
+}
+
+.sidebar-user-icon {
+    -fx-background-color: thirdBackgroundColor;
+    -fx-background-radius: 30px;
+}
 
 .primary-app-view {
     -fx-background-color: secondaryBackgroundColor;
+
 }
+
+
 
 
 
