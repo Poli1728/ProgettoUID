@@ -95,7 +95,8 @@ public class SceneHandler {
 
     public Pane creaPane(String s) throws IOException {
         String nome = s+"View.fxml";
-        FXMLLoader loader = new FXMLLoader(HomeController.class.getResource(nome));
+        System.out.print(s);
+        FXMLLoader loader = new FXMLLoader(SceneHandler.class.getResource(nome));
         Pane cerca= (Pane) loader.load();
         return cerca;
     }

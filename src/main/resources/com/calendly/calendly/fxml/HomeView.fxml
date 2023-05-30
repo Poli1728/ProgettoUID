@@ -16,7 +16,7 @@
             <Button layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#ApriProfili" prefHeight="25.0" prefWidth="172.0" text="Profili" />
             <Button layoutX="14.0" layoutY="425.0" mnemonicParsing="false" onAction="#ApriImpostazioni" prefHeight="25.0" prefWidth="172.0" text="Impostazioni" />
             <Button fx:id="ProfiloButton" layoutX="70.0" layoutY="123.0" mnemonicParsing="false" onAction="#ApriProfilo" prefHeight="57.0" prefWidth="61.0" text="Icona" />
-            <Button layoutX="14.0" layoutY="650.0" mnemonicParsing="false" onAction="#Esci" prefHeight="25.0" prefWidth="172.0" text="Button" />
+            <Button layoutX="14.0" layoutY="650.0" mnemonicParsing="false" onAction="#Esci" prefHeight="25.0" prefWidth="172.0" text="Esci" />
          </children>
       </Pane>
       <Pane fx:id="ViewPane" layoutX="218.0" layoutY="14.0" prefHeight="660.0" prefWidth="660.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
