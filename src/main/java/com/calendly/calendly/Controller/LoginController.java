@@ -126,6 +126,7 @@ public class LoginController {
             accediButton.setLayoutY(y);
         });
 
+        accediButton.setDisable(false);
     }
 
 }
