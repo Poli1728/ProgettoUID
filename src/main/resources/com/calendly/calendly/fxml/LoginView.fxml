@@ -11,8 +11,8 @@
    <children>
       <Pane fx:id="pane" layoutX="280.0" layoutY="51.0" prefHeight="596.0" prefWidth="360.0" styleClass="container-level-2" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="51.0">
          <children>
-            <TextField fx:id="UsernameField" layoutX="104.0" layoutY="199.0" promptText="username" styleClass="loginField" />
-            <PasswordField fx:id="PasswordField" layoutX="105.0" layoutY="261.0" promptText="password" styleClass="loginField" />
+            <TextField fx:id="usernameField" layoutX="104.0" layoutY="199.0" promptText="username" styleClass="loginField" />
+            <PasswordField fx:id="passwordField" layoutX="105.0" layoutY="261.0" promptText="password" styleClass="loginField" />
             <Button fx:id="accediButton" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="149.0" layoutY="567.0" mnemonicParsing="false" onAction="#Accedi" prefHeight="26.0" prefWidth="78.0" styleClass="primaryButton" text="Accedi" textAlignment="CENTER" />
             <Label fx:id="usernameLabel" layoutX="105.0" layoutY="181.0" text="Username" />
             <Label fx:id="passwordLabel" layoutX="106.0" layoutY="242.0" text="Password" />

@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -28,10 +27,10 @@ public class LoginController {
     private Label passwordLabel;
 
     @FXML
-    private PasswordField PasswordField;
+    private PasswordField passwordField;
 
     @FXML
-    private TextField UsernameField;
+    private TextField usernameField;
 
     @FXML
     private Button accediButton;
@@ -44,10 +43,33 @@ public class LoginController {
     @FXML
     void Accedi(ActionEvent event) {
         //Questa è solo come prova per l'accesso, qui si dovrebbe andare a cercare all'interno del database ~ Marco
-        if (UsernameField.getText().equals("Marco") && PasswordField.getText().equals("Marco")){
+        if (usernameField.getText().equals("Marco") && passwordField.getText().equals("Marco")){
             SceneHandler.getInstance().launchHome();
         }
     }
+
+    @FXML
+    void initialize() {
+        usernameField.setOnKeyReleased(this::handleKeyReleasedUsernameField);
+        passwordField.setOnKeyReleased(this::handleKeyReleasedPasswordField);
+    }
+
+    private void handleKeyReleasedUsernameField(KeyEvent event) {
+        canBeAccediButtonVisible();
+    }
+
+    private void handleKeyReleasedPasswordField(KeyEvent event) {
+        canBeAccediButtonVisible();
+    }
+
+    private void canBeAccediButtonVisible() {
+        if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty())
+            accediButton.setDisable(true);
+        else
+            accediButton.setDisable(false);
+    }
+
+
 
     private Stage stage;
     public void init(Stage stage) {
@@ -125,8 +147,6 @@ public class LoginController {
             double y = pane.getHeight() - accediButton.getHeight() - accediButton.getHeight()*0.7;
             accediButton.setLayoutY(y);
         });
-
-        accediButton.setDisable(false);
     }
 
 }
