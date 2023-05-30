@@ -26,6 +26,22 @@
     -fx-background-color: thirdBackgroundColor;
 }
 
+.sidebar {
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+
+.sidebar-button {
+    -fx-background-color: secondaryBackgroundColor;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: thirdBackgroundColor;
+}
+
+
+.primary-app-view {
+    -fx-background-color: secondaryBackgroundColor;
+}
 
 
 

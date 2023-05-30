@@ -40,9 +40,9 @@ public class SceneHandler {
     }
 
     private void loadFXML(String resourceName) {
-        
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(SceneHandler.class.getResource(resourceName));
+
             if (scene == null)
                 scene = new Scene(fxmlLoader.load());
             else
@@ -53,7 +53,6 @@ public class SceneHandler {
         } catch (IOException e) {
 
         }
-
     }
 
 
@@ -64,7 +63,7 @@ public class SceneHandler {
 
         loadFXML("fxml/WelcomePage.fxml");
         WelcomePageController controller = loader.getController();
-        setWindowDimension();
+        setWindowDefaultDimension();
         controller.init(stage);
     }
 
@@ -75,7 +74,6 @@ public class SceneHandler {
     public void launchLogin() {
         loadFXML("fxml/LoginView.fxml");
         LoginController controller = loader.getController();
-        setWindowDimension();
         controller.init(stage);
 
     }
@@ -90,7 +88,6 @@ public class SceneHandler {
 
     public void launchHome(){
         loadFXML("fxml/HomeView.fxml");
-        setWindowDimension();
     }
 
     public Pane creaPane(String s) throws IOException {
@@ -101,8 +98,9 @@ public class SceneHandler {
         return cerca;
     }
 
-    private void setWindowDimension(boolean ... isResizable)  {
+    private void setWindowDefaultDimension(boolean ... isResizable)  {
         //Default value for isResizable => true
+        //solamente per prima apertura
         stage.setMinHeight(Settings.DEFAULT_MIN_PAGE_HEIGHT);
         stage.setMinWidth(Settings.DEFAULT_MIN_PAGE_WIDTH);
         stage.setHeight(Settings.DEFAULT_PAGE_HEIGHT);
