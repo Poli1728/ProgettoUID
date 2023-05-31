@@ -3,43 +3,38 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.ImpostazioniController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.ImpostazioniController">
    <children>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <content>
-            <VBox alignment="TOP_CENTER" prefHeight="660.0" prefWidth="657.0">
+      <VBox alignment="TOP_CENTER" prefHeight="660.0" prefWidth="657.0">
+         <children>
+            <Pane prefHeight="45.0" prefWidth="655.0">
                <children>
-                  <Pane prefHeight="45.0" prefWidth="655.0">
-                     <children>
-                        <Label layoutX="7.0" layoutY="10.0" prefHeight="26.0" prefWidth="166.0" text="Cambia il tema dell'app:" />
-                        <ComboBox fx:id="temiComboBox" layoutX="525.0" layoutY="11.0" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" />
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="50.0" prefWidth="655.0">
-                     <children>
-                        <Button layoutX="594.0" layoutY="13.0" mnemonicParsing="false" onAction="#MostraInformazioni" text="Mostra" />
-                        <Label layoutX="14.0" layoutY="12.0" prefHeight="26.0" prefWidth="166.0" text="Mostra informazioni:" />
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="50.0" prefWidth="655.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="12.0" prefHeight="26.0" prefWidth="166.0" text="Cambia password:" />
-                        <Button layoutX="589.0" layoutY="13.0" mnemonicParsing="false" onAction="#CambiaPassword" text="Cambia" />
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="50.0" prefWidth="655.0">
-                     <children>
-                        <Button layoutX="297.0" layoutY="13.0" mnemonicParsing="false" onAction="#Esci" text="Logout" />
-                     </children>
-                  </Pane>
+                  <Label layoutX="7.0" layoutY="10.0" prefHeight="26.0" prefWidth="166.0" text="Cambia il tema dell'app:" />
+                  <ComboBox fx:id="temiComboBox" layoutX="525.0" layoutY="11.0" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" />
                </children>
-            </VBox>
-         </content>
-      </ScrollPane>
+            </Pane>
+            <Pane prefHeight="50.0" prefWidth="655.0">
+               <children>
+                  <Button layoutX="594.0" layoutY="13.0" mnemonicParsing="false" onAction="#mostraInformazioni" text="Mostra" />
+                  <Label layoutX="14.0" layoutY="12.0" prefHeight="26.0" prefWidth="166.0" text="Mostra informazioni:" />
+               </children>
+            </Pane>
+            <Pane prefHeight="50.0" prefWidth="655.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="12.0" prefHeight="26.0" prefWidth="166.0" text="Cambia password:" />
+                  <Button layoutX="589.0" layoutY="13.0" mnemonicParsing="false" onAction="#cambiaPassword" text="Cambia" />
+               </children>
+            </Pane>
+            <Pane prefHeight="50.0" prefWidth="655.0">
+               <children>
+                  <Button layoutX="297.0" layoutY="13.0" mnemonicParsing="false" onAction="#esci" text="Logout" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
    </children>
-</AnchorPane>
+</Pane>

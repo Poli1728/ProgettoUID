@@ -8,14 +8,14 @@
    <children>
       <Pane prefHeight="700.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="14.0" layoutY="250.0" mnemonicParsing="false" onAction="#ApriDashboard" prefHeight="25.0" prefWidth="172.0" text="Dashboard" />
-            <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#ApriAppuntamenti" prefHeight="25.0" prefWidth="172.0" text="Appuntamenti" />
-            <Button layoutX="14.0" layoutY="320.0" mnemonicParsing="false" onAction="#ApriStatistiche" prefHeight="25.0" prefWidth="172.0" text="Statistiche" />
-            <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#ApriEventi" prefHeight="25.0" prefWidth="172.0" text="Eventi" />
-            <Button layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#ApriProfili" prefHeight="25.0" prefWidth="172.0" text="Profili" />
-            <Button layoutX="14.0" layoutY="425.0" mnemonicParsing="false" onAction="#ApriImpostazioni" prefHeight="25.0" prefWidth="172.0" text="Impostazioni" />
-            <Button fx:id="ProfiloButton" layoutX="70.0" layoutY="123.0" mnemonicParsing="false" onAction="#ApriProfilo" prefHeight="57.0" prefWidth="61.0" text="Icona" />
-            <Button layoutX="14.0" layoutY="650.0" mnemonicParsing="false" onAction="#Esci" prefHeight="25.0" prefWidth="172.0" text="Esci" />
+            <Button layoutX="14.0" layoutY="250.0" mnemonicParsing="false" onAction="#apriDashboard" prefHeight="25.0" prefWidth="172.0" text="Dashboard" />
+            <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#apriAppuntamenti" prefHeight="25.0" prefWidth="172.0" text="Appuntamenti" />
+            <Button layoutX="14.0" layoutY="320.0" mnemonicParsing="false" onAction="#apriStatistiche" prefHeight="25.0" prefWidth="172.0" text="Statistiche" />
+            <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#apriEventi" prefHeight="25.0" prefWidth="172.0" text="Eventi" />
+            <Button layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#apriProfili" prefHeight="25.0" prefWidth="172.0" text="Profili" />
+            <Button layoutX="14.0" layoutY="425.0" mnemonicParsing="false" onAction="#apriImpostazioni" prefHeight="25.0" prefWidth="172.0" text="Impostazioni" />
+            <Button layoutX="70.0" layoutY="123.0" mnemonicParsing="false" onAction="#apriProfilo" prefHeight="57.0" prefWidth="61.0" text="Icona" />
+            <Button layoutX="14.0" layoutY="650.0" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="172.0" text="Esci" />
          </children>
       </Pane>
       <Pane fx:id="ViewPane" layoutX="218.0" layoutY="14.0" prefHeight="660.0" prefWidth="660.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />

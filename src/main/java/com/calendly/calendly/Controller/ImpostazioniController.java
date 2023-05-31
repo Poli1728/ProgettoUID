@@ -10,17 +10,17 @@ public class ImpostazioniController {
     private ComboBox<?> temiComboBox;
 
     @FXML
-    void CambiaPassword(ActionEvent event) {
+    void cambiaPassword(ActionEvent event) {
 
     }
 
     @FXML
-    void Esci(ActionEvent event) {
+    void esci(ActionEvent event) {
 
     }
 
     @FXML
-    void MostraInformazioni(ActionEvent event) {
+    void mostraInformazioni(ActionEvent event) {
 
     }
 

@@ -32,7 +32,7 @@ public class LoginController {
 
     //Funzione dedicata all'accesso dell'utente ~ Marco
     @FXML
-    void Accedi(ActionEvent event) {
+    void accedi(ActionEvent event) {
         //Questa è solo come prova per l'accesso, qui si dovrebbe andare a cercare all'interno del database ~ Marco
         if (usernameField.getText().equals("Marco") && passwordField.getText().equals("Marco")){
             SceneHandler.getInstance().launchHome();
