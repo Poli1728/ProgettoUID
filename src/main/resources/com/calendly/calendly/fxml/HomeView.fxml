@@ -4,20 +4,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
    <children>
-      <Pane prefHeight="700.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane prefHeight="700.0" prefWidth="166.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button layoutX="14.0" layoutY="250.0" mnemonicParsing="false" onAction="#apriDashboard" prefHeight="25.0" prefWidth="172.0" text="Dashboard" />
-            <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#apriAppuntamenti" prefHeight="25.0" prefWidth="172.0" text="Appuntamenti" />
-            <Button layoutX="14.0" layoutY="320.0" mnemonicParsing="false" onAction="#apriStatistiche" prefHeight="25.0" prefWidth="172.0" text="Statistiche" />
-            <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#apriEventi" prefHeight="25.0" prefWidth="172.0" text="Eventi" />
-            <Button layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#apriProfili" prefHeight="25.0" prefWidth="172.0" text="Profili" />
-            <Button layoutX="14.0" layoutY="425.0" mnemonicParsing="false" onAction="#apriImpostazioni" prefHeight="25.0" prefWidth="172.0" text="Impostazioni" />
-            <Button layoutX="70.0" layoutY="123.0" mnemonicParsing="false" onAction="#apriProfilo" prefHeight="57.0" prefWidth="61.0" text="Icona" />
-            <Button layoutX="14.0" layoutY="650.0" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="172.0" text="Esci" />
+            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="250.0" mnemonicParsing="false" onAction="#apriDashboard" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Dashboard" />
+            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#apriAppuntamenti" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Appuntamenti" />
+            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="320.0" mnemonicParsing="false" onAction="#apriStatistiche" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Statistiche" />
+            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#apriEventi" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Eventi" />
+            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#apriProfili" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Profili" />
+            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="425.0" mnemonicParsing="false" onAction="#apriImpostazioni" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Impostazioni" />
+            <Button fx:id="ProfiloButton" layoutX="47.0" layoutY="123.0" mnemonicParsing="false" onAction="#apriProfilo" prefHeight="57.0" prefWidth="61.0" styleClass="sidebar-user-icon" text="Icona" />
+            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="626.0" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-logout-button" text="Logout" />
          </children>
       </Pane>
-      <Pane fx:id="ViewPane" layoutX="218.0" layoutY="14.0" prefHeight="660.0" prefWidth="660.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Pane fx:id="viewPane" layoutX="218.0" layoutY="14.0" prefHeight="680.0" prefWidth="718.0" styleClass="primary-app-view" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>
