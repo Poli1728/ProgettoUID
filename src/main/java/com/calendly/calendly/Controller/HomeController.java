@@ -39,7 +39,7 @@ public class HomeController {
     }
 
     @FXML
-    void apriProfili(ActionEvent event) throws IOException {
+    void apriDipendenti(ActionEvent event) throws IOException {
         avviaPane("fxml/Dipendenti");
     }
 
