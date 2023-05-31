@@ -3,13 +3,13 @@ import com.calendly.calendly.SceneHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class LoginController {
     @FXML
@@ -72,17 +72,28 @@ public class LoginController {
         this.stage = stage;
         Scene scene = ancorPane.getScene();
 
+
+        stage.iconifiedProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (newValue) {
+                System.out.println("Application minimized");
+            } else {
+                System.out.println("Application on screen");
+            }
+
+        });
+
+        stage.centerOnScreen();
+
         configPane(scene);
         configAccediButton(scene);
         configLoginLabelsAndFields(scene);
 
+
     }
 
     private void configPane(Scene scene) {
-
-        //todo considerare la max size quando si assegna layout x e y
-        //tipo: if (x > MAXSIZE)
-        //          width = MAXSIZE
+        //min - max size impostate direttamete come tag nei file
 
         pane.prefWidthProperty().bind(scene.widthProperty().divide(3).multiply(1.5));
         pane.prefHeightProperty().bind(scene.heightProperty().divide(3).multiply(2.5));
@@ -93,7 +104,6 @@ public class LoginController {
             pane.setLayoutX(xx);
             pane.setLayoutY(yy);
         });
-
 
         scene.widthProperty().addListener((observable -> {
             double x = scene.getWidth()/2 - pane.getWidth()/2;
@@ -110,7 +120,7 @@ public class LoginController {
 
         Platform.runLater(() -> {
             loginLabel.layoutXProperty().bind(pane.widthProperty().divide(2).subtract(loginLabel.getWidth()/2));
-            loginLabel.layoutYProperty().bind(pane.heightProperty().divide(3));
+            loginLabel.layoutYProperty().bind(pane.heightProperty().divide(6));
 
             usernameLabel.prefWidthProperty().bind(accediButton.widthProperty());
             usernameLabel.prefHeightProperty().bind(accediButton.heightProperty());
@@ -125,7 +135,7 @@ public class LoginController {
             passwordLabel.prefWidthProperty().bind(accediButton.widthProperty());
             passwordLabel.prefHeightProperty().bind(accediButton.heightProperty());
             passwordLabel.layoutXProperty().bind(accediButton.layoutXProperty());
-            passwordLabel.layoutYProperty().bind(usernameField.layoutYProperty().add(usernameField.getHeight()).add(40));
+            passwordLabel.layoutYProperty().bind(usernameField.layoutYProperty().add(usernameField.getHeight()).add(20));
 
             passwordField.prefWidthProperty().bind(accediButton.widthProperty());
             passwordField.prefHeightProperty().bind(accediButton.heightProperty());
@@ -136,11 +146,7 @@ public class LoginController {
 
     }
 
-    private enum dir {WIDTH, HEIGHT};
     private void configAccediButton(Scene scene) {
-        //todo considerare la max size quando si assegna layout x e y
-        //tipo: if (x > MAXSIZE)
-        //          width = MAXSIZE
 
         accediButton.setMaxSize(250, 70);
 

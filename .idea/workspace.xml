@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Fixato 2.0 autoresize in LoginController.java">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Ora il LoginView.fxml posiziona gli elementi nella giusta posizione in ogni caso (quantomeno si spera :(  )">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Dipendente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Evento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/LoginView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/LoginView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685542641075</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Ora il LoginView.fxml posiziona gli elementi nella giusta posizione in ogni caso (quantomeno si spera :(  )">
+      <created>1685551485285</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1685551485285</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -201,6 +211,7 @@
     <MESSAGE value="Ripristinato css in HomeView.fxml" />
     <MESSAGE value="Fixato autoresize in LoginController.java" />
     <MESSAGE value="Fixato 2.0 autoresize in LoginController.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixato 2.0 autoresize in LoginController.java" />
+    <MESSAGE value="Ora il LoginView.fxml posiziona gli elementi nella giusta posizione in ogni caso (quantomeno si spera :(  )" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ora il LoginView.fxml posiziona gli elementi nella giusta posizione in ogni caso (quantomeno si spera :(  )" />
   </component>
 </project>

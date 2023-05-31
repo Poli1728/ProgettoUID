@@ -3,6 +3,7 @@ package com.calendly.calendly;
 import com.calendly.calendly.Controller.HomeController;
 import com.calendly.calendly.Controller.LoginController;
 import com.calendly.calendly.Controller.WelcomePageController;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -28,6 +29,7 @@ public class SceneHandler {
 
     private SceneHandler() {
     }
+
 
     public void init(Stage stage) {
         if (this.stage == null) {
