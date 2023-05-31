@@ -8,14 +8,13 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" styleClass="container-level-2" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.AppuntamentiController">
    <children>
-      <TableView fx:id="Table" layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="660.0" styleClass="container-level-2">
+      <TableView fx:id="table" layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="660.0" styleClass="container-level-2">
          <columns>
-            <TableColumn fx:id="ColonnaUtente" prefWidth="75.0" text="Utente" />
-            <TableColumn fx:id="colonna" prefWidth="75.0" text="Email" />
-            <TableColumn prefWidth="75.0" text="Orario" />
-            <TableColumn prefWidth="99.0" text="Dipendente" />
-            <TableColumn prefWidth="71.0" text="Servizio" />
-            <TableColumn prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="colonnaUtente" prefWidth="75.0" text="Utente" />
+            <TableColumn fx:id="colonnaEmail" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="colonnaOrario" prefWidth="75.0" text="Orario" />
+            <TableColumn fx:id="colonnaDipendente" prefWidth="99.0" text="Dipendente" />
+            <TableColumn fx:id="colonnaServizio" prefWidth="71.0" text="Servizio" />
          </columns>
       </TableView>
       <Button layoutX="350.0" layoutY="20.0" mnemonicParsing="false" onAction="#aggiungiAppuntamento" styleClass="primaryButton" text="Aggiungi" />
