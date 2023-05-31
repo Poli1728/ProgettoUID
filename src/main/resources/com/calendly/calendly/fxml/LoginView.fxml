@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="ancorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.LoginController">
    <children>
-      <Pane fx:id="pane" layoutX="280.0" layoutY="51.0" prefHeight="596.0" prefWidth="360.0" styleClass="container-level-2" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="51.0">
+      <Pane fx:id="pane" layoutX="280.0" layoutY="51.0" maxHeight="600" maxWidth="500" minHeight="400" minWidth="300" prefHeight="500" prefWidth="400" styleClass="container-level-2">
          <children>
             <TextField fx:id="usernameField" layoutX="104.0" layoutY="199.0" promptText="username" styleClass="loginField" />
             <PasswordField fx:id="passwordField" layoutX="105.0" layoutY="261.0" promptText="password" styleClass="loginField" />
