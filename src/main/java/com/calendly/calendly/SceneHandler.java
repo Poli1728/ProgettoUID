@@ -5,6 +5,7 @@ import com.calendly.calendly.Controller.LoginController;
 import com.calendly.calendly.Controller.WelcomePageController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -91,8 +92,7 @@ public class SceneHandler {
     }
 
     public Pane creaPane(String s) throws IOException {
-        String nome = s+"View.fxml";
-        FXMLLoader loader = new FXMLLoader(SceneHandler.class.getResource(nome));
+        FXMLLoader loader = new FXMLLoader(SceneHandler.class.getResource(s+"View.fxml"));
         Pane cerca= (Pane) loader.load();
         return cerca;
     }

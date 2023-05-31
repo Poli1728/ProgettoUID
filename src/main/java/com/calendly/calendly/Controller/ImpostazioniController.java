@@ -12,6 +12,7 @@ public class ImpostazioniController {
 
     @FXML
     void cambiaPassword(ActionEvent event) {
+        String nuovaPassword = "";
 
     }
 

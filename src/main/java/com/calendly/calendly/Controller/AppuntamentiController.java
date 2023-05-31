@@ -1,12 +1,18 @@
 package com.calendly.calendly.Controller;
 
+import com.calendly.calendly.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 public class AppuntamentiController {
-
+    @FXML
+    private Pane pane;
     @FXML
     private TableColumn<?, ?> colonnaDipendente;
 
@@ -25,19 +31,25 @@ public class AppuntamentiController {
     @FXML
     private TableView<?> table;
 
-    @FXML
-    void aggiungiAppuntamento(ActionEvent event) {
-
+    private void modificaPane(String s) throws IOException {
+        pane.getChildren().clear();
+        Pane aggiungi = SceneHandler.getInstance().creaPane("fxml/Appuntamenti"+s);
+        pane.getChildren().add(aggiungi);
     }
 
     @FXML
-    void modificaAppuntamento(ActionEvent event) {
-
+    void aggiungiAppuntamento(ActionEvent event) throws IOException {
+        modificaPane("Aggiungi");
     }
 
     @FXML
-    void rimuoviAppuntamento(ActionEvent event) {
+    void modificaAppuntamento(ActionEvent event) throws IOException {
+        modificaPane("Modifica");
+    }
 
+    @FXML
+    void rimuoviAppuntamento(ActionEvent event) throws IOException {
+        modificaPane("Rimuovi");
     }
 
     void initialize(){

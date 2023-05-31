@@ -34,9 +34,9 @@ public class LoginController {
     @FXML
     void accedi(ActionEvent event) {
         //Questa è solo come prova per l'accesso, qui si dovrebbe andare a cercare all'interno del database ~ Marco
-        if (usernameField.getText().equals("Marco") && passwordField.getText().equals("Marco")){
-            SceneHandler.getInstance().launchHome();
-        }
+        //if (usernameField.getText().equals("Marco") && passwordField.getText().equals("Marco")){
+        SceneHandler.getInstance().launchHome();
+        //}
     }
 
 
