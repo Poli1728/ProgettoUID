@@ -74,7 +74,6 @@ public class LoginController {
         configPane(scene);
         configAccediButton(scene);
         configLoginLabelsAndFields(scene);
-        configFields(scene);
 
     }
 
@@ -142,13 +141,7 @@ public class LoginController {
 
     }
 
-    private void configFields(Scene scene) {
-
-
-    }
-
     private enum dir {WIDTH, HEIGHT};
-
     private void configAccediButton(Scene scene) {
         //todo considerare la max size quando si assegna layout x e y
         //tipo: if (x > MAXSIZE)
@@ -159,10 +152,12 @@ public class LoginController {
         accediButton.prefWidthProperty().bind(pane.widthProperty().divide(3).multiply(2.5));
         accediButton.prefHeightProperty().bind(pane.heightProperty().divide(5).multiply(0.3));
 
-        double xx = pane.getPrefWidth()/2 - accediButtonSize(dir.WIDTH)/2;
-        double yy = pane.getPrefHeight() - accediButtonSize(dir.HEIGHT)*0.7;
-        accediButton.setLayoutX(xx);
-        accediButton.setLayoutY(yy);
+        Platform.runLater(() ->  {
+            double xx = pane.getWidth()/2 - accediButton.getWidth()/2;
+            double yy = pane.getHeight() - accediButton.getHeight() - accediButton.getHeight()*0.7;
+            accediButton.setLayoutX(xx);
+            accediButton.setLayoutY(yy);
+        });
 
         scene.widthProperty().addListener((obs, oldValue, newValue) -> {
             double x = pane.getWidth()/2 - accediButton.getWidth()/2;
@@ -178,10 +173,10 @@ public class LoginController {
         double prefSize;
         double maxSize;
         if (direc == dir.WIDTH) {
-            prefSize = pane.getPrefWidth() / 3 * 2.5;
+            prefSize = pane.getWidth() / 3 * 2.5;
             maxSize = accediButton.getMaxWidth();
         } else {
-            prefSize = pane.getPrefHeight() / 5 * 0.3;
+            prefSize = pane.getHeight() / 5 * 0.3;
             maxSize = accediButton.getMaxHeight();
         }
 
