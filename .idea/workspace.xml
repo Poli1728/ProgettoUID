@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Ripristinato css in HomeView.fxml">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/AppuntamentiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/AppuntamentiView.fxml" afterDir="false" />
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Fixato autoresize in LoginController.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685537511991</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixato autoresize in LoginController.java">
+      <created>1685538170620</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1685538170620</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -185,6 +191,7 @@
     <MESSAGE value="css LoginView.fxml" />
     <MESSAGE value="autoresize LoginView" />
     <MESSAGE value="Ripristinato css in HomeView.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ripristinato css in HomeView.fxml" />
+    <MESSAGE value="Fixato autoresize in LoginController.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixato autoresize in LoginController.java" />
   </component>
 </project>

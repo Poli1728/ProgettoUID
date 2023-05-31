@@ -83,24 +83,39 @@ public class LoginController {
         //tipo: if (x > MAXSIZE)
         //          width = MAXSIZE
 
-        pane.setMaxSize(200, 300);
+        pane.setMaxSize(400, 400);
+        pane.setMinSize(500, 500);
+
+        pane.setMinWidth(500);
 
         pane.prefWidthProperty().bind(scene.widthProperty().divide(3).multiply(1.5));
         pane.prefHeightProperty().bind(scene.heightProperty().divide(3).multiply(2.5));
 
-        double xx = stage.getWidth()/2  -  pane.getPrefWidth()/2;
-        double yy = stage.getHeight()/2  -  pane.getPrefHeight()/2;
-        pane.setLayoutX(xx);
-        pane.setLayoutY(yy);
-
-        scene.widthProperty().addListener((obs, oldValue, newValue) -> {
-            double x = scene.getWidth()/2  -  pane.getWidth()/2;
+        Platform.runLater(() -> {
+            double x = stage.getWidth()/2  -  pane.getWidth()/2;
+            double y = stage.getHeight()/2  -  pane.getHeight()/2;
             pane.setLayoutX(x);
-        });
-        scene.heightProperty().addListener((observableValue, oldValue, newValue) -> {
-            double y = scene.getHeight()/2  -  pane.getHeight()/2;
             pane.setLayoutY(y);
         });
+
+        //pane.layoutXProperty().bind(scene.widthProperty().divide(2).subtract(pane.getPrefWidth()/2));
+        //pane.layoutYProperty().bind(scene.heightProperty().divide(2).subtract(pane.getPrefHeight()/2));
+
+
+        scene.widthProperty().addListener((obs) -> {
+
+            double x = scene.getWidth()/2 - pane.getWidth()/2;
+            pane.setLayoutX(x);
+        });
+
+        scene.heightProperty().addListener((observableValue) -> {
+            double y = scene.getHeight()/2 - pane.getHeight()/2;
+
+            if (y >= pane.getMaxHeight())
+                y = pane.getMaxHeight();
+            pane.setLayoutY(y);
+        });
+
 
     }
 
@@ -153,19 +168,8 @@ public class LoginController {
         accediButton.prefHeightProperty().bind(pane.heightProperty().divide(5).multiply(0.3));
 
         Platform.runLater(() ->  {
-            double xx = pane.getWidth()/2 - accediButton.getWidth()/2;
-            double yy = pane.getHeight() - accediButton.getHeight() - accediButton.getHeight()*0.7;
-            accediButton.setLayoutX(xx);
-            accediButton.setLayoutY(yy);
-        });
-
-        scene.widthProperty().addListener((obs, oldValue, newValue) -> {
-            double x = pane.getWidth()/2 - accediButton.getWidth()/2;
-            accediButton.setLayoutX(x);
-        });
-        scene.heightProperty().addListener((observableValue, oldValue, newValue) -> {
-            double y = pane.getHeight() - accediButton.getHeight() - accediButton.getHeight()*0.7;
-            accediButton.setLayoutY(y);
+            accediButton.layoutXProperty().bind(pane.widthProperty().divide(2).subtract(accediButton.getWidth()/2));
+            accediButton.layoutYProperty().bind(pane.heightProperty().subtract(accediButton.getHeight()).subtract(accediButton.getHeight()*0.7));
         });
     }
 
