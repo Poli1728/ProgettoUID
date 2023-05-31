@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
@@ -31,6 +30,7 @@ public class AppuntamentiController {
     @FXML
     private TableView<?> table;
 
+    //Aggiunge il pane che permette di aggiungere, modificare e rimuovere
     private void modificaPane(String s) throws IOException {
         pane.getChildren().clear();
         Pane aggiungi = SceneHandler.getInstance().creaPane("fxml/Appuntamenti"+s);
@@ -53,7 +53,7 @@ public class AppuntamentiController {
     }
 
     void initialize(){
-
+        //Qui va l'inserimento nella tabella
     }
 
 }

@@ -12,55 +12,45 @@ public class HomeController {
     private Pane viewPane;
     // Pane dove carichiamo le varie view per la dashboard ecc ecc ~ Marco
 
-    // Le funzioni qui sotto fanno tutte la stessa cosa, quindi vedrò di fare una sola funzione ~ Marco
+    private void avviaPane(String s) throws IOException {
+        viewPane.getChildren().clear();
+        Pane pane = SceneHandler.getInstance().creaPane(s);
+        viewPane.getChildren().add(pane);
+    }
 
     @FXML
     void apriAppuntamenti(ActionEvent event) throws IOException {
-        viewPane.getChildren().clear();
-        Pane pane = SceneHandler.getInstance().creaPane("fxml/Appuntamenti");
-        viewPane.getChildren().add(pane);
+        avviaPane("fxml/Appuntamenti");
     }
 
     @FXML
     void apriDashboard(ActionEvent event) throws IOException {
-        viewPane.getChildren().clear();
-        Pane pane = SceneHandler.getInstance().creaPane("fxml/Dashboard");
-        viewPane.getChildren().add(pane);
+        avviaPane("fxml/Dashboard");
     }
 
     @FXML
     void apriEventi(ActionEvent event) throws IOException {
-        viewPane.getChildren().clear();
-        Pane pane = SceneHandler.getInstance().creaPane("fxml/Eventi");
-        viewPane.getChildren().add(pane);
+        avviaPane("fxml/Eventi");
     }
 
     @FXML
     void apriImpostazioni(ActionEvent event) throws IOException {
-        viewPane.getChildren().clear();
-        Pane pane = SceneHandler.getInstance().creaPane("fxml/Impostazioni");
-        viewPane.getChildren().add(pane);
+        avviaPane("fxml/Impostazioni");
     }
 
     @FXML
     void apriProfili(ActionEvent event) throws IOException {
-        viewPane.getChildren().clear();
-        Pane pane = SceneHandler.getInstance().creaPane("fxml/Dipendenti");
-        viewPane.getChildren().add(pane);
+        avviaPane("fxml/Dipendenti");
     }
 
     @FXML
     void apriProfilo(ActionEvent event) throws IOException {
-        viewPane.getChildren().clear();
-        Pane pane = SceneHandler.getInstance().creaPane("fxml/Profilo");
-        viewPane.getChildren().add(pane);
+        avviaPane("fxml/Profilo");
     }
 
     @FXML
     void apriStatistiche(ActionEvent event) throws IOException {
-        viewPane.getChildren().clear();
-        Pane pane = SceneHandler.getInstance().creaPane("fxml/Statistiche");
-        viewPane.getChildren().add(pane);
+        avviaPane("fxml/Statistiche");
     }
 
     @FXML
