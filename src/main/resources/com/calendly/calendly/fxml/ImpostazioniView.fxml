@@ -14,24 +14,24 @@
             <Pane prefHeight="45.0" prefWidth="655.0">
                <children>
                   <Label layoutX="7.0" layoutY="10.0" prefHeight="26.0" prefWidth="166.0" text="Cambia il tema dell'app:" />
-                  <ComboBox fx:id="temiComboBox" layoutX="525.0" layoutY="11.0" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" />
+                  <ComboBox fx:id="temiComboBox" layoutX="525.0" layoutY="11.0" prefHeight="24.0" prefWidth="132.0" styleClass="primaryButton" promptText="Scegli Tema" />
                </children>
             </Pane>
             <Pane prefHeight="50.0" prefWidth="655.0">
                <children>
-                  <Button layoutX="594.0" layoutY="13.0" mnemonicParsing="false" onAction="#mostraInformazioni" text="Mostra" />
+                  <Button layoutX="594.0" layoutY="13.0" mnemonicParsing="false" styleClass="primaryButton" onAction="#mostraInformazioni" text="Mostra" />
                   <Label layoutX="14.0" layoutY="12.0" prefHeight="26.0" prefWidth="166.0" text="Mostra informazioni:" />
                </children>
             </Pane>
             <Pane prefHeight="50.0" prefWidth="655.0">
                <children>
                   <Label layoutX="14.0" layoutY="12.0" prefHeight="26.0" prefWidth="166.0" text="Cambia password:" />
-                  <Button layoutX="589.0" layoutY="13.0" mnemonicParsing="false" onAction="#cambiaPassword" text="Cambia" />
+                  <Button layoutX="589.0" layoutY="13.0" mnemonicParsing="false" styleClass="primaryButton" onAction="#cambiaPassword" text="Cambia" />
                </children>
             </Pane>
             <Pane prefHeight="50.0" prefWidth="655.0">
                <children>
-                  <Button layoutX="297.0" layoutY="13.0" mnemonicParsing="false" onAction="#esci" text="Logout" />
+                  <Button layoutX="297.0" layoutY="13.0" mnemonicParsing="false" styleClass="primaryButton" onAction="#esci" text="Logout" />
                </children>
             </Pane>
          </children>
