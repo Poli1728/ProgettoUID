@@ -62,7 +62,7 @@ public class HomeController {
 
     @FXML
     void Esci(ActionEvent event) {
-        System.exit(0);
+        SceneHandler.getInstance().launchLogin();
     }
 
 }
