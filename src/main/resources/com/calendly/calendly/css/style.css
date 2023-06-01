@@ -10,7 +10,6 @@
 
 .container-level-2 {
     -fx-background-color: secondaryBackgroundColor;
-    -fx-width: 50%;
 }
 
 .primaryButton {
@@ -56,7 +55,6 @@
 
 .primary-app-view {
     -fx-background-color: secondaryBackgroundColor;
-
 }
 
 

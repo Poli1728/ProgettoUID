@@ -70,8 +70,6 @@ public class LoginController {
         if (stage == null)
             return;
         this.stage = stage;
-        Scene scene = ancorPane.getScene();
-
 
         stage.iconifiedProperty().addListener((observable, oldValue, newValue) -> {
 
@@ -85,78 +83,84 @@ public class LoginController {
 
         stage.centerOnScreen();
 
-        configPane(scene);
-        configAccediButton(scene);
-        configLoginLabelsAndFields(scene);
+        configPane();
+        configLoginLabelsAndFields();
 
 
     }
 
-    private void configPane(Scene scene) {
-        //min - max size impostate direttamete come tag nei file
-
-        pane.prefWidthProperty().bind(scene.widthProperty().divide(3).multiply(1.5));
-        pane.prefHeightProperty().bind(scene.heightProperty().divide(3).multiply(2.5));
-
+    private void configPane() {
         Platform.runLater(() -> {
-            double xx = scene.getWidth()/2  -  pane.getWidth()/2;
-            double yy = scene.getHeight()/2  -  pane.getHeight()/2;
-            pane.setLayoutX(xx);
-            pane.setLayoutY(yy);
+            this.callPaneResizeRelocate();
         });
 
-        scene.widthProperty().addListener((observable -> {
-            double x = scene.getWidth()/2 - pane.getWidth()/2;
-            pane.setLayoutX(x);
-        }));
-
-        scene.heightProperty().addListener((observable -> {
-            double y = scene.getHeight()/2 - pane.getHeight()/2;
-            pane.setLayoutY(y);
+        ancorPane.layoutBoundsProperty().addListener((observable -> {
+            this.callPaneResizeRelocate();
         }));
     }
 
-    private void configLoginLabelsAndFields(Scene scene) {
+    private void callPaneResizeRelocate() {
+        double width  = pane.getWidth();
+        double height = pane.getHeight();
+
+        double x = ancorPane.getWidth()/2 - width/2;
+        double y = ancorPane.getHeight()/2 - height/2;
+
+        pane.resizeRelocate(x, y, width, height);
+    }
+
+    private void configLoginLabelsAndFields() {
 
         Platform.runLater(() -> {
-            loginLabel.layoutXProperty().bind(pane.widthProperty().divide(2).subtract(loginLabel.getWidth()/2));
+            this.setXLocationInsidePane();
+
             loginLabel.layoutYProperty().bind(pane.heightProperty().divide(6));
-
-            usernameLabel.prefWidthProperty().bind(accediButton.widthProperty());
-            usernameLabel.prefHeightProperty().bind(accediButton.heightProperty());
-            usernameLabel.layoutXProperty().bind(accediButton.layoutXProperty());
             usernameLabel.layoutYProperty().bind(loginLabel.layoutYProperty().add(loginLabel.getHeight()).add(50));
-
-            usernameField.prefWidthProperty().bind(accediButton.widthProperty());
-            usernameField.prefHeightProperty().bind(accediButton.heightProperty());
-            usernameField.layoutXProperty().bind(accediButton.layoutXProperty());
             usernameField.layoutYProperty().bind(usernameLabel.layoutYProperty().add(usernameLabel.getHeight()).add(20));
-
-            passwordLabel.prefWidthProperty().bind(accediButton.widthProperty());
-            passwordLabel.prefHeightProperty().bind(accediButton.heightProperty());
-            passwordLabel.layoutXProperty().bind(accediButton.layoutXProperty());
             passwordLabel.layoutYProperty().bind(usernameField.layoutYProperty().add(usernameField.getHeight()).add(20));
-
-            passwordField.prefWidthProperty().bind(accediButton.widthProperty());
-            passwordField.prefHeightProperty().bind(accediButton.heightProperty());
-            passwordField.layoutXProperty().bind(accediButton.layoutXProperty());
             passwordField.layoutYProperty().bind(passwordLabel.layoutYProperty().add(passwordLabel.getHeight()).add(20));
-
-        });
-
-    }
-
-    private void configAccediButton(Scene scene) {
-
-        accediButton.setMaxSize(250, 70);
-
-        accediButton.prefWidthProperty().bind(pane.widthProperty().divide(3).multiply(2.5));
-        accediButton.prefHeightProperty().bind(pane.heightProperty().divide(5).multiply(0.3));
-
-        Platform.runLater(() ->  {
-            accediButton.layoutXProperty().bind(pane.widthProperty().divide(2).subtract(accediButton.getWidth()/2));
             accediButton.layoutYProperty().bind(pane.heightProperty().subtract(accediButton.getHeight()).subtract(accediButton.getHeight()*0.7));
         });
+
+        pane.layoutBoundsProperty().addListener(observable -> {
+            this.setXLocationInsidePane();
+        });
+
+    }
+
+    private void setXLocationInsidePane() {
+
+        int MAX_WIDTH = 250;
+        int MAX_HEIGHT = 70;
+
+        loginLabel.setMaxSize(MAX_WIDTH, MAX_HEIGHT);
+        usernameLabel.setMaxSize(MAX_WIDTH, MAX_HEIGHT);
+        usernameField.setMaxSize(MAX_WIDTH, MAX_HEIGHT);
+        passwordLabel.setMaxSize(MAX_WIDTH, MAX_HEIGHT);
+        passwordField.setMaxSize(MAX_WIDTH, MAX_HEIGHT);
+        accediButton.setMaxSize(MAX_WIDTH, MAX_HEIGHT);
+
+
+        double width  = pane.getWidth()  / 3 * 2.5;
+        double height = pane.getHeight() / 5 * 0.3;
+
+        loginLabel.setPrefSize(width, height);
+        usernameLabel.setPrefSize(width, height);
+        usernameField.setPrefSize(width, height);
+        passwordLabel.setPrefSize(width, height);
+        passwordField.setPrefSize(width, height);
+        accediButton.setPrefSize(width, height);
+
+
+        width = loginLabel.getWidth();
+        double x = pane.getWidth()/2  - width/2;
+
+        loginLabel.setLayoutX(x);
+        usernameLabel.setLayoutX(x);
+        usernameField.setLayoutX(x);
+        passwordLabel.setLayoutX(x);
+        passwordField.setLayoutX(x);
+        accediButton.setLayoutX(x);
     }
 
 }

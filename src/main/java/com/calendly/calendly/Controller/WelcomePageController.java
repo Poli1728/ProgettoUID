@@ -1,5 +1,6 @@
 package com.calendly.calendly.Controller;
 import com.calendly.calendly.SceneHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -33,41 +34,34 @@ public class WelcomePageController {
         if (stage == null)
             return;
         this.stage = stage;
-        Scene scene = stackPane.getScene();
 
-        configPane(scene);
+        configPane();
         configContinueButton();
-        configStackPane(scene);
+        configStackPane();
     }
 
+    private void configPane() { }
 
-    private void configPane(Scene scene) {
-
-
-    }
-
-    private void configStackPane(Scene scene) {
-
-        stackPane.prefWidthProperty().bind(scene.widthProperty().divide(3).multiply(1.5));
-        stackPane.prefHeightProperty().bind(scene.heightProperty().divide(3).multiply(2.5));
-
-        stage.setOnShown(windowEvent -> {
-            double x = stage.getWidth()/2  -  stackPane.getPrefWidth()/2;
-            double y = stage.getHeight()/2  -  stackPane.getPrefHeight()/2;
-            stackPane.setLayoutX(x);
-            stackPane.setLayoutY(y);
+    private void configStackPane() {
+        Platform.runLater(() -> {
+            this.setLayoutStackPane();
         });
 
-        scene.widthProperty().addListener((obs, oldValue, newValue) -> {
-            double x = scene.getWidth()/2  -  stackPane.getWidth()/2;
-            stackPane.setLayoutX(x);
-        });
-        scene.heightProperty().addListener((observableValue, oldValue, newValue) -> {
-            double y = scene.getHeight()/2  -  stackPane.getHeight()/2;
-            stackPane.setLayoutY(y);
-        });
+        pane.layoutBoundsProperty().addListener((observable -> {
+            this.setLayoutStackPane();
+        }));
 
         stackPane.setAlignment(Pos.CENTER);
+    }
+
+    private void setLayoutStackPane() {
+        double width  = stackPane.getWidth();
+        double height = stackPane.getHeight();
+
+        double x = pane.getWidth()/2 - width/2;
+        double y = pane.getHeight()/2 - height/2;
+
+        stackPane.resizeRelocate(x, y, width, height);
     }
 
 

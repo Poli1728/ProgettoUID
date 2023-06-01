@@ -8,5 +8,6 @@ public class Settings {
     public final static int DEFAULT_PAGE_HEIGHT = 900;
     public final static int DEFAULT_PAGE_WIDTH = 1000;
     public final static int DEFAULT_MIN_PAGE_HEIGHT = 700;
-    public final static int DEFAULT_MIN_PAGE_WIDTH = 800;
+    public final static int DEFAULT_MIN_PAGE_WIDTH = 500;
+
 }
