@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.effect.Light;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -99,25 +100,41 @@ public class SceneHandler {
         return cerca;
     }
 
-    private void setWindowDefaultDimension(boolean ... isResizable)  {
-        //Default value for isResizable => true
-        //solamente per prima apertura
+    private void setWindowDefaultDimension()  {
         stage.setMinHeight(Settings.DEFAULT_MIN_PAGE_HEIGHT);
         stage.setMinWidth(Settings.DEFAULT_MIN_PAGE_WIDTH);
         stage.setHeight(Settings.DEFAULT_PAGE_HEIGHT);
         stage.setWidth(Settings.DEFAULT_PAGE_WIDTH);
-
-        if (isResizable.length == 0)
-            stage.setResizable(true);
-        else
-            stage.setResizable(isResizable[0]);
+        stage.setResizable(true);
     }
 
     private void loadStyle() {
         for (String font : Settings.fonts)
             Font.loadFont(Objects.requireNonNull(SceneHandler.class.getResource(font)).toExternalForm(), 10);
+
         for (String style : Settings.styles)
             scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm());
+
+        Settings.theme defaultTheme = Settings.theme.DARK; //da db
+        setTheme(defaultTheme);
     }
+
+
+
+    private void setTheme(Settings.theme theme) {
+
+        String pathTheme;
+
+        pathTheme = switch (theme) {
+            case DARK -> Settings.themes[0];
+            case LIGHT -> Settings.themes[1];
+
+            default -> Settings.themes[0];
+        };
+
+        scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
+    }
+
+
 
 }
