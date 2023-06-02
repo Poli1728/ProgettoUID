@@ -22,7 +22,6 @@
             <Pane fx:id="pane" prefHeight="100.0" prefWidth="660.0" />
             <TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="660.0" styleClass="container-level-2">
                <columns>
-                  <TableColumn fx:id="colonnaUtente" prefWidth="75.0" text="Utente" />
                   <TableColumn fx:id="colonnaEmail" prefWidth="75.0" text="Email" />
                   <TableColumn fx:id="colonnaOrario" prefWidth="75.0" text="Orario" />
                   <TableColumn fx:id="colonnaDipendente" prefWidth="99.0" text="Dipendente" />
