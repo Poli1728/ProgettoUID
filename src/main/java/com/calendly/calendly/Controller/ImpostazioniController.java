@@ -1,7 +1,6 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.SceneHandler;
-import com.calendly.calendly.Settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -32,11 +31,10 @@ public class ImpostazioniController implements Initializable {
     }
     @FXML
     void scegliTema(ActionEvent event) {
-        if (temiComboBox.getSelectionModel().isSelected(0)){
-            SceneHandler.getInstance().setTheme(Settings.theme.DARK);
-        } else if (temiComboBox.getSelectionModel().isSelected(1)) {
-            SceneHandler.getInstance().setTheme(Settings.theme.LIGHT);
+        /*if (temiComboBox.get){
+
         }
+        SceneHandler.getInstance().setTheme();*/
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
