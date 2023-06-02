@@ -121,7 +121,7 @@ public class SceneHandler {
 
 
 
-    private void setTheme(Settings.theme theme) {
+    public void setTheme(Settings.theme theme) {
 
         String pathTheme;
 

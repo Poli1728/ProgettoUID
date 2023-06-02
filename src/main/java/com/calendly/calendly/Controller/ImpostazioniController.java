@@ -31,7 +31,10 @@ public class ImpostazioniController implements Initializable {
     }
     @FXML
     void scegliTema(ActionEvent event) {
-        //Mi serve una funzione nel scenehandler per passargli la scelta  ~ Marco
+        if (temiComboBox.get){
+
+        }
+        SceneHandler.getInstance().setTheme();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

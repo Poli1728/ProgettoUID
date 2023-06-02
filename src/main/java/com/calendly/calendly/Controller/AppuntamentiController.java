@@ -56,6 +56,6 @@ public class AppuntamentiController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Appuntamento app = new Appuntamento("marco.martino.kr@gmail.com", "10:30 02/03/2023", "Mario Bruno", "Taglio capelli");
-        
+
     }
 }
