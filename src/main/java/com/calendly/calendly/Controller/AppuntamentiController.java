@@ -29,7 +29,7 @@ public class AppuntamentiController implements Initializable {
     private TableColumn<?, ?> colonnaServizio;
 
     @FXML
-    private TableView<?> table;
+    private TableView<Appuntamento> table;
 
     //Aggiunge il pane che permette di aggiungere, modificare e rimuovere
     private void modificaPane(String s) throws IOException {
