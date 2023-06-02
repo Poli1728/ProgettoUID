@@ -3,12 +3,16 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 
-public class ImpostazioniController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ImpostazioniController implements Initializable {
 
     @FXML
-    private ComboBox<?> temiComboBox;
+    private ComboBox<String> temiComboBox;
 
     @FXML
     void cambiaPassword(ActionEvent event) {
@@ -25,5 +29,13 @@ public class ImpostazioniController {
     void mostraInformazioni(ActionEvent event) {
 
     }
-
+    @FXML
+    void scegliTema(ActionEvent event) {
+        //Mi serve una funzione nel scenehandler per passargli la scelta  ~ Marco
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        temiComboBox.getItems().add("Scuro");
+        temiComboBox.getItems().add("Chiaro");
+    }
 }

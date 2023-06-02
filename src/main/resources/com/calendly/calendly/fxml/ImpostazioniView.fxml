@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane   maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.ImpostazioniController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.ImpostazioniController">
    <children>
       <Pane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -17,7 +16,7 @@
                   <Pane prefHeight="45.0" prefWidth="655.0">
                      <children>
                         <Label layoutX="7.0" layoutY="10.0" prefHeight="26.0" prefWidth="166.0" text="Cambia il tema dell'app:" />
-                        <ComboBox fx:id="temiComboBox" layoutX="525.0" layoutY="11.0" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" styleClass="primaryButton" />
+                        <ComboBox fx:id="temiComboBox" layoutX="525.0" layoutY="11.0" onAction="#scegliTema" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" styleClass="primaryButton" />
                      </children>
                   </Pane>
                   <Pane prefHeight="50.0" prefWidth="655.0">
