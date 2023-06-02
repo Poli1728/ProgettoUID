@@ -57,8 +57,9 @@
     -fx-background-color: secondaryBackgroundColor;
 }
 
-
-
+.imagePainContainer {
+    -fx-background-color: blueLight;
+}
 
 
 
