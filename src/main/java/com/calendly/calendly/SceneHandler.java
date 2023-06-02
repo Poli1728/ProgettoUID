@@ -3,6 +3,7 @@ package com.calendly.calendly;
 import com.calendly.calendly.Controller.HomeController;
 import com.calendly.calendly.Controller.LoginController;
 import com.calendly.calendly.Controller.WelcomePageController;
+import com.calendly.calendly.Model.GestoreDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class SceneHandler {
@@ -32,10 +34,11 @@ public class SceneHandler {
     }
 
 
-    public void init(Stage stage) {
+    public void init(Stage stage) throws SQLException {
         if (this.stage == null) {
             this.stage = stage;
             this.stage.setTitle(this.INIT_TITLE);
+            //GestoreDB.getInstance().provaQuery(); //questa è solo una prova per il db non usarlo che non usa il path assoluto
             launchWelcomeFirstOpening();
             this.stage.setScene(scene);
             loadStyle();

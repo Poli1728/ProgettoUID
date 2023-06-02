@@ -3,6 +3,7 @@ module com.calendly.calendly {
     requires javafx.fxml;
 
     requires org.kordamp.bootstrapfx.core;
+    requires java.sql;
 
     opens com.calendly.calendly to javafx.fxml;
     exports com.calendly.calendly;
