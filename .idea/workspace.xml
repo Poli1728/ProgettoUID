@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Cambiamenti grafici per la posizione degli elementi della login e della welcomepage">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/images/welcome1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/images/welcome2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/images/welcome3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/images/welcome4.png" afterDir="false" />
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="aggiunta metodo setTheme nel SceneHandler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ImpostazioniController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ImpostazioniController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/system-images/welcome_img_1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/system-images/welcome_img_2.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/system-images/welcome_img_3.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/system-images/welcome_img_4.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +23,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -224,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685651866641</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="aggiunta metodo setTheme nel SceneHandler">
+      <created>1685696475877</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1685696475877</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -265,6 +264,7 @@
     <MESSAGE value="Ora il LoginView.fxml posiziona gli elementi nella giusta posizione in ogni caso (quantomeno si spera :(  )" />
     <MESSAGE value="aggiunta" />
     <MESSAGE value="Cambiamenti grafici per la posizione degli elementi della login e della welcomepage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambiamenti grafici per la posizione degli elementi della login e della welcomepage" />
+    <MESSAGE value="aggiunta metodo setTheme nel SceneHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunta metodo setTheme nel SceneHandler" />
   </component>
 </project>

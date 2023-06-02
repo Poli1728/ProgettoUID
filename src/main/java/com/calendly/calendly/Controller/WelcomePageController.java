@@ -5,12 +5,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import java.util.List;
+import java.util.Objects;
 
 public class WelcomePageController {
 
@@ -29,7 +32,7 @@ public class WelcomePageController {
         SceneHandler.getInstance().launchLogin();
     }
 
-    private List<ImageView> images;
+    private List<Image> images;
 
     //--------------------------
     private Stage stage;
@@ -81,10 +84,11 @@ public class WelcomePageController {
 
         try {
             for (int i = 1; i <= N_IMAGES; i++) {
-                Image img = new Image("f");
-                ImageView imageView = new ImageView(img);
+                Image image = new Image(WelcomePageController.class.getResourceAsStream("/img/welcome1.png"));
+                images.add(image);
             }
         } catch (Exception e) {
+            System.out.println(e.toString());
         }
 
     }

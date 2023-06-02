@@ -31,10 +31,10 @@ public class ImpostazioniController implements Initializable {
     }
     @FXML
     void scegliTema(ActionEvent event) {
-        if (temiComboBox.get){
+        /*if (temiComboBox.get){
 
         }
-        SceneHandler.getInstance().setTheme();
+        SceneHandler.getInstance().setTheme();*/
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
