@@ -4,11 +4,11 @@ Idee:
   - 
 
 Marco:
-	- Finire il DB 
+- Finire il DB 
     - Dipendente ha username e non cf, aggiungere la password
     - Utente aggiungere Nome, Cognome, Numero
     - Servizio aggiungere Prezzo
-	- Statistiche, salva su file pdf
+- Statistiche, salva su file pdf
   
 Mario:
   - Servizio 
