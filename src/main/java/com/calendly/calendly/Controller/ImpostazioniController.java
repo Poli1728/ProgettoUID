@@ -27,7 +27,7 @@ public class ImpostazioniController implements Initializable {
     }
 
     @FXML
-    void mostraInformazioni(ActionEvent event) {
+    void modificaInformazioni(ActionEvent event) {
 
     }
     @FXML

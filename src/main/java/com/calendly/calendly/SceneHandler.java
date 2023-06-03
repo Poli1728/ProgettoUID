@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -147,6 +148,12 @@ public class SceneHandler {
         scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
     }
 
-
+    public String apriFileChooser(){
+        FileChooser fileChooser = new FileChooser();
+        //fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("IMAGES FILES", ".jpg", ".png"));
+        fileChooser.setTitle("Scegli immagine");
+        String name = fileChooser.showOpenDialog(stage).getAbsolutePath();
+        return name;
+    }
 
 }
