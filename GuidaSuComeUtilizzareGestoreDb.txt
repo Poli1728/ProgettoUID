@@ -1,0 +1,30 @@
+ - GestoreDB.getInstance().createConnection();
+  Utile per creare la connessione con il DB
+  
+ - GestoreDB.getInstance().closeConnection();
+   Chiude la connessione
+
+ - ArrayList<String> ris = GestoreDB.getInstance().leggiEntità(GestoreDB.entità.Dipendenti);
+
+  for(String i : ris){
+      System.out.println(i);
+  }
+  NOTA: Questa funzione torna tutti gli elementi presenti in una singola entità, in questo esempio di Dipendenti.
+  Si possono passare tutte le entità presenti nel DB.
+  NOTA: La funzione ritorna un ArrayList, quello lo devi gestire tu. Ogni dato è separato dal ';' così
+  da rendere più facile la divisione tra gli elementi.
+  
+  - GestoreDB.getInstance().inserimentoServizi(tipo , prezzo); 
+    Inserisce in servizio la riga con il tipo e il prezzo
+    
+  Per gli inserimenti, ecco i prototipi:
+    - public void inserimentoClienti(String CF, String Email, String Nome, String Cognome, String Numero)
+    - public void inserimentoAppuntamenti(Date Data, String CF, Integer id_d, Integer id_s)
+    - public void inserimentoServizi(String Tipo, Double Prezzo)
+    - public void inserimentoDipendenti(String Username, String Password, String Nome, String Cognome)
+    
+   - GestoreDB.getInstance().eseguiQuery(query); 
+     prototipo:
+     public ResultSet eseguiQuery(String query)
+     
+     NOTA: Ritorna un ResultSet che va gestito con le varie colonne, quindi fare attenzione.
