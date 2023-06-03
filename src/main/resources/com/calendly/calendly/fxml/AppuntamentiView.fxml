@@ -22,10 +22,13 @@
             <Pane fx:id="pane" prefHeight="100.0" prefWidth="660.0" />
             <TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="660.0" styleClass="container-level-2">
                <columns>
-                  <TableColumn fx:id="colonnaEmail" prefWidth="75.0" text="Email" />
-                  <TableColumn fx:id="colonnaOrario" prefWidth="75.0" text="Orario" />
-                  <TableColumn fx:id="colonnaDipendente" prefWidth="99.0" text="Dipendente" />
-                  <TableColumn fx:id="colonnaServizio" prefWidth="71.0" text="Servizio" />
+                  <TableColumn fx:id="colonnaEmail" prefWidth="42.5" text="Id" />
+                  <TableColumn fx:id="colonnaId" prefWidth="112.0" text="Email" />
+                  <TableColumn fx:id="colonnaNomeCognome" prefWidth="142.5" text="Nome e Cognome" />
+                  <TableColumn fx:id="colonnaNumero" minWidth="1.0" prefWidth="75.0" text="Numero" />
+                  <TableColumn fx:id="colonnaData" prefWidth="89.0" text="Data" />
+                  <TableColumn fx:id="colonnaDipendente" prefWidth="104.0" text="Dipendente" />
+                  <TableColumn fx:id="colonnaServizio" prefWidth="94.0" text="Servizio" />
                </columns>
             </TableView>
          </children>

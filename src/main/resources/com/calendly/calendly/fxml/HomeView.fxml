@@ -11,10 +11,10 @@
             <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="250.0" mnemonicParsing="false" onAction="#apriDashboard" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Dashboard" />
             <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#apriAppuntamenti" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Appuntamenti" />
             <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="320.0" mnemonicParsing="false" onAction="#apriStatistiche" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Statistiche" />
-            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#apriEventi" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Eventi" />
+            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#apriServizi" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Servizi" />
             <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#apriDipendenti" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Dipendenti" />
             <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="425.0" mnemonicParsing="false" onAction="#apriImpostazioni" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Impostazioni" />
-            <Button fx:id="ProfiloButton" layoutX="47.0" layoutY="123.0" mnemonicParsing="false" onAction="#apriProfilo" prefHeight="57.0" prefWidth="61.0" styleClass="sidebar-user-icon" text="Icona" />
+            <Button fx:id="ProfiloButton" layoutX="47.0" layoutY="123.0" mnemonicParsing="false" onAction="#apriProfilo" prefHeight="57.0" prefWidth="61.0" styleClass="sidebar-user-icon" text="Profilo" />
             <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="626.0" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-logout-button" text="Logout" />
          </children>
       </Pane>
