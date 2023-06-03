@@ -1,0 +1,18 @@
+Data di scadenza -> 10 giugno 2023
+
+Idee:
+  - 
+
+Marco:
+	- Finire il DB 
+    - Dipendente ha username e non cf, aggiungere la password
+    - Utente aggiungere Nome, Cognome, Numero
+    - Servizio aggiungere Prezzo
+	- Statistiche, salva su file pdf
+  
+Mario:
+  - Servizio 
+  - Dipendenti
+  - Pagine login
+  - Pagine Welcome
+  - Pagine Registrazione
