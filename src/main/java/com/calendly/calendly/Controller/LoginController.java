@@ -3,13 +3,11 @@ import com.calendly.calendly.SceneHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 public class LoginController {
     @FXML
@@ -36,7 +34,7 @@ public class LoginController {
     void accedi(ActionEvent event) {
         //Questa è solo come prova per l'accesso, qui si dovrebbe andare a cercare all'interno del database ~ Marco
         //if (usernameField.getText().equals("Marco") && passwordField.getText().equals("Marco")){
-        SceneHandler.getInstance().launchHome();
+        SceneHandler.getInstance().launchDashboard();
         //}
     }
 

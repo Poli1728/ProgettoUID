@@ -1,6 +1,8 @@
 package com.calendly.calendly.Controller;
 import com.calendly.calendly.Main;
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.Settings;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -8,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -25,6 +28,9 @@ public class WelcomePageController {
     private Pane pane;
 
     @FXML
+    private Label labelTitle;
+
+    @FXML
     private Button continueButton;
 
     @FXML
@@ -33,9 +39,10 @@ public class WelcomePageController {
     @FXML
     void actionContinueButton(ActionEvent event) {
         if (timeline != null)
-            timeline.stop();
-        SceneHandler.getInstance().launchLogin();
+            if (timeline.getStatus() == Animation.Status.RUNNING)
+                timeline.stop();
 
+        SceneHandler.getInstance().launchLogin();
     }
 
 
@@ -45,11 +52,9 @@ public class WelcomePageController {
     //--------------------------
     private Stage stage;
 
-    public void init(Stage stage) {
-        if (stage == null)
-            return;
-        this.stage = stage;
-
+    public void initialize() {
+        labelTitle.setText("Welcome to " + Settings.INIT_TITLE);
+        //todo impostare la grandezza del testo
         configPane();
         configContinueButton();
         configStackPane();
@@ -88,9 +93,8 @@ public class WelcomePageController {
 
 
 
-    private Timeline timeline;
+    private Timeline timeline = new Timeline();;
     private int indexImage = 0;
-
 
     private void setImages() {
         int N_IMAGES = 4;
@@ -104,25 +108,25 @@ public class WelcomePageController {
             }
         }
 
-        int DEFAULT_IMAGE = 2;
-
         imageView.maxWidth(stackPane.getMaxWidth());
         imageView.maxHeight(210);
 
-
-
-        Platform.runLater(() -> {
-            timeline = new Timeline(new KeyFrame(Duration.seconds(2), e -> setLayoutImageView()));
-            timeline.setCycleCount(Timeline.INDEFINITE);
-            timeline.play();
-        });
-
-
-        stackPane.layoutBoundsProperty().addListener(observable -> {
+        //pezzo in a Platform.runLater(...);
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(2), e -> {
             setLayoutImageView();
-        });
+            indexImage++;
+            if (indexImage > images.size()-1)
+                indexImage = 0;
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
-
+        /*stackPane.layoutBoundsProperty().addListener(observable -> {
+            setLayoutImageView();
+        }); /* todo aggiungere animazione caricamento circolare.
+        senza il lister diventa più lento a caricare le immagini
+        da decidere se mettere il contain-painer-login più visibilmente resizable o lasciarlo così com'è.
+         */
 
     }
 
@@ -130,23 +134,15 @@ public class WelcomePageController {
 
         imageView.setImage(images.get(indexImage));
 
-
-        imageView.setFitWidth(images.get(indexImage).getWidth() * 0.5);
+        imageView.setFitWidth(images.get(indexImage).getWidth() * 0.45);
         imageView.setFitHeight(images.get(indexImage).getHeight() * 0.4);
 
         imageView.setLayoutX(stackPane.getWidth()/2 - imageView.getFitWidth()/2);
         imageView.setLayoutY(0);
 
-
         if (!stackPane.getChildren().contains(imageView)) {
             stackPane.getChildren().add(imageView);
         }
-
-        indexImage++;
-
-        if (indexImage > images.size()-1)
-            indexImage = 0;
-
     }
 
 

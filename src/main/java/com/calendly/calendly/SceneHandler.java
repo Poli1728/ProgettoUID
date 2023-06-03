@@ -1,14 +1,9 @@
 package com.calendly.calendly;
 
-import com.calendly.calendly.Controller.HomeController;
 import com.calendly.calendly.Controller.LoginController;
 import com.calendly.calendly.Controller.WelcomePageController;
-import com.calendly.calendly.Model.GestoreDB;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.effect.Light;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -17,8 +12,6 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class SceneHandler {
-
-    private final String INIT_TITLE = "Calendly";
     private final boolean FIRST_TIME_OPENED = true;  //TODO da spostare tramite lettura in DB o altro
 
     private static final SceneHandler instance = new SceneHandler();
@@ -37,12 +30,14 @@ public class SceneHandler {
     public void init(Stage stage) throws SQLException {
         if (this.stage == null) {
             this.stage = stage;
-            this.stage.setTitle(this.INIT_TITLE);
+
+            stage.setTitle(Settings.INIT_TITLE);
             //GestoreDB.getInstance().provaQuery(); //questa è solo una prova per il db non usarlo che non usa il path assoluto
             launchWelcomeFirstOpening();
-            this.stage.setScene(scene);
+            stage.setScene(scene);
             loadStyle();
-            this.stage.show();
+
+            stage.show();
         }
     }
 
@@ -70,8 +65,8 @@ public class SceneHandler {
 
         loadFXML("fxml/WelcomePage.fxml");
         WelcomePageController controller = loader.getController();
-        setWindowDefaultDimension();
-        controller.init(stage);
+        setWindowLoginDimension();
+        //controller.init(stage);
     }
 
     public void launchCreateAccountOwner() {
@@ -82,7 +77,6 @@ public class SceneHandler {
         loadFXML("fxml/LoginView.fxml");
         LoginController controller = loader.getController();
         controller.init(stage);
-
     }
 
 
@@ -90,10 +84,9 @@ public class SceneHandler {
         //da vedere se passare height and width come params per scegliere se utilizzare la sBar con solo icone o con icone+testo
     }
 
-    public void launchDashboard() {
-    }
 
-    public void launchHome(){
+    public void launchDashboard(){
+        setWindowAppDimension();
         loadFXML("fxml/HomeView.fxml");
     }
 
@@ -103,11 +96,19 @@ public class SceneHandler {
         return cerca;
     }
 
-    private void setWindowDefaultDimension()  {
-        stage.setMinHeight(Settings.DEFAULT_MIN_PAGE_HEIGHT);
-        stage.setMinWidth(Settings.DEFAULT_MIN_PAGE_WIDTH);
-        stage.setHeight(Settings.DEFAULT_PAGE_HEIGHT);
-        stage.setWidth(Settings.DEFAULT_PAGE_WIDTH);
+    private void setWindowLoginDimension() {
+        stage.setMinHeight(Settings.MIN_WINDOW_HEIGHT);
+        stage.setMinWidth(Settings.MIN_WINDOW_WIDTH_LOGIN);
+        stage.setHeight(Settings.DEFAULT_WINDOW_HEIGHT);
+        stage.setWidth(Settings.DEFAULT_WINDOW_WIDTH);
+        stage.setResizable(true);
+    }
+
+    private void setWindowAppDimension() {
+        stage.setMinHeight(Settings.MIN_WINDOW_HEIGHT);
+        stage.setMinWidth(Settings.MIN_WINDOW_WIDTH_APP);
+        stage.setHeight(Settings.DEFAULT_WINDOW_HEIGHT);
+        stage.setWidth(Settings.DEFAULT_WINDOW_WIDTH);
         stage.setResizable(true);
     }
 
@@ -135,6 +136,14 @@ public class SceneHandler {
             default -> Settings.themes[0];
         };
 
+
+        if (scene.getStylesheets().contains(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm())) {
+            //Tema già impostato, non fare nulla
+            //todo evitare di far selezionare all'utente il tema già scelto
+            return;
+        }
+
+        //todo altrimenti togli il vecchio (prendi il dato da db) e metti il nuovo
         scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
     }
 

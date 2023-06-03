@@ -9,9 +9,12 @@ public class Settings {
         DARK,
         LIGHT,
     }
-    public final static int DEFAULT_PAGE_HEIGHT = 900;
-    public final static int DEFAULT_PAGE_WIDTH = 1000;
-    public final static int DEFAULT_MIN_PAGE_HEIGHT = 700;
-    public final static int DEFAULT_MIN_PAGE_WIDTH = 500;
+    public final static int DEFAULT_WINDOW_HEIGHT = 900;
+    public final static int DEFAULT_WINDOW_WIDTH = 1000;
+    public final static int MIN_WINDOW_HEIGHT = 700;
+    public final static int MIN_WINDOW_WIDTH_LOGIN = 500;
+    public final static int MIN_WINDOW_WIDTH_APP = 800;
+
+    public final static String INIT_TITLE = "Calendly";
 
 }
