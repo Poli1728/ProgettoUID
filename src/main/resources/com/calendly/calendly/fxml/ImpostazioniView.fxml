@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -19,16 +20,24 @@
                         <ComboBox fx:id="temiComboBox" layoutX="525.0" layoutY="11.0" onAction="#scegliTema" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" styleClass="primaryButton" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="50.0" prefWidth="655.0">
+                  <Pane prefHeight="179.0" prefWidth="657.0">
                      <children>
-                        <Button layoutX="594.0" layoutY="13.0" mnemonicParsing="false" onAction="#modificaInformazioni" styleClass="primaryButton" text="Modifica" />
-                        <Label layoutX="14.0" layoutY="12.0" prefHeight="26.0" prefWidth="166.0" text="Modifica le informazioni presenti nel profilo" />
+                        <Button layoutX="570.0" layoutY="127.0" mnemonicParsing="false" onAction="#modificaInformazioni" styleClass="primaryButton" text="Modifica" />
+                        <Label layoutX="14.0" layoutY="12.0" prefHeight="26.0" prefWidth="592.0" text="Modifica le informazioni presenti nel profilo (Lascia vuoto quello che non vuoi modificare)" />
+                        <Label layoutX="14.0" layoutY="54.0" text="Nome" />
+                        <TextField fx:id="nomeField" styleClass="loginField" layoutX="14.0" layoutY="72.0" />
+                        <Label layoutX="14.0" layoutY="109.0" text="Email" />
+                        <TextField fx:id="emailField" styleClass="loginField" layoutX="14.0" layoutY="127.0" />
+                        <Label layoutX="225.0"  layoutY="54.0" text="Numero" />
+                        <TextField fx:id="numeroField" styleClass="loginField" layoutX="225.0" layoutY="72.0" />
+                        <Label layoutX="225.0" layoutY="109.0" text="Indirizzo" />
+                        <TextField fx:id="indirizzoField" styleClass="loginField" layoutX="225.0" layoutY="127.0" />
                      </children>
                   </Pane>
                   <Pane prefHeight="50.0" prefWidth="655.0">
                      <children>
                         <Label layoutX="14.0" layoutY="12.0" prefHeight="26.0" prefWidth="166.0" text="Cambia password" />
-                        <Button layoutX="589.0" layoutY="13.0" mnemonicParsing="false" onAction="#cambiaPassword" styleClass="primaryButton" text="Cambia" />
+                        <Button layoutX="576.0" layoutY="13.0" mnemonicParsing="false" onAction="#cambiaPassword" styleClass="primaryButton" text="Cambia" />
                      </children>
                   </Pane>
                   <Pane prefHeight="50.0" prefWidth="655.0">
