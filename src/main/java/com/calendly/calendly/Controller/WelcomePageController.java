@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -53,7 +54,8 @@ public class WelcomePageController {
     private Stage stage;
 
     public void initialize() {
-        labelTitle.setText("Welcome to " + Settings.INIT_TITLE);
+        labelTitle.setText("Welcome to\n" + Settings.INIT_TITLE);
+        labelTitle.setTextAlignment(TextAlignment.CENTER);
         //todo impostare la grandezza del testo
         configPane();
         configContinueButton();
