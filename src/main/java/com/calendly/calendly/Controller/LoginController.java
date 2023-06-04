@@ -110,7 +110,7 @@ public class LoginController {
     private void configLoginLabelsAndFields() {
 
         Platform.runLater(() -> {
-            this.setXLocationInsidePane();
+            setXLocationInsidePane();
 
             loginLabel.layoutYProperty().bind(pane.heightProperty().divide(6));
             usernameLabel.layoutYProperty().bind(loginLabel.layoutYProperty().add(loginLabel.getHeight()).add(50));
@@ -121,7 +121,7 @@ public class LoginController {
         });
 
         pane.layoutBoundsProperty().addListener(observable -> {
-            this.setXLocationInsidePane();
+            setXLocationInsidePane();
         });
 
     }
@@ -150,7 +150,7 @@ public class LoginController {
         accediButton.setPrefSize(width, height);
 
 
-        width = loginLabel.getWidth();
+        width = accediButton.getWidth();
         double x = pane.getWidth()/2  - width/2;
 
         loginLabel.setLayoutX(x);

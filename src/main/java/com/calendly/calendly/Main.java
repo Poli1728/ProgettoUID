@@ -10,7 +10,6 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         SceneHandler.getInstance().init(stage);
-
     }
 
     public static void main(String[] args) {
