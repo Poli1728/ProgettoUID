@@ -1,0 +1,16 @@
+Data di scadenza -> 10 giugno 2023
+
+Idee:
+  - 
+
+Marco:
+  - Statistiche, salva su file pdf
+  - Finire impostazioni
+  - Finire Appuntamenti
+  
+Mario:
+  - Servizio 
+  - Dipendenti
+  - Pagine login
+  - Pagine Welcome
+  - Pagine Registrazione

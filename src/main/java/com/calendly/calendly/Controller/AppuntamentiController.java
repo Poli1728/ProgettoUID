@@ -16,6 +16,10 @@ import java.util.ResourceBundle;
 public class AppuntamentiController implements Initializable {
     @FXML
     private Pane pane;
+
+    @FXML
+    private TableColumn<?, ?> colonnaData;
+
     @FXML
     private TableColumn<?, ?> colonnaDipendente;
 
@@ -23,7 +27,13 @@ public class AppuntamentiController implements Initializable {
     private TableColumn<?, ?> colonnaEmail;
 
     @FXML
-    private TableColumn<?, ?> colonnaOrario;
+    private TableColumn<?, ?> colonnaId;
+
+    @FXML
+    private TableColumn<?, ?> colonnaNomeCognome;
+
+    @FXML
+    private TableColumn<?, ?> colonnaNumero;
 
     @FXML
     private TableColumn<?, ?> colonnaServizio;
@@ -55,7 +65,6 @@ public class AppuntamentiController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Appuntamento app = new Appuntamento("marco.martino.kr@gmail.com", "10:30 02/03/2023", "Mario Bruno", "Taglio capelli");
 
     }
 }

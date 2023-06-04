@@ -29,8 +29,8 @@ public class HomeController {
     }
 
     @FXML
-    void apriEventi(ActionEvent event) throws IOException {
-        avviaPane("fxml/Eventi");
+    void apriServizi(ActionEvent event) throws IOException {
+        avviaPane("fxml/Servizi");
     }
 
     @FXML

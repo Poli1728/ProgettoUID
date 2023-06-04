@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.ProfiloController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0" />
-      <Label layoutX="300.0" layoutY="50.0" prefHeight="17.0" prefWidth="71.0" text="Label" />
-      <Label layoutX="300.0" layoutY="83.0" prefHeight="17.0" prefWidth="71.0" text="Label" />
-      <Label layoutX="300.0" layoutY="113.0" prefHeight="17.0" prefWidth="71.0" text="Label" />
-      <Label layoutX="300.0" layoutY="146.0" prefHeight="17.0" prefWidth="71.0" text="Label" />
+      <TextField fx:id="nomeField" styleClass="loginField" editable="false" layoutX="406.0" layoutY="46.0" />
+      <ImageView fx:id="immagineView" fitHeight="278.0" fitWidth="263.0" layoutX="14.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0" />
+      <Label layoutX="300.0"  layoutY="50.0" prefHeight="17.0" prefWidth="71.0" text="Nome:" />
+      <Label layoutX="300.0" layoutY="83.0" prefHeight="17.0" prefWidth="71.0" text="Email:" />
+      <Label layoutX="300.0" layoutY="113.0" prefHeight="17.0" prefWidth="71.0" text="Numero:" />
+      <Label layoutX="300.0" layoutY="146.0" prefHeight="17.0" prefWidth="71.0" text="Indirizzo:" />
+      <Button layoutX="74.0" layoutY="318.0" mnemonicParsing="false" onAction="#aggiungiImmagine" styleClass="primaryButton" text="Aggiungi immagine" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="442.5" />
+      <TextField fx:id="emailField" styleClass="loginField" editable="false" layoutX="406.0" layoutY="79.0" />
+      <TextField fx:id="numeroField" styleClass="loginField" editable="false" layoutX="406.0" layoutY="109.0" />
+      <TextField fx:id="indirizzoField" styleClass="loginField" editable="false" layoutX="406.0" layoutY="142.0" />
    </children>
 </AnchorPane>
