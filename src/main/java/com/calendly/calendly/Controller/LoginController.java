@@ -41,6 +41,9 @@ public class LoginController {
 
     @FXML
     void initialize() {
+        configPane();
+        configLoginLabelsAndFields();
+
         usernameField.setOnKeyReleased(this::handleKeyReleasedUsernameField);
         passwordField.setOnKeyReleased(this::handleKeyReleasedPasswordField);
     }
@@ -60,32 +63,6 @@ public class LoginController {
             accediButton.setDisable(false);
     }
 
-
-
-    private Stage stage;
-
-    public void init(Stage stage) {
-        if (stage == null)
-            return;
-        this.stage = stage;
-
-        stage.iconifiedProperty().addListener((observable, oldValue, newValue) -> {
-
-            if (newValue) {
-                System.out.println("Application minimized");
-            } else {
-                System.out.println("Application on screen");
-            }
-
-        });
-
-        stage.centerOnScreen();
-
-        configPane();
-        configLoginLabelsAndFields();
-
-
-    }
 
     private void configPane() {
         Platform.runLater(() -> {
