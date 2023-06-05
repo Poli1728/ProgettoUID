@@ -61,5 +61,45 @@
     -fx-background-color: blueLight;
 }
 
+.secondaryButton {
+    -fx-background-color: thirdBackgroundColor;
+}
+
+#addButton {
+    -fx-background-color: systemBlue;
+}
+#removeButton {
+    -fx-text-fill: systemRed;
+}
+#editButton {
+    -fx-background-color: thirdBackgroundColor;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-width: 0px;
+    -fx-border-radius: 8px;
+    -fx-border-color: primaryBackgroundColor;
+}
+
+.table-view .column-header-background .filled {
+    -fx-background-color: primaryBackgroundColor;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: thirdBackgroundColor;
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.searchField {
+    -fx-background-color: thirdBackgroundColor;
+}
+
 
 
