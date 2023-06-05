@@ -23,8 +23,3 @@
     - public void inserimentoServizi(String Tipo, Double Prezzo)
     - public void inserimentoDipendenti(String Username, String Password, String Nome, String Cognome)
     
-   - GestoreDB.getInstance().eseguiQuery(query); 
-     prototipo:
-     public ResultSet eseguiQuery(String query)
-     
-     NOTA: Ritorna un ResultSet che va gestito con le varie colonne, quindi fare attenzione.
