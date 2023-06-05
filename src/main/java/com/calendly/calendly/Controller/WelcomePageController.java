@@ -114,7 +114,6 @@ public class WelcomePageController {
     }
 
     private void setLayoutImageView() {
-
         imageView.setFitWidth(stackPane.getWidth());
         imageView.setFitHeight(210);
 
