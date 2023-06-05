@@ -4,10 +4,16 @@ Idee:
   - 
 
 Marco:
-  - Statistiche, salva su file pdf
-  - Finire impostazioni
-  - Finire Appuntamenti
-  
+  - Statistiche:
+    - Salva su file pdf
+  - Impostazioni:
+    - Permettere le modifiche al profilo
+    - Fare la copia dell'immagine nella cartella
+  - Appuntamenti:
+    - Mostrarli nella table
+    - Fare le funzioni di aggiunte, modifica e rimozione
+  - Profilo: 
+    -Prendere le informazioni della registrazione
 Mario:
   - Servizio 
   - Dipendenti
