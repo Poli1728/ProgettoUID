@@ -1,6 +1,7 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Appuntamento;
+import com.calendly.calendly.Model.GestoreAppuntamenti;
 import com.calendly.calendly.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,8 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AppuntamentiController implements Initializable {
@@ -65,6 +68,9 @@ public class AppuntamentiController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        try {
+            ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti();
+        } catch (SQLException e) {}
+        
     }
 }

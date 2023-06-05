@@ -3,7 +3,6 @@ package com.calendly.calendly.Model;
 import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class GestoreDB {
     private static final GestoreDB instance = new GestoreDB();
@@ -81,7 +80,7 @@ public class GestoreDB {
     public void inserimentoAppuntamenti(Date Data, String CF, Integer id_d, Integer id_s) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Appuntamenti(Data, CF_Utente, Id_Dipendenti, Id_Servizio) VALUES(?,?, ?, ?)")) {
+        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Appuntamenti(Data, CF_Utente, Id_Dipendente, Id_Servizio) VALUES(?,?, ?, ?)")) {
             pstmt.setDate(1, Data);
             pstmt.setString(2, CF);
             pstmt.setInt(3, id_d);
@@ -116,13 +115,21 @@ public class GestoreDB {
         closeConnection();
     }
 
-    public ResultSet eseguiQuery(String query) throws SQLException {
+    public ArrayList<String> creaLista() throws SQLException {
         createConnection();
-        PreparedStatement stmt = con.prepareStatement(query);
-        ResultSet rs = stmt.executeQuery();
+        ArrayList<String> risultato = new ArrayList<String>();
+        String sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Utente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet query = stmt.executeQuery();
+        String s= "";
+        while(query.next()) {
+            s+=query.getString("Id")+";"+query.getString("Email")+";"+query.getString("Nome")+";"+query.getString("Cognome")+";"+query.getString("Numero")+";"+query.getString("Data")+";"+query.getString("Username")+";"+query.getString("Tipo")+";"+query.getString("Prezzo");
+            risultato.add(s);
+            s = "";
+        }
         stmt.close();
         closeConnection();
-        return rs;
+        return risultato;
     }
 
     public void closeConnection() throws SQLException {
