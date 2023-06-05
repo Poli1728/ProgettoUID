@@ -1,8 +1,10 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.SceneHandler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -14,7 +16,15 @@ public class HomeController {
 
     private void avviaPane(String s) throws IOException {
         viewPane.getChildren().clear();
-        Pane pane = SceneHandler.getInstance().creaPane(s);
+        FXMLLoader loader = SceneHandler.getInstance().creaPane(s);
+        Pane pane = (Pane) loader.load();
+
+        pane.setPrefSize(viewPane.getWidth(), viewPane.getHeight());
+
+        viewPane.layoutBoundsProperty().addListener(obs -> {
+            pane.setPrefSize(viewPane.getWidth(), viewPane.getHeight());
+        });
+
         viewPane.getChildren().add(pane);
     }
 

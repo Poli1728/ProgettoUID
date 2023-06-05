@@ -5,6 +5,7 @@ import com.calendly.calendly.Model.GestoreAppuntamenti;
 import com.calendly.calendly.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -47,7 +48,8 @@ public class AppuntamentiController implements Initializable {
     //Aggiunge il pane che permette di aggiungere, modificare e rimuovere
     private void modificaPane(String s) throws IOException {
         pane.getChildren().clear();
-        Pane aggiungi = SceneHandler.getInstance().creaPane("fxml/Appuntamenti"+s);
+        FXMLLoader loader = SceneHandler.getInstance().creaPane("fxml/Appuntamenti"+s);
+        Pane aggiungi = loader.load();
         pane.getChildren().add(aggiungi);
     }
 

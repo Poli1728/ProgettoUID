@@ -4,11 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class DipendentiViewController {
 
+
+    @FXML
+    private AnchorPane anchorPane;
 
     @FXML
     private Button addButton;
@@ -17,7 +22,19 @@ public class DipendentiViewController {
     private Button editButton;
 
     @FXML
+    private TableColumn<?, ?> lastNameCol;
+
+    @FXML
+    private TableColumn<?, ?> nameCol;
+
+    @FXML
     private Button removeButton;
+
+    @FXML
+    private TableColumn<?, ?> roleCol;
+
+    @FXML
+    private TableColumn<?, ?> salaryCol;
 
     @FXML
     private Button searchButton;
@@ -27,6 +44,9 @@ public class DipendentiViewController {
 
     @FXML
     private Label titleLabel;
+
+    @FXML
+    private TableColumn<?, ?> usernameCol;
 
     @FXML
     void actionAddButton(ActionEvent event) {
@@ -55,14 +75,13 @@ public class DipendentiViewController {
 
     @FXML
     void initialize() {
-
     }
 
 
 
 
 
-    private void setAncorPaneDimension() {
+    public void setAncorPaneDimension(double width, double height) {
 
     }
 

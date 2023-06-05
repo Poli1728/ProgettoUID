@@ -1,9 +1,11 @@
 package com.calendly.calendly;
 
+import com.calendly.calendly.Controller.DipendentiViewController;
 import com.calendly.calendly.Controller.LoginController;
 import com.calendly.calendly.Controller.WelcomePageController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
@@ -89,10 +91,9 @@ public class SceneHandler {
         loadFXML("fxml/HomeView.fxml");
     }
 
-    public Pane creaPane(String s) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SceneHandler.class.getResource(s+"View.fxml"));
-        Pane cerca= (Pane) loader.load();
-        return cerca;
+    public FXMLLoader creaPane(String s) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SceneHandler.class.getResource(s + "View.fxml"));
+        return loader;
     }
 
     private void setWindowLoginDimension() {
