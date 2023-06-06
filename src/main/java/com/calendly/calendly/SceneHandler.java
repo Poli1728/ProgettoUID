@@ -80,11 +80,9 @@ public class SceneHandler {
         setWindowLoginDimension();
     }
 
-
     public void launchSideBar() {
         //da vedere se passare height and width come params per scegliere se utilizzare la sBar con solo icone o con icone+testo
     }
-
 
     public void launchDashboard(){
         setWindowAppDimension();
