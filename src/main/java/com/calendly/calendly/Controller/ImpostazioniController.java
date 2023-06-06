@@ -1,11 +1,13 @@
 package com.calendly.calendly.Controller;
 
+import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,13 +15,24 @@ import java.util.ResourceBundle;
 public class ImpostazioniController implements Initializable {
 
     @FXML
+    private PasswordField username;
+
+    @FXML
+    private PasswordField password;
+
+    @FXML
     private ComboBox<String> temiComboBox;
 
     @FXML
     void cambiaPassword(ActionEvent event) {
-        String nuovaPassword = "";
+        //GestoreDB.getInstance().cambiaPassword(password.getText(),)
+    }
+
+    @FXML
+    void cambiaUsername(ActionEvent event) {
 
     }
+
     @FXML
     void esci(ActionEvent event) {
         SceneHandler.getInstance().launchLogin();
@@ -43,5 +56,6 @@ public class ImpostazioniController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         temiComboBox.getItems().add("Scuro");
         temiComboBox.getItems().add("Chiaro");
+
     }
 }
