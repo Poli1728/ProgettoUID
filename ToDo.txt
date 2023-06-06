@@ -2,18 +2,17 @@ Data di scadenza -> 10 giugno 2023
 
 Idee:
   - 
+  
+Idee eliminate:
+  - Profilo
 
 Marco:
   - Statistiche:
     - Salva su file pdf
-  - Impostazioni:
-    - Permettere le modifiche al profilo
-    - Fare la copia dell'immagine nella cartella
   - Appuntamenti:
     - Mostrarli nella table
     - Fare le funzioni di aggiunte, modifica e rimozione
-  - Profilo: 
-    -Prendere le informazioni della registrazione
+  
 Mario:
   - Servizio 
   - Dipendenti
