@@ -48,14 +48,13 @@ public class GestoreStatistiche {
     public ArrayList<Statistiche> statisticheAnnuali(int anno) throws SQLException {
         ArrayList<Statistiche> info = new ArrayList<Statistiche>();
         for(int i = 1; i<=12; i++){
-            System.out.println("Ci sto provando annualmente");
             String data;
             if (i<10) {
                  data = "%/0"+ String.valueOf(i) +"/"+ String.valueOf(anno) ;
             }else{
                 data = "%/"+ String.valueOf(i) +"/"+ String.valueOf(anno) ;
             }
-            info.add(new Statistiche(data, GestoreDB.getInstance().numeroApp(data)));
+            info.add(new Statistiche(data.substring(2), GestoreDB.getInstance().numeroApp(data)));
         }
         return info;
     }

@@ -18,8 +18,6 @@ public class GestoreDB {
         File file = new File("src/main/resources/com/calendly/calendly/db/progetto.db");
         String url = "jdbc:sqlite:"+file.getAbsolutePath();
         con = DriverManager.getConnection(url);
-        if (con != null && !con.isClosed())
-            System.out.println("Connected!");
     }
     public enum entità  {
             Dipendenti,
@@ -142,7 +140,6 @@ public class GestoreDB {
         while(query.next()) {
             s+=1;
         }
-        System.out.println(s);
         stmt.close();
         closeConnection();
         return s;
