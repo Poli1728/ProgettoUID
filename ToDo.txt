@@ -1,17 +1,25 @@
 Data di scadenza -> 10 giugno 2023
 
 Idee:
-  - 
+  - Aggiungere alla Dashboard una table con gli appuntamenti giornalieri
   
 Idee eliminate:
   - Profilo
 
+Cose mancanti: 
+  -Dashboard:
+    
+
 Marco:
   - Statistiche:
+    - Statistiche settimanali
     - Salva su file pdf
   - Appuntamenti:
     - Fare le funzioni di aggiunte, modifica e rimozione
-  
+    - Funzione di ricerca tramite filtro
+  - Impostazioni: 
+    - trovare qualcosa da fare
+    - attivare il checkbox per il font dislessia
 Mario:
   - Servizio 
   - Dipendenti
