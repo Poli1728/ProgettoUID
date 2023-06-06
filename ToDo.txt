@@ -10,7 +10,6 @@ Marco:
   - Statistiche:
     - Salva su file pdf
   - Appuntamenti:
-    - Mostrarli nella table
     - Fare le funzioni di aggiunte, modifica e rimozione
   
 Mario:
