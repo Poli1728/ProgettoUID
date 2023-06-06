@@ -134,13 +134,15 @@ public class GestoreDB {
 
     public int numeroApp(String data) throws SQLException {
         createConnection();
-        String sql = "Select Id Appuntamenti as A Where A.Data = "+data+";";
+        String sql = "Select Id From Appuntamenti Where Data LIKE ? ;";
         PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, data);
         ResultSet query = stmt.executeQuery();
         int s= 0;
         while(query.next()) {
             s+=1;
         }
+        System.out.println(s);
         stmt.close();
         closeConnection();
         return s;
