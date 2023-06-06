@@ -68,27 +68,44 @@
 #addButton {
     -fx-background-color: systemBlue;
 }
+#addButton:hover {
+    -fx-background-color: blueLight;
+}
+
 #removeButton {
     -fx-text-fill: systemRed;
 }
+#removeButton:hover {
+    -fx-background-color: fourthBackgroundColor;
+}
+
 #editButton {
     -fx-background-color: thirdBackgroundColor;
 }
+#editButton:hover {
+    -fx-background-color: fourthBackgroundColor;
+}
+
 
 .table-view {
     -fx-background-color: transparent;
     -fx-border-width: 0px;
-    -fx-border-radius: 8px;
+    -fx-border-radius: 0px;
+    -fx-background-border: 0px;
     -fx-border-color: primaryBackgroundColor;
 }
 
-.table-view .column-header-background .filled {
-    -fx-background-color: primaryBackgroundColor;
+.table-view .corner {
+    -fx-background-color: transparent;
 }
 
-.table-view .column-header-background{
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background {
     -fx-background-color: thirdBackgroundColor;
-    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-radius: 10px 10px 0px 0px;
     -fx-background-insets: 0 11px 0 0;
     -fx-padding: 0 0 5px 0;
 }
@@ -97,9 +114,80 @@
     -fx-background-color: transparent;
 }
 
+
+
+.table-view .table-cell {
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+.table-row-cell: hover {
+    -fx-background-color: sixthBackgroundColor;
+    -fx-text-background-color: primaryTextColor;
+}
+.table-row-cell: odd {
+    -fx-background-radius: 0px;
+    -fx-background-color: fifthBackgroundColor;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell: even {
+    -fx-background-radius: 0px;
+    -fx-background-color: fourthBackgroundColor;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+
+
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, fifthBackgroundColor, fourthBackgroundColor);
+}
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, fifthBackgroundColor, fourthBackgroundColor);
+}
+
+
+.table-row-cell:hover {
+    -fx-background-color: sixthBackgroundColor;
+}
+
+
+.table-row-cell:selected {
+    -fx-background-color: systemBlue;
+}
+
+
+.table-row-cell:highlighted {
+    -fx-background-color: systemRed;
+    -fx-background-radius: 15px;
+}
+
+
 .searchField {
     -fx-background-color: thirdBackgroundColor;
 }
+.searchField:hover {
+    -fx-background-color: fourthBackgroundColor;
+}
+
+
 
 
 

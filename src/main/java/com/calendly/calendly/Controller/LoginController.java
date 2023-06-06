@@ -66,11 +66,11 @@ public class LoginController {
 
     private void configPane() {
         Platform.runLater(() -> {
-            this.callPaneResizeRelocate();
+            callPaneResizeRelocate();
         });
 
         ancorPane.layoutBoundsProperty().addListener((observable -> {
-            this.callPaneResizeRelocate();
+            callPaneResizeRelocate();
         }));
     }
 
