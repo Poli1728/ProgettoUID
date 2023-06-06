@@ -20,26 +20,26 @@
             </Text>
             <BarChart fx:id="chartSettimanale" prefHeight="200.0" prefWidth="200.0" title="Settimanale">
                <xAxis>
-                  <CategoryAxis side="BOTTOM" />
+                  <CategoryAxis label="Giorni" side="BOTTOM" />
                </xAxis>
                <yAxis>
-                  <NumberAxis side="LEFT" />
+                  <NumberAxis label="Appuntamenti" side="LEFT" />
                </yAxis>
             </BarChart>
             <BarChart fx:id="chartMensile" prefHeight="200.0" prefWidth="200.0" title="Mensile">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis label="Giorni" side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis label="Appuntamenti" side="LEFT" />
               </yAxis>
             </BarChart>
             <BarChart fx:id="chartAnnuale" prefHeight="200.0" prefWidth="200.0" title="Annuale">
                <xAxis>
-                  <CategoryAxis side="BOTTOM" />
+                  <CategoryAxis label="Mesi" side="BOTTOM" />
                </xAxis>
                <yAxis>
-                  <NumberAxis side="LEFT" />
+                  <NumberAxis label="Appuntamenti" side="LEFT" />
                </yAxis>
             </BarChart>
             <Button mnemonicParsing="false" onAction="#creaPdf" styleClass="primaryButton" text="Salva come pdf" />

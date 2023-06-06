@@ -132,6 +132,20 @@ public class GestoreDB {
         return risultato;
     }
 
+    public int numeroApp(String data) throws SQLException {
+        createConnection();
+        String sql = "Select Id Appuntamenti as A Where A.Data = "+data+";";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet query = stmt.executeQuery();
+        int s= 0;
+        while(query.next()) {
+            s+=1;
+        }
+        stmt.close();
+        closeConnection();
+        return s;
+    }
+
     public void closeConnection() throws SQLException {
         if(con != null)
             con.close();

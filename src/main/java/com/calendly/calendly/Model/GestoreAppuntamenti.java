@@ -23,4 +23,9 @@ public class GestoreAppuntamenti {
         return lista;
     }
 
+    public int numeroAppuntamenti(String data) throws SQLException {
+        int numero = GestoreDB.getInstance().numeroApp(data);
+        return numero;
+    }
+
 }

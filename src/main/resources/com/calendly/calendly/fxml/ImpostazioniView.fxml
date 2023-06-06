@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.ImpostazioniController">
@@ -12,11 +13,15 @@
          <children>
             <Label layoutX="15.0" layoutY="15.0" prefHeight="26.0" prefWidth="166.0" text="Cambia il tema dell'app" />
             <ComboBox fx:id="temiComboBox" layoutX="208.0" layoutY="16.0" onAction="#scegliTema" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" styleClass="primaryButton" />
-            <Label layoutX="14.0" layoutY="91.0" prefHeight="26.0" prefWidth="166.0" text="Cambia password" AnchorPane.leftAnchor="15.0" />
-            <Button layoutX="280.0" layoutY="92.0" mnemonicParsing="false" onAction="#cambiaPassword" styleClass="primaryButton" text="Cambia" AnchorPane.rightAnchor="20.0" />
+            <Label layoutX="15.0" layoutY="162.0" prefHeight="26.0" prefWidth="166.0" text="Cambia la tua password" AnchorPane.leftAnchor="15.0" />
+            <Button layoutX="278.0" layoutY="198.0" mnemonicParsing="false" onAction="#cambiaPassword" styleClass="primaryButton" text="Cambia" AnchorPane.rightAnchor="14.0" />
             <Button layoutX="130.0" layoutY="619.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="100.0" styleClass="primaryButton" text="Logout" AnchorPane.bottomAnchor="2.0" />
             <Label layoutX="14.0" layoutY="53.0" prefHeight="26.0" prefWidth="166.0" text="Font dislessia" AnchorPane.leftAnchor="15.0" />
             <CheckBox layoutX="257.0" layoutY="57.0" mnemonicParsing="false" onAction="#attivaDislessia" AnchorPane.rightAnchor="20.0" />
+            <PasswordField fx:id="password" layoutX="15.0" layoutY="198.0" prefHeight="24.0" prefWidth="166.0" />
+            <Label layoutX="15.0" layoutY="92.0" prefHeight="26.0" prefWidth="166.0" text="Cambia il tuo username" />
+            <Button layoutX="278.0" layoutY="128.0" mnemonicParsing="false" onAction="#cambiaUsername" styleClass="primaryButton" text="Cambia" />
+            <PasswordField fx:id="username" layoutX="15.0" layoutY="128.0" prefHeight="24.0" prefWidth="166.0" />
          </children>
       </AnchorPane>
    </children>
