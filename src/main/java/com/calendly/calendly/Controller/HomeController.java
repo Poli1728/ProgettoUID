@@ -52,7 +52,7 @@ public class HomeController {
     void apriDipendenti(ActionEvent event) throws IOException {
         avviaPane("fxml/Dipendenti");
     }
-    
+
     @FXML
     void apriStatistiche(ActionEvent event) throws IOException {
         avviaPane("fxml/Statistiche");

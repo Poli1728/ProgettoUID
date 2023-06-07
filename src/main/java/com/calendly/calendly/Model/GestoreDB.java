@@ -100,14 +100,16 @@ public class GestoreDB {
         closeConnection();
     }
 
-    public void inserimentoDipendenti(String Username, String Password, String Nome, String Cognome) throws SQLException {
+    public void inserimentoDipendenti(String Username, String Password, String Nome, String Cognome, Double Salario, Integer Ruolo) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome) VALUES(?,?, ?, ?)")) {
+        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome) VALUES(?,?, ?, ?, ?, ?)")) {
             pstmt.setString(1, Username);
             pstmt.setString(2, Password);
             pstmt.setString(3, Nome);
             pstmt.setString(4, Cognome);
+            pstmt.setDouble(5, Salario);
+            pstmt.setInt(6, Ruolo);
             pstmt.executeUpdate();
         } catch (SQLException e) {}
         closeConnection();
