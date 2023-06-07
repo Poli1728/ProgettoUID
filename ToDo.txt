@@ -14,10 +14,13 @@ Marco:
   - Statistiche:
     - Salva su file pdf
   - Appuntamenti:
-    - Fare le funzioni di aggiunte, modifica e rimozione
+    - Fare le funzioni di aggiunte e rimozione
+    - Modifiche come quelle di mario
   - Impostazioni: 
     - attivare il checkbox per il font dislessia
     - Aggiungere la side bar per il font
+  
+  - Mettere più appuntamenti nel db
   
 Mario:
   - Servizio 
