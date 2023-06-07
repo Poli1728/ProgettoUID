@@ -22,6 +22,17 @@ public class Appuntamento {
         this.prezzo = new SimpleDoubleProperty(prezzo);
     }
 
+    public Appuntamento(String [] s){
+        this.id = new SimpleIntegerProperty(Integer.parseInt(s[0]));
+        this.email = new SimpleStringProperty(s[1]);
+        this.identificativo = new SimpleStringProperty(s[2]+" "+s[3]);
+        this.numero = new SimpleStringProperty(s[4]);
+        this.data = new SimpleStringProperty(s[5]);
+        this.dipendente = new SimpleStringProperty(s[6]);
+        this.servizio = new SimpleStringProperty(s[7]);
+        this.prezzo = new SimpleDoubleProperty(Double.parseDouble(s[8]));
+    }
+
     public int getId() {
         return id.get();
     }

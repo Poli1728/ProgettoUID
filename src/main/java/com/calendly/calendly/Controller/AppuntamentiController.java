@@ -2,6 +2,7 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Appuntamento;
 import com.calendly.calendly.Model.GestoreAppuntamenti;
+import com.calendly.calendly.Model.GestoreDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -73,6 +74,7 @@ public class AppuntamentiController implements Initializable {
         filtroBox.getItems().add("Data");
         filtroBox.getItems().add("Dipendente");
         filtroBox.getItems().add("Servizio");
+        filtroBox.getItems().add("Prezzo");
     }
 
     @FXML
@@ -88,15 +90,39 @@ public class AppuntamentiController implements Initializable {
     }
 
     @FXML
-    void cerca(ActionEvent event) {
-
+    void cerca(ActionEvent event) throws SQLException {
+        if(filtroBox.getValue() == null){
+            System.out.println("Ciao");
+            //Si richiama l'alert
+        } else if (cercaField.getText().equals("")) {
+            System.out.println("Puzzi");
+            //Si richiama l'alert
+        } else {
+            table.getItems().clear();
+            String filtro = "";
+            switch (filtroBox.getValue()) {
+                case "Id" -> filtro = "A.Id";
+                case "Email" -> filtro = "C.Email";
+                case "Nome" -> filtro = "C.Nome";
+                case "Cognome" -> filtro = "C.Cognome";
+                case "Numero" -> filtro = "C.Numero";
+                case "Data" -> filtro = "A.Data";
+                case "Dipendente" -> filtro = "D.Username";
+                case "Servizio" -> filtro = "S.Tipo";
+                case "Prezzo" -> filtro = "S.Prezzo";
+            }
+            ObservableList<Appuntamento> app = FXCollections.observableArrayList(GestoreAppuntamenti.getInstance().listaAppuntamenti(true,filtro, "'"+cercaField.getText()+"'"));
+            table.setItems(app);
+            setCellValue();
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         aggiungiItems();
+        table.getItems().clear();
         try {
-            ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti();
+            ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti(false, "", "");
             ObservableList<Appuntamento> observableApp = FXCollections.observableArrayList(app);
             table.setItems(observableApp);
             setCellValue();
