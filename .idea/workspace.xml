@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="CSS sui bottoni in appuntamenti">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/StatisticheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/StatisticheController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreStatistiche.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreStatistiche.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/StatisticheView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/StatisticheView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686136066076</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="CSS sul Combo-Box&#10;Aggiunta filtro su Dipendenti">
+      <created>1686138587285</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1686138587285</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -344,6 +348,7 @@
     <MESSAGE value="CSS sulle tableView" />
     <MESSAGE value="CSS sulle tableView (nuovo design quando modifichi i valori + popup show/hide tables), aggiunte grafiche" />
     <MESSAGE value="CSS sui bottoni in appuntamenti" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSS sui bottoni in appuntamenti" />
+    <MESSAGE value="CSS sul Combo-Box&#10;Aggiunta filtro su Dipendenti" />
+    <option name="LAST_COMMIT_MESSAGE" value="CSS sul Combo-Box&#10;Aggiunta filtro su Dipendenti" />
   </component>
 </project>
