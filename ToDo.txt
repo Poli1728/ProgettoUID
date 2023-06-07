@@ -12,16 +12,12 @@ Cose mancanti:
 
 Marco:
   - Statistiche:
-    - Statistiche settimanali
     - Salva su file pdf
   - Appuntamenti:
     - Fare le funzioni di aggiunte, modifica e rimozione
   - Impostazioni: 
-    - trovare qualcosa da fare
     - attivare il checkbox per il font dislessia
     - Aggiungere la side bar per il font
-    
-  - Popolare gli appuntamenti per le statistiche 
   
 Mario:
   - Servizio 
