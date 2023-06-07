@@ -52,12 +52,7 @@ public class HomeController {
     void apriDipendenti(ActionEvent event) throws IOException {
         avviaPane("fxml/Dipendenti");
     }
-
-    @FXML
-    void apriProfilo(ActionEvent event) throws IOException {
-        avviaPane("fxml/Profilo");
-    }
-
+    
     @FXML
     void apriStatistiche(ActionEvent event) throws IOException {
         avviaPane("fxml/Statistiche");
