@@ -1,5 +1,7 @@
 package com.calendly.calendly.Model;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
 import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
@@ -105,7 +107,7 @@ public class GestoreDB {
             createConnection();
         try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome) VALUES(?,?, ?, ?, ?, ?)")) {
             pstmt.setString(1, Username);
-            pstmt.setString(2, Password);
+            pstmt.setString(2, BCrypt.hashpw(Password, BCrypt.gensalt(12)));
             pstmt.setString(3, Nome);
             pstmt.setString(4, Cognome);
             pstmt.setDouble(5, Salario);
