@@ -67,6 +67,14 @@ public class DipendentiViewController {
     private TableColumn<Dipendente, String> usernameCol;
 
     @FXML
+    private ComboBox filtroBox;
+
+    @FXML
+    void actionFiltroBox(ActionEvent event) {
+
+    }
+
+    @FXML
     void actionAddButton(ActionEvent event) {
         initializePopup();
     }
@@ -106,15 +114,7 @@ public class DipendentiViewController {
         roleCol.setCellValueFactory(new PropertyValueFactory<Dipendente, String>("role"));
         salaryCol.setCellValueFactory(new PropertyValueFactory<Dipendente, Double>("salary"));
 
-
-        //inutile
-        tableView.setRowFactory(tableView -> {
-            TableRow<Dipendente> row = new TableRow<>();
-            TableView.TableViewSelectionModel<Dipendente> selectionModel = tableView.getSelectionModel();
-
-            row.pseudoClassStateChanged(PseudoClass.getPseudoClass("highlighted"), selectionModel.getSelectedIndex() == 2);
-            return row;
-        });
+        filtroBox.getItems().addAll("ID", "Nome", "Cognome", "Ruolo", "Salario");
 
         tableView.setItems(fetchData());
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
