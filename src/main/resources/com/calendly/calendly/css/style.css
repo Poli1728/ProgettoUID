@@ -64,6 +64,10 @@
 .secondaryButton {
     -fx-background-color: thirdBackgroundColor;
 }
+.secondaryButton:hover {
+    -fx-background-color: fourthBackgroundColor;
+}
+
 
 #addButton {
     -fx-background-color: systemBlue;
@@ -204,6 +208,11 @@
 }
 .searchField:hover {
     -fx-background-color: fourthBackgroundColor;
+}
+
+
+.combo-box-popup .list-view {
+    -fx-control-inner-background: thirdBackgroundColor;
 }
 
 
