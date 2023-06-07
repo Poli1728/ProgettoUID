@@ -16,7 +16,7 @@ public class GestoreStatistiche {
         ArrayList<Statistiche> info = new ArrayList<Statistiche>();
         switch (p){
             case Settimanale -> {
-                for(int i = 0; i<7; i++){
+                for(int i = 6; i>-1; i--){
                     String s = GestoreData.getInstance().generaDataSottratta(i);
                     info.add(new Statistiche(s, GestoreDB.getInstance().numeroApp(s)));
                 }

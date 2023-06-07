@@ -3,7 +3,6 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.Model.GestoreData;
 import com.calendly.calendly.Model.GestoreStatistiche;
 import com.calendly.calendly.Model.Statistiche;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -57,12 +56,6 @@ public class StatisticheController implements Initializable {
 
     @FXML
     private BarChart<String, Number> chartSettimanale;
-
-    @FXML
-    void creaPdf(ActionEvent event) {
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String data = String.valueOf(java.time.LocalDateTime.now());
