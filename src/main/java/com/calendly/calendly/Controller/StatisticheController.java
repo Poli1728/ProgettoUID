@@ -1,5 +1,6 @@
 package com.calendly.calendly.Controller;
 
+import com.calendly.calendly.Model.GestoreData;
 import com.calendly.calendly.Model.GestoreStatistiche;
 import com.calendly.calendly.Model.Statistiche;
 import javafx.event.ActionEvent;
@@ -13,16 +14,15 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class StatisticheController implements Initializable {
-    enum Periodi{Settimanale, Mensile, Annuale}
-
-    private void appuntamenti(Periodi p,StringBuilder giorno, StringBuilder mese, StringBuilder anno){
+    private void appuntamenti(GestoreStatistiche.Periodi p,StringBuilder mese, StringBuilder anno) throws SQLException {
         XYChart.Series<String, Number> appuntamenti = new XYChart.Series<String, Number>();
         appuntamenti.setName("Appuntamenti");
         ArrayList<Statistiche> lista = null;
+        int m = Integer.parseInt(mese.toString());
+        int a = Integer.parseInt(anno.toString());
         switch(p){
             case Settimanale -> {
-                String data = giorno.toString()+"/"+mese.toString()+"/"+anno.toString();
-                lista = GestoreStatistiche.getInstance().statisticheSettimanali(data);
+                lista = GestoreStatistiche.getInstance().statistiche(p,m,a);
                 for (Statistiche i : lista) {
                     appuntamenti.getData().add(new XYChart.Data<String, Number>(i.getData(), i.getNumeroApp()));
                 }
@@ -30,7 +30,7 @@ public class StatisticheController implements Initializable {
             }
             case Mensile -> {
                 try {
-                    lista = GestoreStatistiche.getInstance().statisticheMensili(Integer.parseInt(mese.toString()),Integer.parseInt(anno.toString()));
+                    lista = GestoreStatistiche.getInstance().statistiche(p,m,a);
                     for(Statistiche i : lista){
                         appuntamenti.getData().add(new XYChart.Data<String, Number>(i.getData(), i.getNumeroApp()));
                     }
@@ -39,7 +39,7 @@ public class StatisticheController implements Initializable {
             }
             case Annuale -> {
                 try {
-                    lista = GestoreStatistiche.getInstance().statisticheAnnuali(Integer.parseInt(anno.toString()));
+                    lista = GestoreStatistiche.getInstance().statistiche(p,m,a);
                     for(Statistiche i : lista){
                         appuntamenti.getData().add(new XYChart.Data<String, Number>(i.getData(), i.getNumeroApp()));
                     }
@@ -65,20 +65,13 @@ public class StatisticheController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         String data = String.valueOf(java.time.LocalDateTime.now());
-        StringBuilder anno = new StringBuilder();
-        StringBuilder mese = new StringBuilder();
-        StringBuilder giorno = new StringBuilder();
-        for(int i = 0; i<data.length();i++){
-            switch (i){
-                case 0,1,2,3 -> anno.append(data.charAt(i));
-                case 5,6 -> mese.append(data.charAt(i));
-                case 8,9 -> giorno.append(data.charAt(i));
-            }
-        }
-        appuntamenti(Periodi.Settimanale,giorno, mese, anno);
-        appuntamenti(Periodi.Mensile,giorno, mese, anno);
-        appuntamenti(Periodi.Annuale,giorno, mese, anno);
+        StringBuilder anno = GestoreData.getInstance().annoCorrente(data);
+        StringBuilder mese = GestoreData.getInstance().meseCorrente(data);
+        try {
+            appuntamenti(GestoreStatistiche.Periodi.Settimanale,mese, anno);
+            appuntamenti(GestoreStatistiche.Periodi.Mensile, mese, anno);
+            appuntamenti(GestoreStatistiche.Periodi.Annuale,mese, anno);
+        } catch (SQLException e) {}
     }
 }

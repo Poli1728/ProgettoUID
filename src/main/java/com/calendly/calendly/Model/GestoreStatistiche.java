@@ -11,50 +11,36 @@ public class GestoreStatistiche {
         return instance;
     }
     private GestoreStatistiche(){}
-
-    public ArrayList<Statistiche> statisticheSettimanali(String data){
+    public enum Periodi{Settimanale, Mensile, Annuale}
+    public ArrayList<Statistiche> statistiche( Periodi p ,int mese, int anno) throws SQLException{
         ArrayList<Statistiche> info = new ArrayList<Statistiche>();
-
-        return info;
-    }
-
-    public ArrayList<Statistiche> statisticheMensili(int mese, int anno) throws SQLException {
-        ArrayList<Statistiche> info = new ArrayList<Statistiche>();
-        int n;
-        switch(mese){
-            case 1,3,5,7,8,10,12 -> n = 31;
-            case 4,6,9,11 -> n = 30;
-            case 2 -> n = 28;
-            default -> n=0;
-        }
-        String m;
-        if(mese<10){
-            m = "0"+String.valueOf(mese);
-        }else{
-            m = String.valueOf(mese);
-        }
-        for(int i = 1; i<=n; i++){
-            String data;
-            if (i<10) {
-                data = "0"+String.valueOf(i)+"/"+ m +"/"+ String.valueOf(anno) ;
-            }else{
-                data = String.valueOf(i)+"/"+ m +"/"+ String.valueOf(anno) ;
+        switch (p){
+            case Settimanale -> {
+                for(int i = 0; i<7; i++){
+                    String s = GestoreData.getInstance().generaDataSottratta(i);
+                    info.add(new Statistiche(s, GestoreDB.getInstance().numeroApp(s)));
+                }
             }
-            info.add(new Statistiche(data, GestoreDB.getInstance().numeroApp(data)));
-        }
-        return info;
-    }
-
-    public ArrayList<Statistiche> statisticheAnnuali(int anno) throws SQLException {
-        ArrayList<Statistiche> info = new ArrayList<Statistiche>();
-        for(int i = 1; i<=12; i++){
-            String data;
-            if (i<10) {
-                 data = "%/0"+ String.valueOf(i) +"/"+ String.valueOf(anno) ;
-            }else{
-                data = "%/"+ String.valueOf(i) +"/"+ String.valueOf(anno) ;
+            case Mensile -> {
+                int n;
+                switch(mese){
+                    case 1,3,5,7,8,10,12 -> n = 31;
+                    case 4,6,9,11 -> n = 30;
+                    case 2 -> n = 28;
+                    default -> n=0;
+                }
+                String m = GestoreData.getInstance().generaMese(mese);
+                for(int i = 1; i<=n; i++){
+                    String data = GestoreData.getInstance().generaDataMese(i, m, anno);
+                    info.add(new Statistiche(data.substring(0,data.length()-5), GestoreDB.getInstance().numeroApp(data)));
+                }
             }
-            info.add(new Statistiche(data.substring(2), GestoreDB.getInstance().numeroApp(data)));
+            case Annuale -> {
+                for(int i = 1; i<=12; i++){
+                    String data = GestoreData.getInstance().generaDataAnno(i, anno);
+                    info.add(new Statistiche(data.substring(2), GestoreDB.getInstance().numeroApp(data)));
+                }
+            }
         }
         return info;
     }
