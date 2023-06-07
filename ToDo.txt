@@ -19,10 +19,9 @@ Marco:
   - Impostazioni: 
     - trovare qualcosa da fare
     - attivare il checkbox per il font dislessia
+    - Aggiungere la side bar per il font
     
-  - Funzioni db per popolare
   - Popolare gli appuntamenti per le statistiche 
-  - Cancellare profilo
   
 Mario:
   - Servizio 
