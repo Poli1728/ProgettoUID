@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Slider;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,23 +16,10 @@ import java.util.ResourceBundle;
 public class ImpostazioniController implements Initializable {
 
     @FXML
-    private PasswordField username;
-
-    @FXML
-    private PasswordField password;
+    private Slider slideBar;
 
     @FXML
     private ComboBox<String> temiComboBox;
-
-    @FXML
-    void cambiaPassword(ActionEvent event) {
-        //GestoreDB.getInstance().cambiaPassword(password.getText(),)
-    }
-
-    @FXML
-    void cambiaUsername(ActionEvent event) {
-
-    }
 
     @FXML
     void esci(ActionEvent event) {
