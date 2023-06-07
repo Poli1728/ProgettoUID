@@ -1,15 +1,12 @@
 package com.calendly.calendly.Controller;
-
-import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Slider;
-
+import javafx.scene.control.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,8 +16,16 @@ public class ImpostazioniController implements Initializable {
     private Slider slideBar;
 
     @FXML
+    private Label labelTema;
+
+    @FXML
     private ComboBox<String> temiComboBox;
 
+    @FXML
+    private Text txtTemi;
+
+    @FXML
+    private CheckBox checkDislessia;
     @FXML
     void esci(ActionEvent event) {
         SceneHandler.getInstance().launchLogin();
@@ -37,6 +42,15 @@ public class ImpostazioniController implements Initializable {
 
     @FXML
     void attivaDislessia(ActionEvent event) {
+        if(checkDislessia.isSelected()){
+            //Font font = Font.loadFont("/home/marco/Documenti/GitHub/Calendly/src/main/resources/com/calendly/calendly/font/OpenDyslexicAlta-Italic.otf", 24);
+            //txtTemi.setFont(font);
+        }else{
+            System.out.println("Puzzi");
+        }
+    }
+    @FXML
+    void cambiaGrandezza(ActionEvent event) {
 
     }
 

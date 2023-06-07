@@ -15,7 +15,7 @@
          <children>
             <ComboBox fx:id="temiComboBox" layoutX="214.0" layoutY="55.0" onAction="#scegliTema" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" styleClass="primaryButton" AnchorPane.rightAnchor="14.0" />
             <Button layoutX="130.0" layoutY="619.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="100.0" styleClass="primaryButton" text="Logout" AnchorPane.bottomAnchor="2.0" />
-            <CheckBox layoutX="322.0" layoutY="163.0" mnemonicParsing="false" onAction="#attivaDislessia" AnchorPane.rightAnchor="20.0" />
+            <CheckBox fx:id="checkDislessia" layoutX="322.0" layoutY="163.0" mnemonicParsing="false" onAction="#attivaDislessia" AnchorPane.rightAnchor="20.0" />
             <Slider fx:id="slideBar" layoutX="220.0" layoutY="257.0" showTickLabels="true" showTickMarks="true" AnchorPane.rightAnchor="0.0" />
             <Label layoutX="12.0" layoutY="220.0" text="Grandezza del testo">
                <font>
@@ -35,6 +35,7 @@
                </font>
             </Label>
             <Text layoutX="12.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ti permette di scegliere tra i temi dell'app." wrappingWidth="171.0" />
+            <Button layoutX="290.0" layoutY="291.0" mnemonicParsing="false" onAction="#cambiaGrandezza" text="Cambia" AnchorPane.rightAnchor="3.0" />
          </children>
       </AnchorPane>
    </children>
