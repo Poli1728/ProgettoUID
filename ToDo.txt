@@ -11,11 +11,8 @@ Cose mancanti:
     
 
 Marco:
-  - Statistiche:
-    - Salva su file pdf
   - Appuntamenti:
-    - Fare le funzioni di aggiunte e rimozione
-    - Modifiche come quelle di mario
+    - Fare le funzioni di aggiunte, modifiche e rimozione
   - Impostazioni: 
     - attivare il checkbox per il font dislessia
     - Aggiungere la side bar per il font

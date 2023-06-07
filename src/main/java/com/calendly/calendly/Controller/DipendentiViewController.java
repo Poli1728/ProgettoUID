@@ -1,12 +1,8 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Dipendente;
-import javafx.application.Platform;
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.css.PseudoClass;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,21 +13,15 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class DipendentiViewController {
 
-
     @FXML
-    private AnchorPane anchorPane;
+    private AnchorPane ancorPane;
 
     @FXML
     private Button addButton;
@@ -202,9 +192,17 @@ public class DipendentiViewController {
     }
 
 
-
     private void initializePopup() {
+        Scene scene = ancorPane.getScene();
 
+        ColorAdjust adj = new ColorAdjust(0, -0.9, -0.5, 0);
+        GaussianBlur blur = new GaussianBlur(55); // 55 is just to show edge effect more clearly.
+        adj.setInput(blur);
+        ancorPane.setEffect(adj);
+
+        scene.setFill(scene.getFill() == Color.BLACK ? null : Color.BLACK);
+
+        addButton.toFront();
     }
 
 
