@@ -8,6 +8,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -125,7 +126,17 @@ public class DipendentiViewController {
         ObservableList<Integer> selectedIndices = selectionModel.getSelectedIndices();
 
 
+        usernameCol.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Dipendente, String>>() {
+            @Override
+            public void handle(TableColumn.CellEditEvent<Dipendente, String> dipendenteStringCellEditEvent) {
+                //todo handle changes from the obs list to database
+                System.out.println(dipendenteStringCellEditEvent.getNewValue());
+            }
+        });
+
     }
+
+
 
 
     private ObservableList<Dipendente> fetchData() {
