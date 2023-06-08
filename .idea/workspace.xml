@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="CSS sui bottoni in appuntamenti">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Effetto Blur in Dipendenti. /in costruzione/">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,19 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -299,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686138587285</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Effetto Blur in Dipendenti. /in costruzione/">
+      <created>1686147808138</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1686147808138</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -349,6 +370,7 @@
     <MESSAGE value="CSS sulle tableView (nuovo design quando modifichi i valori + popup show/hide tables), aggiunte grafiche" />
     <MESSAGE value="CSS sui bottoni in appuntamenti" />
     <MESSAGE value="CSS sul Combo-Box&#10;Aggiunta filtro su Dipendenti" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSS sul Combo-Box&#10;Aggiunta filtro su Dipendenti" />
+    <MESSAGE value="Effetto Blur in Dipendenti. /in costruzione/" />
+    <option name="LAST_COMMIT_MESSAGE" value="Effetto Blur in Dipendenti. /in costruzione/" />
   </component>
 </project>
