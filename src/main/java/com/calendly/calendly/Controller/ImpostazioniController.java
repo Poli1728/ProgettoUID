@@ -1,18 +1,14 @@
 package com.calendly.calendly.Controller;
-
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import com.calendly.calendly.View.MyFont;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class ImpostazioniController implements Initializable {
+public class ImpostazioniController {
 
     @FXML
     private Label labelImpostazioni;
@@ -74,15 +70,18 @@ public class ImpostazioniController implements Initializable {
         }else{
             MyFont.getInstance().setFont(MyFont.getInstance().getQuicksand());
         }
+        initialize();
     }
+
     @FXML
     void cambiaGrandezza(ActionEvent event) {
         MyFont.getInstance().setSizeTxt((int)slideBar.getValue());
         MyFont.getInstance().setSizeLabel((int)slideBar.getValue());
+        initialize();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    public void initialize() {
         if(MyFont.getInstance().getFont().equals("Cantarell")){
             checkDislessia.setSelected(true);
         }

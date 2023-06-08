@@ -33,25 +33,18 @@ public class MyFont {
     }
 
     public void setSizeTxt(int s){
-        if(s<sizeTxt && sizeTxt-s>12){
+        if(s<sizeTxt && sizeTxt-s>13){
             sizeTxt-=s;
         }else{
             sizeTxt = s;
         }
     }
     public void setSizeLabel(int s){
-        if(s<sizeLabel && sizeLabel-s>23){
+        if(s<sizeLabel && sizeLabel-s>27){
             sizeLabel-=s;
         }else{
             sizeLabel = s;
         }
-    }
-
-    public tipiFont stringToTipiFont(String s){
-        if(tipiFont.Cantarell.toString().equals(s)){
-            return tipiFont.Cantarell;
-        }
-        return tipiFont.Quicksand;
     }
 
     public String getFont(){
