@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class LoginController {
     @FXML
@@ -41,8 +40,7 @@ public class LoginController {
 
     @FXML
     void initialize() {
-        configPane();
-        configLoginLabelsAndFields();
+        configOBJS();
 
         usernameField.setOnKeyReleased(this::handleKeyReleasedUsernameField);
         passwordField.setOnKeyReleased(this::handleKeyReleasedPasswordField);
@@ -65,10 +63,7 @@ public class LoginController {
 
 
     private void configPane() {
-        Platform.runLater(() -> {
-            callPaneResizeRelocate();
-        });
-
+        callPaneResizeRelocate();
         ancorPane.layoutBoundsProperty().addListener((observable -> {
             callPaneResizeRelocate();
         }));
@@ -84,9 +79,10 @@ public class LoginController {
         pane.resizeRelocate(x, y, width, height);
     }
 
-    private void configLoginLabelsAndFields() {
+    private void configOBJS() {
 
         Platform.runLater(() -> {
+            configPane();
             setXLocationInsidePane();
 
             loginLabel.layoutYProperty().bind(pane.heightProperty().divide(6));

@@ -66,7 +66,13 @@ public class DipendentiViewController {
 
     @FXML
     void actionAddButton(ActionEvent event) {
-        initializePopup();
+        Scene scene = ancorPane.getScene();
+
+        if (ancorPane.getParent().getParent().getEffect() == null)
+            initializePopup();
+
+        ancorPane.getParent().getParent().setMouseTransparent(!ancorPane.getParent().getParent().isMouseTransparent());
+        scene.setFill(scene.getFill() == Color.BLACK ? null : Color.BLACK);
     }
 
     @FXML
@@ -193,16 +199,10 @@ public class DipendentiViewController {
 
 
     private void initializePopup() {
-        Scene scene = ancorPane.getScene();
-
         ColorAdjust adj = new ColorAdjust(0, -0.9, -0.5, 0);
         GaussianBlur blur = new GaussianBlur(55); // 55 is just to show edge effect more clearly.
         adj.setInput(blur);
-        ancorPane.setEffect(adj);
-
-        scene.setFill(scene.getFill() == Color.BLACK ? null : Color.BLACK);
-
-        addButton.toFront();
+        ancorPane.getParent().getParent().setEffect(adj);
     }
 
 

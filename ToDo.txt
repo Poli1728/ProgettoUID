@@ -16,9 +16,7 @@ Marco:
   - Impostazioni: 
     - attivare il checkbox per il font dislessia
     - Aggiungere la side bar per il font
-  
-  - Mettere più appuntamenti nel db
-  
+
 Mario:
   - Servizio 
   - Dipendenti
