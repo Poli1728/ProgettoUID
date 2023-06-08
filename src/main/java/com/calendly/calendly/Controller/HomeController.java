@@ -1,18 +1,24 @@
 package com.calendly.calendly.Controller;
 
+import com.calendly.calendly.Main;
 import com.calendly.calendly.SceneHandler;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HomeController {
     @FXML
     private Pane viewPane;
     // Pane dove carichiamo le varie view per la dashboard ecc ecc ~ Marco
+
+    @FXML
+    private ImageView logoView;
 
     private void avviaPane(String s) throws IOException {
         viewPane.getChildren().clear();
@@ -66,7 +72,8 @@ public class HomeController {
 
     @FXML
     void initialize() {
-
+        Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/logo.png")));
+        logoView.setImage(image);
     }
 
 

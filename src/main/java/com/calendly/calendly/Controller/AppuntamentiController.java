@@ -9,8 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -19,6 +17,14 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AppuntamentiController implements Initializable {
+    @FXML
+    private Button removeButton;
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button editButton;
+    @FXML
+    private TextField idScontrino;
     @FXML
     private TextField cercaField;
 
@@ -45,10 +51,6 @@ public class AppuntamentiController implements Initializable {
     @FXML
     private TableColumn<Appuntamento, String> colonnaServizio;
 
-    /*@FXML
-    private TableColumn<Object, Object> colonnaScontrino;*/
-
-
     @FXML
     private TableView<Appuntamento> table;
 
@@ -64,41 +66,6 @@ public class AppuntamentiController implements Initializable {
         colonnaNomeCognome.setCellValueFactory(new PropertyValueFactory<>("identificativo"));
         colonnaNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         colonnaServizio.setCellValueFactory(new PropertyValueFactory<>("servizio"));
-        //addButtonToTable();
-    }
-
-    private void addButtonToTable() {
-        TableColumn<Appuntamento, Void> colonnaScontrino = new TableColumn("Button Column");
-        Callback<TableColumn<Appuntamento, Void>, TableCell<Appuntamento, Void>> cellFactory = new Callback<TableColumn<Appuntamento, Void>, TableCell<Appuntamento, Void>>() {
-            @Override
-            public TableCell<Appuntamento, Void> call(TableColumn<Appuntamento, Void> appuntamentoVoidTableColumn) {
-                final TableCell<Appuntamento, Void> cell = new TableCell<Appuntamento, Void>() {
-
-                    private final Button btn = new Button("Action");
-
-                    {
-                        btn.setOnAction((ActionEvent event) -> {
-                            Appuntamento app = table.getItems().get(getIndex());
-                            System.out.println("selectedData: " + app.getId());
-                        });
-                    }
-
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btn);
-                        }
-                    }
-                };
-                return null;
-            }
-
-        };
-        colonnaScontrino.setCellFactory(cellFactory);
-        table.getColumns().add(colonnaScontrino);
-
     }
 
     private void aggiungiItems(){
@@ -124,6 +91,25 @@ public class AppuntamentiController implements Initializable {
 
     @FXML
     void rimuoviAppuntamento(ActionEvent event) throws IOException {
+    }
+
+    @FXML
+    void generaScontrino(ActionEvent event) {
+        if(idScontrino.getText().equals("")){
+            System.out.println("Non ho ancora gli alert :)");
+        }else {
+           /* //generate a PDF at the specified location
+            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Anubhav\\Desktop\\Java PDF\\Motivation.pdf"));
+            System.out.println("PDF created.");
+            //opens the PDF
+            doc.open();
+            //adds paragraph to the PDF file
+            doc.add(new Paragraph("If you're offered a seat on a rocket ship, don't ask what seat! Just get on."));
+            //close the PDF file
+            doc.close();
+            //closes the writer
+            writer.close();*/
+        }
     }
 
     @FXML

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" styleClass="external-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
    <children>
       <Pane prefHeight="700.0" prefWidth="166.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -15,6 +16,7 @@
             <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#apriDipendenti" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Dipendenti" />
             <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="425.0" mnemonicParsing="false" onAction="#apriImpostazioni" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Impostazioni" />
             <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="626.0" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-logout-button" text="Logout" />
+            <ImageView fx:id="logoView" fitHeight="140.0" fitWidth="137.0" layoutX="15.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
       <Pane fx:id="viewPane" layoutX="218.0" layoutY="14.0" prefHeight="680.0" prefWidth="718.0" styleClass="primary-app-view" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
