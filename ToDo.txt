@@ -13,9 +13,6 @@ Cose mancanti:
 Marco:
   - Appuntamenti:
     - Fare le funzioni di aggiunte, modifiche e rimozione
-  - Impostazioni: 
-    - attivare il checkbox per il font dislessia
-    - Aggiungere la side bar per il font
 
 Mario:
   - Servizio 
