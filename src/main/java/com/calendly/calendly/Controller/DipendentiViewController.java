@@ -1,6 +1,7 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Dipendente;
+import com.calendly.calendly.View.MyFont;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.util.converter.DoubleStringConverter;
 
 public class DipendentiViewController {
@@ -51,7 +53,7 @@ public class DipendentiViewController {
     private TableView<Dipendente> tableView;
 
     @FXML
-    private Label titleLabel;
+    private Label labelDipendenti;
 
     @FXML
     private TableColumn<Dipendente, String> usernameCol;
@@ -98,6 +100,7 @@ public class DipendentiViewController {
 
     @FXML
     void initialize() {
+        labelDipendenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         usernameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         lastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());

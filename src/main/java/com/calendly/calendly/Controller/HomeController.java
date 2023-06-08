@@ -33,7 +33,16 @@ public class HomeController {
 
         viewPane.getChildren().add(pane);
     }
-
+    public void refersh(String s) throws IOException {
+        switch(s){
+            case "Appuntamenti" ->{avviaPane("fxml/Appuntamenti");}
+            case "Dashboard" ->{avviaPane("fxml/Dashboard");}
+            case "Servizi" ->{avviaPane("fxml/Servizi");}
+            case "Impostazioni" ->{avviaPane("fxml/Impostazioni");}
+            case "Dipendenti" ->{avviaPane("fxml/Dipendenti");}
+            case "Statistiche" ->{avviaPane("fxml/Statistiche");}
+        }
+    }
     @FXML
     void apriAppuntamenti(ActionEvent event) throws IOException {
         avviaPane("fxml/Appuntamenti");

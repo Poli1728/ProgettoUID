@@ -26,7 +26,7 @@
       <Button fx:id="addButton" defaultButton="true" layoutX="147.0" layoutY="60.0" mnemonicParsing="false" onAction="#actionAddButton" styleClass="secondaryButton" text="Aggiungi" AnchorPane.leftAnchor="147.0" AnchorPane.topAnchor="60.0" />
       <Button fx:id="removeButton" cancelButton="true" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#actionRemoveButton" styleClass="secondaryButton" text="Rimuovi" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="60.0" />
       <Button fx:id="editButton" layoutX="79.0" layoutY="60.0" mnemonicParsing="false" onAction="#actionEditButton" styleClass="secondaryButton" text="Modifica" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="60.0" />
-      <Label fx:id="titleLabel" layoutX="19.0" layoutY="8.0" prefHeight="43.0" prefWidth="171.0" text="Dipendenti" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="8.0">
+      <Label fx:id="labelDipendenti" layoutX="19.0" layoutY="8.0" prefHeight="43.0" prefWidth="563.0" text="Dipendenti" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="8.0">
          <font>
             <Font size="28.0" />
          </font>

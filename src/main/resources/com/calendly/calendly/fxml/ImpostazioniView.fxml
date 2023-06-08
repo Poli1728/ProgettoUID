@@ -11,31 +11,53 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.ImpostazioniController">
    <children>
-      <AnchorPane layoutX="150.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="645.0" prefWidth="368.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
+      <AnchorPane layoutX="18.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="645.0" prefWidth="630.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="12.0">
          <children>
-            <ComboBox fx:id="temiComboBox" layoutX="214.0" layoutY="55.0" onAction="#scegliTema" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" styleClass="primaryButton" AnchorPane.rightAnchor="14.0" />
-            <Button layoutX="130.0" layoutY="619.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="100.0" styleClass="primaryButton" text="Logout" AnchorPane.bottomAnchor="2.0" />
-            <CheckBox fx:id="checkDislessia" layoutX="322.0" layoutY="163.0" mnemonicParsing="false" onAction="#attivaDislessia" AnchorPane.rightAnchor="20.0" />
-            <Slider fx:id="slideBar" layoutX="220.0" layoutY="257.0" showTickLabels="true" showTickMarks="true" AnchorPane.rightAnchor="0.0" />
-            <Label layoutX="12.0" layoutY="220.0" text="Grandezza del testo">
+            <ComboBox fx:id="temiComboBox" layoutX="492.0" layoutY="111.0" onAction="#scegliTema" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" styleClass="primaryButton" AnchorPane.rightAnchor="6.0" />
+            <AnchorPane layoutX="281.0" layoutY="606.0" prefHeight="25.0" prefWidth="351.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button layoutX="265.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="25.0" styleClass="primaryButton" text="Logout" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="265.0" AnchorPane.rightAnchor="265.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <CheckBox fx:id="checkDislessia" layoutX="593.0" layoutY="191.0" mnemonicParsing="false" onAction="#attivaDislessia" AnchorPane.rightAnchor="19.0" />
+            <Slider fx:id="slideBar" layoutX="490.0" layoutY="299.0" max="40.0" min="10.0" showTickLabels="true" showTickMarks="true" value="10.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="labelSize" layoutX="11.0" layoutY="241.0" text="Grandezza del testo" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="-530.0">
                <font>
-                  <Font size="17.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Text layoutX="14.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La slide bar di fianco, permette di impsotare la grandezza del testo." wrappingWidth="171.0" />
-            <Label layoutX="11.0" layoutY="101.0" prefHeight="21.0" prefWidth="221.0" text="Carattere per la dislessia">
+            <Text fx:id="txtSize" layoutX="14.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La slide bar di fianco, permette di impsotare la grandezza del testo." wrappingWidth="618.0">
                <font>
-                  <Font size="17.0" />
+                  <Font size="14.0" />
+               </font></Text>
+            <Label fx:id="labelDislessia" layoutX="11.0" layoutY="143.0" prefHeight="21.0" prefWidth="704.0" text="Carattere per la dislessia" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="-530.0">
+               <font>
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Text layoutX="14.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carattere adatto per le persone con dislessia. Basta attivare la spunta di fianco." wrappingWidth="171.0" />
-            <Label layoutX="11.0" layoutY="18.0" prefHeight="21.0" prefWidth="191.0" text="Scegli il tema dell'app">
+            <Text fx:id="txtDislessia" layoutX="14.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carattere adatto per le persone con dislessia. Basta attivare la spunta di fianco." wrappingWidth="618.0">
                <font>
-                  <Font size="17.0" />
+                  <Font size="14.0" />
+               </font></Text>
+            <Label fx:id="labelTemi" layoutX="11.0" layoutY="76.0" prefHeight="21.0" prefWidth="879.0" text="Scegli il tema dell'app" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="-530.0">
+               <font>
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Text fx:id="txtTemi" layoutX="12.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ti permette di scegliere tra i temi dell'app." wrappingWidth="171.0" />
-            <Button layoutX="290.0" layoutY="291.0" mnemonicParsing="false" onAction="#cambiaGrandezza" text="Cambia" AnchorPane.rightAnchor="3.0" />
+            <Text fx:id="txtTemi" layoutX="22.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ti permette di scegliere tra i temi dell'app." wrappingWidth="618.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Text>
+            <Button layoutX="559.0" layoutY="333.0" mnemonicParsing="false" onAction="#cambiaGrandezza" styleClass="primaryButton" text="Cambia" AnchorPane.rightAnchor="3.0" />
+            <AnchorPane layoutX="163.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label fx:id="labelImpostazioni" layoutX="192.0" prefHeight="35.0" prefWidth="331.0" text="Impostazioni" AnchorPane.rightAnchor="107.0">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

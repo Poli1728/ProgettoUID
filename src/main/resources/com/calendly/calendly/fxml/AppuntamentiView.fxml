@@ -14,7 +14,7 @@
       <Button fx:id="addButton" defaultButton="true" layoutX="570.0" layoutY="20.0" mnemonicParsing="false" onAction="#aggiungiAppuntamento" styleClass="secondaryButton" text="Aggiungi" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0" />
       <Button fx:id="removeButton" defaultButton="true" layoutX="419.0" layoutY="20.0" mnemonicParsing="false" onAction="#rimuoviAppuntamento" styleClass="secondaryButton" text="Rimuovi" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="20.0" />
       <Button fx:id="editButton" layoutX="495.0" layoutY="20.0" mnemonicParsing="false" onAction="#modificaAppuntamento" styleClass="secondaryButton" text="Modifica" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="20.0" />
-      <Label layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="209.0" text="Appuntamenti" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
+      <Label fx:id="labelAppuntamenti" layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="632.0" text="Appuntamenti" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="27.0" />
          </font>

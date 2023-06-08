@@ -2,6 +2,7 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Appuntamento;
 import com.calendly.calendly.Model.GestoreAppuntamenti;
+import com.calendly.calendly.View.MyFont;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -13,7 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.text.Font;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AppuntamentiController implements Initializable {
+    @FXML
+    private Label labelAppuntamenti;
     @FXML
     private Button removeButton;
     @FXML
@@ -149,6 +152,7 @@ public class AppuntamentiController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        labelAppuntamenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         aggiungiItems();
         table.getItems().clear();
         try {

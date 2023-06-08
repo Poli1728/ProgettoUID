@@ -11,7 +11,18 @@ public class GestoreStatistiche {
         return instance;
     }
     private GestoreStatistiche(){}
-    public enum Periodi{Settimanale, Mensile, Annuale}
+    private enum Periodi{Settimanale, Mensile, Annuale}
+
+    public Periodi getSettimanale(){
+        return Periodi.Settimanale;
+    }
+    public Periodi getMensile(){
+        return Periodi.Mensile;
+    }
+    public Periodi getAnnuale(){
+        return Periodi.Annuale;
+    }
+
     public ArrayList<Statistiche> statistiche( Periodi p ,int mese, int anno) throws SQLException{
         ArrayList<Statistiche> info = new ArrayList<Statistiche>();
         switch (p){

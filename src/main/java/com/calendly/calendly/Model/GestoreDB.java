@@ -21,12 +21,12 @@ public class GestoreDB {
         String url = "jdbc:sqlite:"+file.getAbsolutePath();
         con = DriverManager.getConnection(url);
     }
-    public enum entità  {
-            Dipendenti,
-            Clienti,
-            Appuntamenti,
-            Servizi
-    };
+    private enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi};
+
+    public entità getDipendenti(){ return entità.Dipendenti;}
+    public entità getClienti(){ return entità.Clienti;}
+    public entità getAppuntamenti(){ return entità.Appuntamenti;}
+    public entità getServizi(){ return entità.Servizi;}
     public ArrayList<String> leggiEntità(entità ent) throws SQLException {
         createConnection();
         String query = "select * from "+ent.toString()+";";
@@ -105,7 +105,7 @@ public class GestoreDB {
     public void inserimentoDipendenti(String Username, String Password, String Nome, String Cognome, Double Salario, Integer Ruolo) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome) VALUES(?,?, ?, ?, ?, ?)")) {
+        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?)")) {
             pstmt.setString(1, Username);
             pstmt.setString(2, BCrypt.hashpw(Password, BCrypt.gensalt(12)));
             pstmt.setString(3, Nome);

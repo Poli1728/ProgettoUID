@@ -1,13 +1,13 @@
 package com.calendly.calendly.Controller;
+
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
+import com.calendly.calendly.View.MyFont;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,10 +15,10 @@ import java.util.ResourceBundle;
 public class ImpostazioniController implements Initializable {
 
     @FXML
-    private Slider slideBar;
+    private Label labelImpostazioni;
 
     @FXML
-    private Label labelTema;
+    private Slider slideBar;
 
     @FXML
     private ComboBox<String> temiComboBox;
@@ -28,6 +28,31 @@ public class ImpostazioniController implements Initializable {
 
     @FXML
     private CheckBox checkDislessia;
+
+    @FXML
+    private Label labelDislessia;
+
+    @FXML
+    private Label labelSize;
+
+    @FXML
+    private Label labelTemi;
+    @FXML
+    private Text txtDislessia;
+
+    @FXML
+    private Text txtSize;
+
+    private void impostaFontSize(){
+        labelImpostazioni.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelSize.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        txtTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtSize.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+    }
+
     @FXML
     void esci(ActionEvent event) {
         SceneHandler.getInstance().launchLogin();
@@ -45,21 +70,25 @@ public class ImpostazioniController implements Initializable {
     @FXML
     void attivaDislessia(ActionEvent event) {
         if(checkDislessia.isSelected()){
-            Font font = Font.loadFont("/home/marco/Documenti/GitHub/Calendly/src/main/resources/com/calendly/calendly/font/OpenDyslexicAlta-Italic.otf", 24);
-            txtTemi.setFont(font);
+            MyFont.getInstance().setFont(MyFont.getInstance().getCantarell());
         }else{
-            System.out.println("Puzzi");
+            MyFont.getInstance().setFont(MyFont.getInstance().getQuicksand());
         }
     }
     @FXML
     void cambiaGrandezza(ActionEvent event) {
-
+        MyFont.getInstance().setSizeTxt((int)slideBar.getValue());
+        MyFont.getInstance().setSizeLabel((int)slideBar.getValue());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(MyFont.getInstance().getFont().equals("Cantarell")){
+            checkDislessia.setSelected(true);
+        }
+        slideBar.setValue(MyFont.getInstance().getSizeTxt());
         temiComboBox.getItems().add("Scuro");
         temiComboBox.getItems().add("Chiaro");
-        txtTemi.setFont(Font.font("Cantarell"));
+        impostaFontSize();
     }
 }
