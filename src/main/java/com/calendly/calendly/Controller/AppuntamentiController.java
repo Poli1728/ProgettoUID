@@ -2,7 +2,6 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Appuntamento;
 import com.calendly.calendly.Model.GestoreAppuntamenti;
-import com.calendly.calendly.Model.GestoreDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,8 +45,8 @@ public class AppuntamentiController implements Initializable {
     @FXML
     private TableColumn<Appuntamento, String> colonnaServizio;
 
-    @FXML
-    private TableColumn<Appuntamento, Button> colonnaScontrino;
+    /*@FXML
+    private TableColumn<Object, Object> colonnaScontrino;*/
 
 
     @FXML
@@ -64,7 +64,41 @@ public class AppuntamentiController implements Initializable {
         colonnaNomeCognome.setCellValueFactory(new PropertyValueFactory<>("identificativo"));
         colonnaNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         colonnaServizio.setCellValueFactory(new PropertyValueFactory<>("servizio"));
-        //colonnaScontrino.setCellValueFactory();
+        //addButtonToTable();
+    }
+
+    private void addButtonToTable() {
+        TableColumn<Appuntamento, Void> colonnaScontrino = new TableColumn("Button Column");
+        Callback<TableColumn<Appuntamento, Void>, TableCell<Appuntamento, Void>> cellFactory = new Callback<TableColumn<Appuntamento, Void>, TableCell<Appuntamento, Void>>() {
+            @Override
+            public TableCell<Appuntamento, Void> call(TableColumn<Appuntamento, Void> appuntamentoVoidTableColumn) {
+                final TableCell<Appuntamento, Void> cell = new TableCell<Appuntamento, Void>() {
+
+                    private final Button btn = new Button("Action");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            Appuntamento app = table.getItems().get(getIndex());
+                            System.out.println("selectedData: " + app.getId());
+                        });
+                    }
+
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return null;
+            }
+
+        };
+        colonnaScontrino.setCellFactory(cellFactory);
+        table.getColumns().add(colonnaScontrino);
+
     }
 
     private void aggiungiItems(){
