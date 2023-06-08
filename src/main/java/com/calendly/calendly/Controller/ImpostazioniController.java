@@ -46,7 +46,6 @@ public class ImpostazioniController implements Initializable {
     void attivaDislessia(ActionEvent event) {
         if(checkDislessia.isSelected()){
             Font font = Font.loadFont("/home/marco/Documenti/GitHub/Calendly/src/main/resources/com/calendly/calendly/font/OpenDyslexicAlta-Italic.otf", 24);
-            //txtTemi.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
             txtTemi.setFont(font);
         }else{
             System.out.println("Puzzi");
