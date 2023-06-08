@@ -66,7 +66,7 @@ public class SceneHandler {
         //creazione dell'account dell'owner
 
         loadFXML("fxml/WelcomePage.fxml");
-        WelcomePageController controller = loader.getController();
+        loader.getController();
         setWindowLoginDimension();
     }
 
@@ -77,6 +77,7 @@ public class SceneHandler {
     public void launchLogin() {
         loadFXML("fxml/LoginView.fxml");
         LoginController controller = loader.getController();
+        controller.init();
         setWindowLoginDimension();
     }
 

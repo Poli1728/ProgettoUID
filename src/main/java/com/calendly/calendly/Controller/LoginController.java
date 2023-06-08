@@ -40,10 +40,12 @@ public class LoginController {
 
     @FXML
     void initialize() {
-        configOBJS();
-
         usernameField.setOnKeyReleased(this::handleKeyReleasedUsernameField);
         passwordField.setOnKeyReleased(this::handleKeyReleasedPasswordField);
+    }
+
+    public void init() {
+        configOBJS();
     }
 
     private void handleKeyReleasedUsernameField(KeyEvent event) {

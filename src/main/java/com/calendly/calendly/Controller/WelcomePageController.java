@@ -33,7 +33,6 @@ public class WelcomePageController {
     void actionContinueButton() {
         if (imgTransition.getStatus() == Animation.Status.RUNNING)
             imgTransition.stop();
-
         SceneHandler.getInstance().launchLogin();
     }
 
