@@ -34,7 +34,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Text layoutX="12.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ti permette di scegliere tra i temi dell'app." wrappingWidth="171.0" />
+            <Text fx:id="txtTemi" layoutX="12.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ti permette di scegliere tra i temi dell'app." wrappingWidth="171.0" />
             <Button layoutX="290.0" layoutY="291.0" mnemonicParsing="false" onAction="#cambiaGrandezza" text="Cambia" AnchorPane.rightAnchor="3.0" />
          </children>
       </AnchorPane>

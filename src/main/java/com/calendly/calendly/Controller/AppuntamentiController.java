@@ -2,6 +2,10 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Appuntamento;
 import com.calendly.calendly.Model.GestoreAppuntamenti;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -94,21 +101,21 @@ public class AppuntamentiController implements Initializable {
     }
 
     @FXML
-    void generaScontrino(ActionEvent event) {
+    void generaScontrino(ActionEvent event) throws DocumentException, FileNotFoundException, SQLException {
         if(idScontrino.getText().equals("")){
             System.out.println("Non ho ancora gli alert :)");
         }else {
-           /* //generate a PDF at the specified location
-            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("C:\\Users\\Anubhav\\Desktop\\Java PDF\\Motivation.pdf"));
-            System.out.println("PDF created.");
-            //opens the PDF
+            Document doc = new Document();
+            String id = idScontrino.getText();
+            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("Scontrino"+id+".pdf"));
             doc.open();
-            //adds paragraph to the PDF file
-            doc.add(new Paragraph("If you're offered a seat on a rocket ship, don't ask what seat! Just get on."));
-            //close the PDF file
+            doc.addTitle("Scontrino "+id);
+            ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti(true,"A.Id", "'"+id+"'");
+            Appuntamento a = app.get(0);
+            String parag = "Id appuntamento: "+a.getId()+"\n"+"Email: "+a.getEmail()+"\n"+"Nome e cognome: "+a.getIdentificativo()+"\n"+"Numero: "+a.getNumero()+"\n"+"Data appuntamento: "+a.getData()+"\n"+"Dipendente: "+a.getDipendente()+"\n"+"Servizio: "+a.getServizio()+"\n"+"Prezzo: "+a.getPrezzo()+"\n"+"Grazie per averci scelto\n";
+            doc.add(new Paragraph(parag));
             doc.close();
-            //closes the writer
-            writer.close();*/
+            writer.close();
         }
     }
 
