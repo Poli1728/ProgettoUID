@@ -46,6 +46,10 @@ public class AppuntamentiController implements Initializable {
     private TableColumn<Appuntamento, String> colonnaServizio;
 
     @FXML
+    private TableColumn<Appuntamento, Button> colonnaScontrino;
+
+
+    @FXML
     private TableView<Appuntamento> table;
 
     @FXML
@@ -60,6 +64,7 @@ public class AppuntamentiController implements Initializable {
         colonnaNomeCognome.setCellValueFactory(new PropertyValueFactory<>("identificativo"));
         colonnaNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         colonnaServizio.setCellValueFactory(new PropertyValueFactory<>("servizio"));
+        //colonnaScontrino.setCellValueFactory();
     }
 
     private void aggiungiItems(){

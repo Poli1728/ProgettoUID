@@ -1,6 +1,7 @@
 package com.calendly.calendly.Model;
 
 import javafx.beans.property.*;
+import javafx.scene.control.Button;
 
 public class Appuntamento {
     private final SimpleIntegerProperty id;
@@ -128,4 +129,5 @@ public class Appuntamento {
     public void setPrezzo(double prezzo) {
         this.prezzo.set(prezzo);
     }
+
 }
