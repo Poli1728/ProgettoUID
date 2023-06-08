@@ -75,7 +75,4 @@ public class HomeController {
         Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/logo.png")));
         logoView.setImage(image);
     }
-
-
-
 }
