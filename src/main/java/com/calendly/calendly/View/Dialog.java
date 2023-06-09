@@ -1,6 +1,7 @@
 package com.calendly.calendly.View;
 
 import com.calendly.calendly.Model.DialogResponse;
+import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Optional;
 
 public class Dialog {
@@ -49,6 +51,13 @@ public class Dialog {
             case APPUNTAMENTI -> setComponentsForAppuntamenti();
         };
         dialogPane.setContent(vbox);
+        dialogPane.getStyleClass().add("external-pane");
+
+        for (String style : Settings.styles)
+            dialogPane.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm());
+
+        //todo fare prendere da database il giusto tema
+        dialogPane.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(Settings.themes[0])).toExternalForm());
 
 
 
@@ -68,9 +77,12 @@ public class Dialog {
     private VBox setComponentsForDipendenti() {
         TextField name = new TextField();
         name.setPromptText("Nome");
+        name.getStyleClass().add("generalField");
 
         TextField lastName = new TextField();
         lastName.setPromptText("Cognome");
+        lastName.getStyleClass().add("generalField");
+
 
         ObservableList<Settings.roles> options = FXCollections.observableArrayList(Settings.roles.values());
         ComboBox role = new ComboBox<>(options);
@@ -78,6 +90,8 @@ public class Dialog {
 
         TextField salary = new TextField();
         salary.setPromptText("Salario");
+        salary.getStyleClass().add("generalField");
+
 
         dialog.setResultConverter((ButtonType bt) -> {
             if (bt == ButtonType.OK) {
@@ -91,7 +105,8 @@ public class Dialog {
             return null;
         });
 
-        return new VBox(8, name, lastName, role , salary);
+        VBox vbox = new VBox(8, name, lastName, role , salary);
+        return vbox;
     }
 
     //prende come parametro l'attuale ancorPane della view
