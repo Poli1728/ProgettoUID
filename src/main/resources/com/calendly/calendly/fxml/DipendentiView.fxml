@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="ancorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.DipendentiViewController">
@@ -23,16 +24,24 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="addButton" defaultButton="true" layoutX="147.0" layoutY="60.0" mnemonicParsing="false" onAction="#actionAddButton" styleClass="secondaryButton" text="Aggiungi" AnchorPane.leftAnchor="147.0" AnchorPane.topAnchor="60.0" />
-      <Button fx:id="removeButton" cancelButton="true" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#actionRemoveButton" styleClass="secondaryButton" text="Rimuovi" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="60.0" />
-      <Button fx:id="editButton" layoutX="79.0" layoutY="60.0" mnemonicParsing="false" onAction="#actionEditButton" styleClass="secondaryButton" text="Modifica" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="60.0" />
+      <HBox layoutX="14.0" layoutY="60.0" AnchorPane.leftAnchor="14.0">
+         <children>
+            <Button fx:id="removeButton" cancelButton="true" mnemonicParsing="false" onAction="#actionRemoveButton" styleClass="secondaryButton" text="Rimuovi" />
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#actionEditButton" styleClass="secondaryButton" text="Modifica" />
+            <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#actionAddButton" styleClass="secondaryButton" text="Aggiungi" />
+         </children>
+      </HBox>
       <Label fx:id="labelDipendenti" layoutX="19.0" layoutY="8.0" prefHeight="43.0" prefWidth="563.0" text="Dipendenti" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="8.0">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <Button fx:id="searchButton" layoutX="532.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionSearchButton" styleClass="secondaryButton" text="Cerca" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
-      <TextField layoutX="364.0" layoutY="14.0" styleClass="searchField" AnchorPane.rightAnchor="69.5" AnchorPane.topAnchor="15.0" />
-      <ComboBox fx:id="filtroBox" layoutX="274.0" layoutY="14.0" onAction="#actionFiltroBox" prefHeight="24.0" prefWidth="86.0" promptText="Filtra" styleClass="secondaryButton" AnchorPane.rightAnchor="233.0" AnchorPane.topAnchor="15.0" />
+      <HBox layoutX="265.0" layoutY="18.0" AnchorPane.rightAnchor="15.0">
+         <children>
+            <ComboBox fx:id="filtroBox" onAction="#actionFiltroBox" prefHeight="24.0" prefWidth="86.0" promptText="Filtra" styleClass="secondaryButton" />
+            <TextField fx:id="cercaField" styleClass="searchField" />
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#actionSearchButton" styleClass="secondaryButton" text="Cerca" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

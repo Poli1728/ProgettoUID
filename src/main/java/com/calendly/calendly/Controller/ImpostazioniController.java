@@ -11,6 +11,9 @@ import javafx.scene.text.Text;
 public class ImpostazioniController {
 
     @FXML
+    private Button buttonCambia;
+
+    @FXML
     private Label labelImpostazioni;
 
     @FXML
@@ -47,6 +50,7 @@ public class ImpostazioniController {
         txtTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         txtSize.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        buttonCambia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
     }
 
     @FXML

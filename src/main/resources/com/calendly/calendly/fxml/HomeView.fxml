@@ -4,21 +4,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="anchorPaneFather" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
    <children>
-      <Pane prefHeight="700.0" prefWidth="166.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="19.0" layoutY="186.0" prefHeight="301.0" prefWidth="130.0" spacing="10.0" AnchorPane.bottomAnchor="213.0" AnchorPane.topAnchor="186.0">
          <children>
-            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="250.0" mnemonicParsing="false" onAction="#apriDashboard" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Dashboard" />
-            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#apriAppuntamenti" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Appuntamenti" />
-            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="320.0" mnemonicParsing="false" onAction="#apriStatistiche" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Statistiche" />
-            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#apriServizi" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Servizi" />
-            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="390.0" mnemonicParsing="false" onAction="#apriDipendenti" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Dipendenti" />
-            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="425.0" mnemonicParsing="false" onAction="#apriImpostazioni" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Impostazioni" />
-            <Button alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="626.0" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-logout-button" text="Logout" />
-            <ImageView fx:id="logoView" fitHeight="140.0" fitWidth="137.0" layoutX="15.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="dashboardButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#apriDashboard" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Dashboard" />
+            <Button fx:id="appuntamentiButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#apriAppuntamenti" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Appuntamenti" />
+            <Button fx:id="statisticheButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#apriStatistiche" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Statistiche" />
+            <Button fx:id="serviziButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#apriServizi" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Servizi" />
+            <Button fx:id="dipendentiButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#apriDipendenti" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Dipendenti" />
+            <Button fx:id="impostazioniButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#apriImpostazioni" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-button" text="Impostazioni" />
          </children>
-      </Pane>
+      </VBox>
+      <Button fx:id="logoutButton" alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="626.0" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-logout-button" text="Logout" AnchorPane.bottomAnchor="49.0" />
+      <ImageView fx:id="logoView" fitHeight="140.0" fitWidth="137.0" layoutX="15.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" />
       <Pane fx:id="viewPane" layoutX="218.0" layoutY="14.0" prefHeight="680.0" prefWidth="718.0" styleClass="primary-app-view" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>

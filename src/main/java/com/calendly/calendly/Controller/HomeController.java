@@ -3,13 +3,16 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.Main;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.Dialog;
+import com.calendly.calendly.View.MyFont;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -20,11 +23,33 @@ public class HomeController {
     private AnchorPane anchorPaneFather;
 
     @FXML
-    private Pane viewPane;
-    // Pane dove carichiamo le varie view per la dashboard ecc ecc ~ Marco
+    private Button appuntamentiButton;
+
+    @FXML
+    private Button dashboardButton;
+
+    @FXML
+    private Button dipendentiButton;
+
+    @FXML
+    private Button impostazioniButton;
 
     @FXML
     private ImageView logoView;
+
+    @FXML
+    private Button logoutButton;
+
+    @FXML
+    private Button serviziButton;
+
+    @FXML
+    private Button statisticheButton;
+
+    @FXML
+    private Pane viewPane;
+    // Pane dove carichiamo le varie view per la dashboard ecc ecc ~ Marco
+
 
     private void avviaPane(String s) throws IOException {
         viewPane.getChildren().clear();
@@ -86,8 +111,19 @@ public class HomeController {
         SceneHandler.getInstance().launchLogin();
     }
 
+    private void impostaTemi(){
+        appuntamentiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        dashboardButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        dipendentiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        logoutButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        impostazioniButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        serviziButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        statisticheButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+    }
+
     @FXML
     void initialize() {
+        impostaTemi();
         Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/logo.png")));
         logoView.setImage(image);
     }

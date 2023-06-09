@@ -62,6 +62,12 @@ public class AppuntamentiController implements Initializable {
     private TableColumn<Appuntamento, String> colonnaServizio;
 
     @FXML
+    private Button cercaButton;
+
+    @FXML
+    private Button generaButton;
+
+    @FXML
     private TableView<Appuntamento> table;
 
     @FXML
@@ -150,9 +156,20 @@ public class AppuntamentiController implements Initializable {
         }
     }
 
+    private void impostaTemi(){
+        labelAppuntamenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        addButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        editButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        removeButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        cercaButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        idScontrino.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        generaButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        cercaField.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        labelAppuntamenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        impostaTemi();
         aggiungiItems();
         table.getItems().clear();
         try {

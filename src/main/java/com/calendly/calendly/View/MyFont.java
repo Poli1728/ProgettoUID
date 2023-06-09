@@ -33,18 +33,10 @@ public class MyFont {
     }
 
     public void setSizeTxt(int s){
-        if(s<sizeTxt && sizeTxt-s>13){
-            sizeTxt-=s;
-        }else{
-            sizeTxt = s;
-        }
+        sizeTxt = s;
     }
     public void setSizeLabel(int s){
-        if(s<sizeLabel && sizeLabel-s>27){
-            sizeLabel-=s;
-        }else{
-            sizeLabel = s;
-        }
+        sizeLabel = s+14;
     }
 
     public String getFont(){

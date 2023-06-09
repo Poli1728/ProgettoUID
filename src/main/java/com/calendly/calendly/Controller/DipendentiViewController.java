@@ -24,6 +24,9 @@ public class DipendentiViewController {
     private AnchorPane ancorPane;
 
     @FXML
+    private TextField cercaField;
+
+    @FXML
     private Button addButton;
 
     @FXML
@@ -90,9 +93,18 @@ public class DipendentiViewController {
 
     }
 
+    private void impostaFont(){
+        labelDipendenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        addButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        editButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        removeButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        searchButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        cercaField.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+    }
+
     @FXML
     void initialize() {
-        labelDipendenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        impostaFont();
         usernameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         lastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
