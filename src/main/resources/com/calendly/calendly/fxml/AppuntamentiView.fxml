@@ -12,7 +12,7 @@
 
 <AnchorPane cacheShape="false" centerShape="false" focusTraversable="true" prefHeight="621.0" prefWidth="660.0" scaleShape="false" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.AppuntamentiController">
    <children>
-      <HBox layoutX="388.0" layoutY="20.0" AnchorPane.rightAnchor="20.0">
+      <HBox layoutX="388.0" layoutY="20.0" spacing="10.0" AnchorPane.rightAnchor="20.0">
          <children>
             <Button fx:id="removeButton" defaultButton="true" mnemonicParsing="false" onAction="#rimuoviAppuntamento" styleClass="secondaryButton" text="Rimuovi" />
             <Button fx:id="editButton" mnemonicParsing="false" onAction="#modificaAppuntamento" styleClass="secondaryButton" text="Modifica" />
@@ -24,7 +24,7 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <TableView fx:id="table" editable="true" layoutX="10.0" layoutY="113.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="641.0" styleClass="container-level-2" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="113.0">
+      <TableView fx:id="table" editable="true" layoutX="10.0" layoutY="129.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="641.0" styleClass="container-level-2" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="129.0">
          <columns>
             <TableColumn fx:id="colonnaId" prefWidth="42.5" text="Id" />
             <TableColumn fx:id="colonnaEmail" prefWidth="112.0" text="Email" />
@@ -39,16 +39,16 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <HBox layoutX="20.0" layoutY="67.0" AnchorPane.leftAnchor="20.0">
+      <HBox layoutX="21.0" layoutY="76.0" spacing="10.0" AnchorPane.leftAnchor="21.0">
          <children>
             <ComboBox fx:id="filtroBox" prefHeight="24.0" prefWidth="86.0" promptText="Filtro" styleClass="secondaryButton" />
             <TextField fx:id="cercaField" prefHeight="24.0" prefWidth="127.0" styleClass="searchField" />
             <Button fx:id="cercaButton" mnemonicParsing="false" onAction="#cerca" styleClass="secondaryButton" text="Cerca" />
          </children>
       </HBox>
-      <HBox layoutX="419.0" layoutY="67.0" AnchorPane.rightAnchor="20.0">
+      <HBox layoutX="414.0" layoutY="76.0" spacing="10.0" AnchorPane.rightAnchor="19.0">
          <children>
-            <TextField fx:id="idScontrino" prefHeight="24.0" prefWidth="86.0" styleClass="searchField" />
+            <TextField fx:id="idScontrino" prefHeight="24.0" prefWidth="97.0" promptText="Id" styleClass="searchField" />
             <Button fx:id="generaButton" mnemonicParsing="false" onAction="#generaScontrino" styleClass="secondaryButton" text="Genera scontrino" />
          </children>
       </HBox>

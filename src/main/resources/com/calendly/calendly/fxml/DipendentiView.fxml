@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="ancorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.DipendentiViewController">
    <children>
-      <TableView fx:id="tableView" layoutX="15.0" layoutY="105.0" prefHeight="306.0" prefWidth="563.0" styleClass="table-view" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="105.0">
+      <TableView fx:id="tableView" layoutX="15.0" layoutY="117.0" prefHeight="294.0" prefWidth="563.0" styleClass="table-view" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="117.0">
         <columns>
           <TableColumn fx:id="usernameCol" prefWidth="75.0" text="Username" />
           <TableColumn fx:id="nameCol" prefWidth="75.0" text="Nome" />
@@ -24,7 +24,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <HBox layoutX="14.0" layoutY="60.0" AnchorPane.leftAnchor="14.0">
+      <HBox layoutX="14.0" layoutY="60.0" spacing="10.0" AnchorPane.leftAnchor="14.0">
          <children>
             <Button fx:id="removeButton" cancelButton="true" mnemonicParsing="false" onAction="#actionRemoveButton" styleClass="secondaryButton" text="Rimuovi" />
             <Button fx:id="editButton" mnemonicParsing="false" onAction="#actionEditButton" styleClass="secondaryButton" text="Modifica" />
@@ -36,7 +36,7 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <HBox layoutX="265.0" layoutY="18.0" AnchorPane.rightAnchor="15.0">
+      <HBox layoutX="265.0" layoutY="18.0" spacing="10.0" AnchorPane.rightAnchor="15.0">
          <children>
             <ComboBox fx:id="filtroBox" onAction="#actionFiltroBox" prefHeight="24.0" prefWidth="86.0" promptText="Filtra" styleClass="secondaryButton" />
             <TextField fx:id="cercaField" styleClass="searchField" />

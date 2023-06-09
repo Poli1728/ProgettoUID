@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchorPaneFather" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
+<AnchorPane fx:id="anchorPaneFather" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="900.0" prefHeight="700.0" prefWidth="900.0" scaleShape="false" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
    <children>
       <VBox alignment="CENTER_LEFT" layoutX="19.0" layoutY="186.0" prefHeight="301.0" prefWidth="372.0" spacing="10.0" AnchorPane.bottomAnchor="213.0" AnchorPane.topAnchor="186.0">
          <children>
@@ -18,8 +18,8 @@
             <Button fx:id="impostazioniButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#apriImpostazioni" prefHeight="25.0" prefWidth="205.0" styleClass="sidebar-button" text="Impostazioni" />
          </children>
       </VBox>
-      <Button fx:id="logoutButton" alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="626.0" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="130.0" styleClass="sidebar-logout-button" text="Logout" AnchorPane.bottomAnchor="49.0" />
-      <ImageView fx:id="logoView" fitHeight="140.0" fitWidth="137.0" layoutX="15.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" />
+      <Button fx:id="logoutButton" alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="626.0" mnemonicParsing="false" onAction="#esci" prefHeight="25.0" prefWidth="205.0" styleClass="sidebar-logout-button" text="Logout" AnchorPane.bottomAnchor="49.0" />
+      <ImageView fx:id="logoView" fitHeight="140.0" fitWidth="137.0" layoutX="48.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="48.0" />
       <Pane fx:id="viewPane" layoutX="234.0" layoutY="14.0" prefHeight="680.0" prefWidth="656.0" styleClass="primary-app-view" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>
