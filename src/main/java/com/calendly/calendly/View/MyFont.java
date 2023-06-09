@@ -1,4 +1,10 @@
 package com.calendly.calendly.View;
+
+import com.calendly.calendly.Model.GestoreDB;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class MyFont {
 
     private static final MyFont instance = new MyFont();
@@ -6,6 +12,17 @@ public class MyFont {
     public static MyFont getInstance() {
         return instance;
     }
+
+    public void prendiDati() throws SQLException {
+        ArrayList<String> template = GestoreDB.getInstance().leggiEntità(GestoreDB.getInstance().getTemplate());
+        String [] info = template.get(0).split(";");
+        sizeTxt = Integer.parseInt(info[2]);
+        sizeLabel = Integer.parseInt(info[2])+14;
+        font = info[1];
+        tema = info[0];
+    }
+
+    private String tema = "DARK";
 
     private MyFont(){}
 
@@ -48,5 +65,13 @@ public class MyFont {
     }
     public int getSizeLabel(){
         return sizeLabel;
+    }
+
+    public String getTema() {
+        return tema;
+    }
+
+    public void setTema(String tema) {
+        this.tema = tema;
     }
 }

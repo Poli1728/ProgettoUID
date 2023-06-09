@@ -3,6 +3,7 @@ package com.calendly.calendly;
 import com.calendly.calendly.Controller.DipendentiViewController;
 import com.calendly.calendly.Controller.LoginController;
 import com.calendly.calendly.Controller.WelcomePageController;
+import com.calendly.calendly.View.MyFont;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -38,7 +39,7 @@ public class SceneHandler {
             launchWelcomeFirstOpening();
             stage.setScene(scene);
             loadStyle();
-
+            MyFont.getInstance().prendiDati();
             stage.show();
         }
     }

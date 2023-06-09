@@ -21,12 +21,13 @@ public class GestoreDB {
         String url = "jdbc:sqlite:"+file.getAbsolutePath();
         con = DriverManager.getConnection(url);
     }
-    private enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi};
+    private enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
 
     public entità getDipendenti(){ return entità.Dipendenti;}
     public entità getClienti(){ return entità.Clienti;}
     public entità getAppuntamenti(){ return entità.Appuntamenti;}
     public entità getServizi(){ return entità.Servizi;}
+    public entità getTemplate(){ return entità.Template;}
     public ArrayList<String> leggiEntità(entità ent) throws SQLException {
         createConnection();
         String query = "select * from "+ent.toString()+";";
@@ -56,6 +57,11 @@ public class GestoreDB {
                     risultato.add(s.toString());
                     s = new StringBuilder();
                 }
+                case Template -> {
+                    s.append(rs.getString("Tema")).append(";").append(rs.getString("Font")).append(";").append(rs.getString("Size"));
+                    risultato.add(s.toString());
+                    s = new StringBuilder();
+                }
             }
         }
         stmt.close();
@@ -80,7 +86,7 @@ public class GestoreDB {
     public void inserimentoClienti(String CF, String Email, String Nome, String Cognome, String Numero) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Clienti(CF, Email, Nome, Cognome, Numero) VALUES(?,?, ?, ?, ?)")) {
+        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Clienti(CF, Email, Nome, Cognome, Numero) VALUES(?,?, ?, ?, ?);")) {
             pstmt.setString(1, CF);
             pstmt.setString(2, Email);
             pstmt.setString(3, Nome);
@@ -94,7 +100,7 @@ public class GestoreDB {
     public void inserimentoAppuntamenti(Date Data, String CF, Integer id_d, Integer id_s) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Appuntamenti(Data, CF_Utente, Id_Dipendente, Id_Servizio) VALUES(?,?, ?, ?)")) {
+        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Appuntamenti(Data, CF_Utente, Id_Dipendente, Id_Servizio) VALUES(?,?, ?, ?);")) {
             pstmt.setDate(1, Data);
             pstmt.setString(2, CF);
             pstmt.setInt(3, id_d);
@@ -108,7 +114,7 @@ public class GestoreDB {
     public void inserimentoServizi(String Tipo, Double Prezzo) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Servizi(Tipo, Prezzo) VALUES(?,?)")) {
+        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Servizi(Tipo, Prezzo) VALUES(?,?);")) {
             pstmt.setString(1, Tipo);
             pstmt.setDouble(2, Prezzo);
             pstmt.executeUpdate();
@@ -119,13 +125,26 @@ public class GestoreDB {
     public void inserimentoDipendenti(String Password, String Nome, String Cognome, Double Salario, String Ruolo) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?)")) {
+        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?);")) {
             pstmt.setString(1, Nome+"."+Cognome+"."+(numeroDip()+1));
             pstmt.setString(2, BCrypt.hashpw(Password, BCrypt.gensalt(12)));
             pstmt.setString(3, Nome);
             pstmt.setString(4, Cognome);
             pstmt.setDouble(5, Salario);
             pstmt.setString(6, Ruolo);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {}
+        closeConnection();
+    }
+
+    public void aggiornaTemplate(String Tema, String Font, int Size) throws SQLException {
+        if(con == null || con.isClosed())
+            createConnection();
+        try (PreparedStatement pstmt = con.prepareStatement("UPDATE Template SET Tema = ?, Font = ?, Size = ? WHERE Id = 1;")) {
+            /*UPDATE Template SET Tema = ?, Font = ?, Size = ? WHERE Id = 1;*/
+            pstmt.setString(1, Tema);
+            pstmt.setString(2, Font);
+            pstmt.setInt(3, Size);
             pstmt.executeUpdate();
         } catch (SQLException e) {}
         closeConnection();
