@@ -37,7 +37,7 @@ public class GestoreDB {
         while(rs.next()) {
             switch (ent) {
                 case Dipendenti -> {
-                    s.append(rs.getString("Id")).append(";").append(rs.getString("Username")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Password"));
+                    s.append(rs.getString("Id")).append(";").append(rs.getString("Username")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Password")).append(";").append(rs.getString("Salario")).append(";").append(rs.getString("Ruolo"));
                     risultato.add(s.toString());
                     s = new StringBuilder();
                 }
@@ -61,6 +61,20 @@ public class GestoreDB {
         stmt.close();
         closeConnection();
         return risultato;
+    }
+
+    private int numeroDip() throws SQLException {
+        createConnection();
+        String sql = "Select Id From Dipendenti;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet query = stmt.executeQuery();
+        int s= 0;
+        while(query.next()) {
+            s+=1;
+        }
+        stmt.close();
+        closeConnection();
+        return s;
     }
 
     public void inserimentoClienti(String CF, String Email, String Nome, String Cognome, String Numero) throws SQLException {
@@ -102,16 +116,16 @@ public class GestoreDB {
         closeConnection();
     }
 
-    public void inserimentoDipendenti(String Username, String Password, String Nome, String Cognome, Double Salario, Integer Ruolo) throws SQLException {
+    public void inserimentoDipendenti(String Password, String Nome, String Cognome, Double Salario, String Ruolo) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
         try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?)")) {
-            pstmt.setString(1, Username);
+            pstmt.setString(1, Nome+"."+Cognome+"."+(numeroDip()+1));
             pstmt.setString(2, BCrypt.hashpw(Password, BCrypt.gensalt(12)));
             pstmt.setString(3, Nome);
             pstmt.setString(4, Cognome);
             pstmt.setDouble(5, Salario);
-            pstmt.setInt(6, Ruolo);
+            pstmt.setString(6, Ruolo);
             pstmt.executeUpdate();
         } catch (SQLException e) {}
         closeConnection();
@@ -152,6 +166,24 @@ public class GestoreDB {
         stmt.close();
         closeConnection();
         return s;
+    }
+
+    public boolean login(String username, String password) throws SQLException {
+        createConnection();
+        String sql = "Select * From Dipendenti Where Username LIKE ? and Ruolo LIKE 'Proprietario' or Ruolo LIKE 'Manager';";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, username);
+        ResultSet query = stmt.executeQuery();
+        while(query.next()) {
+            if (BCrypt.checkpw(password, query.getString("Password"))){
+                stmt.close();
+                closeConnection();
+                return true;
+            }
+        }
+        stmt.close();
+        closeConnection();
+        return false;
     }
 
     public void closeConnection() throws SQLException {
