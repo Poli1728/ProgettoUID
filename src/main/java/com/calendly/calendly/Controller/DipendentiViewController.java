@@ -2,12 +2,12 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Dipendente;
 import com.calendly.calendly.View.MyFont;
+import com.calendly.calendly.View.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -15,8 +15,6 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.converter.DoubleStringConverter;
 
@@ -68,13 +66,7 @@ public class DipendentiViewController {
 
     @FXML
     void actionAddButton(ActionEvent event) {
-        Scene scene = ancorPane.getScene();
-
-        if (ancorPane.getParent().getParent().getEffect() == null)
-            initializePopup();
-
-        ancorPane.getParent().getParent().setMouseTransparent(!ancorPane.getParent().getParent().isMouseTransparent());
-        scene.setFill(scene.getFill() == Color.BLACK ? null : Color.BLACK);
+        Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, ancorPane);
     }
 
     @FXML

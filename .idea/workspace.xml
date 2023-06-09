@@ -4,9 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Fixed a bug per la login view">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" afterDir="false" />
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="bug in login view">
+      <change afterPath="$PROJECT_DIR$/Scontrino10.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scontrinofwe.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scontrinowfe.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/DialogResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/DialogAddDipendenti.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/DipendentiView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/DipendentiView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/HomeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/HomeView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686211805863</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="bug in login view">
+      <created>1686212825121</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1686212825121</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -353,7 +370,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Update SceneHandler pt.2. Aggiunta classe Settings" />
     <MESSAGE value="Aggiornamenti su SceneHandler, css files, WelcomePage, Settings" />
     <MESSAGE value="Update in Settings Class" />
     <MESSAGE value="Update WelcomePage.fxml" />
@@ -378,6 +394,7 @@
     <MESSAGE value="CSS sul Combo-Box&#10;Aggiunta filtro su Dipendenti" />
     <MESSAGE value="Effetto Blur in Dipendenti. /in costruzione/" />
     <MESSAGE value="Fixed a bug per la login view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug per la login view" />
+    <MESSAGE value="bug in login view" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug in login view" />
   </component>
 </project>

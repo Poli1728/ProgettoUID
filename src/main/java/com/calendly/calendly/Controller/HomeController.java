@@ -2,17 +2,23 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Main;
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.View.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class HomeController {
+
+    @FXML
+    private AnchorPane anchorPaneFather;
+
     @FXML
     private Pane viewPane;
     // Pane dove carichiamo le varie view per la dashboard ecc ecc ~ Marco
@@ -31,6 +37,7 @@ public class HomeController {
             pane.setPrefSize(viewPane.getWidth(), viewPane.getHeight());
         });
 
+        Dialog.getInstance().setAnchorPaneFather(anchorPaneFather);
         viewPane.getChildren().add(pane);
     }
     public void refersh(String s) throws IOException {
