@@ -50,11 +50,6 @@ public class ImpostazioniController {
     }
 
     @FXML
-    void esci(ActionEvent event) {
-        SceneHandler.getInstance().launchLogin();
-    }
-
-    @FXML
     void scegliTema(ActionEvent event) {
         if (temiComboBox.getSelectionModel().isSelected(0)){
             SceneHandler.getInstance().setTheme(Settings.theme.DARK);

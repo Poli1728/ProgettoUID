@@ -3,18 +3,25 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.Model.GestoreData;
 import com.calendly.calendly.Model.GestoreStatistiche;
 import com.calendly.calendly.Model.Statistiche;
+import com.calendly.calendly.View.MyFont;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class StatisticheController implements Initializable {
+public class StatisticheController{
+
+    @FXML
+    private Label labelStatistiche;
 
     @FXML
     private BarChart<String, Number> chartAnnuale;
@@ -60,8 +67,9 @@ public class StatisticheController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    public void initialize() {
+        labelStatistiche.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         String data = String.valueOf(java.time.LocalDateTime.now());
         StringBuilder anno = GestoreData.getInstance().annoCorrente(data);
         StringBuilder mese = GestoreData.getInstance().meseCorrente(data);
