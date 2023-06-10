@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane cacheShape="false" centerShape="false" focusTraversable="true" prefHeight="460.0" prefWidth="611.0" scaleShape="false" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.AppuntamentiController">
    <children>
       <HBox layoutX="353.0" layoutY="20.0" spacing="10.0" AnchorPane.rightAnchor="10.0">
@@ -43,7 +42,7 @@
       <HBox layoutX="21.0" layoutY="76.0" spacing="10.0" AnchorPane.leftAnchor="21.0">
          <children>
             <ComboBox fx:id="filtroBox" prefHeight="24.0" prefWidth="86.0" promptText="Filtro" styleClass="secondaryButton" />
-            <TextField fx:id="cercaField" prefHeight="24.0" prefWidth="127.0" styleClass="searchField" />
+            <TextField fx:id="cercaField" prefHeight="24.0" prefWidth="127.0" promptText="Cerca" styleClass="searchField" />
             <Button fx:id="cercaButton" mnemonicParsing="false" onAction="#cerca" styleClass="secondaryButton" text="Cerca" />
          </children>
       </HBox>
