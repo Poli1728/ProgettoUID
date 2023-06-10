@@ -1,13 +1,9 @@
 package com.calendly.calendly.Model;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
-
 import java.io.File;
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class GestoreDB {
     private static final GestoreDB instance = new GestoreDB();
@@ -72,27 +68,13 @@ public class GestoreDB {
         return risultato;
     }
 
-    private int numeroDip() throws SQLException {
-        createConnection();
-        String sql = "Select Id From Dipendenti;";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        ResultSet query = stmt.executeQuery();
-        int s= 0;
-        while(query.next()) {
-            s+=1;
-        }
-        stmt.close();
-        closeConnection();
-        return s;
-    }
-
     public void inserimento(entità ent, String [] info) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
         switch (ent){
             case Dipendenti -> {
                 try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?);")) {
-                    pstmt.setString(1, info[1]+"."+info[2]+"."+(numeroDip()+1));
+                    pstmt.setString(1, info[1]+"."+info[2]+"."+(conta("", false)+1));
                     pstmt.setString(2, BCrypt.hashpw(info[0], BCrypt.gensalt(12)));
                     pstmt.setString(3, info[1]);
                     pstmt.setString(4, info[2]);
@@ -131,16 +113,102 @@ public class GestoreDB {
 
         closeConnection();
     }
-
-    public void aggiornaTemplate(String Tema, String Font) throws SQLException {
+    public void aggiornamento(entità ent, String [] info) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("UPDATE Template SET Tema = ?, Font = ? WHERE Id = 1;")) {
-            pstmt.setString(1, Tema);
-            pstmt.setString(2, Font);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {}
+        switch (ent){
+            case Dipendenti -> {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Dipendenti SET Username LIKE ?, Password LIKE ?, Nome LIKE ?, Cognome LIKE ?, Salario = ?, Ruolo LIKE ? WHERE Id = ?;")) {
+                    pstmt.setString(1, info [0]); // Username
+                    pstmt.setString(2, BCrypt.hashpw(info[1], BCrypt.gensalt(12))); // Password
+                    pstmt.setString(3, info[2]); // Nome
+                    pstmt.setString(4, info[3]); // Cognome
+                    pstmt.setDouble(5, Double.parseDouble(info[4])); // Salario
+                    pstmt.setString(6, info[5]); // Ruolo
+                    pstmt.setInt(7, Integer.parseInt(info[6])); // Id
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Clienti -> {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Clienti SET CF LIKE ?, Email LIKE ?, Nome LIKE ?, Cognome LIKE ?, Numero LIKE ? WHERE CF LIKE ?;")) {
+                    pstmt.setString(1, info[0]); // CF Nuovo
+                    pstmt.setString(2, info[1]); // Email
+                    pstmt.setString(3, info[2]); // Nome
+                    pstmt.setString(4, info[3]); // Cognome
+                    pstmt.setString(5, info[4]); // Numero
+                    pstmt.setString(6, info[5]); // CF Vecchio
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Appuntamenti -> {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Appuntamenti SET Data LIKE ?, CF_Utente = ?, Id_Dipendente = ?, Id_Servizio = ? WHERE Id = ?;")) {
+                    pstmt.setString(1, info[0]); //Data
+                    pstmt.setString(2, info[1]); // CF_Utente
+                    pstmt.setInt(3, Integer.parseInt(info[2])); // Id_Dipendente
+                    pstmt.setInt(4, Integer.parseInt(info[3])); // Id_Servizio
+                    pstmt.setInt(5, Integer.parseInt(info[4])); // Id
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Servizi -> {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Servizi SET Tipo LIKE ?, Prezzo = ? WHERE Id = ?;")) {
+                    pstmt.setString(1, info[0]); // Tipo
+                    pstmt.setDouble(2, Double.parseDouble(info[1])); // Prezzo
+                    pstmt.setInt(2, Integer.parseInt(info[2])); // Id
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Template -> {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Template SET Tema = ?, Font = ? WHERE Id = 1;")) {
+                    pstmt.setString(1, info[0]); //Tema
+                    pstmt.setString(2, info[1]); //Font
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+        }
         closeConnection();
+    }
+
+    public String cercaValore (entità ent, String parametro, String chiave) throws SQLException {
+        if(con == null || con.isClosed())
+            createConnection();
+        String query;
+        if (!ent.equals(entità.Appuntamenti)) {
+            query = "Select " + parametro + " From " + ent.toString() + " Where Id = " + chiave + ";";
+        }else{
+            query = "Select " + parametro + " From " + ent.toString() + " Where CF LIKE '" + chiave + "';";
+        }
+        System.out.println(query);
+        PreparedStatement stmt = con.prepareStatement(query);
+        ResultSet rs = stmt.executeQuery();
+        StringBuilder s= new StringBuilder();
+        while(rs.next()) {
+            s.append(rs.getString(parametro));
+        }
+        closeConnection();
+        return s.toString();
+    }
+
+    public int conta(String data, boolean scelta) throws SQLException {
+        createConnection();
+        String sql;
+        if (scelta) {
+            sql = "Select Id From Appuntamenti Where Data LIKE ? ;";
+        }else{
+            sql = "Select Id From Dipendenti;";
+        }
+        PreparedStatement stmt = con.prepareStatement(sql);
+        if(scelta){
+            stmt.setString(1, data);
+        }
+        ResultSet query = stmt.executeQuery();
+        int s= 0;
+        while(query.next()) {
+            s+=1;
+        }
+        stmt.close();
+        closeConnection();
+        return s;
     }
 
     public ArrayList<String> creaLista(boolean cerca, String filtro, String valore) throws SQLException {
@@ -163,21 +231,6 @@ public class GestoreDB {
         stmt.close();
         closeConnection();
         return risultato;
-    }
-
-    public int numeroApp(String data) throws SQLException {
-        createConnection();
-        String sql = "Select Id From Appuntamenti Where Data LIKE ? ;";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, data);
-        ResultSet query = stmt.executeQuery();
-        int s= 0;
-        while(query.next()) {
-            s+=1;
-        }
-        stmt.close();
-        closeConnection();
-        return s;
     }
 
     public boolean login(String username, String password) throws SQLException {

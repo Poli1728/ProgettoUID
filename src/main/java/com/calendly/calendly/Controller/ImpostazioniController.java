@@ -47,11 +47,13 @@ public class ImpostazioniController {
         if (temiComboBox.getSelectionModel().isSelected(0)){
             SceneHandler.getInstance().setTheme(Settings.theme.DARK);
             MyFont.getInstance().setTema("DARK");
-            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont());
+            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }else if (temiComboBox.getSelectionModel().isSelected(1)){
             SceneHandler.getInstance().setTheme(Settings.theme.LIGHT);
             MyFont.getInstance().setTema("LIGHT");
-            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont());
+            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }
         initialize();
     }
@@ -60,10 +62,12 @@ public class ImpostazioniController {
     void attivaDislessia(ActionEvent event) throws SQLException {
         if(checkDislessia.isSelected()){
             MyFont.getInstance().setFont(MyFont.getInstance().getCantarell());
-            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont());
+            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }else{
             MyFont.getInstance().setFont(MyFont.getInstance().getQuicksand());
-            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont());
+            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }
         initialize();
     }

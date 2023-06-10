@@ -29,7 +29,7 @@ public class GestoreStatistiche {
             case Settimanale -> {
                 for(int i = 6; i>-1; i--){
                     String s = GestoreData.getInstance().generaDataSottratta(i);
-                    info.add(new Statistiche(s, GestoreDB.getInstance().numeroApp(s)));
+                    info.add(new Statistiche(s, GestoreDB.getInstance().conta(s, true)));
                 }
             }
             case Mensile -> {
@@ -43,13 +43,13 @@ public class GestoreStatistiche {
                 String m = GestoreData.getInstance().generaMese(mese);
                 for(int i = 1; i<=n; i++){
                     String data = GestoreData.getInstance().generaDataMese(i, m, anno);
-                    info.add(new Statistiche(data.substring(0,data.length()-5), GestoreDB.getInstance().numeroApp(data)));
+                    info.add(new Statistiche(data.substring(0,data.length()-5), GestoreDB.getInstance().conta(data,true)));
                 }
             }
             case Annuale -> {
                 for(int i = 1; i<=12; i++){
                     String data = GestoreData.getInstance().generaDataAnno(i, anno);
-                    info.add(new Statistiche(data.substring(2), GestoreDB.getInstance().numeroApp(data)));
+                    info.add(new Statistiche(data.substring(2), GestoreDB.getInstance().conta(data, true)));
                 }
             }
         }
