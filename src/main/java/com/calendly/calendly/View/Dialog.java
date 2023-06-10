@@ -5,6 +5,8 @@ import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
@@ -12,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 
 import java.util.LinkedList;
 import java.util.Objects;
@@ -24,18 +27,15 @@ public class Dialog {
     private Dialog() { }
     public static Dialog getInstance() { return instance; }
 
+
     private AnchorPane anchorPaneFather;
 
     public void setAnchorPaneFather(AnchorPane anchorPaneFather) {
         this.anchorPaneFather = anchorPaneFather;
     }
 
-    public enum from {
-        APPUNTAMENTI,
-        DIPENDENTI,
-        SERVIZI,
-        SIGNUP
-    }
+
+    public enum from { APPUNTAMENTI, DIPENDENTI, SERVIZI, SIGNUP }
 
     private javafx.scene.control.Dialog<DialogResponse> dialog;
 
@@ -62,7 +62,6 @@ public class Dialog {
 
         //todo fare prendere da database il giusto tema
         dialogPane.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(Settings.themes[0])).toExternalForm());
-
 
 
     }
@@ -117,10 +116,17 @@ public class Dialog {
             return null;
         });
 
-        VBox vbox = new VBox(8, name, lastName, role , salary);
+        VBox vbox = new VBox(8,
+                createHbox("Nome", name),
+                createHbox("Cognome", lastName),
+                createHbox("Ruolo", role),
+                createHbox("Salario", salary)
+        );
         return vbox;
     }
 
+
+    //todo return boolean per poi inserire nei vari controller se bisogna aggiornare la tabella o meno.
     //prende come parametro l'attuale ancorPane della view
     public Optional<DialogResponse> requestDialog(from fromView, AnchorPane anchorPane)  { //prende come parametri i nomi in minuscolo delle singole opzioni da richedere all'utente
         if (anchorPaneFather == null || anchorPane == null)
@@ -144,6 +150,20 @@ public class Dialog {
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private void setUpBlurEffect(Pane rightHomePane) {
         hasBeenSetUp = true;
         ColorAdjust adj = new ColorAdjust(0, -0.9, -0.5, 0);
@@ -157,6 +177,15 @@ public class Dialog {
         hasBeenSetUp = false;
         rightHomePane.setEffect(null);
         rightHomePane.setMouseTransparent(false);
-
     }
+
+
+    private HBox createHbox(String labelText, Node node) {
+        Label label = new Label(labelText);
+        label.setPrefWidth(65);
+        label.setAlignment(Pos.CENTER_LEFT);
+        return new HBox(20, label, node);
+    }
+
+
 }
