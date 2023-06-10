@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -31,10 +32,11 @@ public class Dialog {
 
     public enum from {
         APPUNTAMENTI,
-        DIPENDENTI
+        DIPENDENTI,
+        SERVIZI,
+        SIGNUP
     }
 
-    private AnchorPane popupContainer = new AnchorPane();
     private javafx.scene.control.Dialog<DialogResponse> dialog;
 
     private void setDialog(from fromView) {
@@ -49,6 +51,8 @@ public class Dialog {
         VBox vbox = switch (fromView) {
             case DIPENDENTI -> setComponentsForDipendenti();
             case APPUNTAMENTI -> setComponentsForAppuntamenti();
+            case SERVIZI -> setComponentsForServizi();
+            case SIGNUP -> setComponentsForRegistrazione();
         };
         dialogPane.setContent(vbox);
         dialogPane.getStyleClass().add("external-pane");
@@ -61,6 +65,14 @@ public class Dialog {
 
 
 
+    }
+
+    private VBox setComponentsForRegistrazione() {
+        return null;
+    }
+
+    private VBox setComponentsForServizi() {
+        return null;
     }
 
     private VBox setComponentsForAppuntamenti() {
