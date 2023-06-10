@@ -4,7 +4,10 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.io.File;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class GestoreDB {
     private static final GestoreDB instance = new GestoreDB();
@@ -83,57 +86,49 @@ public class GestoreDB {
         return s;
     }
 
-    public void inserimentoClienti(String CF, String Email, String Nome, String Cognome, String Numero) throws SQLException {
+    public void inserimento(entità ent, String [] info) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Clienti(CF, Email, Nome, Cognome, Numero) VALUES(?,?, ?, ?, ?);")) {
-            pstmt.setString(1, CF);
-            pstmt.setString(2, Email);
-            pstmt.setString(3, Nome);
-            pstmt.setString(4, Cognome);
-            pstmt.setString(4, Numero);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {}
-        closeConnection();
-    }
+        switch (ent){
+            case Dipendenti -> {
+                try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?);")) {
+                    pstmt.setString(1, info[1]+"."+info[2]+"."+(numeroDip()+1));
+                    pstmt.setString(2, BCrypt.hashpw(info[0], BCrypt.gensalt(12)));
+                    pstmt.setString(3, info[1]);
+                    pstmt.setString(4, info[2]);
+                    pstmt.setDouble(5, Double.parseDouble(info[3]));
+                    pstmt.setString(6, info[4]);
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Clienti -> {
+                try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Clienti(CF, Email, Nome, Cognome, Numero) VALUES(?,?, ?, ?, ?);")) {
+                    pstmt.setString(1, info[0]);
+                    pstmt.setString(2, info[1]);
+                    pstmt.setString(3, info[2]);
+                    pstmt.setString(4, info[3]);
+                    pstmt.setString(5, info[4]);
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Appuntamenti -> {
+                try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Appuntamenti(Data, CF_Utente, Id_Dipendente, Id_Servizio) VALUES(?,?, ?, ?);")) {
+                    pstmt.setString(1, info[0]);
+                    pstmt.setString(2, info[1]);
+                    pstmt.setInt(3, Integer.parseInt(info[2]));
+                    pstmt.setInt(4, Integer.parseInt(info[3]));
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Servizi -> {
+                try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Servizi(Tipo, Prezzo) VALUES(?,?);")) {
+                    pstmt.setString(1, info[0]);
+                    pstmt.setDouble(2, Double.parseDouble(info[1]));
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+        }
 
-    public void inserimentoAppuntamenti(Date Data, String CF, Integer id_d, Integer id_s) throws SQLException {
-        if(con == null || con.isClosed())
-            createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Appuntamenti(Data, CF_Utente, Id_Dipendente, Id_Servizio) VALUES(?,?, ?, ?);")) {
-            pstmt.setDate(1, Data);
-            pstmt.setString(2, CF);
-            pstmt.setInt(3, id_d);
-            pstmt.setInt(4, id_s);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {}
-        closeConnection();
-
-    }
-
-    public void inserimentoServizi(String Tipo, Double Prezzo) throws SQLException {
-        if(con == null || con.isClosed())
-            createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Servizi(Tipo, Prezzo) VALUES(?,?);")) {
-            pstmt.setString(1, Tipo);
-            pstmt.setDouble(2, Prezzo);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {}
-        closeConnection();
-    }
-
-    public void inserimentoDipendenti(String Password, String Nome, String Cognome, Double Salario, String Ruolo) throws SQLException {
-        if(con == null || con.isClosed())
-            createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?);")) {
-            pstmt.setString(1, Nome+"."+Cognome+"."+(numeroDip()+1));
-            pstmt.setString(2, BCrypt.hashpw(Password, BCrypt.gensalt(12)));
-            pstmt.setString(3, Nome);
-            pstmt.setString(4, Cognome);
-            pstmt.setDouble(5, Salario);
-            pstmt.setString(6, Ruolo);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {}
         closeConnection();
     }
 
