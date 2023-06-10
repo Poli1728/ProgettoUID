@@ -134,12 +134,21 @@ public class LoginController {
         width = accediButton.getWidth();
         double x = pane.getWidth()/2  - width/2;
 
-        loginLabel.setLayoutX(x);
+        /*loginLabel.setLayoutX(x);
         usernameLabel.setLayoutX(x);
         usernameField.setLayoutX(x);
         passwordLabel.setLayoutX(x);
         passwordField.setLayoutX(x);
         accediButton.setLayoutX(x);
+         */
+
+        loginLabel.layoutXProperty().bind(pane.widthProperty().subtract(loginLabel.getWidth()).divide(2));
+        usernameLabel.layoutXProperty().bind(pane.widthProperty().subtract(usernameLabel.getWidth()).divide(2));
+        usernameField.layoutXProperty().bind(pane.widthProperty().subtract(usernameField.getWidth()).divide(2));
+        passwordLabel.layoutXProperty().bind(pane.widthProperty().subtract(passwordLabel.getWidth()).divide(2));
+        passwordField.layoutXProperty().bind(pane.widthProperty().subtract(passwordField.getWidth()).divide(2));
+        accediButton.layoutXProperty().bind(pane.widthProperty().subtract(accediButton.getWidth()).divide(2));
+
     }
 
 }
