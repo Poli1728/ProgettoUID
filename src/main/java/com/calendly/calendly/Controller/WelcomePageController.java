@@ -43,13 +43,14 @@ public class WelcomePageController {
     private Stage stage;
 
     public void initialize() {
-        labelTitle.setText("Welcome to\n" + Settings.INIT_TITLE);
+        continueButton.setDisable(true);
+        labelTitle.setText(Settings.INIT_TITLE);
         labelTitle.setTextAlignment(TextAlignment.CENTER);
-        //todo impostare la grandezza del testo
 
         configStackPane();
-        configContinueButton();
         setImages();
+        configContinueButton();
+
     }
 
     private void configStackPane() {
@@ -83,8 +84,7 @@ public class WelcomePageController {
 
 
 
-    private SequentialTransition imgTransition = MyTransition.getInstance().imgFadeTransition(images, imageView);;
-    private int indexImage = 0;
+    private SequentialTransition imgTransition = MyTransition.getInstance().imgFadeTransition(images, imageView);
 
     private void setImages() {
         int N_IMAGES = 4;
@@ -93,6 +93,8 @@ public class WelcomePageController {
             try {
                 Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/welcome" + i + ".png")));
                 images.add(image);
+                if (i == 4)
+                    imageView.setImage(image);
             } catch (Exception e) {
                 System.out.println(i + " " + e.toString());
             }
@@ -101,15 +103,15 @@ public class WelcomePageController {
         imageView.maxWidth(stackPane.getMaxWidth());
         imageView.maxHeight(210);
 
-        setLayoutImageView();
-        imgTransition.setCycleCount(SequentialTransition.INDEFINITE);
-        imgTransition.play();
-
-
         stackPane.layoutBoundsProperty().addListener(observable -> {
             setLayoutImageView();
         });
 
+        setLayoutImageView();
+        imgTransition.setCycleCount(SequentialTransition.INDEFINITE);
+        imgTransition.play();
+
+        continueButton.setDisable(false);
     }
 
     private void setLayoutImageView() {
@@ -118,7 +120,7 @@ public class WelcomePageController {
 
         imageView.setPreserveRatio(true);
 
-        imageView.setLayoutX(stackPane.getWidth()/2 - imageView.getFitWidth()/2);
+        imageView.setLayoutX((stackPane.getWidth() - imageView.getFitWidth())/2);
         imageView.setLayoutY(0);
 
         if (!stackPane.getChildren().contains(imageView)) {
