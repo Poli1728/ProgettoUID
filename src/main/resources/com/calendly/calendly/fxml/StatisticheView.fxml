@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.StatisticheController">
    <children>
-      <VBox layoutX="267.0" layoutY="182.0" prefHeight="825.0" prefWidth="660.0" AnchorPane.bottomAnchor="-165.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="267.0" layoutY="182.0" prefHeight="649.0" prefWidth="660.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label fx:id="labelStatistiche" prefHeight="35.0" prefWidth="642.0" text="Statistiche">
                <font>
