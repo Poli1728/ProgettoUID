@@ -10,13 +10,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class ImpostazioniController {
 
     @FXML
     private Label labelImpostazioni;
-
 
     @FXML
     private ComboBox<String> temiComboBox;
@@ -55,7 +53,6 @@ public class ImpostazioniController {
             MyFont.getInstance().setTema("LIGHT");
             GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont());
         }
-        temiComboBox.getItems().clear();
         initialize();
     }
 
@@ -76,8 +73,17 @@ public class ImpostazioniController {
         if(MyFont.getInstance().getFont().equals("Cantarell")){
             checkDislessia.setSelected(true);
         }
+        if (temiComboBox.getItems().size() > 2){
+            temiComboBox.getItems().clear();
+        }
         temiComboBox.getItems().add("Scuro");
         temiComboBox.getItems().add("Chiaro");
+        String tema = MyFont.getInstance().getTema();
+        if (tema.equals("DARK")){
+            temiComboBox.setValue("Scuro");
+        }else if(tema.equals("LIGHT")){
+            temiComboBox.setValue("Chiaro");
+        }
         impostaFontSize();
     }
 }
