@@ -15,13 +15,8 @@ import java.util.ArrayList;
 public class ImpostazioniController {
 
     @FXML
-    private Button buttonCambia;
-
-    @FXML
     private Label labelImpostazioni;
 
-    @FXML
-    private Slider slideBar;
 
     @FXML
     private ComboBox<String> temiComboBox;
@@ -36,25 +31,17 @@ public class ImpostazioniController {
     private Label labelDislessia;
 
     @FXML
-    private Label labelSize;
-
-    @FXML
     private Label labelTemi;
     @FXML
     private Text txtDislessia;
 
-    @FXML
-    private Text txtSize;
 
     private void impostaFontSize(){
         labelImpostazioni.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        labelSize.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         labelDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         labelTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         txtTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        txtSize.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        buttonCambia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
     }
 
     @FXML
@@ -62,12 +49,13 @@ public class ImpostazioniController {
         if (temiComboBox.getSelectionModel().isSelected(0)){
             SceneHandler.getInstance().setTheme(Settings.theme.DARK);
             MyFont.getInstance().setTema("DARK");
-            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt());
+            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont());
         }else if (temiComboBox.getSelectionModel().isSelected(1)){
             SceneHandler.getInstance().setTheme(Settings.theme.LIGHT);
             MyFont.getInstance().setTema("LIGHT");
-            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt());
+            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont());
         }
+        temiComboBox.getItems().clear();
         initialize();
     }
 
@@ -75,19 +63,11 @@ public class ImpostazioniController {
     void attivaDislessia(ActionEvent event) throws SQLException {
         if(checkDislessia.isSelected()){
             MyFont.getInstance().setFont(MyFont.getInstance().getCantarell());
-            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt());
+            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont());
         }else{
             MyFont.getInstance().setFont(MyFont.getInstance().getQuicksand());
-            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt());
+            GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont());
         }
-        initialize();
-    }
-
-    @FXML
-    void cambiaGrandezza(ActionEvent event) throws SQLException {
-        MyFont.getInstance().setSizeTxt((int)slideBar.getValue());
-        GestoreDB.getInstance().aggiornaTemplate(MyFont.getInstance().getTema(),MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt());
-        MyFont.getInstance().setSizeLabel((int)slideBar.getValue());
         initialize();
     }
 
@@ -96,7 +76,6 @@ public class ImpostazioniController {
         if(MyFont.getInstance().getFont().equals("Cantarell")){
             checkDislessia.setSelected(true);
         }
-        slideBar.setValue(MyFont.getInstance().getSizeTxt());
         temiComboBox.getItems().add("Scuro");
         temiComboBox.getItems().add("Chiaro");
         impostaFontSize();

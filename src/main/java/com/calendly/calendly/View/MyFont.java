@@ -49,13 +49,6 @@ public class MyFont {
         }
     }
 
-    public void setSizeTxt(int s){
-        sizeTxt = s;
-    }
-    public void setSizeLabel(int s){
-        sizeLabel = s+14;
-    }
-
     public String getFont(){
         return font;
     }

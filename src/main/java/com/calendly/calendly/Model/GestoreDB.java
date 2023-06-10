@@ -137,14 +137,12 @@ public class GestoreDB {
         closeConnection();
     }
 
-    public void aggiornaTemplate(String Tema, String Font, int Size) throws SQLException {
+    public void aggiornaTemplate(String Tema, String Font) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
-        try (PreparedStatement pstmt = con.prepareStatement("UPDATE Template SET Tema = ?, Font = ?, Size = ? WHERE Id = 1;")) {
-            /*UPDATE Template SET Tema = ?, Font = ?, Size = ? WHERE Id = 1;*/
+        try (PreparedStatement pstmt = con.prepareStatement("UPDATE Template SET Tema = ?, Font = ? WHERE Id = 1;")) {
             pstmt.setString(1, Tema);
             pstmt.setString(2, Font);
-            pstmt.setInt(3, Size);
             pstmt.executeUpdate();
         } catch (SQLException e) {}
         closeConnection();
