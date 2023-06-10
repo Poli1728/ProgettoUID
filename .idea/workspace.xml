@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Login - X/Y Layout Property Bind pt2">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Aggiunta Labels in Dialog">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/HomeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/HomeView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/LoginView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/LoginView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -362,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686393746120</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Aggiunta Labels in Dialog">
+      <created>1686397634626</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1686397634626</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -389,7 +399,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Cambiamenti grafica in WelcomePageController.java" />
     <MESSAGE value="css LoginView.fxml" />
     <MESSAGE value="autoresize LoginView" />
     <MESSAGE value="Ripristinato css in HomeView.fxml" />
@@ -414,6 +423,7 @@
     <MESSAGE value="-" />
     <MESSAGE value="Login - X/Y Layout Property Bind" />
     <MESSAGE value="Login - X/Y Layout Property Bind pt2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login - X/Y Layout Property Bind pt2" />
+    <MESSAGE value="Aggiunta Labels in Dialog" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Labels in Dialog" />
   </component>
 </project>
