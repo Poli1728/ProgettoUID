@@ -73,11 +73,12 @@ public class ImpostazioniController {
         if(MyFont.getInstance().getFont().equals("Cantarell")){
             checkDislessia.setSelected(true);
         }
-        if (temiComboBox.getItems().size() > 2){
-            temiComboBox.getItems().clear();
+
+        if (temiComboBox.getItems().size() == 0){
+
+            temiComboBox.getItems().add("Scuro");
+            temiComboBox.getItems().add("Chiaro");
         }
-        temiComboBox.getItems().add("Scuro");
-        temiComboBox.getItems().add("Chiaro");
         String tema = MyFont.getInstance().getTema();
         if (tema.equals("DARK")){
             temiComboBox.setValue("Scuro");
