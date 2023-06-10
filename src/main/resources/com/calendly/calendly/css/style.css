@@ -235,7 +235,18 @@
     -fx-control-inner-background: thirdBackgroundColor;
 }
 
+#search_hbox {
+    -fx-background-color: thirdBackgroundColor;
+    -fx-background-radius: 25px;
+}
 
+#search_hbox > * {
+    -fx-background-color: transparent;
+}
+
+#search_hbox > *:hover {
+    -fx-background-color: fourthBackgroundColor;
+}
 
 
 

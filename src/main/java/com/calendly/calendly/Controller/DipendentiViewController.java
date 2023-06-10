@@ -11,10 +11,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.util.converter.DoubleStringConverter;
 
@@ -61,6 +60,9 @@ public class DipendentiViewController {
 
     @FXML
     private ComboBox filtroBox;
+
+    @FXML
+    private HBox search_hbox;
 
     @FXML
     void actionFiltroBox(ActionEvent event) {
@@ -198,14 +200,6 @@ public class DipendentiViewController {
                 new Dipendente("28", "Mario", "Bruno", "Manager", 1005.60)
                 );
         return data;
-    }
-
-
-    private void initializePopup() {
-        ColorAdjust adj = new ColorAdjust(0, -0.9, -0.5, 0);
-        GaussianBlur blur = new GaussianBlur(55); // 55 is just to show edge effect more clearly.
-        adj.setInput(blur);
-        ancorPane.getParent().getParent().setEffect(adj);
     }
 
 

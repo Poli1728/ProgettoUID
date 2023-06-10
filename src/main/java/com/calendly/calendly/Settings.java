@@ -5,7 +5,7 @@ public class Settings {
     public final static String[] fonts = { };
     public final static String[] styles = {"css/style.css"};
     public final static String[] themes = {"css/dark.css", "css/light.css"};
-    public enum theme                     { DARK         ,  LIGHT         }
+    public enum theme { DARK, LIGHT }
     public final static int DEFAULT_WINDOW_HEIGHT = 900;
     public final static int DEFAULT_WINDOW_WIDTH = 1000;
     public final static int MIN_WINDOW_HEIGHT = 700;
