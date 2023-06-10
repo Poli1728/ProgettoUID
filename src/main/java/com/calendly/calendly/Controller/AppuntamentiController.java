@@ -139,6 +139,8 @@ public class AppuntamentiController implements Initializable {
             doc.close();
             writer.close();
         }
+        idScontrino.setText("");
+        idScontrino.setPromptText("Id");
     }
 
     @FXML
@@ -167,6 +169,8 @@ public class AppuntamentiController implements Initializable {
             table.setItems(app);
             setCellValue();
         }
+        cercaField.setText("");
+        cercaField.setPromptText("Cerca");
     }
 
     @Override

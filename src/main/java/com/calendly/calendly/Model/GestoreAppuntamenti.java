@@ -18,14 +18,9 @@ public class GestoreAppuntamenti {
         for (String i : query){
             Appuntamento a = new Appuntamento(i.split(";"));
             lista.add(a);
-
         }
         return lista;
     }
 
-    public int numeroAppuntamenti(String data) throws SQLException {
-        int numero = GestoreDB.getInstance().numeroApp(data);
-        return numero;
-    }
 
 }
