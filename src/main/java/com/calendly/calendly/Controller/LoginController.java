@@ -101,10 +101,12 @@ public class LoginController {
             accediButton.layoutYProperty().bind(pane.heightProperty().subtract(accediButton.getHeight()).subtract(accediButton.getHeight()*0.7));
         });
 
+        ancorPane.layoutBoundsProperty().addListener(observable -> {
+            setXLocationInsidePane();
+        });
         pane.layoutBoundsProperty().addListener(observable -> {
             setXLocationInsidePane();
         });
-
     }
 
     private void setXLocationInsidePane() {
@@ -132,7 +134,7 @@ public class LoginController {
 
 
         width = accediButton.getWidth();
-        double x = pane.getWidth()/2  - width/2;
+        double x = (pane.getWidth() - width) / 2;
 
         /*loginLabel.setLayoutX(x);
         usernameLabel.setLayoutX(x);
