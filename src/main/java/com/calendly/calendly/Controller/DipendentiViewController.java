@@ -88,10 +88,6 @@ public class DipendentiViewController {
 
     }
 
-    @FXML
-    void onSortTableView(ActionEvent event) {
-
-    }
 
     private void impostaFont(){
         labelDipendenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
