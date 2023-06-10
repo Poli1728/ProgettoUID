@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="New Login">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Aggiustamenti grafici">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/DipendentiView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/DipendentiView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +52,15 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2QNlOQuhC405Ic5zpGGDEcQmiWV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -378,7 +381,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686404905540</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Aggiustamenti grafici">
+      <created>1686407264760</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1686407264760</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -405,7 +415,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="autoresize LoginView" />
     <MESSAGE value="Ripristinato css in HomeView.fxml" />
     <MESSAGE value="Fixato autoresize in LoginController.java" />
     <MESSAGE value="Fixato 2.0 autoresize in LoginController.java" />
@@ -430,6 +439,7 @@
     <MESSAGE value="Login - X/Y Layout Property Bind pt2" />
     <MESSAGE value="Aggiunta Labels in Dialog" />
     <MESSAGE value="New Login" />
-    <option name="LAST_COMMIT_MESSAGE" value="New Login" />
+    <MESSAGE value="Aggiustamenti grafici" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiustamenti grafici" />
   </component>
 </project>

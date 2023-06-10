@@ -248,5 +248,9 @@
     -fx-background-color: fourthBackgroundColor;
 }
 
+.errors-label. {
+    -fx-text-fill: systemRed;
+}
+
 
 

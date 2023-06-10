@@ -24,7 +24,7 @@ public class GestoreDB {
         String url = "jdbc:sqlite:"+file.getAbsolutePath();
         con = DriverManager.getConnection(url);
     }
-    private enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
+    public enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
 
     public entità getDipendenti(){ return entità.Dipendenti;}
     public entità getClienti(){ return entità.Clienti;}
