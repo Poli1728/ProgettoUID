@@ -122,9 +122,10 @@ public class HomeController {
     }
 
     @FXML
-    void initialize() {
+    void initialize() throws IOException {
         impostaTemi();
         Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/logo.png")));
         logoView.setImage(image);
+        avviaPane("fxml/Dashboard");
     }
 }

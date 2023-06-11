@@ -2,7 +2,6 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Appuntamento;
 import com.calendly.calendly.Model.GestoreAppuntamenti;
-import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.View.MyFont;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -12,21 +11,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Font;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-public class AppuntamentiController implements Initializable {
+public class AppuntamentiController{
     @FXML
     private Label labelAppuntamenti;
     @FXML
@@ -173,8 +168,8 @@ public class AppuntamentiController implements Initializable {
         cercaField.setPromptText("Cerca");
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @FXML
+    public void initialize() {
         impostaTemi();
         aggiungiItems();
         table.getItems().clear();

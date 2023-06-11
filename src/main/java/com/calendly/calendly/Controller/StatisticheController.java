@@ -40,7 +40,7 @@ public class StatisticheController{
         int a = Integer.parseInt(anno.toString());
         switch(p){
             case "Settimanale" -> {
-                lista = GestoreStatistiche.getInstance().statistiche(GestoreStatistiche.getInstance().getSettimanale(), m,a);
+                lista = GestoreStatistiche.getInstance().statistiche(GestoreStatistiche.getInstance().getSettimanale(), m,a, "");
                 for (Statistiche i : lista) {
                     appuntamenti.getData().add(new XYChart.Data<String, Number>(i.getData(), i.getNumeroApp()));
                 }
@@ -48,7 +48,7 @@ public class StatisticheController{
             }
             case "Mensile" -> {
                 try {
-                    lista = GestoreStatistiche.getInstance().statistiche(GestoreStatistiche.getInstance().getMensile(),m,a);
+                    lista = GestoreStatistiche.getInstance().statistiche(GestoreStatistiche.getInstance().getMensile(),m,a,"");
                     for(Statistiche i : lista){
                         appuntamenti.getData().add(new XYChart.Data<String, Number>(i.getData(), i.getNumeroApp()));
                     }
@@ -57,7 +57,7 @@ public class StatisticheController{
             }
             case "Annuale" -> {
                 try {
-                    lista = GestoreStatistiche.getInstance().statistiche(GestoreStatistiche.getInstance().getAnnuale(),m,a);
+                    lista = GestoreStatistiche.getInstance().statistiche(GestoreStatistiche.getInstance().getAnnuale(),m,a,"");
                     for(Statistiche i : lista){
                         appuntamenti.getData().add(new XYChart.Data<String, Number>(i.getData(), i.getNumeroApp()));
                     }

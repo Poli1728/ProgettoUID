@@ -11,7 +11,7 @@ public class GestoreStatistiche {
         return instance;
     }
     private GestoreStatistiche(){}
-    private enum Periodi{Settimanale, Mensile, Annuale}
+    private enum Periodi{Giornaliero,Settimanale, Mensile, Annuale}
 
     public Periodi getSettimanale(){
         return Periodi.Settimanale;
@@ -22,10 +22,16 @@ public class GestoreStatistiche {
     public Periodi getAnnuale(){
         return Periodi.Annuale;
     }
+    public Periodi getGiornaliero(){
+        return Periodi.Giornaliero;
+    }
 
-    public ArrayList<Statistiche> statistiche( Periodi p ,int mese, int anno) throws SQLException{
+    public ArrayList<Statistiche> statistiche( Periodi p ,int mese, int anno, String data) throws SQLException{
         ArrayList<Statistiche> info = new ArrayList<Statistiche>();
         switch (p){
+            case Giornaliero -> {
+                info.add(new Statistiche(data, GestoreDB.getInstance().conta(data, true)));
+            }
             case Settimanale -> {
                 for(int i = 6; i>-1; i--){
                     String s = GestoreData.getInstance().generaDataSottratta(i);
@@ -42,14 +48,14 @@ public class GestoreStatistiche {
                 }
                 String m = GestoreData.getInstance().generaMese(mese);
                 for(int i = 1; i<=n; i++){
-                    String data = GestoreData.getInstance().generaDataMese(i, m, anno);
-                    info.add(new Statistiche(data.substring(0,data.length()-5), GestoreDB.getInstance().conta(data,true)));
+                    String dataGenerata = GestoreData.getInstance().generaDataMese(i, m, anno);
+                    info.add(new Statistiche(dataGenerata.substring(0,dataGenerata.length()-5), GestoreDB.getInstance().conta(dataGenerata,true)));
                 }
             }
             case Annuale -> {
                 for(int i = 1; i<=12; i++){
-                    String data = GestoreData.getInstance().generaDataAnno(i, anno);
-                    info.add(new Statistiche(data.substring(2), GestoreDB.getInstance().conta(data, true)));
+                    String dataGenerata = GestoreData.getInstance().generaDataAnno(i, anno);
+                    info.add(new Statistiche(dataGenerata.substring(2), GestoreDB.getInstance().conta(dataGenerata, true)));
                 }
             }
         }
