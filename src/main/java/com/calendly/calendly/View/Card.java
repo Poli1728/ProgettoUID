@@ -2,6 +2,7 @@ package com.calendly.calendly.View;
 
 import com.calendly.calendly.Main;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -14,37 +15,36 @@ import javafx.scene.text.Font;
 import java.util.Objects;
 
 public class Card extends AnchorPane {
-
-    private AnchorPane card;
     private Integer identifier;
     private VBox parent;
     public enum cardType {PERSON, EMPLOYEE}
     public Card(cardType type, int identifier, VBox parent) {
+        super();
         this.parent = parent;
         this.identifier = identifier;
-        this.card = createCard(type);
-    }
-    public AnchorPane getCard() {
-        return card;
+        createCard(type);
     }
 
-    private AnchorPane createCard(cardType type) {
-        return switch (type) {
-            case PERSON -> null;
+    private void createCard(cardType type) {
+        switch (type) {
+            case PERSON -> createPerson();
             case EMPLOYEE -> createEmployee();
         };
     }
 
-    private AnchorPane createEmployee() {
-        Button edit = new Button("Modifica");
+    private void createPerson() {
+    }
+
+    private void createEmployee() {
+        CustomButton edit = new CustomButton(CustomButton.prefers.IMAGE_ONLY, "Modifica","img/edit.png");
         edit.getStyleClass().add("thirdButton");
 
         ImageView imageView = new ImageView();
         try {
-            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("img/user.png")));
+            Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/user.png")));
             imageView.setImage(image);
-            imageView.setFitWidth(200);
-            imageView.setFitWidth(200);
+            imageView.setFitWidth(50);
+            imageView.setFitWidth(50);
             imageView.setPreserveRatio(true);
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -77,17 +77,17 @@ public class Card extends AnchorPane {
         vbox.setPadding(insets);
 
         HBox hBox = new HBox(imageView, vbox);
-
-        AnchorPane ap = new AnchorPane();
-        ap.getChildren().addAll(edit, hBox);
+        hBox.setAlignment(Pos.CENTER_LEFT);
+        hBox.setPadding(new Insets(0, 0, 0, 15));
+        
+        this.getChildren().addAll(edit, hBox);
         AnchorPane.setRightAnchor(edit, hBox.getWidth());
         AnchorPane.setTopAnchor(edit, 0.0);
         edit.toFront();
-        ap.prefWidthProperty().bind(parent.widthProperty().divide(2).subtract(30));
+        this.prefWidthProperty().bind(parent.widthProperty().divide(2).subtract(30));
 
-        ap.getStyleClass().add("card-info");
-
-        return ap;
+        this.getStyleClass().add("card-info");
+        
     }
 
 

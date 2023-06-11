@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="css">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ServiziViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/ServiziView.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/user.png" afterDir="false" />
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Aggiunti: &#10; - nuovi stili CSS&#10; - nuovo oggetto Card&#10; - ServiziView.fxml e controller (in fase di test)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CustomButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/edit.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ServiziViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ServiziViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -404,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686493918029</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Aggiunti: &#10; - nuovi stili CSS&#10; - nuovo oggetto Card&#10; - ServiziView.fxml e controller (in fase di test)">
+      <created>1686507042890</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1686507042890</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -431,7 +438,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixato 2.0 autoresize in LoginController.java" />
     <MESSAGE value="Ora il LoginView.fxml posiziona gli elementi nella giusta posizione in ogni caso (quantomeno si spera :(  )" />
     <MESSAGE value="aggiunta" />
     <MESSAGE value="Cambiamenti grafici per la posizione degli elementi della login e della welcomepage" />
@@ -456,6 +462,7 @@
     <MESSAGE value="Aggiustamenti grafici" />
     <MESSAGE value="Dialog validation" />
     <MESSAGE value="css" />
-    <option name="LAST_COMMIT_MESSAGE" value="css" />
+    <MESSAGE value="Aggiunti: &#10; - nuovi stili CSS&#10; - nuovo oggetto Card&#10; - ServiziView.fxml e controller (in fase di test)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunti: &#10; - nuovi stili CSS&#10; - nuovo oggetto Card&#10; - ServiziView.fxml e controller (in fase di test)" />
   </component>
 </project>

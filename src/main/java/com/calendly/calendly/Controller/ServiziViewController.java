@@ -78,7 +78,7 @@ public class ServiziViewController {
             Card obj1 = new Card(Card.cardType.EMPLOYEE, 4, vboxEsterno);
             Card obj2 = new Card(Card.cardType.EMPLOYEE, 5, vboxEsterno);
 
-            HBox hbox1 = new HBox(10 , obj1.getCard(), obj2.getCard());
+            HBox hbox1 = new HBox(10 , obj1, obj2);
 
             hbox1.setFillHeight(true);
             hbox1.setAlignment(Pos.BASELINE_CENTER);
