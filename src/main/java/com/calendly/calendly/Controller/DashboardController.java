@@ -55,6 +55,8 @@ public class DashboardController {
     @FXML
     private Text text;
 
+    // associa i valori della singola colonna alla variabile presente all'interno di appuntamento
+
     private void setCellValue(){
         colonnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colonnaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -66,8 +68,9 @@ public class DashboardController {
         colonnaServizio.setCellValueFactory(new PropertyValueFactory<>("servizio"));
     }
 
-    private void impostaTable(String data){
+    // aggiunge gli elementi all'interno della table
 
+    private void impostaTable(String data){
         try {
             ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti(true, "A.Data", data);
             ObservableList<Appuntamento> observableApp = FXCollections.observableArrayList(app);
@@ -75,6 +78,8 @@ public class DashboardController {
             setCellValue();
         } catch (SQLException e) {}
     }
+
+    //aggiunge gli elementi all'interno del chart
 
     private void impostaChart(String data) throws SQLException {
         XYChart.Series<String, Number> appuntamenti = new XYChart.Series<String, Number>();
@@ -86,6 +91,8 @@ public class DashboardController {
         }
         chartGiornaliero.getData().add(appuntamenti);
     }
+
+    // inizializza tutto
 
     @FXML
     void initialize() throws SQLException {

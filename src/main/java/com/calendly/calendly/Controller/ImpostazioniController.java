@@ -1,4 +1,5 @@
 package com.calendly.calendly.Controller;
+
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
@@ -8,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
 import java.sql.SQLException;
 
 public class ImpostazioniController {
@@ -34,6 +34,7 @@ public class ImpostazioniController {
     private Text txtDislessia;
 
 
+    // Funzione che imposta i tutti i dettagli dei font scelti: Tema, Font e Size(quest'ultima non è modificabile all'utente)
     private void impostaFontSize(){
         labelImpostazioni.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         labelDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
@@ -42,6 +43,7 @@ public class ImpostazioniController {
         txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
     }
 
+    // É la funzione che imposta il tema dei testi e bottoni, ogni volta aggiorna anche i dati nel DB
     @FXML
     void scegliTema(ActionEvent event) throws SQLException {
         if (temiComboBox.getSelectionModel().isSelected(0)){
@@ -58,6 +60,7 @@ public class ImpostazioniController {
         initialize();
     }
 
+    // Funzione che attiva il font in base alla check box
     @FXML
     void attivaDislessia(ActionEvent event) throws SQLException {
         if(checkDislessia.isSelected()){
@@ -72,6 +75,7 @@ public class ImpostazioniController {
         initialize();
     }
 
+    //Initialize, vengono inserite tutte le cose all'inizio
     @FXML
     public void initialize(){
         if(MyFont.getInstance().getFont().equals("Cantarell")){

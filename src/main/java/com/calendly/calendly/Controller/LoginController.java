@@ -1,5 +1,5 @@
 package com.calendly.calendly.Controller;
-import com.calendly.calendly.Model.GestoreDB;
+
 import com.calendly.calendly.SceneHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -8,8 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-
-import java.sql.SQLException;
 
 public class LoginController {
     @FXML
@@ -31,7 +29,7 @@ public class LoginController {
 
 
 
-    //Funzione dedicata all'accesso dell'utente ~ Marco
+    //Funzione dedicata all'accesso dell'utente
     @FXML
     void accedi(ActionEvent event) {
         SceneHandler.getInstance().launchDashboard();

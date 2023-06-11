@@ -1,7 +1,6 @@
 package com.calendly.calendly.Model;
 
 import javafx.beans.property.*;
-import javafx.scene.control.Button;
 
 public class Appuntamento {
     private final SimpleIntegerProperty id;

@@ -15,24 +15,36 @@ public class GestoreDB {
 
     private Connection con = null;
 
+    //crea la connessione al db
+
     private void createConnection() throws SQLException {
         File file = new File("src/main/resources/com/calendly/calendly/db/progetto.db");
         String url = "jdbc:sqlite:"+file.getAbsolutePath();
         con = DriverManager.getConnection(url);
     }
+
+    //chiude la connessione
+
     public void closeConnection() throws SQLException {
         if(con != null)
             con.close();
         con = null;
     }
 
+    //le entità che sono presenti nel db
+
     private enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
+
+    //getters delle entità
 
     public entità getDipendenti(){ return entità.Dipendenti;}
     public entità getClienti(){ return entità.Clienti;}
     public entità getAppuntamenti(){ return entità.Appuntamenti;}
     public entità getServizi(){ return entità.Servizi;}
     public entità getTemplate(){ return entità.Template;}
+
+    // leggi entità prende tutto dell'entità indicata, senza nessun vincolo
+
     public ArrayList<String> leggiEntità(entità ent) throws SQLException {
         createConnection();
         String query = "select * from "+ent.toString()+";";
@@ -73,6 +85,8 @@ public class GestoreDB {
         closeConnection();
         return risultato;
     }
+
+    // Inserisce nel db, una tupla dell'entità indicata
 
     public void inserimento(entità ent, String [] info) throws SQLException {
         if(con == null || con.isClosed())
@@ -119,6 +133,9 @@ public class GestoreDB {
 
         closeConnection();
     }
+
+    // aggiorna la tupla indicata
+
     public void aggiornamento(entità ent, String [] info) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
@@ -175,16 +192,17 @@ public class GestoreDB {
         closeConnection();
     }
 
+    //cerca in base la singola tupla ponendo l'id o il cf uguali alla chiave, andando a selezionare il singolo parametro. si possono generare anche singole tuple con tutti i parametri
+
     public String cercaValore (entità ent, String parametro, String chiave) throws SQLException {
         if(con == null || con.isClosed())
             createConnection();
         String query;
-        if (!ent.equals(entità.Appuntamenti)) {
+        if (!ent.equals(entità.Clienti)) {
             query = "Select " + parametro + " From " + ent.toString() + " Where Id = '" + chiave + "';";
         }else{
             query = "Select " + parametro + " From " + ent.toString() + " Where CF LIKE '" + chiave + "';";
         }
-        //System.out.println(query);
         PreparedStatement stmt = con.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();
         StringBuilder s= new StringBuilder();
@@ -194,6 +212,8 @@ public class GestoreDB {
         closeConnection();
         return s.toString();
     }
+
+    //conta il numero di Appuntamenti in una certa data e i numeri di dipendenti totali, la prima viene usata per le statistiche, la seconda per generare lo username di base
 
     public int conta(String data, boolean scelta) throws SQLException {
         createConnection();
@@ -217,6 +237,8 @@ public class GestoreDB {
         return s;
     }
 
+    // crea la lista che viene aggiunta alla tabella degli appuntamenti, sia quella di ricerca che quella senza ricerca
+
     public ArrayList<String> creaLista(boolean cerca, String filtro, String valore) throws SQLException {
         createConnection();
         ArrayList<String> risultato = new ArrayList<String>();
@@ -238,6 +260,8 @@ public class GestoreDB {
         closeConnection();
         return risultato;
     }
+
+    // permette di effettuare il login
 
     public boolean login(String username, String password) throws SQLException {
         createConnection();

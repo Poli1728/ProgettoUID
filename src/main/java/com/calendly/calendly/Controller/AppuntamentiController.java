@@ -2,6 +2,8 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.Appuntamento;
 import com.calendly.calendly.Model.GestoreAppuntamenti;
+import com.calendly.calendly.Model.GestoreDB;
+import com.calendly.calendly.Model.GestoreData;
 import com.calendly.calendly.View.MyFont;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -70,6 +72,7 @@ public class AppuntamentiController{
     @FXML
     private ComboBox<String> filtroBox;
 
+    // Associa le colonne della table alle variabili della classe Appuntamento
     private void setCellValue(){
         colonnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colonnaEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -80,6 +83,8 @@ public class AppuntamentiController{
         colonnaNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         colonnaServizio.setCellValueFactory(new PropertyValueFactory<>("servizio"));
     }
+
+    // aggiunge gli items al combo box
 
     private void aggiungiItems(){
         filtroBox.getItems().add("Id");
@@ -93,7 +98,9 @@ public class AppuntamentiController{
         filtroBox.getItems().add("Prezzo");
     }
 
-    private void impostaTemi(){
+    // imposta Font dei testi
+
+    private void impostaFont(){
         labelAppuntamenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         addButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         editButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
@@ -104,39 +111,61 @@ public class AppuntamentiController{
         cercaField.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
     }
 
+    // aggiunge l'appuntamento al db
+
     @FXML
     void aggiungiAppuntamento(ActionEvent event) throws IOException {
+        //controlla se c'è l'appuntamento indicato
     }
+
+    // modifica l'appuntamento presente nel db
 
     @FXML
     void modificaAppuntamento(ActionEvent event) throws IOException {
-
+        //controlla se c'è l'appuntamento indicato
     }
+
+    // rimuove l'appuntamento dal db
 
     @FXML
     void rimuoviAppuntamento(ActionEvent event) throws IOException {
+        //controlla se c'è l'appuntamento indicato
     }
+
+    // Questa funzione genera uno scontrino all'interno con presenti dei dati dell'appuntamento
 
     @FXML
     void generaScontrino(ActionEvent event) throws DocumentException, FileNotFoundException, SQLException {
         if(idScontrino.getText().equals("")){
             System.out.println("Non ho ancora gli alert :)");
         }else {
-            Document doc = new Document();
-            String id = idScontrino.getText();
-            PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("Scontrino"+id+".pdf"));
-            doc.open();
-            doc.addTitle("Scontrino "+id);
-            ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti(true,"A.Id", "'"+id+"'");
-            Appuntamento a = app.get(0);
-            String parag = "Id appuntamento: "+a.getId()+"\n"+"Email: "+a.getEmail()+"\n"+"Nome e cognome: "+a.getIdentificativo()+"\n"+"Numero: "+a.getNumero()+"\n"+"Data appuntamento: "+a.getData()+"\n"+"Dipendente: "+a.getDipendente()+"\n"+"Servizio: "+a.getServizio()+"\n"+"Prezzo: "+a.getPrezzo()+"\n"+"Grazie per averci scelto\n";
-            doc.add(new Paragraph(parag));
-            doc.close();
-            writer.close();
+            if(!GestoreDB.getInstance().cercaValore(GestoreDB.getInstance().getAppuntamenti(),"Id", idScontrino.getText()).equals(idScontrino.getText())){
+                // Qui devi richiamare l'alert
+            }else{
+                Document doc = new Document();
+                String id = idScontrino.getText();
+                PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("Scontrino"+id+".pdf"));
+                doc.open();
+                doc.addTitle("Scontrino "+id);
+                ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti(true,"A.Id", id);
+                Appuntamento a = app.get(0);
+                String data = String.valueOf(java.time.LocalDateTime.now());
+                StringBuilder giorno = GestoreData.getInstance().giornoCorrente(data);
+                StringBuilder anno = GestoreData.getInstance().annoCorrente(data);
+                StringBuilder mese = GestoreData.getInstance().meseCorrente(data);
+                data = giorno.toString()+"/"+mese.toString()+"/"+anno.toString() +" "+ data.substring(11, 19);
+                String parag = "Id appuntamento: "+a.getId()+"\n"+"Email: "+a.getEmail()+"\n"+"Nome e cognome: "+a.getIdentificativo()+"\n"+"Numero: "+a.getNumero()+"\n"+"Data appuntamento: "+a.getData()+"\nData generazione scontrino: "+data+"\n"+"Dipendente: "+a.getDipendente()+"\n"+"Servizio: "+a.getServizio()+"\n"+"Prezzo: "+a.getPrezzo()+"\n"+"Grazie per averci scelto\n";
+                doc.add(new Paragraph(parag));
+                doc.close();
+                writer.close();
+            }
+
         }
         idScontrino.setText("");
         idScontrino.setPromptText("Id");
     }
+
+    // Questa è la funzione di ricerca tramite combo box e text field
 
     @FXML
     void cerca(ActionEvent event) throws SQLException {
@@ -160,7 +189,7 @@ public class AppuntamentiController{
                 case "Servizio" -> filtro = "S.Tipo";
                 case "Prezzo" -> filtro = "S.Prezzo";
             }
-            ObservableList<Appuntamento> app = FXCollections.observableArrayList(GestoreAppuntamenti.getInstance().listaAppuntamenti(true,filtro, "'"+cercaField.getText()+"'"));
+            ObservableList<Appuntamento> app = FXCollections.observableArrayList(GestoreAppuntamenti.getInstance().listaAppuntamenti(true,filtro, cercaField.getText()));
             table.setItems(app);
             setCellValue();
         }
@@ -168,9 +197,11 @@ public class AppuntamentiController{
         cercaField.setPromptText("Cerca");
     }
 
+    //Funzione initialize che inserisci imposta tutto alla creazione
+
     @FXML
     public void initialize() {
-        impostaTemi();
+        impostaFont();
         aggiungiItems();
         table.getItems().clear();
         try {

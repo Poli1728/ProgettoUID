@@ -52,11 +52,12 @@ public class HomeController {
 
     @FXML
     private Pane viewPane;
-    // Pane dove carichiamo le varie view per la dashboard ecc ecc ~ Marco
+    // Pane dove carichiamo le varie view per la dashboard ecc ecc
 
     @FXML
     private VBox vbox;
 
+    //Carica nel pane della home view le altre view
 
     private void avviaPane(String s) throws IOException {
         viewPane.getChildren().clear();
@@ -150,7 +151,6 @@ public class HomeController {
         //todo da sostituire i bottoni che vengono aggiunti da scenebuilder con CustomButton
 
         vbox.getChildren().addAll(dashboard, appuntamenti);
-
 
         avviaPane("fxml/Dashboard");
     }

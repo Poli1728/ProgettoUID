@@ -5,18 +5,12 @@ import com.calendly.calendly.Model.GestoreStatistiche;
 import com.calendly.calendly.Model.Statistiche;
 import com.calendly.calendly.View.MyFont;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
-
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class StatisticheController{
 
@@ -31,6 +25,8 @@ public class StatisticheController{
 
     @FXML
     private BarChart<String, Number> chartSettimanale;
+
+    // inserisce all'interno dei chart i dati
 
     private void appuntamenti(String p,StringBuilder mese, StringBuilder anno) throws SQLException {
         XYChart.Series<String, Number> appuntamenti = new XYChart.Series<String, Number>();
