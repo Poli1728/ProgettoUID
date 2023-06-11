@@ -242,6 +242,7 @@
 
 #search_hbox > * {
     -fx-background-color: transparent;
+    -fx-background-radius: 25px;
 }
 
 #search_hbox > *:hover {
@@ -251,6 +252,7 @@
 .errors-label. {
     -fx-text-fill: systemRed;
 }
+
 
 
 
