@@ -92,12 +92,12 @@
 }
 
 .thirdButton {
-    -fx-background-color: fifthBackgroundColor;
-    -fx-background-radius: 25px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 50px;
 }
+
 .thirdButton:hover {
-    -fx-background-color: sixthBackgroundColor;
-    -fx-background-radius: 25px;
+    -fx-background-color: fifthBackgroundColor;
 }
 
 #addButton {

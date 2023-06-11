@@ -2,6 +2,7 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Main;
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.View.CustomButton;
 import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyFont;
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 import java.io.IOException;
@@ -49,6 +51,9 @@ public class HomeController {
     @FXML
     private Pane viewPane;
     // Pane dove carichiamo le varie view per la dashboard ecc ecc ~ Marco
+
+    @FXML
+    private VBox vbox;
 
 
     private void avviaPane(String s) throws IOException {
@@ -126,6 +131,15 @@ public class HomeController {
         impostaTemi();
         Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/logo.png")));
         logoView.setImage(image);
+
+        CustomButton dashboard = new CustomButton(vbox, "Dashboard", "img/dashboard.png");
+        CustomButton appuntamenti = new CustomButton(vbox, "Dashboard", "img/dashboard.png");
+
+        vbox.getChildren().addAll(dashboard, appuntamenti);
+
+
         avviaPane("fxml/Dashboard");
     }
+
+
 }

@@ -36,7 +36,7 @@ public class Card extends AnchorPane {
     }
 
     private void createEmployee() {
-        CustomButton edit = new CustomButton(CustomButton.prefers.IMAGE_ONLY, "Modifica","img/edit.png");
+        CustomButton edit = new CustomButton("Modifica","img/edit.png", "Modifica i dati della scheda selezionata");
         edit.getStyleClass().add("thirdButton");
 
         ImageView imageView = new ImageView();
@@ -73,7 +73,7 @@ public class Card extends AnchorPane {
         );
 
         vbox.setFillWidth(true);
-        Insets insets = new Insets(20, 15, 20, 15);
+        Insets insets = new Insets(15, 15, 15, 15);
         vbox.setPadding(insets);
 
         HBox hBox = new HBox(imageView, vbox);
@@ -81,8 +81,8 @@ public class Card extends AnchorPane {
         hBox.setPadding(new Insets(0, 0, 0, 15));
         
         this.getChildren().addAll(edit, hBox);
-        AnchorPane.setRightAnchor(edit, hBox.getWidth());
-        AnchorPane.setTopAnchor(edit, 0.0);
+        AnchorPane.setRightAnchor(edit, hBox.getWidth()+1);
+        AnchorPane.setTopAnchor(edit, 1.0);
         edit.toFront();
         this.prefWidthProperty().bind(parent.widthProperty().divide(2).subtract(30));
 
