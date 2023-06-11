@@ -1,25 +1,35 @@
- - GestoreDB.getInstance().createConnection();
-  Utile per creare la connessione con il DB
+	- ArrayList <String> leggiEntità(entita ent);
+		    Legge tutte le tuple delle entità, per richiamare l'entità si usano i get dei loro valori, un get per ogni entità
+	- void inserimento(entità ent, String [] info);		
+		    In basa all'entità che gli viene passata inserisce i dati presenti in info all'interno del db
+	     (Inserimento)Ecco l'ordine che deve avere info per ogni entità:
+		                 - Dipendenti -> Password, Nome, Cognome, Salario, Ruolo
+		                 - Clienti -> CF, Email, Nome, Cognome, Numero
+		                 - Appuntamenti -> Data, CF_Utente, Id_Dipendente, Id_Servizio
+		                 - Servizi -> Tipo, Prezzo
+		
+	- void aggiornamento(entità ent, String [] info);
+		    Funziona analogamente a inserimento info ha argomenti in più
+		
+	     (Aggiornamento)Ecco l'ordine che deve avere info per ogni entità:
+		                 - Dipendenti -> Username,Password, Nome, Cognome, Salario, Ruolo, Id
+		                 - Clienti -> CF_Nuovo, Email, Nome, Cognome, Numero, CF_Vecchio
+		                 - Appuntamenti -> Data, CF_Utente, Id_Dipendente, Id_Servizio, Id
+	                 	- Servizi -> Tipo, Prezzo, Id
+	                 	- Template -> Tema, Font
+		
+	- String cercaValore(entità ent, String parametro, String chiave);
+		   Cerca una tupla specifica tramite la chiave, selezionando un determinato parametro esempio: SELECT Data FROM Appuntamenti Where Id = 1. Se si vuole tutto basta usare * al posto di Data.
+		
+	- int conta(String data, boolean scelta);
+		   Permette di contare le cose in base alla data, il booleano è usato per contare in appuntamenti o in dipendenti
+	
+	- ArrayList<String> creaLista(boolean cerca, String filtro, String valore);
+		   Usata per gli appuntamenti della tabella, sia normali che tramite il metodo di cerca
+		
+	- boolean login(String username, String password);
+		   Permette di effettuare i login solo ai proprietari ed ai manager
   
- - GestoreDB.getInstance().closeConnection();
-   Chiude la connessione
-
- - ArrayList<String> ris = GestoreDB.getInstance().leggiEntità(GestoreDB.entità.Dipendenti);
-
-  for(String i : ris){
-      System.out.println(i);
-  }
-  NOTA: Questa funzione torna tutti gli elementi presenti in una singola entità, in questo esempio di Dipendenti.
-  Si possono passare tutte le entità presenti nel DB.
-  NOTA: La funzione ritorna un ArrayList, quello lo devi gestire tu. Ogni dato è separato dal ';' così
-  da rendere più facile la divisione tra gli elementi.
+ 
   
-  - GestoreDB.getInstance().inserimentoServizi(tipo , prezzo); 
-    Inserisce in servizio la riga con il tipo e il prezzo
-    
-  Per gli inserimenti, ecco i prototipi:
-    - public void inserimentoClienti(String CF, String Email, String Nome, String Cognome, String Numero)
-    - public void inserimentoAppuntamenti(Date Data, String CF, Integer id_d, Integer id_s)
-    - public void inserimentoServizi(String Tipo, Double Prezzo)
-    - public void inserimentoDipendenti(String Username, String Password, String Nome, String Cognome)
     
