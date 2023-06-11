@@ -26,6 +26,8 @@ public class HomeController {
 
     @FXML
     private Button appuntamentiButton;
+    @FXML
+    private Button clientiButton;
 
     @FXML
     private Button dashboardButton;
@@ -89,6 +91,10 @@ public class HomeController {
     void apriDashboard(ActionEvent event) throws IOException {
         avviaPane("fxml/Dashboard");
     }
+    @FXML
+    void apriClienti(ActionEvent event) throws IOException {
+        avviaPane("fxml/Clienti");
+    }
 
     @FXML
     void apriServizi(ActionEvent event) throws IOException {
@@ -124,6 +130,7 @@ public class HomeController {
         impostazioniButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         serviziButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         statisticheButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        clientiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
     }
 
     @FXML

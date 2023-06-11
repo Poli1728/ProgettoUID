@@ -15,12 +15,18 @@ public class GestoreDB {
 
     private Connection con = null;
 
-    public void createConnection() throws SQLException {
+    private void createConnection() throws SQLException {
         File file = new File("src/main/resources/com/calendly/calendly/db/progetto.db");
         String url = "jdbc:sqlite:"+file.getAbsolutePath();
         con = DriverManager.getConnection(url);
     }
-    public enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
+    public void closeConnection() throws SQLException {
+        if(con != null)
+            con.close();
+        con = null;
+    }
+
+    private enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
 
     public entità getDipendenti(){ return entità.Dipendenti;}
     public entità getClienti(){ return entità.Clienti;}
@@ -75,37 +81,37 @@ public class GestoreDB {
             case Dipendenti -> {
                 try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?);")) {
                     pstmt.setString(1, info[1]+"."+info[2]+"."+(conta("", false)+1));
-                    pstmt.setString(2, BCrypt.hashpw(info[0], BCrypt.gensalt(12)));
-                    pstmt.setString(3, info[1]);
-                    pstmt.setString(4, info[2]);
-                    pstmt.setDouble(5, Double.parseDouble(info[3]));
-                    pstmt.setString(6, info[4]);
+                    pstmt.setString(2, BCrypt.hashpw(info[0], BCrypt.gensalt(12))); //Password
+                    pstmt.setString(3, info[1]); //Nome
+                    pstmt.setString(4, info[2]); //Cognome
+                    pstmt.setDouble(5, Double.parseDouble(info[3])); //Salario
+                    pstmt.setString(6, info[4]); //Ruolo
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
             case Clienti -> {
                 try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Clienti(CF, Email, Nome, Cognome, Numero) VALUES(?,?, ?, ?, ?);")) {
-                    pstmt.setString(1, info[0]);
-                    pstmt.setString(2, info[1]);
-                    pstmt.setString(3, info[2]);
-                    pstmt.setString(4, info[3]);
-                    pstmt.setString(5, info[4]);
+                    pstmt.setString(1, info[0]); //CF
+                    pstmt.setString(2, info[1]); //Email
+                    pstmt.setString(3, info[2]); //Nome
+                    pstmt.setString(4, info[3]); //Cognome
+                    pstmt.setString(5, info[4]); //Numero
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
             case Appuntamenti -> {
                 try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Appuntamenti(Data, CF_Utente, Id_Dipendente, Id_Servizio) VALUES(?,?, ?, ?);")) {
-                    pstmt.setString(1, info[0]);
-                    pstmt.setString(2, info[1]);
-                    pstmt.setInt(3, Integer.parseInt(info[2]));
-                    pstmt.setInt(4, Integer.parseInt(info[3]));
+                    pstmt.setString(1, info[0]); //Data
+                    pstmt.setString(2, info[1]);//CF_Utente
+                    pstmt.setInt(3, Integer.parseInt(info[2])); //Id_Dipendente
+                    pstmt.setInt(4, Integer.parseInt(info[3])); //Id_Servizio
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
             case Servizi -> {
                 try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Servizi(Tipo, Prezzo) VALUES(?,?);")) {
-                    pstmt.setString(1, info[0]);
-                    pstmt.setDouble(2, Double.parseDouble(info[1]));
+                    pstmt.setString(1, info[0]); //Tipo
+                    pstmt.setDouble(2, Double.parseDouble(info[1]));//Prezzo
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
@@ -174,11 +180,11 @@ public class GestoreDB {
             createConnection();
         String query;
         if (!ent.equals(entità.Appuntamenti)) {
-            query = "Select " + parametro + " From " + ent.toString() + " Where Id = " + chiave + ";";
+            query = "Select " + parametro + " From " + ent.toString() + " Where Id = '" + chiave + "';";
         }else{
             query = "Select " + parametro + " From " + ent.toString() + " Where CF LIKE '" + chiave + "';";
         }
-        System.out.println(query);
+        //System.out.println(query);
         PreparedStatement stmt = con.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();
         StringBuilder s= new StringBuilder();
@@ -249,12 +255,6 @@ public class GestoreDB {
         stmt.close();
         closeConnection();
         return false;
-    }
-
-    public void closeConnection() throws SQLException {
-        if(con != null)
-            con.close();
-        con = null;
     }
 
 }

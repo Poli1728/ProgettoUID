@@ -8,12 +8,13 @@
 
 <AnchorPane fx:id="anchorPaneParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="950.0" prefHeight="700.0" prefWidth="950.0" scaleShape="false" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
    <children>
-      <VBox fx:id="vbox" alignment="CENTER_LEFT" layoutX="19.0" layoutY="186.0" prefHeight="301.0" prefWidth="372.0" spacing="10.0" AnchorPane.bottomAnchor="213.0" AnchorPane.topAnchor="186.0">
+      <VBox fx:id="vbox" alignment="CENTER_LEFT" layoutX="19.0" layoutY="186.0" prefHeight="321.0" prefWidth="172.0" spacing="10.0" AnchorPane.bottomAnchor="193.0" AnchorPane.topAnchor="186.0">
          <children>
             <Button fx:id="dashboardButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#apriDashboard" prefHeight="30.0" prefWidth="140.0" styleClass="sidebar-button" text="Dashboard" />
             <Button fx:id="appuntamentiButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#apriAppuntamenti" prefHeight="30.0" prefWidth="140.0" styleClass="sidebar-button" text="Appuntamenti" />
             <Button fx:id="statisticheButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#apriStatistiche" prefHeight="30.0" prefWidth="140.0" styleClass="sidebar-button" text="Statistiche" />
             <Button fx:id="serviziButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#apriServizi" prefHeight="30.0" prefWidth="140.0" styleClass="sidebar-button" text="Servizi" />
+            <Button fx:id="clientiButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#apriClienti" prefHeight="30.0" prefWidth="140.0" styleClass="sidebar-button" text="Clienti" />
             <Button fx:id="dipendentiButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#apriDipendenti" prefHeight="30.0" prefWidth="140.0" styleClass="sidebar-button" text="Dipendenti" />
             <Button fx:id="impostazioniButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#apriImpostazioni" prefHeight="30.0" prefWidth="140.0" styleClass="sidebar-button" text="Impostazioni" />
          </children>
