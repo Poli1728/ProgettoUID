@@ -91,6 +91,14 @@
     -fx-background-color: fourthBackgroundColor;
 }
 
+.thirdButton {
+    -fx-background-color: fifthBackgroundColor;
+    -fx-background-radius: 25px;
+}
+.thirdButton:hover {
+    -fx-background-color: sixthBackgroundColor;
+    -fx-background-radius: 25px;
+}
 
 #addButton {
     -fx-background-color: systemBlue;
@@ -249,10 +257,43 @@
     -fx-background-color: fourthBackgroundColor;
 }
 
-.errors-label. {
+.errors-label {
     -fx-text-fill: systemRed;
 }
 
+.card-info {
+    -fx-background-color: thirdBackgroundColor;
+    -fx-background-radius: 25px;
+}
 
+.card-info:hover {
+    -fx-background-color: fourthBackgroundColor;
+}
+
+.scroll-pane > .viewport,
+.scroll-pane {
+    -fx-background-color: secondaryBackgroundColor;
+}
+
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: linear-gradient(to bottom, fifthBackgroundColor, fourthBackgroundColor);;
+}
 
 
