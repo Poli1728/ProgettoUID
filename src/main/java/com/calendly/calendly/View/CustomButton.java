@@ -2,12 +2,14 @@ package com.calendly.calendly.View;
 
 import com.calendly.calendly.Main;
 import com.calendly.calendly.Settings;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 
 import java.util.Objects;
@@ -22,7 +24,7 @@ public class CustomButton extends Button {
 
 
     private Node parent;
-
+    private int buttonWidth;
 
     //Solo Immagini
     public CustomButton(String buttonText, String imagePath, String ... buttonDescription) {
@@ -35,10 +37,11 @@ public class CustomButton extends Button {
     }
 
     //Basato sulla grandezze del nodo padre mostra entrambi o solo immagine
-    public CustomButton(Node parent, String buttonText, String imagePath, String ... buttonDescription) {
+    public CustomButton(Node parent, int buttonWidth, String buttonText, String imagePath, String ... buttonDescription) {
         super();
         this.parent = parent;
-        this.buttonText = buttonText;
+        this.buttonWidth = buttonWidth;
+        this.buttonText = " " + buttonText;
         this.imagePath = imagePath;
         this.buttonDescription = buttonDescription;
 
@@ -49,26 +52,36 @@ public class CustomButton extends Button {
 
 
     private void setButtonBasedOnWindowSize() {
-        setImageInButton();
-        //todo continuare da qui
+        setImageInButton(true);
 
-        Scene scene = parent.getScene();
-        scene.widthProperty().addListener(((observableValue, oldValue, newValue) -> {
-            if (newValue.doubleValue() < Settings.WIDTH_BREAKPOINT)
-                this.setText("");
-            else
-                this.setText(buttonText);
+        this.setAlignment(Pos.BASELINE_LEFT);
 
-            System.out.println(newValue.doubleValue());
-        }));
-
+        if (parent.getClass().equals(AnchorPane.class)) {
+            AnchorPane ap = (AnchorPane) parent;
+            ap.widthProperty().addListener(((observableValue, oldValue, newValue) -> {
+                if (newValue.doubleValue() < Settings.WIDTH_BREAKPOINT) {
+                    this.setText("");
+                    this.setPrefWidth(5);
+                }
+                else {
+                    this.setText(buttonText);
+                    this.setPrefWidth(buttonWidth);
+                    this.setPadding(new Insets(
+                                    this.getGraphic().getBoundsInLocal().getHeight()/3,
+                                    10,
+                                    this.getGraphic().getBoundsInLocal().getHeight()/3,
+                                    10)
+                    );
+                }
+            }));
+        }
 
 
         setButtonDescription();
     }
 
     private void setButtonImageOnly() {
-        setImageInButton();
+        setImageInButton(false);
         setButtonDescription();
     }
 
@@ -94,7 +107,8 @@ public class CustomButton extends Button {
     }
 
 
-    private void setImageInButton() {
+    private void setImageInButton(boolean addRightPadding) {
+
         ImageView imageView = new ImageView();
         try {
             Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath)));
@@ -102,6 +116,10 @@ public class CustomButton extends Button {
             imageView.setFitWidth(20);
             imageView.setFitWidth(20);
             imageView.setPreserveRatio(true);
+
+            if (addRightPadding) {
+                //todo aggiungere padding a destra dell'immagine
+            }
         } catch (Exception e) {
             System.out.println(e.toString());
         }

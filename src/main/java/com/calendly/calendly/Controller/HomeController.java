@@ -22,7 +22,7 @@ import java.util.Objects;
 public class HomeController {
 
     @FXML
-    private AnchorPane anchorPaneFather;
+    private AnchorPane anchorPaneParent;
 
     @FXML
     private Button appuntamentiButton;
@@ -67,7 +67,7 @@ public class HomeController {
             pane.setPrefSize(viewPane.getWidth(), viewPane.getHeight());
         });
 
-        Dialog.getInstance().setAnchorPaneFather(anchorPaneFather);
+        Dialog.getInstance().setAnchorPaneFather(anchorPaneParent);
         viewPane.getChildren().add(pane);
     }
     public void refersh(String s) throws IOException {
@@ -132,10 +132,19 @@ public class HomeController {
         Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/logo.png")));
         logoView.setImage(image);
 
-        CustomButton dashboard = new CustomButton(vbox, "Dashboard", "img/dashboard.png");
-        CustomButton appuntamenti = new CustomButton(vbox, "Dashboard", "img/dashboard.png");
+        int BUTTONS_WIDTH = 140;
+
+        CustomButton dashboard = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Dashboard", "img/dashboard.png");
+        CustomButton appuntamenti = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Appuntamenti", "img/dashboard.png");
+
+        dashboard.getStyleClass().add("secondaryButton");
+        appuntamenti.getStyleClass().add("secondaryButton");
+
+        //todo da sostituire i bottoni che vengono aggiunti da scenebuilder con CustomButton
 
         vbox.getChildren().addAll(dashboard, appuntamenti);
+
+
 
 
         avviaPane("fxml/Dashboard");

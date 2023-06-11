@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchorPaneFather" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="950.0" prefHeight="700.0" prefWidth="950.0" scaleShape="false" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
+<AnchorPane fx:id="anchorPaneParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="950.0" prefHeight="700.0" prefWidth="950.0" scaleShape="false" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
    <children>
       <VBox fx:id="vbox" alignment="CENTER_LEFT" layoutX="19.0" layoutY="186.0" prefHeight="301.0" prefWidth="372.0" spacing="10.0" AnchorPane.bottomAnchor="213.0" AnchorPane.topAnchor="186.0">
          <children>
