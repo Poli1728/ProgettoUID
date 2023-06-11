@@ -145,8 +145,6 @@ public class HomeController {
         vbox.getChildren().addAll(dashboard, appuntamenti);
 
 
-
-
         avviaPane("fxml/Dashboard");
     }
 

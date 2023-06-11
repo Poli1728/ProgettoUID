@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Test CustomButton con breakpoint">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CustomButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/HomeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/HomeView.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment=" grafica bottoni custom con punto di breakpont nella homeview." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -424,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686516868406</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary=" grafica bottoni custom con punto di breakpont nella homeview.">
+      <created>1686520145442</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1686520145443</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -451,7 +452,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Cambiamenti grafici per la posizione degli elementi della login e della welcomepage" />
     <MESSAGE value="aggiunta metodo setTheme nel SceneHandler" />
     <MESSAGE value="Aggiunta immagini e animazione a immagini in WelcomePageController.java" />
     <MESSAGE value="Aggiunte grafiche" />
@@ -476,6 +476,7 @@
     <MESSAGE value="Aggiunti: &#10; - nuovi stili CSS&#10; - nuovo oggetto Card&#10; - ServiziView.fxml e controller (in fase di test)" />
     <MESSAGE value="Aggiunti: &#10; - altro CSS&#10; - nuovo oggetto CustomButton" />
     <MESSAGE value="Test CustomButton con breakpoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test CustomButton con breakpoint" />
+    <MESSAGE value=" grafica bottoni custom con punto di breakpont nella homeview." />
+    <option name="LAST_COMMIT_MESSAGE" value=" grafica bottoni custom con punto di breakpont nella homeview." />
   </component>
 </project>
