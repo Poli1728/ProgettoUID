@@ -4,6 +4,7 @@ import com.calendly.calendly.Model.Appuntamento;
 import com.calendly.calendly.Model.GestoreAppuntamenti;
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.GestoreData;
+import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.MyFont;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -144,7 +145,7 @@ public class AppuntamentiController{
             }else{
                 Document doc = new Document();
                 String id = idScontrino.getText();
-                PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("Scontrino"+id+".pdf"));
+                PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(SceneHandler.getInstance().apriDirectoryChooser()+"/Scontrino"+id+".pdf"));
                 doc.open();
                 doc.addTitle("Scontrino "+id);
                 ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti(true,"A.Id", id);
