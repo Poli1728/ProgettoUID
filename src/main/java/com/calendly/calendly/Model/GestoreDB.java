@@ -17,7 +17,7 @@ public class GestoreDB {
 
     //crea la connessione al db
 
-    private void createConnection() throws SQLException {
+    public void createConnection() throws SQLException {
         File file = new File("src/main/resources/com/calendly/calendly/db/progetto.db");
         String url = "jdbc:sqlite:"+file.getAbsolutePath();
         con = DriverManager.getConnection(url);
@@ -46,7 +46,6 @@ public class GestoreDB {
     // leggi entità prende tutto dell'entità indicata, senza nessun vincolo
 
     public ArrayList<String> leggiEntità(entità ent) throws SQLException {
-        createConnection();
         String query = "select * from "+ent.toString()+";";
         PreparedStatement stmt = con.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();
@@ -82,15 +81,12 @@ public class GestoreDB {
             }
         }
         stmt.close();
-        closeConnection();
         return risultato;
     }
 
     // Inserisce nel db, una tupla dell'entità indicata
 
     public void inserimento(entità ent, String [] info) throws SQLException {
-        if(con == null || con.isClosed())
-            createConnection();
         switch (ent){
             case Dipendenti -> {
                 try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?);")) {
@@ -130,15 +126,11 @@ public class GestoreDB {
                 } catch (SQLException e) {}
             }
         }
-
-        closeConnection();
     }
 
     // aggiorna la tupla indicata
 
     public void aggiornamento(entità ent, String [] info) throws SQLException {
-        if(con == null || con.isClosed())
-            createConnection();
         switch (ent){
             case Dipendenti -> {
                 try (PreparedStatement pstmt = con.prepareStatement("UPDATE Dipendenti SET Username LIKE ?, Password LIKE ?, Nome LIKE ?, Cognome LIKE ?, Salario = ?, Ruolo LIKE ? WHERE Id = ?;")) {
@@ -189,14 +181,11 @@ public class GestoreDB {
                 } catch (SQLException e) {}
             }
         }
-        closeConnection();
     }
 
     //cerca in base la singola tupla ponendo l'id o il cf uguali alla chiave, andando a selezionare il singolo parametro. si possono generare anche singole tuple con tutti i parametri
 
     public String cercaValore (entità ent, String parametro, String chiave) throws SQLException {
-        if(con == null || con.isClosed())
-            createConnection();
         String query;
         if (!ent.equals(entità.Clienti)) {
             query = "Select " + parametro + " From " + ent.toString() + " Where Id = '" + chiave + "';";
@@ -209,14 +198,12 @@ public class GestoreDB {
         while(rs.next()) {
             s.append(rs.getString(parametro));
         }
-        closeConnection();
         return s.toString();
     }
 
     //conta il numero di Appuntamenti in una certa data e i numeri di dipendenti totali, la prima viene usata per le statistiche, la seconda per generare lo username di base
 
     public int conta(String data, boolean scelta) throws SQLException {
-        createConnection();
         String sql;
         if (scelta) {
             sql = "Select Id From Appuntamenti Where Data LIKE ? ;";
@@ -233,14 +220,12 @@ public class GestoreDB {
             s+=1;
         }
         stmt.close();
-        closeConnection();
         return s;
     }
 
     // crea la lista che viene aggiunta alla tabella degli appuntamenti, sia quella di ricerca che quella senza ricerca
 
     public ArrayList<String> creaLista(boolean cerca, String filtro, String valore) throws SQLException {
-        createConnection();
         ArrayList<String> risultato = new ArrayList<String>();
         String sql = "";
         if(cerca){
@@ -257,14 +242,12 @@ public class GestoreDB {
             s = "";
         }
         stmt.close();
-        closeConnection();
         return risultato;
     }
 
     // permette di effettuare il login
 
     public boolean login(String username, String password) throws SQLException {
-        createConnection();
         String sql = "Select * From Dipendenti Where Username LIKE ? and Ruolo LIKE 'Proprietario' or Ruolo LIKE 'Manager';";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, username);
@@ -277,7 +260,6 @@ public class GestoreDB {
             }
         }
         stmt.close();
-        closeConnection();
         return false;
     }
 

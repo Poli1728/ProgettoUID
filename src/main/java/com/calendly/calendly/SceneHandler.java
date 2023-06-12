@@ -1,6 +1,7 @@
 package com.calendly.calendly;
 
 import com.calendly.calendly.Controller.LoginController;
+import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.View.MyFont;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -30,13 +31,18 @@ public class SceneHandler {
     public void init(Stage stage) throws SQLException {
         if (this.stage == null) {
             this.stage = stage;
-
             stage.setTitle(Settings.INIT_TITLE);
             launchWelcomeFirstOpening();
             stage.setScene(scene);
+            GestoreDB.getInstance().createConnection();
             MyFont.getInstance().prendiDati();
             loadStyle();
             stage.show();
+            stage.setOnCloseRequest(event -> {
+                try {
+                    GestoreDB.getInstance().closeConnection();
+                } catch (SQLException e) {}
+            });
         }
     }
 
@@ -132,7 +138,7 @@ public class SceneHandler {
                 yield Settings.themes[0];
             }
         };
-        
+
         if (scene.getStylesheets().contains(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm())) {
             return;
         }
