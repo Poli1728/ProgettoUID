@@ -1,26 +1,13 @@
-Data di scadenza -> 10 giugno 2023
-
-Idee:
-  - Aggiungere alla Dashboard una table con gli appuntamenti giornalieri
-  
-Idee eliminate:
-  - Profilo
-
-Cose mancanti: 
-  -Dashboard:
-    
+ - Clienti con aggiunta e modifica  
 
 Marco:
   - Appuntamenti:
     - Fare le funzioni di aggiunte, modifiche e rimozione
+  - Monocramatico
 
 Mario:
-  - Servizio 
-  - Dipendenti
   - Pagine login
-  - Pagine Welcome
   - Pagine Registrazione
-
+  - Grafica per l'edit
+  - Grafica rimozioni
   - Generazione degli alert
-  - Css combo box
-  - Font dislessia
