@@ -249,7 +249,6 @@ public class GestoreDB {
         while(query.next()) {
             s+=query.getString("Id")+";"+query.getString("Email")+";"+query.getString("Nome")+";"+query.getString("Cognome")+";"+query.getString("Numero")+";"+query.getString("Data")+";"+query.getString("Username")+";"+query.getString("Tipo")+";"+query.getString("Prezzo");
             risultato.add(s);
-            System.out.println(s);
             s = "";
         }
         stmt.close();
