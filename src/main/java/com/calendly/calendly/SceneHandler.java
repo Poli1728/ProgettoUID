@@ -34,8 +34,8 @@ public class SceneHandler {
             stage.setTitle(Settings.INIT_TITLE);
             launchWelcomeFirstOpening();
             stage.setScene(scene);
-            loadStyle();
             MyFont.getInstance().prendiDati();
+            loadStyle();
             stage.show();
         }
     }
@@ -132,10 +132,7 @@ public class SceneHandler {
                 yield Settings.themes[0];
             }
         };
-
-        System.out.println("tema preso da db = " + pathTheme);
-
-
+        
         if (scene.getStylesheets().contains(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm())) {
             return;
         }

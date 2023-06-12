@@ -22,7 +22,7 @@ public class MyFont {
         tema = info[0];
     }
 
-    private String tema = "DARK";
+    private String tema;
 
     private MyFont(){}
 
