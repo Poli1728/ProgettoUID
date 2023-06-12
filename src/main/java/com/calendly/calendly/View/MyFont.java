@@ -26,15 +26,13 @@ public class MyFont {
 
     private MyFont(){}
 
-    private enum tipiFont{Quicksand, OpenDyslexic}
+    private enum tipiFont{Quicksand, Verdana}
 
     public tipiFont getQuicksand(){
         return tipiFont.Quicksand;
     }
 
-    public tipiFont getDyslexic(){
-        return tipiFont.OpenDyslexic;
-    }
+    public tipiFont getVerdana(){return tipiFont.Verdana;}
 
     private String font = "Quicksand Medium";
 
@@ -45,7 +43,7 @@ public class MyFont {
         if (t.toString().equals("Quicksand")){
             font = t.toString() + " Medium";
         }else{
-            font = t.toString()+"-Regular.otf";
+            font = t.toString();
         }
     }
 

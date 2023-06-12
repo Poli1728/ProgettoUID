@@ -8,7 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.io.File;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class ImpostazioniController {
 
@@ -35,19 +38,11 @@ public class ImpostazioniController {
 
     // Funzione che imposta i tutti i dettagli dei font scelti: Tema, Font e Size(quest'ultima non è modificabile all'utente)
     private void impostaFont(){
-        if(MyFont.getInstance().getFont().equals("OpenDyslexic")) {
-            labelImpostazioni.setFont(Font.font(getClass().getResource("/font/"+MyFont.getInstance().getDyslexic()).toString(), MyFont.getInstance().getSizeLabel()));
-            labelDislessia.setFont(Font.font(getClass().getResource("/font/"+MyFont.getInstance().getDyslexic()).toString(), MyFont.getInstance().getSizeLabel()));
-            labelTemi.setFont(Font.font(getClass().getResource("/font/"+MyFont.getInstance().getDyslexic()).toString(), MyFont.getInstance().getSizeLabel()));
-            txtTemi.setFont(Font.font(getClass().getResource("/font/"+MyFont.getInstance().getDyslexic()).toString(), MyFont.getInstance().getSizeTxt()));
-            txtDislessia.setFont(Font.font(getClass().getResource("/font/"+MyFont.getInstance().getDyslexic()).toString(), MyFont.getInstance().getSizeTxt()));
-        }else {
-            labelImpostazioni.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-            labelDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-            labelTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-            txtTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-            txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        }
+        labelImpostazioni.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        txtTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
     }
 
     // É la funzione che imposta il tema dei testi e bottoni, ogni volta aggiorna anche i dati nel DB
@@ -76,7 +71,7 @@ public class ImpostazioniController {
     @FXML
     void attivaDislessia(ActionEvent event) throws SQLException {
         if(checkDislessia.isSelected()){
-            MyFont.getInstance().setFont(MyFont.getInstance().getDyslexic());
+            MyFont.getInstance().setFont(MyFont.getInstance().getVerdana());
             String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }else{
@@ -90,12 +85,11 @@ public class ImpostazioniController {
     //Initialize, vengono inserite tutte le cose all'inizio
     @FXML
     public void initialize(){
-        if(MyFont.getInstance().getFont().equals("OpenDyslexic")){
+        if(MyFont.getInstance().getFont().equals("Verdana")){
             checkDislessia.setSelected(true);
         }
 
         if (temiComboBox.getItems().size() == 0){
-
             temiComboBox.getItems().add("Scuro");
             temiComboBox.getItems().add("Chiaro");
             temiComboBox.getItems().add("Blu");
