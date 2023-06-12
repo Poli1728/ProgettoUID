@@ -52,9 +52,6 @@ public class DashboardController {
     @FXML
     private TableView<Appuntamento> tableGiornliera;
 
-    @FXML
-    private Text text;
-
     // associa i valori della singola colonna alla variabile presente all'interno di appuntamento
 
     private void setCellValue(){
@@ -102,7 +99,6 @@ public class DashboardController {
         StringBuilder giorno = GestoreData.getInstance().giornoCorrente(data);
         data = giorno.toString()+"/"+mese.toString()+"/"+anno.toString();
         labelDashboard.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        text.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         impostaTable(data);
         impostaChart(data);
     }
