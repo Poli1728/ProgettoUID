@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Bugfix sul settaggio del tema">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Miglioramenti posizione bottoni laterali a sinistra">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,13 +121,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685201888491</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Update SceneHandler pt.2. Aggiunta classe Settings">
-      <created>1685215898651</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1685215898651</updated>
     </task>
     <task id="LOCAL-00002" summary="Update SceneHandler pt.2. Aggiunta classe Settings">
       <created>1685215905962</created>
@@ -463,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686594970333</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Miglioramenti posizione bottoni laterali a sinistra">
+      <created>1686596795105</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1686596795106</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Aggiunte grafiche (DipendentiView e Controller)" />
     <MESSAGE value="Adattamenti grafici fondamentali" />
     <MESSAGE value="CSS sulle tableView" />
     <MESSAGE value="CSS sulle tableView (nuovo design quando modifichi i valori + popup show/hide tables), aggiunte grafiche" />
@@ -515,6 +516,7 @@
     <MESSAGE value="grafica homeview e altri cambiamenti grafici" />
     <MESSAGE value="CSS WARNING" />
     <MESSAGE value="Bugfix sul settaggio del tema" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfix sul settaggio del tema" />
+    <MESSAGE value="Miglioramenti posizione bottoni laterali a sinistra" />
+    <option name="LAST_COMMIT_MESSAGE" value="Miglioramenti posizione bottoni laterali a sinistra" />
   </component>
 </project>

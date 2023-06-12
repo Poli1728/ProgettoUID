@@ -81,7 +81,7 @@ public class SceneHandler {
     public void launchLogin() {
         loadFXML("fxml/LoginView.fxml");
         LoginController controller = loader.getController();
-        controller.init();
+        controller.init(stage);
         setWindowLoginDimension();
     }
 
@@ -129,9 +129,7 @@ public class SceneHandler {
 
     public void setTheme() {
 
-        String pathTheme;
-
-        pathTheme = switch (MyFont.getInstance().getTema()) {
+        String pathTheme = switch (MyFont.getInstance().getTema()) {
             case "DARK" -> Settings.themes[0];
             case "LIGHT" -> Settings.themes[1];
             case "BLU" -> Settings.themes[2];
