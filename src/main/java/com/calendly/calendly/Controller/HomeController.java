@@ -117,16 +117,20 @@ public class HomeController {
 
         logoView.setPreserveRatio(true);
         anchorPaneParent.widthProperty().addListener(((observableValue, oldValue, newValue) -> {
-            System.out.println(newValue.doubleValue());
             if (newValue.doubleValue() >= Settings.WIDTH_BREAKPOINT) {
                 logoView.setFitWidth(BUTTONS_WIDTH);
                 logoView.setFitHeight(BUTTONS_WIDTH);
                 AnchorPane.setLeftAnchor(viewPane, vbox.getLayoutX()*2 + BUTTONS_WIDTH);
             } else {
-                logoView.setFitWidth(50);
-                logoView.setFitWidth(50);
+                logoView.setFitWidth(dashboard.getWidth());
+                logoView.setFitWidth(dashboard.getWidth());
                 AnchorPane.setLeftAnchor(viewPane, vbox.getLayoutX()*2 + dashboard.getWidth());            }
         }));
+
+        anchorPaneParent.layoutBoundsProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (vbox.getHeight() != 0)
+                AnchorPane.setTopAnchor(vbox, (anchorPaneParent.getHeight() - vbox.getHeight())/2);
+        });
 
         avviaPane("fxml/Dashboard");
     }
