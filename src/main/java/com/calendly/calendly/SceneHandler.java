@@ -145,19 +145,13 @@ public class SceneHandler {
             return;
         }
 
-        //todo altrimenti togli il vecchio (prendi il dato da db) e metti il nuovo
-        for (Settings.theme t : Settings.theme.values()) {
-            try {
-                scene.getStylesheets().add(Objects.requireNonNull((SceneHandler.class.getResource(t.toString())).toExternalForm()));
-            } catch (Exception ignore) {
+        scene.getStylesheets().clear();
 
-            }
-        }
-        scene.getStylesheets().remove("css/style.css");
-        scene.getStylesheets().add("css/style.css");
+        scene.getStylesheets().add(Objects.requireNonNull((SceneHandler.class.getResource(Settings.styles[0])).toExternalForm()));
         scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
     }
-    //ciao mario
+
+
     public String apriDirectoryChooser(){
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Scegli cartella");
