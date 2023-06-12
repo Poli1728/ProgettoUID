@@ -63,6 +63,11 @@ public class ImpostazioniController {
             String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
             SceneHandler.getInstance().setTheme();
+        }else if (temiComboBox.getSelectionModel().isSelected(2)){
+            MyFont.getInstance().setTema("BLU");
+            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
+            SceneHandler.getInstance().setTheme();
         }
         initialize();
     }
@@ -93,12 +98,15 @@ public class ImpostazioniController {
 
             temiComboBox.getItems().add("Scuro");
             temiComboBox.getItems().add("Chiaro");
+            temiComboBox.getItems().add("Blu");
         }
         String tema = MyFont.getInstance().getTema();
         if (tema.equals("DARK")){
             temiComboBox.setValue("Scuro");
         }else if(tema.equals("LIGHT")){
             temiComboBox.setValue("Chiaro");
+        }else if(tema.equals("BLU")){
+            temiComboBox.setValue("Blu");
         }
         impostaFont();
     }

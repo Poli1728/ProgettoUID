@@ -133,6 +133,7 @@ public class SceneHandler {
         pathTheme = switch (MyFont.getInstance().getTema()) {
             case "DARK" -> Settings.themes[0];
             case "LIGHT" -> Settings.themes[1];
+            case "BLU" -> Settings.themes[2];
             default -> {
                 exit(11);
                 yield Settings.themes[0];

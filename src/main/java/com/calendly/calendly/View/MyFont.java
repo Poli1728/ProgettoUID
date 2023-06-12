@@ -26,15 +26,12 @@ public class MyFont {
 
     private MyFont(){}
 
-    private enum tipiFont{Quicksand, Cantarell, OpenDyslexic}
+    private enum tipiFont{Quicksand, OpenDyslexic}
 
     public tipiFont getQuicksand(){
         return tipiFont.Quicksand;
     }
 
-    public tipiFont getCantarell(){
-        return tipiFont.Cantarell;
-    }
     public tipiFont getDyslexic(){
         return tipiFont.OpenDyslexic;
     }

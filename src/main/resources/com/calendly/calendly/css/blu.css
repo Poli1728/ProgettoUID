@@ -1,18 +1,19 @@
 * {
 
-    systemGray6: #ebebf0;
-    systemGray5: #d8d8dc;
-    systemGray4: #bcbcc0;
-    systemGray3: #aeaeb2;
-    systemGray2: #8e8e93;
-    systemGray:  #6c6c70;
+    systemGray6: #000a4e;
+    systemGray5: #00058f;
+    systemGray4: #000667;
+    systemGray3: #020391;
+    systemGray2: #0203ff;
+    systemGray:  #013298;
 
     systemBlue:  #0a84ff;
     blueLight:   #2290ff;
     systemCyan:  #5ac8f5;
     systemRed:   #ff453a;
 
-    black:       #0E0E0E;
+    white:       #f0f0f0;
+
 
     primaryBackgroundColor:   systemGray6;
     secondaryBackgroundColor: systemGray5;
@@ -21,7 +22,7 @@
     fifthBackgroundColor:     systemGray2;
     sixthBackgroundColor:     systemGray;
 
-    primaryTextColor: black;
+    primaryTextColor: white;
 
     primaryBackgroundButtonColor: systemBlue;
     primaryOnHoverButtonColor:    blueLight;
