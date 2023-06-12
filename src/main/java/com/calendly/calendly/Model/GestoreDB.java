@@ -188,11 +188,18 @@ public class GestoreDB {
     public String cercaValore (entità ent, String parametro, String chiave) throws SQLException {
         String query;
         if (!ent.equals(entità.Clienti)) {
-            query = "Select " + parametro + " From " + ent.toString() + " Where Id = '" + chiave + "';";
+            query = "Select ? From "+ent.toString()+" Where Id = ?;";
         }else{
-            query = "Select " + parametro + " From " + ent.toString() + " Where CF LIKE '" + chiave + "';";
+            query = "Select ? From "+ent.toString()+" Where CF LIKE ?;";
         }
         PreparedStatement stmt = con.prepareStatement(query);
+        stmt.setString(1, parametro);
+        if(!ent.equals(entità.Clienti)){
+            stmt.setInt(2, Integer.parseInt(chiave));
+        }else{
+            stmt.setString(2, chiave);
+        }
+
         ResultSet rs = stmt.executeQuery();
         StringBuilder s= new StringBuilder();
         while(rs.next()) {
@@ -227,18 +234,22 @@ public class GestoreDB {
 
     public ArrayList<String> creaLista(boolean cerca, String filtro, String valore) throws SQLException {
         ArrayList<String> risultato = new ArrayList<String>();
-        String sql = "";
+        String sql;
         if(cerca){
-            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Utente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id and "+filtro+" LIKE '"+valore+"';";
+            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Utente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id and "+filtro+" LIKE ?;";
         }else{
             sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Utente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id;";
         }
         PreparedStatement stmt = con.prepareStatement(sql);
+        if(cerca){
+            stmt.setString(1,valore);
+        }
         ResultSet query = stmt.executeQuery();
         String s= "";
         while(query.next()) {
             s+=query.getString("Id")+";"+query.getString("Email")+";"+query.getString("Nome")+";"+query.getString("Cognome")+";"+query.getString("Numero")+";"+query.getString("Data")+";"+query.getString("Username")+";"+query.getString("Tipo")+";"+query.getString("Prezzo");
             risultato.add(s);
+            System.out.println(s);
             s = "";
         }
         stmt.close();
@@ -261,6 +272,16 @@ public class GestoreDB {
         }
         stmt.close();
         return false;
+    }
+
+    //esegue il badkup nel path passato
+
+    public void backup(String path) throws SQLException {
+        String sql = ".backup progetto.db "+path+"/calendly.db;";
+        System.out.println(sql);
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet query = stmt.executeQuery();
+        stmt.close();
     }
 
 }

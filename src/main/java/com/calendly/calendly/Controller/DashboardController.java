@@ -69,7 +69,7 @@ public class DashboardController {
 
     private void impostaTable(String data){
         try {
-            ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti(true, "A.Data", data);
+            ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti(true, "Data", data);
             ObservableList<Appuntamento> observableApp = FXCollections.observableArrayList(app);
             tableGiornliera.setItems(observableApp);
             setCellValue();

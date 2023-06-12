@@ -34,7 +34,12 @@ public class ImpostazioniController {
     private Label labelTemi;
     @FXML
     private Text txtDislessia;
-
+    @FXML
+    private Label labelBackup;
+    @FXML
+    private Text txtBackup;
+    @FXML
+    private Button salvaButton;
 
     // Funzione che imposta i tutti i dettagli dei font scelti: Tema, Font e Size(quest'ultima non è modificabile all'utente)
     private void impostaFont(){
@@ -65,6 +70,12 @@ public class ImpostazioniController {
             SceneHandler.getInstance().setTheme();
         }
         initialize();
+    }
+
+    @FXML
+    void salva(ActionEvent event) throws SQLException {
+        String path = SceneHandler.getInstance().apriDirectoryChooser();
+        GestoreDB.getInstance().backup(path);
     }
 
     // Funzione che attiva il font in base alla check box
