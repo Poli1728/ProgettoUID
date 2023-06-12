@@ -125,8 +125,7 @@ public class HomeController {
             } else {
                 logoView.setFitWidth(50);
                 logoView.setFitWidth(50);
-            }
-
+                AnchorPane.setLeftAnchor(viewPane, vbox.getLayoutX()*2 + dashboard.getWidth());            }
         }));
 
         avviaPane("fxml/Dashboard");
