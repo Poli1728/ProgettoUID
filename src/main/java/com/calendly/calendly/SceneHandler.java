@@ -1,13 +1,9 @@
 package com.calendly.calendly;
 
-import com.calendly.calendly.Controller.DipendentiViewController;
 import com.calendly.calendly.Controller.LoginController;
-import com.calendly.calendly.Controller.WelcomePageController;
 import com.calendly.calendly.View.MyFont;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -16,8 +12,6 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class SceneHandler {
-    private final boolean FIRST_TIME_OPENED = true;  //TODO da spostare tramite lettura in DB o altro
-
     private static final SceneHandler instance = new SceneHandler();
     private Stage stage;
     private static Scene scene;
@@ -119,22 +113,22 @@ public class SceneHandler {
         for (String style : Settings.styles)
             scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm());
 
-        Settings.theme defaultTheme = Settings.theme.DARK; //da db
-        setTheme(defaultTheme);
+        setTheme();
     }
 
 
 
-    public void setTheme(Settings.theme theme) {
+    public void setTheme() {
 
         String pathTheme;
 
-        pathTheme = switch (theme) {
-            case DARK -> Settings.themes[0];
-            case LIGHT -> Settings.themes[1];
-
+        pathTheme = switch (MyFont.getInstance().getTema()) {
+            case "DARK" -> Settings.themes[0];
+            case "LIGHT" -> Settings.themes[1];
             default -> Settings.themes[0];
         };
+
+        System.out.println(pathTheme);
 
 
         if (scene.getStylesheets().contains(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm())) {
