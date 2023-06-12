@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment=" grafica bottoni custom con punto di breakpont nella homeview." />
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment=" grafica bottoni custom con punto di breakpont nella homeview.">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/clients.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/employee.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/event.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/logout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/settings.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/stats.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/task.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CustomButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/DipendentiView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/DipendentiView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/HomeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/HomeView.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,6 +97,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/images" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/calendly/calendly" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/system-images" />
@@ -425,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686520145443</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary=" grafica bottoni custom con punto di breakpont nella homeview.">
+      <created>1686520318024</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1686520318024</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

@@ -2,12 +2,16 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Main;
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.Settings;
 import com.calendly.calendly.View.CustomButton;
 import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyFont;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,30 +29,10 @@ public class HomeController {
     private AnchorPane anchorPaneParent;
 
     @FXML
-    private Button appuntamentiButton;
-    @FXML
-    private Button clientiButton;
-
-    @FXML
-    private Button dashboardButton;
-
-    @FXML
-    private Button dipendentiButton;
-
-    @FXML
-    private Button impostazioniButton;
+    private AnchorPane anchorPaneImageView;
 
     @FXML
     private ImageView logoView;
-
-    @FXML
-    private Button logoutButton;
-
-    @FXML
-    private Button serviziButton;
-
-    @FXML
-    private Button statisticheButton;
 
     @FXML
     private Pane viewPane;
@@ -73,7 +57,7 @@ public class HomeController {
         Dialog.getInstance().setAnchorPaneFather(anchorPaneParent);
         viewPane.getChildren().add(pane);
     }
-    public void refersh(String s) throws IOException {
+    public void refresh(String s) throws IOException {
         switch(s){
             case "Appuntamenti" ->{avviaPane("fxml/Appuntamenti");}
             case "Dashboard" ->{avviaPane("fxml/Dashboard");}
@@ -81,57 +65,19 @@ public class HomeController {
             case "Impostazioni" ->{avviaPane("fxml/Impostazioni");}
             case "Dipendenti" ->{avviaPane("fxml/Dipendenti");}
             case "Statistiche" ->{avviaPane("fxml/Statistiche");}
+            case "Logout" -> SceneHandler.getInstance().launchLogin();
         }
-    }
-    @FXML
-    void apriAppuntamenti(ActionEvent event) throws IOException {
-        avviaPane("fxml/Appuntamenti");
-    }
-
-    @FXML
-    void apriDashboard(ActionEvent event) throws IOException {
-        avviaPane("fxml/Dashboard");
-    }
-    @FXML
-    void apriClienti(ActionEvent event) throws IOException {
-        avviaPane("fxml/Clienti");
-    }
-
-    @FXML
-    void apriServizi(ActionEvent event) throws IOException {
-        avviaPane("fxml/Servizi");
-    }
-
-    @FXML
-    void apriImpostazioni(ActionEvent event) throws IOException {
-        avviaPane("fxml/Impostazioni");
-    }
-
-    @FXML
-    void apriDipendenti(ActionEvent event) throws IOException {
-        avviaPane("fxml/Dipendenti");
-    }
-
-    @FXML
-    void apriStatistiche(ActionEvent event) throws IOException {
-        avviaPane("fxml/Statistiche");
-    }
-
-    @FXML
-    void esci(ActionEvent event) {
-        viewPane.getChildren().clear();
-        SceneHandler.getInstance().launchLogin();
     }
 
     private void impostaTemi(){
-        appuntamentiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        /*appuntamentiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         dashboardButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         dipendentiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         logoutButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         impostazioniButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         serviziButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         statisticheButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        clientiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        clientiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));*/
     }
 
     @FXML
@@ -143,16 +89,68 @@ public class HomeController {
         int BUTTONS_WIDTH = 140;
 
         CustomButton dashboard = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Dashboard", "img/dashboard.png");
-        CustomButton appuntamenti = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Appuntamenti", "img/dashboard.png");
+        CustomButton appuntamenti = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Appuntamenti", "img/event.png");
+        CustomButton statistiche = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Statistiche", "img/stats.png");
+        CustomButton servizi = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Servizi", "img/task.png");
+        CustomButton clienti = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Clienti", "img/clients.png");
+        CustomButton dipendenti = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Dipendenti", "img/employee.png");
+        CustomButton impostazioni = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Impostazioni", "img/settings.png");
+        CustomButton logout = new CustomButton(anchorPaneParent, BUTTONS_WIDTH, "Logout", "img/logout.png");
 
-        dashboard.getStyleClass().add("secondaryButton");
-        appuntamenti.getStyleClass().add("secondaryButton");
+        dashboard.getStyleClass().add("sidebar-button");
+        appuntamenti.getStyleClass().add("sidebar-button");
+        statistiche.getStyleClass().add("sidebar-button");
+        servizi.getStyleClass().add("sidebar-button");
+        clienti.getStyleClass().add("sidebar-button");
+        dipendenti.getStyleClass().add("sidebar-button");
+        impostazioni.getStyleClass().add("sidebar-button");
+        logout.getStyleClass().add("sidebar-logout-button");
 
+        clickButtonAction(dashboard, appuntamenti, statistiche, servizi, clienti, dipendenti, impostazioni, logout);
+
+
+        //todo aggiungere un listner all'apfather per modificare la grandezza del right pane
         //todo da sostituire i bottoni che vengono aggiunti da scenebuilder con CustomButton
 
-        vbox.getChildren().addAll(dashboard, appuntamenti);
+        vbox.getChildren().addAll(dashboard, appuntamenti, statistiche, servizi, clienti, dipendenti, impostazioni, logout);
+
+
+        logoView.setPreserveRatio(true);
+        anchorPaneParent.widthProperty().addListener(((observableValue, oldValue, newValue) -> {
+            System.out.println(newValue.doubleValue());
+            if (newValue.doubleValue() >= Settings.WIDTH_BREAKPOINT) {
+                logoView.setFitWidth(BUTTONS_WIDTH);
+                logoView.setFitHeight(BUTTONS_WIDTH);
+                AnchorPane.setLeftAnchor(viewPane, vbox.getLayoutX()*2 + BUTTONS_WIDTH);
+            } else {
+                logoView.setFitWidth(50);
+                logoView.setFitWidth(50);
+            }
+
+        }));
 
         avviaPane("fxml/Dashboard");
+    }
+
+
+    private void clickButtonAction(CustomButton ... button) {
+        for(int i = 0; i < button.length; i++) {
+            int iCopy = i;
+            button[i].setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    if (button[iCopy].getButtonText().trim().equals("Logout")) {
+                        SceneHandler.getInstance().launchLogin();
+                        return;
+                    }
+                    try {
+                        avviaPane("fxml/" + button[iCopy].getButtonText().trim());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+        }
     }
 
 

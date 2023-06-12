@@ -15,9 +15,6 @@ import javafx.scene.text.Font;
 import java.util.Objects;
 
 public class CustomButton extends Button {
-    public enum prefers {IMAGE_ONLY, BASED_ON_WINDOW_SIZE, ALWAYS_BOTH}
-
-    private prefers preferenza;
     private String buttonText;
     private String imagePath;
     private String[] buttonDescription;
@@ -36,7 +33,7 @@ public class CustomButton extends Button {
         setButtonImageOnly();
     }
 
-    //Basato sulla grandezze del nodo padre mostra entrambi o solo immagine
+    //Basato sulla grandezza del nodo padre mostra entrambi o solo immagine
     public CustomButton(Node parent, int buttonWidth, String buttonText, String imagePath, String ... buttonDescription) {
         super();
         this.parent = parent;
@@ -52,7 +49,7 @@ public class CustomButton extends Button {
 
 
     private void setButtonBasedOnWindowSize() {
-        setImageInButton(true);
+        setImageInButton();
 
         this.setAlignment(Pos.BASELINE_LEFT);
 
@@ -62,6 +59,7 @@ public class CustomButton extends Button {
                 if (newValue.doubleValue() < Settings.WIDTH_BREAKPOINT) {
                     this.setText("");
                     this.setPrefWidth(5);
+                    setButtonDescription();
                 }
                 else {
                     this.setText(buttonText);
@@ -72,6 +70,7 @@ public class CustomButton extends Button {
                                     this.getGraphic().getBoundsInLocal().getHeight()/3,
                                     10)
                     );
+                    this.setTooltip(null);
                 }
             }));
         }
@@ -81,7 +80,7 @@ public class CustomButton extends Button {
     }
 
     private void setButtonImageOnly() {
-        setImageInButton(false);
+        setImageInButton();
         setButtonDescription();
     }
 
@@ -95,36 +94,36 @@ public class CustomButton extends Button {
 
 
     private void setButtonDescription() {
-        if (buttonDescription.length == 0)
-            return;
+        StringBuilder s = new StringBuilder(buttonText.toUpperCase());
 
-        Tooltip tooltip = new Tooltip(buttonText.toUpperCase() + "\n" + buttonDescription[0]);
+        for (String value : buttonDescription) s.append("\n").append(value);
+
+        Tooltip tooltip = new Tooltip(s.toString());
         tooltip.setFont(new Font(14));
         this.setTooltip(tooltip);
-
-        if (buttonDescription.length > 1)
-            System.out.println("Attenzione. La descrizione del bottone usa solo il primo parametro opzionale");
     }
 
 
-    private void setImageInButton(boolean addRightPadding) {
+    private void setImageInButton() {
 
+        //todo mettere un listener nella quale avviene il cambio di immagine da bianco a nero e viceversa quando si switcha tema
+        //todo oppure aggiungere un filtro che mi cambi il colore sulla imageview
         ImageView imageView = new ImageView();
         try {
             Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath)));
             imageView.setImage(image);
-            imageView.setFitWidth(20);
-            imageView.setFitWidth(20);
+            imageView.setFitWidth(25);
+            imageView.setFitWidth(25);
             imageView.setPreserveRatio(true);
 
-            if (addRightPadding) {
-                //todo aggiungere padding a destra dell'immagine
-            }
+
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(e);
         }
         this.setGraphic(imageView);
     }
 
-
+    public String getButtonText() {
+        return buttonText;
+    }
 }
