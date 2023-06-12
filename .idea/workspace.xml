@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="CSS WARNING">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ImpostazioniController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ImpostazioniController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/light.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -452,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686572280501</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="CSS WARNING">
+      <created>1686574594918</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1686574594918</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -479,7 +484,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Aggiunta immagini e animazione a immagini in WelcomePageController.java" />
     <MESSAGE value="Aggiunte grafiche" />
     <MESSAGE value="Aggiunte grafiche (DipendentiView e Controller)" />
     <MESSAGE value="Adattamenti grafici fondamentali" />
@@ -504,6 +508,7 @@
     <MESSAGE value="Test CustomButton con breakpoint" />
     <MESSAGE value=" grafica bottoni custom con punto di breakpont nella homeview." />
     <MESSAGE value="grafica homeview e altri cambiamenti grafici" />
-    <option name="LAST_COMMIT_MESSAGE" value="grafica homeview e altri cambiamenti grafici" />
+    <MESSAGE value="CSS WARNING" />
+    <option name="LAST_COMMIT_MESSAGE" value="CSS WARNING" />
   </component>
 </project>

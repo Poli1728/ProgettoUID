@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
 
+import static java.lang.System.exit;
+
 public class SceneHandler {
     private static final SceneHandler instance = new SceneHandler();
     private Stage stage;
@@ -125,19 +127,29 @@ public class SceneHandler {
         pathTheme = switch (MyFont.getInstance().getTema()) {
             case "DARK" -> Settings.themes[0];
             case "LIGHT" -> Settings.themes[1];
-            default -> Settings.themes[0];
+            default -> {
+                exit(11);
+                yield Settings.themes[0];
+            }
         };
 
-        System.out.println(pathTheme);
+        System.out.println("tema preso da db = " + pathTheme);
 
 
         if (scene.getStylesheets().contains(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm())) {
-            //Tema già impostato, non fare nulla
-            //todo evitare di far selezionare all'utente il tema già scelto
             return;
         }
 
         //todo altrimenti togli il vecchio (prendi il dato da db) e metti il nuovo
+        for (Settings.theme t : Settings.theme.values()) {
+            try {
+                scene.getStylesheets().add(Objects.requireNonNull((SceneHandler.class.getResource(t.toString())).toExternalForm()));
+            } catch (Exception ignore) {
+
+            }
+        }
+        scene.getStylesheets().remove("css/style.css");
+        scene.getStylesheets().add("css/style.css");
         scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
     }
 

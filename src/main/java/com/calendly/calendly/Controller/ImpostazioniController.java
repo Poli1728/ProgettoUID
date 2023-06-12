@@ -47,14 +47,14 @@ public class ImpostazioniController {
     void scegliTema(ActionEvent event) throws SQLException {
         if (temiComboBox.getSelectionModel().isSelected(0)){
             MyFont.getInstance().setTema("DARK");
-            SceneHandler.getInstance().setTheme();
             String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
+            SceneHandler.getInstance().setTheme();
         }else if (temiComboBox.getSelectionModel().isSelected(1)){
             MyFont.getInstance().setTema("LIGHT");
-            SceneHandler.getInstance().setTheme();
             String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
+            SceneHandler.getInstance().setTheme();
         }
         initialize();
     }
