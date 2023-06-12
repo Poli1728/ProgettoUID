@@ -2,7 +2,6 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.SceneHandler;
-import com.calendly.calendly.Settings;
 import com.calendly.calendly.View.MyFont;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,15 +54,15 @@ public class ImpostazioniController {
     @FXML
     void scegliTema(ActionEvent event) throws SQLException {
         if (temiComboBox.getSelectionModel().isSelected(0)){
-            SceneHandler.getInstance().setTheme(Settings.theme.DARK);
             MyFont.getInstance().setTema("DARK");
             String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
+            SceneHandler.getInstance().setTheme();
         }else if (temiComboBox.getSelectionModel().isSelected(1)){
-            SceneHandler.getInstance().setTheme(Settings.theme.LIGHT);
             MyFont.getInstance().setTema("LIGHT");
             String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
+            SceneHandler.getInstance().setTheme();
         }
         initialize();
     }
