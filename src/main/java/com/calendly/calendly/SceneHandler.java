@@ -157,7 +157,7 @@ public class SceneHandler {
         scene.getStylesheets().add("css/style.css");
         scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
     }
-
+    //ciao mario
     public String apriDirectoryChooser(){
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Scegli cartella");
