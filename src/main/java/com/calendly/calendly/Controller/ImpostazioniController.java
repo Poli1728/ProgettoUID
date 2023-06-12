@@ -49,7 +49,7 @@ public class ImpostazioniController {
         txtTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
     }
-
+    //Ciao mario
     // É la funzione che imposta il tema dei testi e bottoni, ogni volta aggiorna anche i dati nel DB
     @FXML
     void scegliTema(ActionEvent event) throws SQLException {
