@@ -1,27 +1,26 @@
 package com.calendly.calendly.Controller;
 
-import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.View.Card;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.sql.SQLException;
-
-public class ServiziViewController {
+public class ClientiController {
 
     @FXML
     private Button addButton;
 
     @FXML
-    private AnchorPane ancorPane;
+    private Button cercaButton;
 
     @FXML
-    private TextField cerca;
+    private TextField cercaField;
 
     @FXML
     private Button editButton;
@@ -33,48 +32,36 @@ public class ServiziViewController {
     private Button removeButton;
 
     @FXML
-    private Button search;
-
-    @FXML
-    private HBox search_hbox;
+    private ScrollPane scrollPane;
 
     @FXML
     private VBox vboxEsterno;
 
     @FXML
-    private ScrollPane scrollPane;
-
-    @FXML
-    void actionAddButton(ActionEvent event) {
+    void aggiungiCliente(ActionEvent event) {
 
     }
 
     @FXML
-    void actionEditButton(ActionEvent event) {
+    void cerca(ActionEvent event) {
 
     }
 
     @FXML
-    void actionFiltroBox(ActionEvent event) {
+    void modificaCliente(ActionEvent event) {
 
     }
 
     @FXML
-    void actionRemoveButton(ActionEvent event) {
+    void rimuoviCliente(ActionEvent event) {
 
     }
 
     @FXML
-    void actionSearchButton(ActionEvent event) {
-
-    }
-
-
-    @FXML
-    void initialize() throws SQLException {
+    void initialize(){
         vboxEsterno.setSpacing(15);
 
-        for (int i = 0; i < GestoreDB.getInstance().conta("",2); i++) {
+        for (int i = 0; i < 10; i++) {
             Card obj1 = new Card(Card.cardType.EMPLOYEE, 4, vboxEsterno);
             Card obj2 = new Card(Card.cardType.EMPLOYEE, 5, vboxEsterno);
 
@@ -86,8 +73,6 @@ public class ServiziViewController {
             vboxEsterno.getChildren().add(hbox1);
 
         }
-
     }
-
 
 }

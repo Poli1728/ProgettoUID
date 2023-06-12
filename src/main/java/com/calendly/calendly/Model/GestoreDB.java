@@ -90,7 +90,7 @@ public class GestoreDB {
         switch (ent){
             case Dipendenti -> {
                 try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Dipendenti(Username, Password, Nome, Cognome, Salario, Ruolo) VALUES(?,?, ?, ?, ?, ?);")) {
-                    pstmt.setString(1, info[1]+"."+info[2]+"."+(conta("", false)+1));
+                    pstmt.setString(1, info[1]+"."+info[2]+"."+(conta("", 1)+1));
                     pstmt.setString(2, BCrypt.hashpw(info[0], BCrypt.gensalt(12))); //Password
                     pstmt.setString(3, info[1]); //Nome
                     pstmt.setString(4, info[2]); //Cognome
@@ -210,15 +210,21 @@ public class GestoreDB {
 
     //conta il numero di Appuntamenti in una certa data e i numeri di dipendenti totali, la prima viene usata per le statistiche, la seconda per generare lo username di base
 
-    public int conta(String data, boolean scelta) throws SQLException {
-        String sql;
-        if (scelta) {
-            sql = "Select Id From Appuntamenti Where Data LIKE ? ;";
-        }else{
-            sql = "Select Id From Dipendenti;";
+    public int conta(String data, int scelta) throws SQLException {
+        String sql = "";
+        switch (scelta){
+            case 0 ->{
+                sql = "Select Id From Appuntamenti Where Data LIKE ? ;";
+            }
+            case 1 -> {
+                sql = "Select Id From Dipendenti;";
+            }
+            case 2 ->{
+                sql = "Select Id From Clienti;";
+            }
         }
         PreparedStatement stmt = con.prepareStatement(sql);
-        if(scelta){
+        if(scelta == 1){
             stmt.setString(1, data);
         }
         ResultSet query = stmt.executeQuery();
