@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -14,9 +15,9 @@
    <children>
       <HBox layoutX="353.0" layoutY="20.0" spacing="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <Button fx:id="removeButton" defaultButton="true" mnemonicParsing="false" onAction="#rimuoviCliente" styleClass="secondaryButton" text="Rimuovi" />
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#modificaCliente" styleClass="secondaryButton" text="Modifica" />
-            <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#aggiungiCliente" styleClass="secondaryButton" text="Aggiungi" />
+            <Button fx:id="removeButton" defaultButton="true" mnemonicParsing="false" onAction="#actionRimuoviCliente" styleClass="secondaryButton" text="Rimuovi" />
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#actionModificaCliente" styleClass="secondaryButton" text="Modifica" />
+            <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#actionAggiungiCliente" styleClass="secondaryButton" text="Aggiungi" />
          </children>
       </HBox>
       <Label fx:id="labelClienti" layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="364.0" text="Clienti" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
@@ -26,8 +27,9 @@
       </Label>
       <HBox layoutX="21.0" layoutY="76.0" spacing="10.0" AnchorPane.leftAnchor="21.0">
          <children>
+            <ComboBox fx:id="Filtro" onAction="#actionFiltro" prefHeight="25.0" prefWidth="79.0" promptText="Filtro" />
             <TextField fx:id="cercaField" prefHeight="24.0" prefWidth="127.0" promptText="Cerca" styleClass="searchField" />
-            <Button fx:id="cercaButton" mnemonicParsing="false" onAction="#cerca" styleClass="secondaryButton" text="Cerca" />
+            <Button fx:id="cercaButton" mnemonicParsing="false" onAction="#actionCerca" styleClass="secondaryButton" text="Cerca" />
          </children>
       </HBox>
       <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="25.0" layoutY="132.0" pannable="true" styleClass="vbox-info" AnchorPane.bottomAnchor="31.333333333333314" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="132.0">
