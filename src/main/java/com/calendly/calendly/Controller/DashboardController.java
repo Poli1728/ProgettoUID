@@ -48,6 +48,8 @@ public class DashboardController {
 
     @FXML
     private Label labelDashboard;
+    @FXML
+    private Text txtDashboard;
 
     @FXML
     private TableView<Appuntamento> tableGiornliera;
@@ -99,6 +101,7 @@ public class DashboardController {
         StringBuilder giorno = GestoreData.getInstance().giornoCorrente(data);
         data = giorno.toString()+"/"+mese.toString()+"/"+anno.toString();
         labelDashboard.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        txtDashboard.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         impostaTable(data);
         impostaChart(data);
     }

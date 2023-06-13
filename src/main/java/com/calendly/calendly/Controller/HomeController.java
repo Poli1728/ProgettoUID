@@ -69,20 +69,8 @@ public class HomeController {
         }
     }
 
-    private void impostaTemi(){
-        /*appuntamentiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        dashboardButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        dipendentiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        logoutButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        impostazioniButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        serviziButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        statisticheButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        clientiButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));*/
-    }
-
     @FXML
     void initialize() throws IOException {
-        impostaTemi();
         Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/logo.png")));
         logoView.setImage(image);
 

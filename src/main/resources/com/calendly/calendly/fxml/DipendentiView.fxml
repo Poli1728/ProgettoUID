@@ -20,12 +20,12 @@
                 <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#actionAddButton" styleClass="secondaryButton" text="Aggiungi" />
             </children>
         </HBox>
-        <Label fx:id="labelDipendenti" layoutX="19.0" layoutY="8.0" prefHeight="43.0" prefWidth="563.0" text="Dipendenti" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="8.0">
+        <Label fx:id="labelDipendenti" layoutX="19.0" layoutY="8.0" prefHeight="43.0" prefWidth="563.0" text="Dipendenti" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
             <font>
                 <Font size="28.0" />
             </font>
         </Label>
-        <HBox fx:id="search_hbox" alignment="BASELINE_CENTER" layoutX="265.0" layoutY="18.0" spacing="4.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
+        <HBox fx:id="search_hbox" alignment="BASELINE_CENTER" layoutX="265.0" layoutY="18.0" spacing="4.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="22.0">
             <children>
                 <ComboBox fx:id="filtroBox" onAction="#actionFiltroBox" promptText="Filtra" styleClass="secondaryButton" />
                 <TextField fx:id="cercaField" promptText="cerca" styleClass="searchField" />

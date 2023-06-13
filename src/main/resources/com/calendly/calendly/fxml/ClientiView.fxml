@@ -20,7 +20,7 @@
             <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#actionAggiungiCliente" styleClass="secondaryButton" text="Aggiungi" />
          </children>
       </HBox>
-      <Label fx:id="labelClienti" layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="364.0" text="Clienti" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
+      <Label fx:id="labelClienti" layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="364.0" text="Clienti" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="27.0" />
          </font>
