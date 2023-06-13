@@ -11,5 +11,6 @@ module com.calendly.calendly {
     exports com.calendly.calendly;
     exports com.calendly.calendly.Controller;
     opens com.calendly.calendly.Controller to javafx.fxml;
+    opens com.calendly.calendly.View;
 
 }

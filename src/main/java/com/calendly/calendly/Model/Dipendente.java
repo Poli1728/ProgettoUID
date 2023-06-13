@@ -9,10 +9,12 @@ public class Dipendente {
     private String name;
     private String lastName;
     private String role;
-    private double salary;
+    private String salary;
+
+    public final static String[] params = {"ID", "Nome", "Cognome", "Ruolo", "Salario"};
 
 
-    public Dipendente(String id, String name, String lastName, String role, double salary) {
+    public Dipendente(String id, String name, String lastName, String role, String salary) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -26,12 +28,12 @@ public class Dipendente {
     public void setName(String name) { this.name = name; }
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setRole(String role) { this.role = role; }
-    public void setSalary(double salary) {this.salary = salary; }
+    public void setSalary(String salary) {this.salary = salary; }
 
 
     public String getId() { return id; }
     public String getName() { return name; }
     public String getLastName() { return lastName; }
     public String getRole() { return role; }
-    public Double getSalary() { return salary; }
+    public String getSalary() { return salary; }
 }
