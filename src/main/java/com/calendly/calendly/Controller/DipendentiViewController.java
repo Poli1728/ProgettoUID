@@ -4,6 +4,7 @@ import com.calendly.calendly.View.CardContainer;
 import com.calendly.calendly.Model.Dipendente;
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.ReusableDBResultsConverter;
+import com.calendly.calendly.View.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -51,12 +52,12 @@ public class DipendentiViewController {
 
     @FXML
     void actionAddButton(ActionEvent event) {
-
+        Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, -1, ancorPane);
     }
 
     @FXML
     void actionEditButton(ActionEvent event) {
-
+        Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.MODIFICA, -1, ancorPane);
     }
 
     @FXML
@@ -93,15 +94,5 @@ public class DipendentiViewController {
         CardContainer.getInstance().setCardContainer(res, vboxEsterno);
 
     }
-
-/*
-    @FXML
-    void actionAddButton(ActionEvent event) {
-        Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, ancorPane);
-    }
-
-    */
-
-
 
 }

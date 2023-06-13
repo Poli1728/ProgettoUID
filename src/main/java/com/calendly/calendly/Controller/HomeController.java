@@ -146,6 +146,7 @@ public class HomeController {
                         SceneHandler.getInstance().launchLogin();
                         return;
                     }
+
                     try {
                         avviaPane("fxml/" + button[iCopy].getButtonText().trim());
                     } catch (IOException e) {
