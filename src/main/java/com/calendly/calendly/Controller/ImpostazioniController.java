@@ -8,7 +8,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class ImpostazioniController {
 
@@ -70,9 +76,10 @@ public class ImpostazioniController {
     }
 
     @FXML
-    void salva(ActionEvent event) throws SQLException {
-        String path = SceneHandler.getInstance().apriDirectoryChooser();
-        GestoreDB.getInstance().backup(path);
+    void salva(ActionEvent event) throws SQLException, IOException {
+        File source = new File("src/main/resources/com/calendly/calendly/db/progetto.db");
+        File dest = new File(SceneHandler.getInstance().apriDirectoryChooser()+"/calendly_backup.db");
+        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
 
     // Funzione che attiva il font in base alla check box

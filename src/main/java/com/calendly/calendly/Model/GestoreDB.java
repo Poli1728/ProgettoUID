@@ -54,7 +54,7 @@ public class GestoreDB {
         while(rs.next()) {
             switch (ent) {
                 case Dipendenti -> {
-                    s.append(rs.getString("Id")).append(";").append(rs.getString("Username")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Password")).append(";").append(rs.getString("Salario")).append(";").append(rs.getString("Ruolo"));
+                    s.append(rs.getString("Id")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Ruolo")).append(";").append(rs.getString("Salario")).append(";").append(rs.getString("Username")).append(";").append(rs.getString("Password"));
                     risultato.add(s.toString());
                     s = new StringBuilder();
                 }
@@ -214,7 +214,7 @@ public class GestoreDB {
         String sql = "";
         switch (scelta){
             case 0 ->{
-                sql = "Select Id From Appuntamenti Where Data LIKE ? ;";
+                sql = "Select Id From Appuntamenti Where Data LIKE ?;";
             }
             case 1 -> {
                 sql = "Select Id From Dipendenti;";
@@ -224,7 +224,7 @@ public class GestoreDB {
             }
         }
         PreparedStatement stmt = con.prepareStatement(sql);
-        if(scelta == 1){
+        if(scelta == 0){
             stmt.setString(1, data);
         }
         ResultSet query = stmt.executeQuery();
@@ -277,16 +277,6 @@ public class GestoreDB {
         }
         stmt.close();
         return false;
-    }
-
-    //esegue il badkup nel path passato
-
-    public void backup(String path) throws SQLException {
-        String sql = ".backup progetto.db "+path+"/calendly.db;";
-        System.out.println(sql);
-        PreparedStatement stmt = con.prepareStatement(sql);
-        ResultSet query = stmt.executeQuery();
-        stmt.close();
     }
 
 }
