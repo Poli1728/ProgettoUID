@@ -144,7 +144,12 @@
     -fx-background-color: transparent;
 }
 
-
+.bar-chart .chart-content .chart-plot-background {
+    -fx-background-color: thirdBackgroundColor;
+}
+.axis{
+    -fx-text-background-color: primaryTextColor;
+}
 
 .table-view .table-cell {
     -fx-border-color: transparent;
