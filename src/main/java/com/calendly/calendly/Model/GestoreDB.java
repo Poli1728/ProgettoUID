@@ -54,7 +54,7 @@ public class GestoreDB {
         while(rs.next()) {
             switch (ent) {
                 case Dipendenti -> {
-                    s.append(rs.getString("Id")).append(";").append(rs.getString("Username")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Password")).append(";").append(rs.getString("Salario")).append(";").append(rs.getString("Ruolo"));
+                    s.append(rs.getString("Id")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Ruolo")).append(";").append(rs.getString("Salario")).append(";").append(rs.getString("Username")).append(";").append(rs.getString("Password"));
                     risultato.add(s.toString());
                     s = new StringBuilder();
                 }
