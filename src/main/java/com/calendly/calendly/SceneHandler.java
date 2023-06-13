@@ -5,9 +5,9 @@ import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.View.MyFont;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.text.Font;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -158,6 +158,16 @@ public class SceneHandler {
             name = chooser.showDialog(stage).getAbsolutePath();
         }catch (NullPointerException e){}
         return name;
+    }
+
+    public void generaAlert(String testo){
+        Alert alert;
+        alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Attenzione");
+        alert.setHeaderText("Qualcosa è andato storto.");
+        alert.setContentText(testo);
+        alert.setResizable(false);
+        alert.showAndWait();
     }
 
 }
