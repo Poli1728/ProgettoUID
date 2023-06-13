@@ -146,7 +146,7 @@ public class Dialog {
                         new ArrayList<>(
                                 Collections.singleton(
                                         GestoreDB.getInstance().cercaRiga(
-                                                GestoreDB.entità.Dipendenti, String.valueOf(id))))
+                                                GestoreDB.getInstance().getDipendenti(), String.valueOf(id))))
                 );
             } catch (SQLException e) {
                 throw new RuntimeException(e);

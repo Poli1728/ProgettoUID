@@ -15,6 +15,20 @@ public class GestoreDB {
 
     private Connection con = null;
 
+    //le entità che sono presenti nel db
+
+    private enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
+
+    //getters delle entità
+
+    public entità getDipendenti(){ return entità.Dipendenti;}
+    public entità getClienti(){ return entità.Clienti;}
+    public entità getAppuntamenti(){ return entità.Appuntamenti;}
+    public entità getServizi(){ return entità.Servizi;}
+    public entità getTemplate(){ return entità.Template;}
+
+    // leggi entità prende tutto dell'entità indicata, senza nessun vincolo
+
     //crea la connessione al db
 
     public void createConnection() throws SQLException {
@@ -30,20 +44,6 @@ public class GestoreDB {
             con.close();
         con = null;
     }
-
-    //le entità che sono presenti nel db
-
-    public enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
-
-    //getters delle entità
-
-    public entità getDipendenti(){ return entità.Dipendenti;}
-    public entità getClienti(){ return entità.Clienti;}
-    public entità getAppuntamenti(){ return entità.Appuntamenti;}
-    public entità getServizi(){ return entità.Servizi;}
-    public entità getTemplate(){ return entità.Template;}
-
-    // leggi entità prende tutto dell'entità indicata, senza nessun vincolo
 
     public ArrayList<String> leggiEntità(entità ent) throws SQLException {
         String query = "select * from "+ent.toString()+";";
@@ -183,9 +183,38 @@ public class GestoreDB {
         }
     }
 
+    public void rimozione(entità ent, String chiave) throws SQLException {
+        switch (ent){
+            case Dipendenti -> {
+                try (PreparedStatement pstmt = con.prepareStatement("DELETE Dipendenti WHERE Id LIKE ?;")) {
+                    pstmt.setString(1, chiave);
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Clienti -> {
+                try (PreparedStatement pstmt = con.prepareStatement("DELETE Clienti WHERE CF LIKE ?;")) {
+                    pstmt.setString(1, chiave);
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Appuntamenti -> {
+                try (PreparedStatement pstmt = con.prepareStatement("DELETE Appuntamenti WHERE Id LIKE ?;")) {
+                    pstmt.setString(1, chiave);
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+            case Servizi -> {
+                try (PreparedStatement pstmt = con.prepareStatement("DELETE Servizi WHERE Id LIKE ?;")) {
+                    pstmt.setString(1, chiave);
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {}
+            }
+        }
+    }
+
     //cerca in base la singola tupla ponendo l'id o il cf uguali alla chiave, andando a selezionare il singolo parametro. si possono generare anche singole tuple con tutti i parametri
 
-    public String cercaValore (entità ent, String parametro, String chiave) throws SQLException {
+    public String selezionaValore (entità ent, String parametro, String chiave) throws SQLException {
         String query;
         if (!ent.equals(entità.Clienti)) {
             query = "Select ? From "+ent.toString()+" Where Id = ?;";
@@ -211,6 +240,7 @@ public class GestoreDB {
         String query;
         query = "Select * From "+ent.toString()+" Where ? LIKE ?;";
         PreparedStatement stmt = con.prepareStatement(query);
+        stmt.setString(1, parametro);
         stmt.setString(2, chiave);
         ResultSet rs = stmt.executeQuery();
         StringBuilder s= new StringBuilder();

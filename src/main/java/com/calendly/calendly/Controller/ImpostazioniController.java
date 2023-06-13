@@ -93,6 +93,7 @@ public class ImpostazioniController {
     @FXML
     void ripristina(ActionEvent event) throws SQLException {
         GestoreDB.getInstance().svuota();
+        SceneHandler.getInstance().launchLogin();
     }
 
     //Initialize, vengono inserite tutte le cose all'inizio
