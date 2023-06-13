@@ -279,14 +279,4 @@ public class GestoreDB {
         return false;
     }
 
-    //esegue il badkup nel path passato
-
-    public void backup(String path) throws SQLException {
-        String sql = ".backup progetto.db "+path+"/calendly.db;";
-        System.out.println(sql);
-        PreparedStatement stmt = con.prepareStatement(sql);
-        ResultSet query = stmt.executeQuery();
-        stmt.close();
-    }
-
 }
