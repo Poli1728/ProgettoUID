@@ -21,4 +21,8 @@ public class Settings {
     }
     public final static String INIT_TITLE = "Calendly";
 
+
+    public final static int CELL_DB_DIPENDENTI = 5;
+    //public final static int CELL_DB_SERVIZI = 4?;
+
 }

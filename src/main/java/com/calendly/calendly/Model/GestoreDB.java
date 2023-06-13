@@ -33,7 +33,7 @@ public class GestoreDB {
 
     //le entità che sono presenti nel db
 
-    private enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
+    public enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
 
     //getters delle entità
 

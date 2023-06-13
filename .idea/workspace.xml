@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Miglioramenti posizione bottoni laterali a sinistra">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Bugfix grafica login / logout">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/ReusableDBResultsConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Servizi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CardContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ClientiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ClientiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ServiziViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ServiziViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Dipendente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Dipendente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685201888491</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Update SceneHandler pt.2. Aggiunta classe Settings">
-      <created>1685215905962</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1685215905962</updated>
     </task>
     <task id="LOCAL-00003" summary="Aggiornamenti su SceneHandler, css files, WelcomePage, Settings">
       <created>1685226052870</created>
@@ -465,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686596795106</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Bugfix grafica login / logout">
+      <created>1686599941074</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1686599941074</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +502,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Adattamenti grafici fondamentali" />
     <MESSAGE value="CSS sulle tableView" />
     <MESSAGE value="CSS sulle tableView (nuovo design quando modifichi i valori + popup show/hide tables), aggiunte grafiche" />
     <MESSAGE value="CSS sui bottoni in appuntamenti" />
@@ -517,6 +526,7 @@
     <MESSAGE value="CSS WARNING" />
     <MESSAGE value="Bugfix sul settaggio del tema" />
     <MESSAGE value="Miglioramenti posizione bottoni laterali a sinistra" />
-    <option name="LAST_COMMIT_MESSAGE" value="Miglioramenti posizione bottoni laterali a sinistra" />
+    <MESSAGE value="Bugfix grafica login / logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfix grafica login / logout" />
   </component>
 </project>

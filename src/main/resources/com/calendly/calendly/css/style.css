@@ -295,3 +295,8 @@
     -fx-background-color: transparent;
 }
 
+.text-ellipsis {
+    -fx-ellipsis-string: "...";
+    -fx-ellipsis-truncate: true;
+}
+
