@@ -3,6 +3,11 @@
     -fx-background-radius: 10px;
 }
 
+.txt{
+    -fx-fill: primaryTextColor;
+    -fx-background-color: primaryTextColor;
+}
+
 .external-pane {
     -fx-background-color: primaryBackgroundColor;
     -fx-background-radius: 0px;
@@ -144,9 +149,14 @@
     -fx-background-color: transparent;
 }
 
-.bar-chart .chart-content .chart-plot-background {
+.chart-legend{
     -fx-background-color: thirdBackgroundColor;
 }
+
+.bar-chart .chart-content .chart-plot-background{
+    -fx-background-color: thirdBackgroundColor;
+}
+
 .axis{
     -fx-text-background-color: primaryTextColor;
 }
