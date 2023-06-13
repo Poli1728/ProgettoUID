@@ -73,8 +73,8 @@ public class ServiziViewController {
     @FXML
     void initialize() throws SQLException {
         vboxEsterno.setSpacing(15);
-
-        for (int i = 0; i < GestoreDB.getInstance().conta("",2); i++) {
+/*
+        for (int i = 0; i < GestoreDB.getInstance().conta("",3); i++) {
             Card obj1 = new Card(Card.cardType.EMPLOYEE, 4, vboxEsterno);
             Card obj2 = new Card(Card.cardType.EMPLOYEE, 5, vboxEsterno);
 
@@ -86,6 +86,9 @@ public class ServiziViewController {
             vboxEsterno.getChildren().add(hbox1);
 
         }
+
+
+ */
 
     }
 

@@ -1,5 +1,6 @@
 package com.calendly.calendly.Controller;
 
+import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.View.Card;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.util.LinkedList;
 
 public class ClientiController {
 
@@ -60,8 +63,9 @@ public class ClientiController {
     @FXML
     void initialize(){
         vboxEsterno.setSpacing(15);
-
+/*
         for (int i = 0; i < 10; i++) {
+
             Card obj1 = new Card(Card.cardType.EMPLOYEE, 4, vboxEsterno);
             Card obj2 = new Card(Card.cardType.EMPLOYEE, 5, vboxEsterno);
 
@@ -73,6 +77,8 @@ public class ClientiController {
             vboxEsterno.getChildren().add(hbox1);
 
         }
+
+ */
     }
 
 }

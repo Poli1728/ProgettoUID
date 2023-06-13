@@ -33,7 +33,7 @@ public class GestoreDB {
 
     //le entità che sono presenti nel db
 
-    private enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
+    public enum entità  {Dipendenti, Clienti, Appuntamenti, Servizi, Template};
 
     //getters delle entità
 
@@ -54,7 +54,7 @@ public class GestoreDB {
         while(rs.next()) {
             switch (ent) {
                 case Dipendenti -> {
-                    s.append(rs.getString("Id")).append(";").append(rs.getString("Username")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Password")).append(";").append(rs.getString("Salario")).append(";").append(rs.getString("Ruolo"));
+                    s.append(rs.getString("Id")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Ruolo")).append(";").append(rs.getString("Salario")).append(";").append(rs.getString("Username")).append(";").append(rs.getString("Password"));
                     risultato.add(s.toString());
                     s = new StringBuilder();
                 }
@@ -187,13 +187,23 @@ public class GestoreDB {
 
     public String cercaValore (entità ent, String parametro, String chiave) throws SQLException {
         String query;
-        if (!ent.equals(entità.Clienti)) {
-            query = "Select ? From "+ent.toString()+" Where Id = ?;";
+        if(parametro.equals("*")){
+            if (!ent.equals(entità.Clienti)) {
+                query = "Select * From "+ent.toString()+" Where Id = ?;";
+            }else{
+                query = "Select * From "+ent.toString()+" Where CF LIKE ?;";
+            }
         }else{
-            query = "Select ? From "+ent.toString()+" Where CF LIKE ?;";
+            if (!ent.equals(entità.Clienti)) {
+                query = "Select ? From "+ent.toString()+" Where Id = ?;";
+            }else{
+                query = "Select ? From "+ent.toString()+" Where CF LIKE ?;";
+            }
         }
         PreparedStatement stmt = con.prepareStatement(query);
-        stmt.setString(1, parametro);
+        if(!parametro.equals("*")) {
+            stmt.setString(1, parametro);
+        }
         if(!ent.equals(entità.Clienti)){
             stmt.setInt(2, Integer.parseInt(chiave));
         }else{
@@ -214,17 +224,20 @@ public class GestoreDB {
         String sql = "";
         switch (scelta){
             case 0 ->{
-                sql = "Select Id From Appuntamenti Where Data LIKE ? ;";
+                sql = "Select Id From Appuntamenti Where Data LIKE ?;";
             }
             case 1 -> {
                 sql = "Select Id From Dipendenti;";
             }
             case 2 ->{
-                sql = "Select Id From Clienti;";
+                sql = "Select CF From Clienti;";
+            }
+            case 3 ->{
+                sql = "Select Id From Servizi;";
             }
         }
         PreparedStatement stmt = con.prepareStatement(sql);
-        if(scelta == 1){
+        if(scelta == 0){
             stmt.setString(1, data);
         }
         ResultSet query = stmt.executeQuery();
@@ -271,7 +284,6 @@ public class GestoreDB {
         while(query.next()) {
             if (BCrypt.checkpw(password, query.getString("Password"))){
                 stmt.close();
-                closeConnection();
                 return true;
             }
         }
@@ -279,14 +291,16 @@ public class GestoreDB {
         return false;
     }
 
-    //esegue il badkup nel path passato
-
-    public void backup(String path) throws SQLException {
-        String sql = ".backup progetto.db "+path+"/calendly.db;";
-        System.out.println(sql);
-        PreparedStatement stmt = con.prepareStatement(sql);
-        ResultSet query = stmt.executeQuery();
-        stmt.close();
+    public void svuota() throws SQLException {
+        String sql;
+        Statement stmt = con.createStatement();
+        String [] cancella = {"Clienti", "Appuntamenti", "Servizi", "Dipendenti"};
+        for(String i : cancella){
+            sql = "DELETE from "+i+";";
+            try{
+                stmt.executeQuery(sql);
+            }catch (SQLException e){}
+        }
     }
 
 }

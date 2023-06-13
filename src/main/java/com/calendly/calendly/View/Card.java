@@ -1,10 +1,15 @@
 package com.calendly.calendly.View;
 
 import com.calendly.calendly.Main;
+import com.calendly.calendly.Model.Dipendente;
+import com.calendly.calendly.Model.Servizi;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.OverrunStyle;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -12,82 +17,141 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class Card extends AnchorPane {
     private Integer identifier;
     private VBox parent;
-    public enum cardType {PERSON, EMPLOYEE}
-    public Card(cardType type, int identifier, VBox parent) {
+    private Object obj;
+
+    private String IMAGE_USER = "img/user.png";
+    private String IMAGE_SERVIZI = "";
+
+
+    public Card(Object obj, VBox parent) {
         super();
+        this.maxWidth(100);
+        this.prefWidth(100);
+
         this.parent = parent;
-        this.identifier = identifier;
-        createCard(type);
+        this.obj = obj;
+
+        setLayout();
     }
 
-    private void createCard(cardType type) {
-        switch (type) {
-            case PERSON -> createPerson();
-            case EMPLOYEE -> createEmployee();
-        };
-    }
 
-    private void createPerson() {
-    }
 
-    private void createEmployee() {
+    private void setLayout() {
+
+        //Le variabili da impostare nell'if-elseif-else per riconoscere la classe
+        String identifier = null;
+        String imagePath = null;
+        LinkedList<Label> labelsKey = new LinkedList<>();
+        LinkedList<Label> labelsValue = new LinkedList<>();
+
+        if (obj.getClass().equals(Dipendente.class)) {
+            imagePath = IMAGE_USER ;
+            Dipendente dip = (Dipendente) obj;
+            identifier = dip.getId();
+
+            Label primaRiga = new Label("ID:");
+            Label secondaRiga = new Label("Dipendente:");
+            Label terzaRiga = new Label("Ruolo:");
+            Label quartaRiga = new Label("Salario:");
+
+            labelsKey.add(primaRiga);       labelsValue.add(new Label(dip.getId()));
+            labelsKey.add(secondaRiga);     labelsValue.add(new Label(dip.getName() + " " + dip.getLastName()));
+            labelsKey.add(terzaRiga);       labelsValue.add(new Label(dip.getRole()));
+            labelsKey.add(quartaRiga);      labelsValue.add(new Label(dip.getSalary()));
+
+        } else if (obj.getClass().equals(Servizi.class)) {
+            System.out.println("ricordati di impostarlo");
+            return;
+
+
+
+
+
+
+
+        } else {
+            System.out.println("Imposta bene il riconoscimento degli oggetti in Dipendenti.setLayout()");
+            return;
+        }
+
+
+
+
+        // ------------------- NON TOCCARE SOTTO --------------------
+
         CustomButton edit = new CustomButton("Modifica","img/edit.png", "Modifica i dati della scheda selezionata");
         edit.getStyleClass().add("thirdButton");
 
+        String finalIdentifier = identifier;
+        edit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println(finalIdentifier + "  " + Integer.parseInt(finalIdentifier));
+                Dialog.getInstance().requestDialog(
+                        Dialog.from.DIPENDENTI,
+                        Dialog.actions.MODIFICA,
+                        Integer.parseInt(finalIdentifier),
+                        (AnchorPane) parent.getParent().getParent().getParent().getParent() );
+            }
+        });
+
+
         ImageView imageView = new ImageView();
         try {
-            Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/user.png")));
+            Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath)));
             imageView.setImage(image);
             imageView.setFitWidth(50);
             imageView.setFitWidth(50);
             imageView.setPreserveRatio(true);
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(e);
         }
 
-        //GestoreDB.getInstance().cercaValore(GestoreDB.entità.Dipendenti, identifier.toString(), )
-        String id = "11", nome = "Mario Giordano", cognome = "Bruno", ruolo = "Developer", salario = "3500.00";
+        VBox vboxKeys = new VBox(1);
+        VBox vboxValues = new VBox(1);
+        LinkedList[] groups = new LinkedList[]{labelsKey, labelsValue};
 
 
-        Label primaRiga = new Label("ID: \t" + id);
-        Label secondaRiga = new Label("Dipendente: \t" + nome + " " + cognome);
-        Label terzaRiga = new Label("Ruolo: \t" + ruolo);
-        Label quartaRiga = new Label("Salario: \t" + salario);
-
-        primaRiga.setFont(new Font(14));
-        secondaRiga.setFont(new Font(14));
-        terzaRiga.setFont(new Font(14));
-        quartaRiga.setFont(new Font(14));
-
-
-        VBox vbox = new VBox(1,
-                primaRiga,
-                secondaRiga,
-                terzaRiga,
-                quartaRiga
-        );
-
-        vbox.setFillWidth(true);
-        Insets insets = new Insets(15, 15, 15, 15);
-        vbox.setPadding(insets);
-
-        HBox hBox = new HBox(imageView, vbox);
+        HBox hBox = new HBox(imageView, vboxKeys, vboxValues);
         hBox.setAlignment(Pos.CENTER_LEFT);
         hBox.setPadding(new Insets(0, 0, 0, 15));
+
+
+        for (LinkedList g : groups)
+            for (Object l : g) {
+                Label label = (Label) l;
+                label.setFont(new Font(15));
+                label.setWrapText(false);
+                label.maxWidthProperty().bind(parent.widthProperty().divide(4.5));
+                label.getStyleClass().add("text-ellipsis");
+                label.setTextOverrun(OverrunStyle.ELLIPSIS);
+
+                if (groups[0].equals(g))
+                    vboxKeys.getChildren().add(label);
+                else
+                    vboxValues.getChildren().add(label);
+                }
+
+        vboxKeys.setFillWidth(true);
+        vboxValues.setFillWidth(true);
+
+        vboxKeys.setPadding(new Insets(15, 5, 15, 15));
+        vboxValues.setPadding(new Insets(15, 15, 15, 0));
+
         
         this.getChildren().addAll(edit, hBox);
         AnchorPane.setRightAnchor(edit, hBox.getWidth()+1);
         AnchorPane.setTopAnchor(edit, 1.0);
         edit.toFront();
-        this.prefWidthProperty().bind(parent.widthProperty().divide(2).subtract(30));
+        this.prefWidthProperty().bind(parent.widthProperty().divide(2).subtract(15));
 
         this.getStyleClass().add("card-info");
-        
     }
 
 

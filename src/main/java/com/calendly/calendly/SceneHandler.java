@@ -5,9 +5,9 @@ import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.View.MyFont;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.text.Font;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -81,7 +81,7 @@ public class SceneHandler {
     public void launchLogin() {
         loadFXML("fxml/LoginView.fxml");
         LoginController controller = loader.getController();
-        controller.init();
+        controller.init(stage);
         setWindowLoginDimension();
     }
 
@@ -129,9 +129,7 @@ public class SceneHandler {
 
     public void setTheme() {
 
-        String pathTheme;
-
-        pathTheme = switch (MyFont.getInstance().getTema()) {
+        String pathTheme = switch (MyFont.getInstance().getTema()) {
             case "DARK" -> Settings.themes[0];
             case "LIGHT" -> Settings.themes[1];
             case "BLU" -> Settings.themes[2];
@@ -160,6 +158,17 @@ public class SceneHandler {
             name = chooser.showDialog(stage).getAbsolutePath();
         }catch (NullPointerException e){}
         return name;
+    }
+
+    public void generaAlert(String testo){
+        Alert alert;
+        alert = new Alert(Alert.AlertType.WARNING);
+        //alert.getDialogPane().setStyle("css/blu.css");
+        alert.setTitle("Attenzione");
+        alert.setHeaderText("Qualcosa è andato storto.");
+        alert.setContentText(testo);
+        alert.setResizable(false);
+        alert.showAndWait();
     }
 
 }

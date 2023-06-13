@@ -1,13 +1,13 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.SceneHandler;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class LoginController {
     @FXML
@@ -28,8 +28,6 @@ public class LoginController {
     private Button accediButton;
 
 
-
-    //Funzione dedicata all'accesso dell'utente
     @FXML
     void accedi(ActionEvent event) {
         SceneHandler.getInstance().launchDashboard();
@@ -48,8 +46,8 @@ public class LoginController {
         passwordField.setOnKeyReleased(this::handleKeyReleasedPasswordField);
     }
 
-    public void init() {
-        configOBJS();
+    public void init(Stage stage) {
+        configPane(stage);
     }
 
     private void handleKeyReleasedUsernameField(KeyEvent event) {
@@ -68,30 +66,17 @@ public class LoginController {
     }
 
 
-    private void configPane() {
-        callPaneResizeRelocate();
-        ancorPane.layoutBoundsProperty().addListener((observable -> {
-            callPaneResizeRelocate();
-        }));
-    }
+    private void configPane(Stage stage) {
+        if (pane.getWidth() == 0 && pane.getHeight() == 0) {
+            AnchorPane.setLeftAnchor(pane, (ancorPane.getWidth() - pane.getPrefWidth()) / 2);
+            AnchorPane.setTopAnchor(pane, (ancorPane.getHeight() - pane.getPrefHeight()) / 2);
+        }
 
-    private void callPaneResizeRelocate() {
-        double width  = pane.getWidth();
-        double height = pane.getHeight();
-
-        double x = ancorPane.getWidth()/2 - width/2;
-        double y = ancorPane.getHeight()/2 - height/2;
-
-        pane.resizeRelocate(x, y, width, height);
-    }
-
-    private void configOBJS() {
-
-        Platform.runLater(() -> {
-            configPane();
+        ancorPane.boundsInLocalProperty().addListener((observable, oldValue, newValue) -> {
+                AnchorPane.setLeftAnchor(pane, (ancorPane.getWidth() - pane.getWidth())/2);
+                AnchorPane.setTopAnchor(pane, (ancorPane.getHeight() - pane.getHeight())/2);
         });
-
-
     }
+
 
 }

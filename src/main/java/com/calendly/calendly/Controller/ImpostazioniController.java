@@ -8,7 +8,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class ImpostazioniController {
 
@@ -32,11 +38,11 @@ public class ImpostazioniController {
     @FXML
     private Text txtDislessia;
     @FXML
-    private Label labelBackup;
+    private Label labelRipristina;
     @FXML
-    private Text txtBackup;
+    private Text txtRipristina;
     @FXML
-    private Button salvaButton;
+    private Button ripristinaButton;
 
     // Funzione che imposta i tutti i dettagli dei font scelti: Tema, Font e Size(quest'ultima non è modificabile all'utente)
     private void impostaFont(){
@@ -69,12 +75,6 @@ public class ImpostazioniController {
         initialize();
     }
 
-    @FXML
-    void salva(ActionEvent event) throws SQLException {
-        String path = SceneHandler.getInstance().apriDirectoryChooser();
-        GestoreDB.getInstance().backup(path);
-    }
-
     // Funzione che attiva il font in base alla check box
     @FXML
     void attivaDislessia(ActionEvent event) throws SQLException {
@@ -88,6 +88,11 @@ public class ImpostazioniController {
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }
         initialize();
+    }
+
+    @FXML
+    void ripristina(ActionEvent event) throws SQLException {
+        GestoreDB.getInstance().svuota();
     }
 
     //Initialize, vengono inserite tutte le cose all'inizio
