@@ -163,6 +163,7 @@ public class SceneHandler {
     public void generaAlert(String testo){
         Alert alert;
         alert = new Alert(Alert.AlertType.WARNING);
+        //alert.getDialogPane().setStyle("css/blu.css");
         alert.setTitle("Attenzione");
         alert.setHeaderText("Qualcosa è andato storto.");
         alert.setContentText(testo);

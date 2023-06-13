@@ -187,13 +187,23 @@ public class GestoreDB {
 
     public String cercaValore (entità ent, String parametro, String chiave) throws SQLException {
         String query;
-        if (!ent.equals(entità.Clienti)) {
-            query = "Select ? From "+ent.toString()+" Where Id = ?;";
+        if(parametro.equals("*")){
+            if (!ent.equals(entità.Clienti)) {
+                query = "Select * From "+ent.toString()+" Where Id = ?;";
+            }else{
+                query = "Select * From "+ent.toString()+" Where CF LIKE ?;";
+            }
         }else{
-            query = "Select ? From "+ent.toString()+" Where CF LIKE ?;";
+            if (!ent.equals(entità.Clienti)) {
+                query = "Select ? From "+ent.toString()+" Where Id = ?;";
+            }else{
+                query = "Select ? From "+ent.toString()+" Where CF LIKE ?;";
+            }
         }
         PreparedStatement stmt = con.prepareStatement(query);
-        stmt.setString(1, parametro);
+        if(!parametro.equals("*")) {
+            stmt.setString(1, parametro);
+        }
         if(!ent.equals(entità.Clienti)){
             stmt.setInt(2, Integer.parseInt(chiave));
         }else{
