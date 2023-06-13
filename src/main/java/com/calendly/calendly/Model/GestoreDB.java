@@ -214,7 +214,7 @@ public class GestoreDB {
         String sql = "";
         switch (scelta){
             case 0 ->{
-                sql = "Select Id From Appuntamenti Where Data LIKE ? ;";
+                sql = "Select Id From Appuntamenti Where Data LIKE ?;";
             }
             case 1 -> {
                 sql = "Select Id From Dipendenti;";
@@ -224,7 +224,7 @@ public class GestoreDB {
             }
         }
         PreparedStatement stmt = con.prepareStatement(sql);
-        if(scelta == 1){
+        if(scelta == 0){
             stmt.setString(1, data);
         }
         ResultSet query = stmt.executeQuery();
@@ -232,6 +232,7 @@ public class GestoreDB {
         while(query.next()) {
             s+=1;
         }
+        System.out.println(s);
         stmt.close();
         return s;
     }
