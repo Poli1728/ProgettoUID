@@ -138,10 +138,10 @@ public class AppuntamentiController{
     @FXML
     void generaScontrino(ActionEvent event) throws DocumentException, FileNotFoundException, SQLException {
         if(idScontrino.getText().equals("")){
-            System.out.println("Non ho ancora gli alert :)");
+            SceneHandler.getInstance().generaAlert("Non hai inserito l'id da cercare.");
         }else {
             if(!GestoreDB.getInstance().cercaValore(GestoreDB.getInstance().getAppuntamenti(),"Id", idScontrino.getText()).equals(idScontrino.getText())){
-                // Qui devi richiamare l'alert
+                SceneHandler.getInstance().generaAlert("L'id inserito non esiste.");
             }else{
                 Document doc = new Document();
                 String id = idScontrino.getText();
@@ -171,11 +171,9 @@ public class AppuntamentiController{
     @FXML
     void cerca(ActionEvent event) throws SQLException {
         if(filtroBox.getValue() == null){
-            System.out.println("Ciao");
-            //Si richiama l'alert
+            SceneHandler.getInstance().generaAlert("Non hai selezionato il filtro.");
         } else if (cercaField.getText().equals("")) {
-            System.out.println("Puzzi");
-            //Si richiama l'alert
+            SceneHandler.getInstance().generaAlert("Non hai inserito il valore da cercare.");
         } else {
             table.getItems().clear();
             String filtro = "";
