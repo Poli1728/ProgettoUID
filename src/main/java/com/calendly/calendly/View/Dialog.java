@@ -1,6 +1,9 @@
 package com.calendly.calendly.View;
 
 import com.calendly.calendly.Model.DialogResponse;
+import com.calendly.calendly.Model.Dipendente;
+import com.calendly.calendly.Model.GestoreDB;
+import com.calendly.calendly.Model.ReusableDBResultsConverter;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.collections.FXCollections;
@@ -15,9 +18,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Optional;
+import java.sql.SQLException;
+import java.util.*;
 
 public class Dialog {
 
@@ -36,10 +38,12 @@ public class Dialog {
 
     public enum from { APPUNTAMENTI, DIPENDENTI, SERVIZI, SIGNUP }
 
+    public enum actions {AGGIUNGI, MODIFICA, RIMUOVI}
+
     private javafx.scene.control.Dialog<DialogResponse> dialog;
 
     private Button okButton;
-    private void setDialog(from fromView) {
+    private void setDialog(from fromView, actions exeAction, Integer id) {
         javafx.scene.control.Dialog<DialogResponse> dialog = new javafx.scene.control.Dialog<>();
         this.dialog = dialog;
         dialog.setTitle("Calendly - Aggiungi");
@@ -53,10 +57,10 @@ public class Dialog {
         this.okButton = okButton;
 
         VBox vbox = switch (fromView) {
-            case DIPENDENTI -> setComponentsForDipendenti();
-            case APPUNTAMENTI -> setComponentsForAppuntamenti();
-            case SERVIZI -> setComponentsForServizi();
-            case SIGNUP -> setComponentsForRegistrazione();
+            case DIPENDENTI -> setComponentsForDipendenti(exeAction, id);
+            case APPUNTAMENTI -> setComponentsForAppuntamenti(exeAction);
+            case SERVIZI -> setComponentsForServizi(exeAction);
+            case SIGNUP -> setComponentsForRegistrazione(exeAction);
         };
 
         dialogPane.setContent(vbox);
@@ -71,15 +75,15 @@ public class Dialog {
 
     }
 
-    private VBox setComponentsForRegistrazione() {
+    private VBox setComponentsForRegistrazione(actions exeAction) {
         return null;
     }
 
-    private VBox setComponentsForServizi() {
+    private VBox setComponentsForServizi(actions exeAction) {
         return null;
     }
 
-    private VBox setComponentsForAppuntamenti() {
+    private VBox setComponentsForAppuntamenti(actions exeAction) {
         VBox vbox = new VBox();
         //add here your components like textfields, datapicker, etc.
         //dialog.setResultConverter((ButtonType bt) -> {
@@ -94,7 +98,7 @@ public class Dialog {
     private LinkedList<stato> clicked;
     private Label errors;
 
-    private VBox setComponentsForDipendenti() {
+    private VBox setComponentsForDipendenti(actions exeAction, Integer id) {
         initializeClickedList(3);
         TextField name = new TextField();
         name.setPromptText("Nome");
@@ -106,7 +110,6 @@ public class Dialog {
             System.out.println(clicked.get(1));
             System.out.println(clicked.get(2));
             System.out.println("------------");
-
         });
 
         TextField lastName = new TextField();
@@ -136,6 +139,39 @@ public class Dialog {
             System.out.println("------------");
         });
 
+        if (exeAction == actions.MODIFICA && id > -1) { //se in modifica con avente un id
+            LinkedList<Dipendente> res;
+            try {
+                res = ReusableDBResultsConverter.getInstance().getDipendenti(
+                        new ArrayList<>(
+                                Collections.singleton(
+                                        GestoreDB.getInstance().cercaValore(
+                                                GestoreDB.entità.Dipendenti, "*", String.valueOf(id))))
+                );
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            if (res.size() != 0) {
+                name.setText(res.get(0).getName());
+                lastName.setText(res.get(0).getLastName());
+
+                /*int count = 0;
+                for (Settings.roles r: options) {
+                    if (r.toString().equals(res.get(0).getRole()))
+                        role.getSelectionModel().select(res.get(0).getRole());
+                    count++;
+                }*/
+                //todo vedere se funziona
+                role.getSelectionModel().select(res.get(0).getRole());
+                salary.setText(res.get(0).getSalary());
+            } else {
+                //todo = 0, l'utente non esiste, popup di errore (?)
+            }
+
+        } else if (exeAction == actions.MODIFICA && id > -1) { //se in modifica con codice -1
+
+        }
 
         dialog.setResultConverter((ButtonType bt) -> {
             if (bt == ButtonType.OK) {
@@ -166,9 +202,11 @@ public class Dialog {
 
     //todo return boolean per poi inserire nei vari controller se bisogna aggiornare la tabella o meno.
     //prende come parametro l'attuale ancorPane della view
-    public Optional<DialogResponse> requestDialog(from fromView, AnchorPane anchorPane)  { //prende come parametri i nomi in minuscolo delle singole opzioni da richedere all'utente
+    public Optional<DialogResponse> requestDialog(from fromView, actions exeAction, Integer id, AnchorPane anchorPane)  { //prende come parametri i nomi in minuscolo delle singole opzioni da richedere all'utente
+
         if (anchorPaneFather == null || anchorPane == null)
             return null;    //se null, non è stato possibile effettuare la richiesta
+        //todo aggiungere alert
 
 
         Pane rightHomePane = (Pane) anchorPane.getParent();
@@ -176,15 +214,13 @@ public class Dialog {
             setUpBlurEffect(rightHomePane);
         }
 
-        setDialog(fromView);
+        setDialog(fromView, exeAction, id);
+
         Optional<DialogResponse> optionalResult = dialog.showAndWait();
         disableBlurEffect(rightHomePane);
 
-
         //aggiungo ciò che l'utente ha messo nelle textField nell'ordine in cui vengono passati in params
         return optionalResult;
-
-        //todo fare direttamente in .setResultConverter il salvataggio nel db + reload della tabella
 
     }
 

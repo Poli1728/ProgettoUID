@@ -3,6 +3,8 @@ package com.calendly.calendly.View;
 import com.calendly.calendly.Main;
 import com.calendly.calendly.Model.Dipendente;
 import com.calendly.calendly.Model.Servizi;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -43,6 +45,7 @@ public class Card extends AnchorPane {
     private void setLayout() {
 
         //Le variabili da impostare nell'if-elseif-else per riconoscere la classe
+        String identifier = null;
         String imagePath = null;
         LinkedList<Label> labelsKey = new LinkedList<>();
         LinkedList<Label> labelsValue = new LinkedList<>();
@@ -50,6 +53,7 @@ public class Card extends AnchorPane {
         if (obj.getClass().equals(Dipendente.class)) {
             imagePath = IMAGE_USER ;
             Dipendente dip = (Dipendente) obj;
+            identifier = dip.getId();
 
             Label primaRiga = new Label("ID:");
             Label secondaRiga = new Label("Dipendente:");
@@ -64,14 +68,38 @@ public class Card extends AnchorPane {
         } else if (obj.getClass().equals(Servizi.class)) {
             System.out.println("ricordati di impostarlo");
             return;
+
+
+
+
+
+
+
         } else {
             System.out.println("Imposta bene il riconoscimento degli oggetti in Dipendenti.setLayout()");
             return;
         }
 
 
+
+
+        // ------------------- NON TOCCARE SOTTO --------------------
+
         CustomButton edit = new CustomButton("Modifica","img/edit.png", "Modifica i dati della scheda selezionata");
         edit.getStyleClass().add("thirdButton");
+
+        String finalIdentifier = identifier;
+        edit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println(finalIdentifier + "  " + Integer.parseInt(finalIdentifier));
+                Dialog.getInstance().requestDialog(
+                        Dialog.from.DIPENDENTI,
+                        Dialog.actions.MODIFICA,
+                        Integer.parseInt(finalIdentifier),
+                        (AnchorPane) parent.getParent().getParent().getParent().getParent() );
+            }
+        });
 
 
         ImageView imageView = new ImageView();

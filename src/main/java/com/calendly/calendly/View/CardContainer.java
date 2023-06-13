@@ -23,18 +23,18 @@ public class CardContainer {
             for (int i = 0; i < res.size(); i = i+2) {
                 Card obj1 = new Card(res.get(i), vboxEsterno);
 
-                HBox hbox1 = new HBox(10, obj1);
+                HBox hbox = new HBox(10, obj1);
 
                 Card obj2;
                 if (i+1 < res.size()) {
                     obj2 = new Card(res.get(i + 1), vboxEsterno);
-                    hbox1.getChildren().add(obj2);
+                    hbox.getChildren().add(obj2);
                 }
 
-                hbox1.setFillHeight(true);
-                hbox1.setAlignment(Pos.BASELINE_LEFT);
+                hbox.setFillHeight(true);
+                hbox.setAlignment(Pos.BASELINE_LEFT);
 
-                vboxEsterno.getChildren().add(hbox1);
+                vboxEsterno.getChildren().add(hbox);
             }
         else {
             //todo put a label saying no results
