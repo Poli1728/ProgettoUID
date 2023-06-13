@@ -232,7 +232,6 @@ public class GestoreDB {
         while(query.next()) {
             s+=1;
         }
-        System.out.println(s);
         stmt.close();
         return s;
     }
