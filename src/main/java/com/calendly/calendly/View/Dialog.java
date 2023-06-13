@@ -145,8 +145,8 @@ public class Dialog {
                 res = ReusableDBResultsConverter.getInstance().getDipendenti(
                         new ArrayList<>(
                                 Collections.singleton(
-                                        GestoreDB.getInstance().cercaValore(
-                                                GestoreDB.entità.Dipendenti, "*", String.valueOf(id))))
+                                        GestoreDB.getInstance().cercaRiga(
+                                                GestoreDB.entità.Dipendenti, String.valueOf(id))))
                 );
             } catch (SQLException e) {
                 throw new RuntimeException(e);
