@@ -42,13 +42,13 @@
                   <Font size="28.0" />
                </font>
             </Label>
-            <Label fx:id="labelBackup" layoutX="11.0" layoutY="323.0" prefHeight="21.0" prefWidth="704.0" text="Salva dati">
+            <Label fx:id="labelRipristina" layoutX="11.0" layoutY="323.0" prefHeight="21.0" prefWidth="704.0" text="Ripristina dati">
                <font>
                   <Font size="28.0" />
                </font>
             </Label>
-            <Button fx:id="salvaButton" defaultButton="true" layoutX="575.0" layoutY="374.0" mnemonicParsing="false" onAction="#salva" styleClass="secondaryButton" text="Salva" AnchorPane.rightAnchor="1.0" />
-            <Text fx:id="txtBackup" layoutX="21.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crea un backup della base di dati" wrappingWidth="618.0">
+            <Button fx:id="ripristinaButton" defaultButton="true" layoutX="575.0" layoutY="374.0" mnemonicParsing="false" onAction="#ripristina" styleClass="secondaryButton" text="Ripristina" AnchorPane.rightAnchor="1.0" />
+            <Text fx:id="txtRipristina" layoutX="21.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rimuovi tutti i dati presenti" wrappingWidth="618.0">
                <font>
                   <Font size="14.0" />
                </font>

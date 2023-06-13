@@ -38,11 +38,11 @@ public class ImpostazioniController {
     @FXML
     private Text txtDislessia;
     @FXML
-    private Label labelBackup;
+    private Label labelRipristina;
     @FXML
-    private Text txtBackup;
+    private Text txtRipristina;
     @FXML
-    private Button salvaButton;
+    private Button ripristinaButton;
 
     // Funzione che imposta i tutti i dettagli dei font scelti: Tema, Font e Size(quest'ultima non è modificabile all'utente)
     private void impostaFont(){
@@ -75,13 +75,6 @@ public class ImpostazioniController {
         initialize();
     }
 
-    @FXML
-    void salva(ActionEvent event) throws SQLException, IOException {
-        File source = new File("src/main/resources/com/calendly/calendly/db/progetto.db");
-        File dest = new File(SceneHandler.getInstance().apriDirectoryChooser()+"/calendly_backup.db");
-        Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
-    }
-
     // Funzione che attiva il font in base alla check box
     @FXML
     void attivaDislessia(ActionEvent event) throws SQLException {
@@ -95,6 +88,11 @@ public class ImpostazioniController {
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }
         initialize();
+    }
+
+    @FXML
+    void ripristina(ActionEvent event) throws SQLException {
+        GestoreDB.getInstance().svuota();
     }
 
     //Initialize, vengono inserite tutte le cose all'inizio

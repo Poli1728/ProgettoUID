@@ -220,7 +220,10 @@ public class GestoreDB {
                 sql = "Select Id From Dipendenti;";
             }
             case 2 ->{
-                sql = "Select Id From Clienti;";
+                sql = "Select CF From Clienti;";
+            }
+            case 3 ->{
+                sql = "Select Id From Servizi;";
             }
         }
         PreparedStatement stmt = con.prepareStatement(sql);
@@ -271,12 +274,23 @@ public class GestoreDB {
         while(query.next()) {
             if (BCrypt.checkpw(password, query.getString("Password"))){
                 stmt.close();
-                closeConnection();
                 return true;
             }
         }
         stmt.close();
         return false;
+    }
+
+    public void svuota() throws SQLException {
+        String sql;
+        Statement stmt = con.createStatement();
+        String [] cancella = {"Clienti", "Appuntamenti", "Servizi", "Dipendenti"};
+        for(String i : cancella){
+            sql = "DELETE from "+i+";";
+            try{
+                stmt.executeQuery(sql);
+            }catch (SQLException e){}
+        }
     }
 
 }
