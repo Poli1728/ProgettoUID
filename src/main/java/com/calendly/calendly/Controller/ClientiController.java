@@ -1,17 +1,21 @@
 package com.calendly.calendly.Controller;
 
+import com.calendly.calendly.Model.Cliente;
 import com.calendly.calendly.Model.GestoreDB;
-import com.calendly.calendly.View.Card;
+import com.calendly.calendly.Model.ReusableDBResultsConverter;
+import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.View.CardContainer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ClientiController {
@@ -23,10 +27,13 @@ public class ClientiController {
     private Button cercaButton;
 
     @FXML
-    private TextField cercaField;
+    private Button editButton;
 
     @FXML
-    private Button editButton;
+    private TextField field;
+
+    @FXML
+    private ComboBox<String> filtro;
 
     @FXML
     private Label labelClienti;
@@ -40,45 +47,61 @@ public class ClientiController {
     @FXML
     private VBox vboxEsterno;
 
+    private void generaCard(boolean cerca, String filtro, String valore){
+        /*LinkedList<Cliente> res = null;
+
+        try {
+            if(!cerca){
+                res = ReusableDBResultsConverter.getInstance().getClienti(GestoreDB.getInstance().leggiEntità(GestoreDB.entità.Clienti));
+            }else{
+                ArrayList<String> clienti = new ArrayList<String>();
+                clienti.add(GestoreDB.getInstance().cercaTramiteValore(GestoreDB.entità.Clienti, filtro, valore));
+                res = ReusableDBResultsConverter.getInstance().getClienti(clienti);
+            }
+        } catch (SQLException e) {}
+
+        CardContainer.getInstance().setCardContainer(res, vboxEsterno);*/
+    }
+
     @FXML
-    void aggiungiCliente(ActionEvent event) {
+    void actionAggiungiCliente(ActionEvent event) {
 
     }
 
     @FXML
-    void cerca(ActionEvent event) {
+    void actionCerca(ActionEvent event) {
+        if(filtro.getValue() == null){
+            SceneHandler.getInstance().generaAlert("Non hai selezionato il filtro.");
+        }else if(field.getText().equals("")){
+            SceneHandler.getInstance().generaAlert("Non hai inserito il valore da cercare.");
+        }else{
+            generaCard(true, filtro.getValue(), field.getText());
+        }
+    }
+
+    @FXML
+    void actionFiltro(ActionEvent event) {
 
     }
 
     @FXML
-    void modificaCliente(ActionEvent event) {
+    void actionModificaCliente(ActionEvent event) {
 
     }
 
     @FXML
-    void rimuoviCliente(ActionEvent event) {
+    void actionRimuoviCliente(ActionEvent event) {
 
     }
 
     @FXML
     void initialize(){
         vboxEsterno.setSpacing(15);
-/*
-        for (int i = 0; i < 10; i++) {
 
-            Card obj1 = new Card(Card.cardType.EMPLOYEE, 4, vboxEsterno);
-            Card obj2 = new Card(Card.cardType.EMPLOYEE, 5, vboxEsterno);
+        filtro.getItems().addAll("CF", "Nome", "Cognome", "Email", "Numero");
 
-            HBox hbox1 = new HBox(10 , obj1, obj2);
+        generaCard(false, "", "");
 
-            hbox1.setFillHeight(true);
-            hbox1.setAlignment(Pos.BASELINE_CENTER);
-
-            vboxEsterno.getChildren().add(hbox1);
-
-        }
-
- */
     }
 
 }

@@ -27,8 +27,8 @@
       </Label>
       <HBox layoutX="21.0" layoutY="76.0" spacing="10.0" AnchorPane.leftAnchor="21.0">
          <children>
-            <ComboBox fx:id="Filtro" onAction="#actionFiltro" prefHeight="25.0" prefWidth="79.0" promptText="Filtro" />
-            <TextField fx:id="cercaField" prefHeight="24.0" prefWidth="127.0" promptText="Cerca" styleClass="searchField" />
+            <ComboBox fx:id="filtro" onAction="#actionFiltro" prefHeight="25.0" prefWidth="84.0" promptText="Filtro" />
+            <TextField fx:id="field" prefHeight="24.0" prefWidth="127.0" promptText="Cerca" styleClass="searchField" />
             <Button fx:id="cercaButton" mnemonicParsing="false" onAction="#actionCerca" styleClass="secondaryButton" text="Cerca" />
          </children>
       </HBox>

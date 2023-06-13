@@ -207,6 +207,32 @@ public class GestoreDB {
         return s.toString();
     }
 
+    public String cercaTramiteValore (entità ent, String parametro, String chiave) throws SQLException {
+        String query;
+        query = "Select * From "+ent.toString()+" Where ? LIKE ?;";
+        PreparedStatement stmt = con.prepareStatement(query);
+        stmt.setString(2, chiave);
+        ResultSet rs = stmt.executeQuery();
+        StringBuilder s= new StringBuilder();
+        while(rs.next()) {
+            switch (ent){
+                case Dipendenti -> {
+                    s.append(rs.getString("Id")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Ruolo")).append(";").append(rs.getString("Salario")).append(";").append(rs.getString("Username")).append(";").append(rs.getString("Password"));
+                }
+                case Clienti -> {
+                    s.append(rs.getString("CF")).append(";").append(rs.getString("Email")).append(";").append(rs.getString("Nome")).append(";").append(rs.getString("Cognome")).append(";").append(rs.getString("Numero"));
+                }
+                case Appuntamenti -> {
+                    s.append(rs.getString("Id")).append(";").append(rs.getString("Data")).append(";").append(rs.getString("CF_Cliente")).append(";").append(rs.getString("Id_Dipendente")).append(";").append(rs.getString("Id_Servizio"));
+                }
+                case Servizi -> {
+                    s.append(rs.getString("Id")).append(";").append(rs.getString("Tipo")).append(";").append(rs.getString("Prezzo"));
+                }
+            }
+        }
+        return s.toString();
+    }
+
     public String cercaRiga(entità ent, String chiave) throws SQLException {
         String query;
         if (!ent.equals(entità.Clienti)) {

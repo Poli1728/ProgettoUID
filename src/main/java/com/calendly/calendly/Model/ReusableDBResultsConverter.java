@@ -9,6 +9,7 @@ public class ReusableDBResultsConverter {
 
     private LinkedList<Servizi> servizi;
     private LinkedList<Dipendente> dipendenti;
+    //private LinkedList<Cliente> clienti;
 
 
     private static ReusableDBResultsConverter instance = new ReusableDBResultsConverter();
@@ -24,7 +25,10 @@ public class ReusableDBResultsConverter {
         return dipendenti;
     }
 
-
+    /*public LinkedList<Cliente> getClienti(ArrayList<String> dbResults) {
+        this.clienti = convertiFormatoGestoreDBToListClienti(dbResults);
+        return clienti;
+    }*/
 
 
 
@@ -52,6 +56,23 @@ public class ReusableDBResultsConverter {
 
         return results;
     }
+
+    /*private LinkedList<Cliente> convertiFormatoGestoreDBToListClienti(ArrayList<String> dbResults) {
+        LinkedList<Cliente> results = new LinkedList<>();
+        for (String i : dbResults) {
+            String[] rowValues = i.split(";");
+            System.out.println(i);
+            Cliente cliente = new Cliente(rowValues[0],
+                    rowValues[1],
+                    rowValues[2],
+                    rowValues[3],
+                    rowValues[4]);
+
+            results.add(cliente);
+        }
+
+        return results;
+    }*/
 
     private void notAvailable(String[] rowValues) {
         for(String v : rowValues)

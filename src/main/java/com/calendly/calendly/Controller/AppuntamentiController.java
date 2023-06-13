@@ -5,6 +5,7 @@ import com.calendly.calendly.Model.GestoreAppuntamenti;
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.GestoreData;
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyFont;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -16,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -71,6 +73,9 @@ public class AppuntamentiController{
     private TableView<Appuntamento> table;
 
     @FXML
+    private AnchorPane ancorPane;
+
+    @FXML
     private ComboBox<String> filtroBox;
 
     // Associa le colonne della table alle variabili della classe Appuntamento
@@ -88,15 +93,7 @@ public class AppuntamentiController{
     // aggiunge gli items al combo box
 
     private void aggiungiItems(){
-        filtroBox.getItems().add("Id");
-        filtroBox.getItems().add("Email");
-        filtroBox.getItems().add("Nome");
-        filtroBox.getItems().add("Cognome");
-        filtroBox.getItems().add("Numero");
-        filtroBox.getItems().add("Data");
-        filtroBox.getItems().add("Dipendente");
-        filtroBox.getItems().add("Servizio");
-        filtroBox.getItems().add("Prezzo");
+        filtroBox.getItems().addAll("Id","Email","Nome","Cognome","Numero","Data","Dipendente","Servizio","Prezzo");
     }
 
     // imposta Font dei testi
@@ -117,6 +114,7 @@ public class AppuntamentiController{
     @FXML
     void aggiungiAppuntamento(ActionEvent event) throws IOException {
         //controlla se c'è l'appuntamento indicato
+        //Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.AGGIUNGI, -1, ancorPane);
     }
 
     // modifica l'appuntamento presente nel db
@@ -124,6 +122,7 @@ public class AppuntamentiController{
     @FXML
     void modificaAppuntamento(ActionEvent event) throws IOException {
         //controlla se c'è l'appuntamento indicato
+        //Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.MODIFICA, -1, ancorPane);
     }
 
     // rimuove l'appuntamento dal db
@@ -131,6 +130,7 @@ public class AppuntamentiController{
     @FXML
     void rimuoviAppuntamento(ActionEvent event) throws IOException {
         //controlla se c'è l'appuntamento indicato
+        //Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.RIMUOVI, -1, ancorPane);
     }
 
     // Questa funzione genera uno scontrino all'interno con presenti dei dati dell'appuntamento
