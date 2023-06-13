@@ -64,7 +64,7 @@ public class GestoreDB {
                     s = new StringBuilder();
                 }
                 case Appuntamenti -> {
-                    s.append(rs.getString("Id")).append(";").append(rs.getString("Data")).append(";").append(rs.getString("CF_Utente")).append(";").append(rs.getString("Id_Dipendente")).append(";").append(rs.getString("Id_Servizio"));
+                    s.append(rs.getString("Id")).append(";").append(rs.getString("Data")).append(";").append(rs.getString("CF_Cliente")).append(";").append(rs.getString("Id_Dipendente")).append(";").append(rs.getString("Id_Servizio"));
                     risultato.add(s.toString());
                     s = new StringBuilder();
                 }
@@ -110,9 +110,9 @@ public class GestoreDB {
                 } catch (SQLException e) {}
             }
             case Appuntamenti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Appuntamenti(Data, CF_Utente, Id_Dipendente, Id_Servizio) VALUES(?,?, ?, ?);")) {
+                try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Appuntamenti(Data, CF_Cliente, Id_Dipendente, Id_Servizio) VALUES(?,?, ?, ?);")) {
                     pstmt.setString(1, info[0]); //Data
-                    pstmt.setString(2, info[1]);//CF_Utente
+                    pstmt.setString(2, info[1]);//CF_Cliente
                     pstmt.setInt(3, Integer.parseInt(info[2])); //Id_Dipendente
                     pstmt.setInt(4, Integer.parseInt(info[3])); //Id_Servizio
                     pstmt.executeUpdate();
@@ -156,9 +156,9 @@ public class GestoreDB {
                 } catch (SQLException e) {}
             }
             case Appuntamenti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Appuntamenti SET Data LIKE ?, CF_Utente = ?, Id_Dipendente = ?, Id_Servizio = ? WHERE Id = ?;")) {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Appuntamenti SET Data LIKE ?, CF_Cliente = ?, Id_Dipendente = ?, Id_Servizio = ? WHERE Id = ?;")) {
                     pstmt.setString(1, info[0]); //Data
-                    pstmt.setString(2, info[1]); // CF_Utente
+                    pstmt.setString(2, info[1]); // CF_Cliente
                     pstmt.setInt(3, Integer.parseInt(info[2])); // Id_Dipendente
                     pstmt.setInt(4, Integer.parseInt(info[3])); // Id_Servizio
                     pstmt.setInt(5, Integer.parseInt(info[4])); // Id
@@ -203,13 +203,18 @@ public class GestoreDB {
         PreparedStatement stmt = con.prepareStatement(query);
         if(!parametro.equals("*")) {
             stmt.setString(1, parametro);
-        }
-        if(!ent.equals(entità.Clienti)){
-            stmt.setInt(2, Integer.parseInt(chiave));
+            if(!ent.equals(entità.Clienti)){
+                stmt.setInt(2, Integer.parseInt(chiave));
+            }else{
+                stmt.setString(2, chiave);
+            }
         }else{
-            stmt.setString(2, chiave);
+            if(!ent.equals(entità.Clienti)){
+                stmt.setInt(1, Integer.parseInt(chiave));
+            }else{
+                stmt.setString(1, chiave);
+            }
         }
-
         ResultSet rs = stmt.executeQuery();
         StringBuilder s= new StringBuilder();
         while(rs.next()) {
@@ -255,9 +260,9 @@ public class GestoreDB {
         ArrayList<String> risultato = new ArrayList<String>();
         String sql;
         if(cerca){
-            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Utente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id and "+filtro+" LIKE ?;";
+            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id and "+filtro+" LIKE ?;";
         }else{
-            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Utente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id;";
+            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id;";
         }
         PreparedStatement stmt = con.prepareStatement(sql);
         if(cerca){
