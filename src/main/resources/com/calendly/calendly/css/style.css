@@ -315,3 +315,11 @@
     -fx-ellipsis-truncate: true;
 }
 
+.alert{
+    -fx-background-color: thirdBackgroundColor;
+
+}
+
+.alert:header *.header-panel{
+    -fx-background-color: secondaryBackgroundColor;
+}
