@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -38,7 +39,15 @@ public class Dialog {
 
     public enum from { APPUNTAMENTI, DIPENDENTI, SERVIZI, SIGNUP }
 
-    public enum actions {AGGIUNGI, MODIFICA, RIMUOVI}
+    public enum actions {AGGIUNGI(0), MODIFICA(1), RIMUOVI(2);
+        actions(int i) {
+        }
+    }
+    private String[] headerDescriptions = {
+            "Compila campi sottostanti",
+            "Modifica i campi sottostanti",
+            "Conferma la rimozione dei dati sottostanti dal sistema"
+    };
 
     private javafx.scene.control.Dialog<DialogResponse> dialog;
 
@@ -46,8 +55,8 @@ public class Dialog {
     private void setDialog(from fromView, actions exeAction, Integer id) {
         javafx.scene.control.Dialog<DialogResponse> dialog = new javafx.scene.control.Dialog<>();
         this.dialog = dialog;
-        dialog.setTitle("Calendly - Aggiungi");
-        dialog.setHeaderText("Completa i seguenti campi:");
+        dialog.setTitle("Calendly - " + exeAction.toString().toLowerCase());
+        dialog.setHeaderText(headerDescriptions[exeAction.ordinal()]);
 
         DialogPane dialogPane = dialog.getDialogPane();
         dialogPane.getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
@@ -60,7 +69,7 @@ public class Dialog {
             case DIPENDENTI -> setComponentsForDipendenti(exeAction, id);
             case APPUNTAMENTI -> setComponentsForAppuntamenti(exeAction);
             case SERVIZI -> setComponentsForServizi(exeAction);
-            case SIGNUP -> setComponentsForRegistrazione(exeAction);
+            case SIGNUP -> null; //todo da togliore o aggiungere
         };
 
         dialogPane.setContent(vbox);
@@ -75,9 +84,6 @@ public class Dialog {
 
     }
 
-    private VBox setComponentsForRegistrazione(actions exeAction) {
-        return null;
-    }
 
     private VBox setComponentsForServizi(actions exeAction) {
         return null;
@@ -156,13 +162,6 @@ public class Dialog {
                 name.setText(res.get(0).getName());
                 lastName.setText(res.get(0).getLastName());
 
-                /*int count = 0;
-                for (Settings.roles r: options) {
-                    if (r.toString().equals(res.get(0).getRole()))
-                        role.getSelectionModel().select(res.get(0).getRole());
-                    count++;
-                }*/
-                //todo vedere se funziona
                 role.getSelectionModel().select(res.get(0).getRole());
                 salary.setText(res.get(0).getSalary());
             } else {
@@ -185,12 +184,23 @@ public class Dialog {
             return null;
         });
 
-        VBox vbox = new VBox(8,
+        VBox vbox = new VBox(8);
+
+        if (exeAction == actions.RIMUOVI) {
+            name.setEditable(false);
+            lastName.setEditable(false);
+            role.setEditable(false);
+            salary.setEditable(false);
+        }
+
+        //todo (?) gestire gli id < 0
+
+        vbox.getChildren().addAll(
                 createHbox("Nome", name),
                 createHbox("Cognome", lastName),
                 createHbox("Ruolo", role),
-                createHbox("Salario", salary)
-        );
+                createHbox("Salario", salary));
+
 
         Label errors = new Label();
         this.errors = errors;
