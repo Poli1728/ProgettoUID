@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import java.sql.Date;
@@ -133,6 +134,16 @@ public class DashboardController {
         chartGiornaliero.getData().add(guadagni);
     }
 
+    @FXML
+    void avviaNotifica(MouseEvent event) throws SQLException {
+        if(Settings.NOTIFICA){
+            String data = GestoreData.getInstance().generaDataOdierna();
+            String appuntamentiNotifica = generaNotificaTesto(data);
+            SceneHandler.getInstance().generaAlert(appuntamentiNotifica,true);
+            Settings.NOTIFICA=false;
+        }
+    }
+
     // inizializza tutto
 
     @FXML
@@ -141,10 +152,6 @@ public class DashboardController {
         impostaTemi();
         impostaTable(data);
         impostaChart(data);
-        if(Settings.NOTIFICA){
-            String appuntamentiNotifica = generaNotificaTesto(data);
-            SceneHandler.getInstance().generaAlert(appuntamentiNotifica,true);
-        }
     }
 
 }
