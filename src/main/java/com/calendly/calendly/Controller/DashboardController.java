@@ -2,7 +2,6 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.*;
 import com.calendly.calendly.SceneHandler;
-import com.calendly.calendly.Settings;
 import com.calendly.calendly.View.MyInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -91,17 +90,6 @@ public class DashboardController {
         txtNumeroCalcolare.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
     }
 
-    private String generaNotificaTesto(String data) throws SQLException {
-        ArrayList<String> app = GestoreDB.getInstance().creaLista(true, "Data", data);
-        StringBuilder s = new StringBuilder();
-        s.append("Nome ").append(" Cognome ").append(" Numero        ").append("Servizio\n");
-        for(String i : app){
-            String [] info = i.split(";");
-            s.append(info[2]).append(" ").append(info[3]).append("   ").append(info[4]).append(" ").append(info[7]).append("\n");
-        }
-        return s.toString();
-    }
-
     // aggiunge gli elementi all'interno della table
 
     private void impostaTable(String data){
@@ -137,7 +125,7 @@ public class DashboardController {
     void avviaNotifica(MouseEvent event) throws SQLException {
         if(MyInfo.getInstance().getNotifica() == 0 && MyInfo.getInstance().getContatore() == 0){
             String data = GestoreData.getInstance().generaDataOdierna();
-            String appuntamentiNotifica = generaNotificaTesto(data);
+            String appuntamentiNotifica = GeneratoreStringheAlert.getInstance().generaNotificaTesto(data);
             SceneHandler.getInstance().generaAlert(appuntamentiNotifica,true);
             MyInfo.getInstance().setContatore(1);
         }

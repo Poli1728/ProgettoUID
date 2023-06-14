@@ -1,9 +1,6 @@
 package com.calendly.calendly.Controller;
 
-import com.calendly.calendly.Model.Appuntamento;
-import com.calendly.calendly.Model.GestoreAppuntamenti;
-import com.calendly.calendly.Model.GestoreDB;
-import com.calendly.calendly.Model.GestoreData;
+import com.calendly.calendly.Model.*;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyInfo;
@@ -13,7 +10,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -137,22 +133,7 @@ public class AppuntamentiController{
             if(!GestoreDB.getInstance().selezionaValore(GestoreDB.getInstance().getAppuntamenti(),"Id", idScontrino.getText()).equals(idScontrino.getText())){
                 SceneHandler.getInstance().generaAlert("L'id inserito non esiste.", false);
             }else{
-                Document doc = new Document();
-                String id = idScontrino.getText();
-                PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream(SceneHandler.getInstance().apriDirectoryChooser()+"/Scontrino"+id+".pdf"));
-                doc.open();
-                doc.addTitle("Scontrino "+id);
-                ArrayList<Appuntamento> app = GestoreAppuntamenti.getInstance().listaAppuntamenti(true,"A.Id", id);
-                Appuntamento a = app.get(0);
-                String data = String.valueOf(java.time.LocalDateTime.now());
-                StringBuilder giorno = GestoreData.getInstance().giornoCorrente(data);
-                StringBuilder anno = GestoreData.getInstance().annoCorrente(data);
-                StringBuilder mese = GestoreData.getInstance().meseCorrente(data);
-                data = giorno.toString()+"/"+mese.toString()+"/"+anno.toString() +" "+ data.substring(11, 19);
-                String parag = "Id appuntamento: "+a.getId()+"\n"+"Email: "+a.getEmail()+"\n"+"Nome e cognome: "+a.getIdentificativo()+"\n"+"Numero: "+a.getNumero()+"\n"+"Data appuntamento: "+a.getData()+"\nData generazione scontrino: "+data+"\n"+"Dipendente: "+a.getDipendente()+"\n"+"Servizio: "+a.getServizio()+"\n"+"Prezzo: "+a.getPrezzo()+"\n"+"Grazie per averci scelto\n";
-                doc.add(new Paragraph(parag));
-                doc.close();
-                writer.close();
+                GeneraScontrino.getInstance().generaScontrino(idScontrino.getText());
             }
 
         }
