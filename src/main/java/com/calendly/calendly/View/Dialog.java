@@ -1,9 +1,6 @@
 package com.calendly.calendly.View;
 
-import com.calendly.calendly.Model.DialogResponse;
-import com.calendly.calendly.Model.Dipendente;
-import com.calendly.calendly.Model.GestoreDB;
-import com.calendly.calendly.Model.ReusableDBResultsConverter;
+import com.calendly.calendly.Model.*;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.collections.FXCollections;
@@ -17,7 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -109,9 +105,10 @@ public class Dialog {
         TextField name = new TextField();
         name.setPromptText("Nome");
         name.getStyleClass().add("generalField");
+        name.setFocusTraversable(true);
         name.requestFocus();
         name.textProperty().addListener((observableValue, s, t1) -> {
-            okButton.setDisable(!allFieldsFilled(name, 0, t1, type.NAME_LASTNAME));
+            okButton.setDisable(!checkField(name, 0, t1, type.NAME_LASTNAME));
             System.out.println(clicked.get(0));
             System.out.println(clicked.get(1));
             System.out.println(clicked.get(2));
@@ -122,7 +119,7 @@ public class Dialog {
         lastName.setPromptText("Cognome");
         lastName.getStyleClass().add("generalField");
         lastName.textProperty().addListener((observableValue, s, t1) -> {
-            okButton.setDisable(!allFieldsFilled(lastName, 1, t1, type.NAME_LASTNAME));
+            okButton.setDisable(!checkField(lastName, 1, t1, type.NAME_LASTNAME));
             System.out.println(clicked.get(0));
             System.out.println(clicked.get(1));
             System.out.println(clicked.get(2));
@@ -138,7 +135,7 @@ public class Dialog {
         salary.setPromptText("Salario");
         salary.getStyleClass().add("generalField");
         salary.textProperty().addListener((observableValue, s, t1) -> {
-            okButton.setDisable(!allFieldsFilled(salary, 2, t1, type.FLOAT));
+            okButton.setDisable(!checkField(salary, 2, t1, type.FLOAT));
             System.out.println(clicked.get(0));
             System.out.println(clicked.get(1));
             System.out.println(clicked.get(2));
@@ -279,21 +276,27 @@ public class Dialog {
             "Può contenere solo lettere e spazi",
             "Formato data errato",
     };
-    private boolean allFieldsFilled(Node node, int index, String newValue, type tipo) {
+    private boolean checkField(Node node, int index, String newValue, type tipo) {
 
         if (clicked.get(index) == stato.NEVER_CLICKED)
             clicked.set(index, stato.CLICKED);
 
         if (!newValue.toString().equals("")) {
-            switch (tipo) {
-                case FLOAT -> checkFloat(index, newValue.toString());
-                case NAME_LASTNAME -> checkNameLastname(index, newValue.toString());
-                case DATE -> checkDate(index, newValue.toString());
-            }
+            boolean statoRes = switch (tipo) {
+                case FLOAT -> new InputCheck().checkFloat(newValue);
+                case NAME_LASTNAME -> new InputCheck().checkNameLastname(newValue);
+                case DATE -> new InputCheck().checkDate(newValue);
+            };
 
-            StringBuilder e = new StringBuilder();
+            if (statoRes)
+                clicked.set(index, stato.FORM_CORRECT);
+            else
+                clicked.set(index, stato.CLICKED);
+
+            StringBuilder e = new StringBuilder(); //todo che farne di sta var / occuparsi della questione errori di inserimento
+
             int count = 0;
-            int i = 0;
+
             for(stato state : clicked) {
                 if (state == stato.FORM_CORRECT)
                     count++;

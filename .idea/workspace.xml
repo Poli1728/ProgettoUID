@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Dialog:&#10;- aggiunto comportamento / risposta a edit&#10;- collegamento con le card&#10;- altre cose minori">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="miglioramenti">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/InputCheck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/ReusableDBResultsConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/ReusableDBResultsConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Servizi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Servizi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" afterDir="false" />
     </list>
@@ -120,13 +124,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685201888491</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Autoresize on WelcomePageController">
-      <created>1685272670242</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1685272670242</updated>
     </task>
     <task id="LOCAL-00007" summary="Cambiamenti grafica in WelcomePageController.java">
       <created>1685281586975</created>
@@ -464,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686672025933</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="miglioramenti">
+      <created>1686728091639</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1686728091639</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,7 +495,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="CSS sul Combo-Box&#10;Aggiunta filtro su Dipendenti" />
     <MESSAGE value="Effetto Blur in Dipendenti. /in costruzione/" />
     <MESSAGE value="Fixed a bug per la login view" />
     <MESSAGE value="bug in login view" />
@@ -516,6 +519,7 @@
     <MESSAGE value="Gestione card + database" />
     <MESSAGE value="tolto codice in più da CardContainer" />
     <MESSAGE value="Dialog:&#10;- aggiunto comportamento / risposta a edit&#10;- collegamento con le card&#10;- altre cose minori" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dialog:&#10;- aggiunto comportamento / risposta a edit&#10;- collegamento con le card&#10;- altre cose minori" />
+    <MESSAGE value="miglioramenti" />
+    <option name="LAST_COMMIT_MESSAGE" value="miglioramenti" />
   </component>
 </project>

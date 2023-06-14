@@ -75,9 +75,9 @@ public class ReusableDBResultsConverter {
     }*/
 
     private void notAvailable(String[] rowValues) {
-        for(String v : rowValues)
-            if (v.equals("null") || v.equals(""))
-                v = "n/a";
+        for(int i = 0; i < rowValues.length; i++)
+            if (rowValues[i].equals("null") || rowValues[i].isEmpty())
+                rowValues[i] = "n/a";
     }
 
 
