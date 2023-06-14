@@ -133,25 +133,22 @@ public class GestoreDB {
     public void aggiornamento(entità ent, String [] info) throws SQLException {
         switch (ent){
             case Dipendenti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Dipendenti SET Username LIKE ?, Password LIKE ?, Nome LIKE ?, Cognome LIKE ?, Salario = ?, Ruolo LIKE ? WHERE Id = ?;")) {
-                    pstmt.setString(1, info [0]); // Username
-                    pstmt.setString(2, BCrypt.hashpw(info[1], BCrypt.gensalt(12))); // Password
-                    pstmt.setString(3, info[2]); // Nome
-                    pstmt.setString(4, info[3]); // Cognome
-                    pstmt.setDouble(5, Double.parseDouble(info[4])); // Salario
-                    pstmt.setString(6, info[5]); // Ruolo
-                    pstmt.setInt(7, Integer.parseInt(info[6])); // Id
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Dipendenti SET Nome LIKE ?, Cognome LIKE ?, Salario = ?, Ruolo LIKE ? WHERE Id = ?;")) {
+                    pstmt.setString(1, info[0]); // Nome
+                    pstmt.setString(2, info[1]); // Cognome
+                    pstmt.setDouble(3, Double.parseDouble(info[3])); // Salario
+                    pstmt.setString(4, info[2]); // Ruolo
+                    pstmt.setInt(5, Integer.parseInt(info[4])); // Id
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
             case Clienti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Clienti SET CF LIKE ?, Email LIKE ?, Nome LIKE ?, Cognome LIKE ?, Numero LIKE ? WHERE CF LIKE ?;")) {
-                    pstmt.setString(1, info[0]); // CF Nuovo
-                    pstmt.setString(2, info[1]); // Email
-                    pstmt.setString(3, info[2]); // Nome
-                    pstmt.setString(4, info[3]); // Cognome
-                    pstmt.setString(5, info[4]); // Numero
-                    pstmt.setString(6, info[5]); // CF Vecchio
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Clienti SET Email LIKE ?, Nome LIKE ?, Cognome LIKE ?, Numero LIKE ? WHERE CF LIKE ?;")) {
+                    pstmt.setString(1, info[3]); // Email
+                    pstmt.setString(2, info[0]); // Nome
+                    pstmt.setString(3, info[1]); // Cognome
+                    pstmt.setString(4, info[2]); // Numero
+                    pstmt.setString(5, info[4]); // CF
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
@@ -327,6 +324,15 @@ public class GestoreDB {
         }
         stmt.close();
         return s;
+    }
+
+    public void cercaPassword(String id, String password) throws SQLException {
+        String sql = "UPDATE Dipendenti SET Password LIKE ? WHERE Id = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, BCrypt.hashpw(password, BCrypt.gensalt(12)));
+        stmt.setString(2, id);
+        ResultSet query = stmt.executeQuery();
+        stmt.close();
     }
 
     public int calcolaGuadagno(String data) throws SQLException {

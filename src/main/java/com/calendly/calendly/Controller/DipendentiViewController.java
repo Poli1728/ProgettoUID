@@ -5,6 +5,7 @@ import com.calendly.calendly.Model.Dipendente;
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.ReusableDBResultsConverter;
 import com.calendly.calendly.View.Dialog;
+import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -71,7 +73,7 @@ public class DipendentiViewController {
     @FXML
     void initialize() {
         vboxEsterno.setSpacing(15);
-
+        labelDipendenti.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
         filtroBox.getItems().addAll("ID", "Nome", "Cognome", "Ruolo", "Salario");
 
         LinkedList<Dipendente> res;
