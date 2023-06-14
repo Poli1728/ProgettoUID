@@ -3,7 +3,7 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
-import com.calendly.calendly.View.MyFont;
+import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -52,33 +52,33 @@ public class ImpostazioniController {
 
     // Funzione che imposta i tutti i dettagli dei font scelti: Tema, Font e Size(quest'ultima non è modificabile all'utente)
     private void impostaFont(){
-        labelImpostazioni.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        labelDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        labelTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        labelNotifica.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        labelRipristina.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        txtTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        txtNotifica.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        txtRipristina.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        labelImpostazioni.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+        labelDislessia.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+        labelTemi.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+        labelNotifica.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+        labelRipristina.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+        txtTemi.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+        txtDislessia.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+        txtNotifica.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+        txtRipristina.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
     }
 
     // É la funzione che imposta il tema dei testi e bottoni, ogni volta aggiorna anche i dati nel DB
     @FXML
     void scegliTema(ActionEvent event) throws SQLException {
         if (temiComboBox.getSelectionModel().isSelected(0)){
-            MyFont.getInstance().setTema("DARK");
-            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            MyInfo.getInstance().setTema("DARK");
+            String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
             SceneHandler.getInstance().setTheme();
         }else if (temiComboBox.getSelectionModel().isSelected(1)){
-            MyFont.getInstance().setTema("LIGHT");
-            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            MyInfo.getInstance().setTema("LIGHT");
+            String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
             SceneHandler.getInstance().setTheme();
         }else if (temiComboBox.getSelectionModel().isSelected(2)){
-            MyFont.getInstance().setTema("BLU");
-            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            MyInfo.getInstance().setTema("BLU");
+            String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
             SceneHandler.getInstance().setTheme();
         }
@@ -89,23 +89,27 @@ public class ImpostazioniController {
     @FXML
     void attivaDislessia(ActionEvent event) throws SQLException {
         if(checkDislessia.isSelected()){
-            MyFont.getInstance().setFont(MyFont.getInstance().getVerdana());
-            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            MyInfo.getInstance().setFont(MyInfo.getInstance().getVerdana());
+            String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }else{
-            MyFont.getInstance().setFont(MyFont.getInstance().getQuicksand());
-            String info = MyFont.getInstance().getTema()+";"+MyFont.getInstance().getFont();
+            MyInfo.getInstance().setFont(MyInfo.getInstance().getQuicksand());
+            String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
             GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }
         initialize();
     }
 
     @FXML
-    void attivaNotifica(ActionEvent event) {
+    void attivaNotifica(ActionEvent event) throws SQLException {
         if(checkNotifica.isSelected()){
-            Settings.NOTIFICA = true;
+            MyInfo.getInstance().setNotifica(0);
+            String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
+            GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }else{
-            Settings.NOTIFICA = false;
+            MyInfo.getInstance().setNotifica(1);
+            String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
+            GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         }
     }
 
@@ -119,10 +123,10 @@ public class ImpostazioniController {
     //Initialize, vengono inserite tutte le cose all'inizio
     @FXML
     public void initialize(){
-        if(MyFont.getInstance().getFont().equals("Verdana")){
+        if(MyInfo.getInstance().getFont().equals("Verdana")){
             checkDislessia.setSelected(true);
         }
-        if(Settings.NOTIFICA){
+        if(MyInfo.getInstance().getNotifica() == 0){
             checkNotifica.setSelected(true);
         }
 
@@ -131,7 +135,7 @@ public class ImpostazioniController {
             temiComboBox.getItems().add("Chiaro");
             temiComboBox.getItems().add("Blu");
         }
-        String tema = MyFont.getInstance().getTema();
+        String tema = MyInfo.getInstance().getTema();
         if (tema.equals("DARK")){
             temiComboBox.setValue("Scuro");
         }else if(tema.equals("LIGHT")){

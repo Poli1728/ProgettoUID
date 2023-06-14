@@ -3,11 +3,10 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.Model.*;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
-import com.calendly.calendly.View.MyFont;
+import com.calendly.calendly.View.MyInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
@@ -69,7 +68,7 @@ public class DashboardController {
 
     @FXML
     private TableView<Appuntamento> tableGiornliera;
-
+    
     // associa i valori della singola colonna alla variabile presente all'interno di appuntamento
 
     private void setCellValue(){
@@ -84,12 +83,12 @@ public class DashboardController {
     }
 
     private void impostaTemi(){
-        labelDashboard.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        labelDati.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        txtGuadagno.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        txtNumero.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        txtGuadagnoCalcolare.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        txtNumeroCalcolare.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        labelDashboard.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+        labelDati.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+        txtGuadagno.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+        txtNumero.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+        txtGuadagnoCalcolare.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+        txtNumeroCalcolare.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
     }
 
     private String generaNotificaTesto(String data) throws SQLException {
@@ -136,11 +135,11 @@ public class DashboardController {
 
     @FXML
     void avviaNotifica(MouseEvent event) throws SQLException {
-        if(Settings.NOTIFICA){
+        if(MyInfo.getInstance().getNotifica() == 0 && MyInfo.getInstance().getContatore() == 0){
             String data = GestoreData.getInstance().generaDataOdierna();
             String appuntamentiNotifica = generaNotificaTesto(data);
             SceneHandler.getInstance().generaAlert(appuntamentiNotifica,true);
-            Settings.NOTIFICA=false;
+            MyInfo.getInstance().setContatore(1);
         }
     }
 

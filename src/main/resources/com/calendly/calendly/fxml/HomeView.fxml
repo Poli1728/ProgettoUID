@@ -37,32 +37,32 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtInfo2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Dashboard: riporta l'andamento giornaliero dei tuoi appuntamenti;" wrappingWidth="643.0">
+                  <Text fx:id="txtInfo2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Dashboard: riporta l'andamento giornaliero dei tuoi appuntamenti e il guadagno previsto;" wrappingWidth="643.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtInfo3" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Appuntamenti:  tutti gli appuntamenti;" wrappingWidth="645.0">
+                  <Text fx:id="txtInfo3" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Appuntamenti: inserisce, modifica e rimuove gli appuntamenti e genera scontrini;" wrappingWidth="645.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtInfo4" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Clienti: gestisce l'elenco dei clienti;" wrappingWidth="639.0">
+                  <Text fx:id="txtInfo4" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Clienti: gestisce l'elenco dei clienti, con la possibilità di cercali;" wrappingWidth="639.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtInfo5" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Servizi: regola i servizi che offri;" wrappingWidth="639.0">
+                  <Text fx:id="txtInfo5" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Servizi: regola i servizi offerti;" wrappingWidth="639.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtInfo6" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Dipendenti: permette la gestione dei tuoi dipendenti;" wrappingWidth="638.0">
+                  <Text fx:id="txtInfo6" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Dipendenti: permette la gestione dei dipendenti;" wrappingWidth="638.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtInfo7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Impostazioni: consente piccole modifiche al programma;" wrappingWidth="635.0">
+                  <Text fx:id="txtInfo7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Impostazioni: consente modifiche del tema, il ripristino dei dati e gestisce le notifiche;" wrappingWidth="635.0">
                      <font>
                         <Font size="14.0" />
                      </font>

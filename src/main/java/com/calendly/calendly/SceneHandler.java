@@ -2,11 +2,10 @@ package com.calendly.calendly;
 
 import com.calendly.calendly.Controller.LoginController;
 import com.calendly.calendly.Model.GestoreDB;
-import com.calendly.calendly.View.MyFont;
+import com.calendly.calendly.View.MyInfo;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.text.Font;
 import javafx.stage.DirectoryChooser;
@@ -42,7 +41,7 @@ public class SceneHandler {
             launchWelcomeFirstOpening();
             stage.setScene(scene);
             GestoreDB.getInstance().createConnection();
-            MyFont.getInstance().prendiDati();
+            MyInfo.getInstance().prendiDati();
             loadStyle();
             stage.show();
             stage.setOnCloseRequest(event -> {
@@ -135,7 +134,7 @@ public class SceneHandler {
 
     public void setTheme() {
 
-        String pathTheme = switch (MyFont.getInstance().getTema()) {
+        String pathTheme = switch (MyInfo.getInstance().getTema()) {
             case "DARK" -> Settings.themes[0];
             case "LIGHT" -> Settings.themes[1];
             case "BLU" -> Settings.themes[2];
@@ -174,7 +173,7 @@ public class SceneHandler {
         }else {
             alert = new Alert(Alert.AlertType.WARNING);
         }
-        String pathTheme = switch (MyFont.getInstance().getTema()) {
+        String pathTheme = switch (MyInfo.getInstance().getTema()) {
             case "DARK" -> Settings.themes[0];
             case "LIGHT" -> Settings.themes[1];
             case "BLU" -> Settings.themes[2];

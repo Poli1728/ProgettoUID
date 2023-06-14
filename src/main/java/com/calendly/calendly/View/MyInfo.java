@@ -5,11 +5,11 @@ import com.calendly.calendly.Model.GestoreDB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MyFont {
+public class MyInfo {
 
-    private static final MyFont instance = new MyFont();
+    private static final MyInfo instance = new MyInfo();
 
-    public static MyFont getInstance() {
+    public static MyInfo getInstance() {
         return instance;
     }
 
@@ -20,11 +20,16 @@ public class MyFont {
         sizeLabel = Integer.parseInt(info[2])+14;
         font = info[1];
         tema = info[0];
+        notifica = Integer.parseInt(info[3]);
+        contatore = 0;
+        System.out.println(info[3]);
     }
 
     private String tema;
+    private int notifica;
+    private int contatore;
 
-    private MyFont(){}
+    private MyInfo(){}
 
     private enum tipiFont{Quicksand, Verdana}
 
@@ -35,6 +40,22 @@ public class MyFont {
     public tipiFont getVerdana(){return tipiFont.Verdana;}
 
     private String font = "Quicksand Medium";
+
+    public int getNotifica() {
+        return notifica;
+    }
+
+    public void setNotifica(int notifica) {
+        this.notifica = notifica;
+    }
+
+    public int getContatore() {
+        return contatore;
+    }
+
+    public void setContatore(int contatore) {
+        this.contatore = contatore;
+    }
 
     private int sizeTxt = 14;
     private int sizeLabel = 28;

@@ -6,7 +6,7 @@ import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.GestoreData;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.Dialog;
-import com.calendly.calendly.View.MyFont;
+import com.calendly.calendly.View.MyInfo;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -194,7 +194,7 @@ public class AppuntamentiController{
 
     @FXML
     public void initialize() {
-        labelAppuntamenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelAppuntamenti.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
         aggiungiItems();
         table.getItems().clear();
         try {

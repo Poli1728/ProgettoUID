@@ -74,7 +74,7 @@ public class GestoreDB {
                     s = new StringBuilder();
                 }
                 case Template -> {
-                    s.append(rs.getString("Tema")).append(";").append(rs.getString("Font")).append(";").append(rs.getString("Size"));
+                    s.append(rs.getString("Tema")).append(";").append(rs.getString("Font")).append(";").append(rs.getString("Size")).append(";").append(rs.getString("Notifica"));
                     risultato.add(s.toString());
                     s = new StringBuilder();
                 }
@@ -174,9 +174,10 @@ public class GestoreDB {
                 } catch (SQLException e) {}
             }
             case Template -> {
-                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Template SET Tema = ?, Font = ? WHERE Id = 1;")) {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Template SET Tema = ?, Font = ?, Notifica = ? WHERE Id = 1;")) {
                     pstmt.setString(1, info[0]); //Tema
                     pstmt.setString(2, info[1]); //Font
+                    pstmt.setInt(3, Integer.parseInt(info[2])); //Notifica
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }

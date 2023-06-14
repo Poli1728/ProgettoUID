@@ -3,7 +3,7 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.Model.GestoreData;
 import com.calendly.calendly.Model.GestoreStatistiche;
 import com.calendly.calendly.Model.Statistiche;
-import com.calendly.calendly.View.MyFont;
+import com.calendly.calendly.View.MyInfo;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
@@ -65,7 +65,7 @@ public class StatisticheController{
 
     @FXML
     public void initialize() {
-        labelStatistiche.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelStatistiche.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
         String data = String.valueOf(java.time.LocalDateTime.now());
         StringBuilder anno = GestoreData.getInstance().annoCorrente(data);
         StringBuilder mese = GestoreData.getInstance().meseCorrente(data);
