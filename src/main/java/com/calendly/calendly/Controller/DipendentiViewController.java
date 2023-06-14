@@ -27,9 +27,6 @@ public class DipendentiViewController {
     private TextField cercaField;
 
     @FXML
-    private Button editButton;
-
-    @FXML
     private ComboBox<String> filtroBox;
 
     @FXML
@@ -53,11 +50,6 @@ public class DipendentiViewController {
     @FXML
     void actionAddButton(ActionEvent event) {
         Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, -1, ancorPane);
-    }
-
-    @FXML
-    void actionEditButton(ActionEvent event) {
-        Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.MODIFICA, -1, ancorPane);
     }
 
     @FXML
@@ -85,7 +77,10 @@ public class DipendentiViewController {
         LinkedList<Dipendente> res;
 
         try {
-            res = ReusableDBResultsConverter.getInstance().getDipendenti(GestoreDB.getInstance().leggiEntità(GestoreDB.getInstance().getDipendenti()));
+            res = ReusableDBResultsConverter.getInstance().getDipendenti(
+                    GestoreDB.getInstance().leggiEntità(GestoreDB.entità.Dipendenti)
+            );
+
         } catch (SQLException e) {
             //todo alert errore nel contattare il database
             throw new RuntimeException(e);

@@ -12,21 +12,13 @@ public class Cliente {
     private String numero;
 
 
-    public Cliente(String CF, String email, String nome, String cognome, String numero) {
+    public Cliente(String CF, String nome, String cognome, String numero, String email) {
         this.CF = CF;
-        this.email = email;
         this.nome = nome;
         this.cognome = cognome;
         this.numero = numero;
+        this.email = email;
     }
-
-
-    //setters - supposed to update in db also
-    public void setCF(String CF) { this.CF = CF; }
-    public void setEmail(String email) { this.email = email; }
-    public void setNome(String nome) { this.nome = nome; }
-    public void setCognome(String cognome) { this.cognome = cognome; }
-    public void setNumero(String numero) {this.numero = numero; }
 
 
     public String getCF() { return CF; }

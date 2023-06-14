@@ -1,13 +1,13 @@
 package com.calendly.calendly.Model;
 
-public class Servizi {
+public class Servizio {
 
     private String id;
     private String tipo;
     private String prezzo;
 
 
-    public Servizi(String id, String tipo, String prezzo) {
+    public Servizio(String id, String tipo, String prezzo) {
         this.id = id;
         this.tipo = tipo;
         this.prezzo = prezzo;

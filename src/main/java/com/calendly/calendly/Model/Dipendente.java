@@ -11,9 +11,6 @@ public class Dipendente {
     private String role;
     private String salary;
 
-    public final static String[] params = {"ID", "Nome", "Cognome", "Ruolo", "Salario"};
-
-
     public Dipendente(String id, String name, String lastName, String role, String salary) {
         this.id = id;
         this.name = name;

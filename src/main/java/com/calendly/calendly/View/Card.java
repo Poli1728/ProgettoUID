@@ -2,14 +2,13 @@ package com.calendly.calendly.View;
 
 import com.calendly.calendly.Main;
 import com.calendly.calendly.Model.Dipendente;
-import com.calendly.calendly.Model.Servizi;
+import com.calendly.calendly.Model.Servizio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.OverrunStyle;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -47,6 +46,7 @@ public class Card extends AnchorPane {
         //Le variabili da impostare nell'if-elseif-else per riconoscere la classe
         String identifier = null;
         String imagePath = null;
+        Dialog.from from = null;
         //-----------------------------------------
 
 
@@ -60,6 +60,7 @@ public class Card extends AnchorPane {
 
         if (obj.getClass().equals(Dipendente.class)) {
             imagePath = IMAGE_USER ;
+            from = Dialog.from.DIPENDENTI;
             Dipendente dip = (Dipendente) obj;
             identifier = dip.getId();
 
@@ -68,9 +69,10 @@ public class Card extends AnchorPane {
             createLabelsLines(groups, "Ruolo", dip.getRole());
             createLabelsLines(groups, "Salario", dip.getSalary());
 
-        } else if (obj.getClass().equals(Servizi.class)) {
+        } else if (obj.getClass().equals(Servizio.class)) {
             imagePath = IMAGE_SERVIZI;
-            Servizi serv = (Servizi) obj;
+            from = Dialog.from.SERVIZI;
+            Servizio serv = (Servizio) obj;
             identifier = serv.getId();
 
             createLabelsLines(groups, "ID:", serv.getId());
@@ -90,13 +92,16 @@ public class Card extends AnchorPane {
         CustomButton edit = new CustomButton("Modifica","img/edit.png", "Modifica i dati della scheda selezionata");
         edit.getStyleClass().add("thirdButton");
 
+
         String finalIdentifier = identifier;
+        Dialog.from finalFrom = from;
+
         edit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println(finalIdentifier + "  " + Integer.parseInt(finalIdentifier));
                 Dialog.getInstance().requestDialog(
-                        Dialog.from.DIPENDENTI,
+                        finalFrom,
                         Dialog.actions.MODIFICA,
                         Integer.parseInt(finalIdentifier),
                         (AnchorPane) parent.getParent().getParent().getParent().getParent() );

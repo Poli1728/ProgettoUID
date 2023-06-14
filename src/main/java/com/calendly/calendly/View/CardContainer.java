@@ -1,7 +1,5 @@
 package com.calendly.calendly.View;
 
-import com.calendly.calendly.Model.Dipendente;
-import com.calendly.calendly.Model.Servizi;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;

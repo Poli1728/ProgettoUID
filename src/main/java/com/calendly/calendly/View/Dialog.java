@@ -5,6 +5,8 @@ import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -21,33 +23,31 @@ import java.util.*;
 public class Dialog {
 
     private final static Dialog instance = new Dialog();
-    private boolean hasBeenSetUp = false;
     private Dialog() { }
     public static Dialog getInstance() { return instance; }
 
 
     private AnchorPane anchorPaneFather;
-
     public void setAnchorPaneFather(AnchorPane anchorPaneFather) {
         this.anchorPaneFather = anchorPaneFather;
     }
+    private boolean hasBeenSetUp = false;
 
 
     public enum from { APPUNTAMENTI, DIPENDENTI, SERVIZI, SIGNUP }
-
     public enum actions {AGGIUNGI(0), MODIFICA(1), RIMUOVI(2);
-        actions(int i) {
-        }
+        actions(int i) { }
     }
+
     private String[] headerDescriptions = {
             "Compila campi sottostanti",
             "Modifica i campi sottostanti",
-            "Conferma la rimozione dei dati sottostanti dal sistema"
-    };
+            "Conferma la rimozione dei dati sottostanti dal sistema" };
 
     private javafx.scene.control.Dialog<DialogResponse> dialog;
-
     private Button okButton;
+
+
     private void setDialog(from fromView, actions exeAction, Integer id) {
         javafx.scene.control.Dialog<DialogResponse> dialog = new javafx.scene.control.Dialog<>();
         this.dialog = dialog;
@@ -57,14 +57,15 @@ public class Dialog {
         DialogPane dialogPane = dialog.getDialogPane();
         dialogPane.getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
+
         Button okButton = (Button) dialogPane.lookupButton(ButtonType.OK);
         okButton.setDisable(true);
         this.okButton = okButton;
 
         VBox vbox = switch (fromView) {
-            case DIPENDENTI -> setComponentsForDipendenti(exeAction, id);
-            case APPUNTAMENTI -> setComponentsForAppuntamenti(exeAction);
-            case SERVIZI -> setComponentsForServizi(exeAction);
+            case DIPENDENTI -> setComponentsForDipendenti(fromView, exeAction, id);
+            case APPUNTAMENTI -> setComponentsForAppuntamenti(fromView, exeAction, id);
+            case SERVIZI -> setComponentsForServizi(fromView, exeAction, id);
             case SIGNUP -> null; //todo da togliore o aggiungere
         };
 
@@ -85,14 +86,8 @@ public class Dialog {
         return null;
     }
 
-    private VBox setComponentsForAppuntamenti(actions exeAction) {
+    private VBox setComponentsForAppuntamenti(from fromView, actions exeAction, Integer id) {
         VBox vbox = new VBox();
-        //add here your components like textfields, datapicker, etc.
-        //dialog.setResultConverter((ButtonType bt) -> {
-            //if (bt == ButtonType.OK) {
-                //return new DialogResponse()
-            //}
-        //});
         return vbox;
     }
 
@@ -100,110 +95,179 @@ public class Dialog {
     private LinkedList<stato> clicked;
     private Label errors;
 
-    private VBox setComponentsForDipendenti(actions exeAction, Integer id) {
-        initializeClickedList(3);
+    private VBox setComponentsForDipendenti(from fromView, actions exeAction, Integer id) {
+        LinkedList<Node> nodes = new LinkedList<>();
+
         TextField name = new TextField();
-        name.setPromptText("Nome");
-        name.getStyleClass().add("generalField");
-        name.setFocusTraversable(true);
-        name.requestFocus();
-        name.textProperty().addListener((observableValue, s, t1) -> {
-            okButton.setDisable(!checkField(name, 0, t1, type.NAME_LASTNAME));
-            System.out.println(clicked.get(0));
-            System.out.println(clicked.get(1));
-            System.out.println(clicked.get(2));
-            System.out.println("------------");
-        });
+        nodes.add(name);
+        configTextField(name, "Nome", 0, type.NAME_LASTNAME);
 
         TextField lastName = new TextField();
-        lastName.setPromptText("Cognome");
-        lastName.getStyleClass().add("generalField");
-        lastName.textProperty().addListener((observableValue, s, t1) -> {
-            okButton.setDisable(!checkField(lastName, 1, t1, type.NAME_LASTNAME));
-            System.out.println(clicked.get(0));
-            System.out.println(clicked.get(1));
-            System.out.println(clicked.get(2));
-            System.out.println("------------");
-        });
-
+        nodes.add(lastName);
+        configTextField(lastName, "Cognome", 1, type.NAME_LASTNAME);
 
         ObservableList<Settings.roles> options = FXCollections.observableArrayList(Settings.roles.values());
         ComboBox role = new ComboBox<>(options);
+        nodes.add(role);
         role.getSelectionModel().selectLast();
 
         TextField salary = new TextField();
-        salary.setPromptText("Salario");
-        salary.getStyleClass().add("generalField");
-        salary.textProperty().addListener((observableValue, s, t1) -> {
-            okButton.setDisable(!checkField(salary, 2, t1, type.FLOAT));
-            System.out.println(clicked.get(0));
-            System.out.println(clicked.get(1));
-            System.out.println(clicked.get(2));
-            System.out.println("------------");
-        });
+        nodes.add(salary);
+        configTextField(salary, "Salario", 2, type.FLOAT);
 
-        if (exeAction == actions.MODIFICA && id > -1) { //se in modifica con avente un id
-            LinkedList<Dipendente> res;
-            try {
-                res = ReusableDBResultsConverter.getInstance().getDipendenti(
-                        new ArrayList<>(
-                                Collections.singleton(
-                                        GestoreDB.getInstance().cercaRiga(
-                                                GestoreDB.getInstance().getDipendenti(), String.valueOf(id))))
-                );
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+        initializeClickedList(nodes, nodes.size());
+        ifInModificaMode(nodes, fromView, exeAction, id);
+        setResultConverter(nodes);
+
+        Label errors = new Label();
+        this.errors = errors;
+
+        VBox vbox = externalVbox(nodes);
+
+        return vbox;
+    }
+
+
+    private VBox setComponentsForServizi(from fromView, actions exeAction, Integer id) {
+        LinkedList<Node> nodes = new LinkedList<>();
+
+        TextField nomeServizio = new TextField();
+        nodes.add(nomeServizio);
+        configTextField(nomeServizio, "Servizio", 0, type.NAME_LASTNAME);
+
+        TextField prezzo = new TextField();
+        nodes.add(prezzo);
+        configTextField(prezzo, "Prezzo", 1, type.FLOAT);
+
+        initializeClickedList(nodes, nodes.size());
+        ifInModificaMode(nodes, fromView, exeAction, id);
+        setResultConverter(nodes);
+
+        Label errors = new Label();
+        this.errors = errors;
+
+        VBox vbox = externalVbox(nodes);
+
+        return vbox;
+    }
+
+    private void ifInModificaMode(LinkedList<Node> nodes, from fromView, actions exeAction, int id) {
+
+        if (exeAction == actions.MODIFICA && id > -1) {
+            LinkedList res = dbResults(fromView, id);
 
             if (res.size() != 0) {
-                name.setText(res.get(0).getName());
-                lastName.setText(res.get(0).getLastName());
 
-                role.getSelectionModel().select(res.get(0).getRole());
-                salary.setText(res.get(0).getSalary());
-            } else {
-                //todo = 0, l'utente non esiste, popup di errore (?)
+                if (res.get(0).getClass().equals(Servizio.class)) {
+                    Servizio resServizio = (Servizio) res.get(0);
+                    ((TextField) nodes.get(0)).setText(resServizio.getTipo());
+                    ((TextField) nodes.get(1)).setText(resServizio.getPrezzo());
+                }
+                else if (res.get(0).getClass().equals(Dipendente.class)) {
+                    Dipendente resDip = (Dipendente) res.get(0);
+                    System.out.println("------- " + nodes);
+                    ((TextField) nodes.get(0)).setText(resDip.getName());
+                    ((TextField) nodes.get(1)).setText(resDip.getLastName());
+                    ((ComboBox)  nodes.get(2)).getSelectionModel().select(resDip.getRole());
+                    ((TextField) nodes.get(3)).setText(resDip.getSalary());
+                }
+                else if (res.get(0).getClass().equals(Cliente.class)) {
+                    Cliente resCliente = (Cliente) res.get(0);
+                    ((TextField) nodes.get(0)).setText(resCliente.getCF());
+                    ((TextField) nodes.get(1)).setText(resCliente.getNome());
+                    ((TextField) nodes.get(2)).setText(resCliente.getCognome());
+                    ((TextField) nodes.get(3)).setText(resCliente.getNumero());
+                    ((TextField) nodes.get(4)).setText(resCliente.getEmail());
+                }
             }
 
-        } else if (exeAction == actions.MODIFICA && id > -1) { //se in modifica con codice -1
 
+        } else if (id < -1) { //se in modifica con codice -1
+            System.out.println("Probabile errore nel passaggio dell'id");
         }
+    }
 
+
+    private void setResultConverter(LinkedList<Node> nodes) {
         dialog.setResultConverter((ButtonType bt) -> {
             if (bt == ButtonType.OK) {
                 LinkedList<String> res = new LinkedList<>();
-                res.add(name.getText());
-                res.add(lastName.getText());
-                res.add(role.getValue().toString());
-                res.add(salary.getText());
+                for(Node node : nodes) {
+                    if (node.getClass().equals(TextField.class)) {
+                        TextField tf = (TextField) node;
+                        res.add(tf.getText());
+                    } else if (node.getClass().equals(ComboBox.class)) {
+                        ComboBox cb = (ComboBox) node;
+                        res.add(cb.getSelectionModel().getSelectedItem().toString());
+                    }
+                }
                 return new DialogResponse(res);
             }
             return null;
         });
+    }
 
+
+    private VBox externalVbox(LinkedList<Node> nodes) {
         VBox vbox = new VBox(8);
+        doNotAllowChanges(nodes);
 
-        if (exeAction == actions.RIMUOVI) {
-            name.setEditable(false);
-            lastName.setEditable(false);
-            role.setEditable(false);
-            salary.setEditable(false);
-        }
-
-        //todo (?) gestire gli id < 0
-
-        vbox.getChildren().addAll(
-                createHbox("Nome", name),
-                createHbox("Cognome", lastName),
-                createHbox("Ruolo", role),
-                createHbox("Salario", salary));
-
-
-        Label errors = new Label();
-        this.errors = errors;
+        for (Node node : nodes)
+            vbox.getChildren().add(node);
         errors.getStyleClass().add("errors-label");
         vbox.getChildren().add(errors);
+
         return vbox;
+    }
+
+    private LinkedList dbResults(from fromView, Integer id) {
+
+        LinkedList res = null;
+        try {
+
+            res = switch (fromView) {
+
+                case APPUNTAMENTI -> null;
+                case DIPENDENTI ->
+                        ReusableDBResultsConverter.getInstance().getDipendenti(
+                            new ArrayList<>(
+                                    Collections.singleton(
+                                            GestoreDB.getInstance().cercaRiga(
+                                                    GestoreDB.getInstance().getDipendenti(),
+                                                    String.valueOf(id))))
+                        );
+                case SERVIZI ->
+                        ReusableDBResultsConverter.getInstance().getServizi(
+                                new ArrayList<>(
+                                        Collections.singleton(
+                                                GestoreDB.getInstance().cercaRiga(
+                                                        GestoreDB.getInstance().getServizi(),
+                                                        String.valueOf(id))))
+                        );
+                case SIGNUP -> null;
+            };
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            //todo alert
+        }
+
+        return res;
+    }
+
+
+    private void configTextField(TextField l, String promptText, int index, type tipo) {
+        l.setPromptText(promptText);
+        l.getStyleClass().add("generalField");
+        l.textProperty().addListener((observableValue, s, t1) -> {
+            okButton.setDisable(!checkField(l, index, t1, tipo));
+            System.out.println(clicked.get(0));
+            System.out.println(clicked.get(1));
+            System.out.println(clicked.get(2));
+            System.out.println("------------");
+        });
+
+
     }
 
 
@@ -311,39 +375,29 @@ public class Dialog {
         return false;
     }
 
-    private boolean checkFloat(int index, String newValue) {
-        try {
-            Double.parseDouble(newValue);
-            clicked.set(index, stato.FORM_CORRECT);
-            return true;
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            return false;
+    private void doNotAllowChanges(LinkedList<Node> nodes) {
+        for(Node node : nodes) {
+            if (node.getClass().equals(TextField.class)) {
+                TextField textField = (TextField) node;
+                textField.setEditable(false);
+                continue;
+            }
+
+            else if (node.getClass().equals(ComboBox.class)) {
+                ComboBox comboBox = (ComboBox) node;
+                comboBox.setEditable(false);
+            }
+
+            else
+                System.out.println("Dialog.doNotAllowChanges() if-else impostato male");
         }
     }
 
-    private boolean checkNameLastname(int index, String newValue) {
-        if (newValue.length() < 2)
-            return false;
-
-        else if (newValue.matches("[a-zA-Z ]+[a-zA-Z ]")) {
-            System.out.println(newValue);
-            clicked.set(index, stato.FORM_CORRECT);
-            return true;
-        }
-
-        return false;
-    }
-
-    private boolean checkDate(int index, String toString) {
-        return true;
-        //todo checkdata
-    }
-
-    private void initializeClickedList(int size) {
+    private void initializeClickedList(LinkedList<Node> nodes, int size) {
         clicked = new LinkedList<>();
         for(int i = 0; i < size; i++)
-            clicked.add(stato.NEVER_CLICKED);
+            if (nodes.get(i).getClass().equals(TextField.class))
+                clicked.add(stato.NEVER_CLICKED);
     }
 
 
