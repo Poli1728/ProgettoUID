@@ -3,6 +3,11 @@
     -fx-background-radius: 10px;
 }
 
+.txt{
+    -fx-fill: primaryTextColor;
+    -fx-background-color: primaryTextColor;
+}
+
 .external-pane {
     -fx-background-color: primaryBackgroundColor;
     -fx-background-radius: 0px;
@@ -144,7 +149,17 @@
     -fx-background-color: transparent;
 }
 
+.chart-legend{
+    -fx-background-color: thirdBackgroundColor;
+}
 
+.bar-chart .chart-content .chart-plot-background{
+    -fx-background-color: thirdBackgroundColor;
+}
+
+.axis{
+    -fx-text-background-color: primaryTextColor;
+}
 
 .table-view .table-cell {
     -fx-border-color: transparent;
@@ -300,3 +315,11 @@
     -fx-ellipsis-truncate: true;
 }
 
+.alert{
+    -fx-background-color: thirdBackgroundColor;
+
+}
+
+.alert:header *.header-panel{
+    -fx-background-color: secondaryBackgroundColor;
+}

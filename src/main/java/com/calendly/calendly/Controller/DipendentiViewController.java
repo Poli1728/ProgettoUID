@@ -85,7 +85,7 @@ public class DipendentiViewController {
         LinkedList<Dipendente> res;
 
         try {
-            res = ReusableDBResultsConverter.getInstance().getDipendenti(GestoreDB.getInstance().leggiEntità(GestoreDB.entità.Dipendenti));
+            res = ReusableDBResultsConverter.getInstance().getDipendenti(GestoreDB.getInstance().leggiEntità(GestoreDB.getInstance().getDipendenti()));
         } catch (SQLException e) {
             //todo alert errore nel contattare il database
             throw new RuntimeException(e);

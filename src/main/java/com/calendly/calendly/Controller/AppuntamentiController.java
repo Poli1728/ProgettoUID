@@ -96,19 +96,6 @@ public class AppuntamentiController{
         filtroBox.getItems().addAll("Id","Email","Nome","Cognome","Numero","Data","Dipendente","Servizio","Prezzo");
     }
 
-    // imposta Font dei testi
-
-    private void impostaFont(){
-        labelAppuntamenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        addButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        editButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        removeButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        cercaButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        idScontrino.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        generaButton.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-        cercaField.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
-    }
-
     // aggiunge l'appuntamento al db
 
     @FXML
@@ -140,7 +127,7 @@ public class AppuntamentiController{
         if(idScontrino.getText().equals("")){
             SceneHandler.getInstance().generaAlert("Non hai inserito l'id da cercare.");
         }else {
-            if(!GestoreDB.getInstance().cercaValore(GestoreDB.getInstance().getAppuntamenti(),"Id", idScontrino.getText()).equals(idScontrino.getText())){
+            if(!GestoreDB.getInstance().selezionaValore(GestoreDB.getInstance().getAppuntamenti(),"Id", idScontrino.getText()).equals(idScontrino.getText())){
                 SceneHandler.getInstance().generaAlert("L'id inserito non esiste.");
             }else{
                 Document doc = new Document();
@@ -196,11 +183,11 @@ public class AppuntamentiController{
         cercaField.setPromptText("Cerca");
     }
 
-    //Funzione initialize che inserisci imposta tutto alla creazione
+    //Funzione initialize che inserisci gli oggetti nella tabella e imposta le scritte e il combo box
 
     @FXML
     public void initialize() {
-        impostaFont();
+        labelAppuntamenti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         aggiungiItems();
         table.getItems().clear();
         try {

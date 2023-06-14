@@ -8,13 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
-import java.util.Objects;
 
 public class ImpostazioniController {
 
@@ -49,8 +43,10 @@ public class ImpostazioniController {
         labelImpostazioni.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         labelDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         labelTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelRipristina.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         txtTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtRipristina.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
     }
 
     // É la funzione che imposta il tema dei testi e bottoni, ogni volta aggiorna anche i dati nel DB
@@ -93,6 +89,7 @@ public class ImpostazioniController {
     @FXML
     void ripristina(ActionEvent event) throws SQLException {
         GestoreDB.getInstance().svuota();
+        SceneHandler.getInstance().launchLogin();
     }
 
     //Initialize, vengono inserite tutte le cose all'inizio

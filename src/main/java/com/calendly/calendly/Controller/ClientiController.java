@@ -5,6 +5,7 @@ import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.ReusableDBResultsConverter;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.CardContainer;
+import com.calendly.calendly.View.MyFont;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -97,7 +99,7 @@ public class ClientiController {
     @FXML
     void initialize(){
         vboxEsterno.setSpacing(15);
-
+        labelClienti.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         filtro.getItems().addAll("CF", "Nome", "Cognome", "Email", "Numero");
 
         generaCard(false, "", "");

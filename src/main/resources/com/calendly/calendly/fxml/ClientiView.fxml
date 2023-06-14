@@ -13,19 +13,19 @@
 
 <AnchorPane cacheShape="false" centerShape="false" focusTraversable="true" prefHeight="460.0" prefWidth="611.0" scaleShape="false" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.ClientiController">
    <children>
-      <HBox layoutX="353.0" layoutY="20.0" spacing="10.0" AnchorPane.rightAnchor="10.0">
+      <HBox layoutX="353.0" layoutY="20.0" spacing="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
          <children>
             <Button fx:id="removeButton" defaultButton="true" mnemonicParsing="false" onAction="#actionRimuoviCliente" styleClass="secondaryButton" text="Rimuovi" />
             <Button fx:id="editButton" mnemonicParsing="false" onAction="#actionModificaCliente" styleClass="secondaryButton" text="Modifica" />
             <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#actionAggiungiCliente" styleClass="secondaryButton" text="Aggiungi" />
          </children>
       </HBox>
-      <Label fx:id="labelClienti" layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="364.0" text="Clienti" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
+      <Label fx:id="labelClienti" layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="364.0" text="Clienti" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <HBox layoutX="21.0" layoutY="76.0" spacing="10.0" AnchorPane.leftAnchor="21.0">
+      <HBox layoutX="21.0" layoutY="76.0" prefHeight="25.0" prefWidth="298.0" spacing="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="75.0">
          <children>
             <ComboBox fx:id="filtro" onAction="#actionFiltro" prefHeight="25.0" prefWidth="84.0" promptText="Filtro" />
             <TextField fx:id="field" prefHeight="24.0" prefWidth="127.0" promptText="Cerca" styleClass="searchField" />

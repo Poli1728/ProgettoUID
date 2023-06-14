@@ -6,9 +6,13 @@ import com.calendly.calendly.View.MyFont;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.text.Font;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -20,6 +24,8 @@ public class SceneHandler {
     private Stage stage;
     private static Scene scene;
     private FXMLLoader loader;
+
+    private DialogPane dialog;
 
     public static SceneHandler getInstance() {
         return instance;
@@ -147,6 +153,7 @@ public class SceneHandler {
 
         scene.getStylesheets().add(Objects.requireNonNull((SceneHandler.class.getResource(Settings.styles[0])).toExternalForm()));
         scene.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
+
     }
 
 
@@ -163,11 +170,24 @@ public class SceneHandler {
     public void generaAlert(String testo){
         Alert alert;
         alert = new Alert(Alert.AlertType.WARNING);
-        //alert.getDialogPane().setStyle("css/blu.css");
+        String pathTheme = switch (MyFont.getInstance().getTema()) {
+            case "DARK" -> Settings.themes[0];
+            case "LIGHT" -> Settings.themes[1];
+            case "BLU" -> Settings.themes[2];
+            default -> {
+                exit(11);
+                yield Settings.themes[0];
+            }
+        };
+        dialog = alert.getDialogPane();
+        dialog.getStylesheets().add(Objects.requireNonNull((SceneHandler.class.getResource(Settings.styles[0])).toExternalForm()));
+        dialog.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
+        dialog.getStyleClass().add("alert");
         alert.setTitle("Attenzione");
         alert.setHeaderText("Qualcosa è andato storto.");
         alert.setContentText(testo);
         alert.setResizable(false);
+        alert.initStyle(StageStyle.UNDECORATED);
         alert.showAndWait();
     }
 
