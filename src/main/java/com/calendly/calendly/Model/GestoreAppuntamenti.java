@@ -16,6 +16,7 @@ public class GestoreAppuntamenti {
         ArrayList <Appuntamento> lista = new ArrayList<Appuntamento>();
         ArrayList <String> query = GestoreDB.getInstance().creaLista(cerca,filtro, valore);
         for (String i : query){
+            System.out.println(i);
             Appuntamento a = new Appuntamento(i.split(";"));
             lista.add(a);
         }

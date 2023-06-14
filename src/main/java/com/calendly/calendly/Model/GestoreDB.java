@@ -354,9 +354,9 @@ public class GestoreDB {
         ArrayList<String> risultato = new ArrayList<String>();
         String sql;
         if(cerca){
-            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id and "+filtro+" LIKE ?;";
+            sql = "Select A.Id, A.CF_Cliente, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id and "+filtro+" LIKE ?;";
         }else{
-            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id;";
+            sql = "Select A.Id,A.CF_Cliente, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id;";
         }
         PreparedStatement stmt = con.prepareStatement(sql);
         if(cerca){
@@ -365,7 +365,7 @@ public class GestoreDB {
         ResultSet query = stmt.executeQuery();
         String s= "";
         while(query.next()) {
-            s+=query.getString("Id")+";"+query.getString("Email")+";"+query.getString("Nome")+";"+query.getString("Cognome")+";"+query.getString("Numero")+";"+query.getString("Data")+";"+query.getString("Username")+";"+query.getString("Tipo")+";"+query.getString("Prezzo");
+            s+=query.getString("Id")+";"+query.getString("CF_Cliente")+";"+query.getString("Email")+";"+query.getString("Nome")+";"+query.getString("Cognome")+";"+query.getString("Numero")+";"+query.getString("Data")+";"+query.getString("Username")+";"+query.getString("Tipo")+";"+query.getString("Prezzo");
             risultato.add(s);
             s = "";
         }
