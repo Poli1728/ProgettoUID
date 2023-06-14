@@ -246,6 +246,8 @@ public class Dialog {
                                 GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
                             }
                             case DIPENDENTI -> {
+                                for (String s : res)
+                                    System.out.println(s);
                                 GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
                             }
                             case SERVIZI -> {
@@ -268,6 +270,7 @@ public class Dialog {
                                 GestoreDB.getInstance().inserimento(GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
                             }
                             case DIPENDENTI -> {
+                                res.addFirst(""); //password vuota in posizione 0
                                 GestoreDB.getInstance().inserimento(GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
                             }
                             case SERVIZI -> {
