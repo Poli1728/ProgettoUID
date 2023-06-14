@@ -133,7 +133,7 @@ public class GestoreDB {
     public void aggiornamento(entità ent, String [] info) throws SQLException {
         switch (ent){
             case Dipendenti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Dipendenti SET Nome LIKE ?, Cognome LIKE ?, Salario = ?, Ruolo LIKE ? WHERE Id = ?;")) {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Dipendenti SET Nome = ?, Cognome = ?, Salario = ?, Ruolo = ? WHERE Id = ?;")) {
                     pstmt.setString(1, info[0]); // Nome
                     pstmt.setString(2, info[1]); // Cognome
                     pstmt.setDouble(3, Double.parseDouble(info[3])); // Salario
@@ -143,7 +143,7 @@ public class GestoreDB {
                 } catch (SQLException e) {}
             }
             case Clienti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Clienti SET Email LIKE ?, Nome LIKE ?, Cognome LIKE ?, Numero LIKE ? WHERE CF LIKE ?;")) {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Clienti SET Email = ?, Nome = ?, Cognome = ?, Numero = ? WHERE CF LIKE ?;")) {
                     pstmt.setString(1, info[3]); // Email
                     pstmt.setString(2, info[0]); // Nome
                     pstmt.setString(3, info[1]); // Cognome
@@ -163,7 +163,7 @@ public class GestoreDB {
                 } catch (SQLException e) {}
             }
             case Servizi -> {
-                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Servizi SET Tipo LIKE ?, Prezzo = ? WHERE Id = ?;")) {
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Servizi SET Tipo = ?, Prezzo = ? WHERE Id = ?;")) {
                     pstmt.setString(1, info[0]); // Tipo
                     pstmt.setDouble(2, Double.parseDouble(info[1])); // Prezzo
                     pstmt.setInt(2, Integer.parseInt(info[2])); // Id
@@ -327,7 +327,7 @@ public class GestoreDB {
     }
 
     public void cercaPassword(String id, String password) throws SQLException {
-        String sql = "UPDATE Dipendenti SET Password LIKE ? WHERE Id = ?;";
+        String sql = "UPDATE Dipendenti SET Password = ? WHERE Id = ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, BCrypt.hashpw(password, BCrypt.gensalt(12)));
         stmt.setString(2, id);
