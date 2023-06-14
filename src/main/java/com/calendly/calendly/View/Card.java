@@ -26,7 +26,7 @@ public class Card extends AnchorPane {
     private Object obj;
 
     private String IMAGE_USER = "img/user.png";
-    private String IMAGE_SERVIZI = "";
+    private String IMAGE_SERVIZI = "img/task.png";
 
 
     public Card(Object obj, VBox parent) {
@@ -47,36 +47,38 @@ public class Card extends AnchorPane {
         //Le variabili da impostare nell'if-elseif-else per riconoscere la classe
         String identifier = null;
         String imagePath = null;
+        //-----------------------------------------
+
+
         LinkedList<Label> labelsKey = new LinkedList<>();
         LinkedList<Label> labelsValue = new LinkedList<>();
+
+        VBox vboxKeys = new VBox(1);
+        VBox vboxValues = new VBox(1);
+        LinkedList[] groups = new LinkedList[]{labelsKey, labelsValue};
+
 
         if (obj.getClass().equals(Dipendente.class)) {
             imagePath = IMAGE_USER ;
             Dipendente dip = (Dipendente) obj;
             identifier = dip.getId();
 
-            Label primaRiga = new Label("ID:");
-            Label secondaRiga = new Label("Dipendente:");
-            Label terzaRiga = new Label("Ruolo:");
-            Label quartaRiga = new Label("Salario:");
-
-            labelsKey.add(primaRiga);       labelsValue.add(new Label(dip.getId()));
-            labelsKey.add(secondaRiga);     labelsValue.add(new Label(dip.getName() + " " + dip.getLastName()));
-            labelsKey.add(terzaRiga);       labelsValue.add(new Label(dip.getRole()));
-            labelsKey.add(quartaRiga);      labelsValue.add(new Label(dip.getSalary()));
+            createLabelsLines(groups, "ID:", dip.getId());
+            createLabelsLines(groups, "Dipendente:", dip.getName() + " " + dip.getLastName());
+            createLabelsLines(groups, "Ruolo", dip.getRole());
+            createLabelsLines(groups, "Salario", dip.getSalary());
 
         } else if (obj.getClass().equals(Servizi.class)) {
-            System.out.println("ricordati di impostarlo");
-            return;
+            imagePath = IMAGE_SERVIZI;
+            Servizi serv = (Servizi) obj;
+            identifier = serv.getId();
 
-
-
-
-
-
+            createLabelsLines(groups, "ID:", serv.getId());
+            createLabelsLines(groups, "Servizio:", serv.getTipo());
+            createLabelsLines(groups, "Prezzo", serv.getPrezzo());
 
         } else {
-            System.out.println("Imposta bene il riconoscimento degli oggetti in Dipendenti.setLayout()");
+            System.out.println("Imposta bene il riconoscimento degli oggetti in Card.setLayout()");
             return;
         }
 
@@ -113,9 +115,6 @@ public class Card extends AnchorPane {
             System.out.println(e);
         }
 
-        VBox vboxKeys = new VBox(1);
-        VBox vboxValues = new VBox(1);
-        LinkedList[] groups = new LinkedList[]{labelsKey, labelsValue};
 
 
         HBox hBox = new HBox(imageView, vboxKeys, vboxValues);
@@ -154,5 +153,13 @@ public class Card extends AnchorPane {
         this.getStyleClass().add("card-info");
     }
 
+
+    private void createLabelsLines(LinkedList[] list, String key, String value) {
+        //keylist
+        list[0].add(new Label(key));
+        //keyvalue
+        list[1].add(new Label(value));
+
+    }
 
 }
