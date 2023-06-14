@@ -246,8 +246,6 @@ public class Dialog {
                                 GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
                             }
                             case DIPENDENTI -> {
-                                for (String s : res)
-                                    System.out.println(s);
                                 GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
                             }
                             case SERVIZI -> {
@@ -346,9 +344,6 @@ public class Dialog {
         l.getStyleClass().add("generalField");
         l.textProperty().addListener((observableValue, s, t1) -> {
             okButton.setDisable(!checkField(l, index, t1, tipo));
-            System.out.println(clicked.get(0));
-            System.out.println(clicked.get(1));
-            System.out.println(clicked.get(2));
             System.out.println("------------");
         });
 

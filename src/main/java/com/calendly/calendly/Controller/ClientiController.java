@@ -1,6 +1,7 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,11 +10,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 public class ClientiController {
+    @FXML
+    private AnchorPane anchorPane;
 
     @FXML
     private Button addButton;
@@ -62,7 +66,7 @@ public class ClientiController {
 
     @FXML
     void actionAggiungiCliente(ActionEvent event) {
-        //Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.AGGIUNGI, -1, ancorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.AGGIUNGI, -1, anchorPane);
     }
 
     @FXML
@@ -78,7 +82,7 @@ public class ClientiController {
 
     @FXML
     void actionRimuoviCliente(ActionEvent event) {
-        //Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.RIMUOVI, -1, ancorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.RIMUOVI, -1, anchorPane);
     }
 
     @FXML
