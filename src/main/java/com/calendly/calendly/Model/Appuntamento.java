@@ -8,11 +8,14 @@ public class Appuntamento {
     private final SimpleStringProperty identificativo;
     private final SimpleStringProperty numero;
     private final SimpleStringProperty data;
+
+    private String cf;
     private final SimpleStringProperty dipendente;
     private final SimpleStringProperty servizio;
     private final SimpleDoubleProperty prezzo;
-    public Appuntamento(Integer id, String email, String nome, String cognome, String numero, String data, String dipendente, String servizio, Double prezzo){
+    public Appuntamento(Integer id, String cf, String email, String nome, String cognome, String numero, String data, String dipendente, String servizio, Double prezzo){
         this.id = new SimpleIntegerProperty(id);
+        this.cf = cf;
         this.email = new SimpleStringProperty(email);
         this.identificativo = new SimpleStringProperty(nome + " " + cognome);
         this.numero = new SimpleStringProperty(numero);
@@ -24,13 +27,14 @@ public class Appuntamento {
 
     public Appuntamento(String [] s){
         this.id = new SimpleIntegerProperty(Integer.parseInt(s[0]));
-        this.email = new SimpleStringProperty(s[1]);
-        this.identificativo = new SimpleStringProperty(s[2]+" "+s[3]);
-        this.numero = new SimpleStringProperty(s[4]);
-        this.data = new SimpleStringProperty(s[5]);
-        this.dipendente = new SimpleStringProperty(s[6]);
-        this.servizio = new SimpleStringProperty(s[7]);
-        this.prezzo = new SimpleDoubleProperty(Double.parseDouble(s[8]));
+        this.cf = s[1];
+        this.email = new SimpleStringProperty(s[2]);
+        this.identificativo = new SimpleStringProperty(s[3]+" "+s[4]);
+        this.numero = new SimpleStringProperty(s[5]);
+        this.data = new SimpleStringProperty(s[6]);
+        this.dipendente = new SimpleStringProperty(s[7]);
+        this.servizio = new SimpleStringProperty(s[8]);
+        this.prezzo = new SimpleDoubleProperty(Double.parseDouble(s[9]));
     }
 
     public int getId() {
@@ -56,6 +60,9 @@ public class Appuntamento {
     public void setIdentificativo(String identificativo) {
         this.identificativo.set(identificativo);
     }
+
+    public String getCf() {return cf;}
+    public void setCf(String cf) {this.cf = cf;}
 
     public String getNumero() {
         return numero.get();

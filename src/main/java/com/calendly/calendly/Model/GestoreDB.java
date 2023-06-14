@@ -133,25 +133,22 @@ public class GestoreDB {
     public void aggiornamento(entità ent, String [] info) throws SQLException {
         switch (ent){
             case Dipendenti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Dipendenti SET Username LIKE ?, Password LIKE ?, Nome LIKE ?, Cognome LIKE ?, Salario = ?, Ruolo LIKE ? WHERE Id = ?;")) {
-                    pstmt.setString(1, info [0]); // Username
-                    pstmt.setString(2, BCrypt.hashpw(info[1], BCrypt.gensalt(12))); // Password
-                    pstmt.setString(3, info[2]); // Nome
-                    pstmt.setString(4, info[3]); // Cognome
-                    pstmt.setDouble(5, Double.parseDouble(info[4])); // Salario
-                    pstmt.setString(6, info[5]); // Ruolo
-                    pstmt.setInt(7, Integer.parseInt(info[6])); // Id
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Dipendenti SET Nome LIKE ?, Cognome LIKE ?, Salario = ?, Ruolo LIKE ? WHERE Id = ?;")) {
+                    pstmt.setString(1, info[0]); // Nome
+                    pstmt.setString(2, info[1]); // Cognome
+                    pstmt.setDouble(3, Double.parseDouble(info[3])); // Salario
+                    pstmt.setString(4, info[2]); // Ruolo
+                    pstmt.setInt(5, Integer.parseInt(info[4])); // Id
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
             case Clienti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Clienti SET CF LIKE ?, Email LIKE ?, Nome LIKE ?, Cognome LIKE ?, Numero LIKE ? WHERE CF LIKE ?;")) {
-                    pstmt.setString(1, info[0]); // CF Nuovo
-                    pstmt.setString(2, info[1]); // Email
-                    pstmt.setString(3, info[2]); // Nome
-                    pstmt.setString(4, info[3]); // Cognome
-                    pstmt.setString(5, info[4]); // Numero
-                    pstmt.setString(6, info[5]); // CF Vecchio
+                try (PreparedStatement pstmt = con.prepareStatement("UPDATE Clienti SET Email LIKE ?, Nome LIKE ?, Cognome LIKE ?, Numero LIKE ? WHERE CF LIKE ?;")) {
+                    pstmt.setString(1, info[3]); // Email
+                    pstmt.setString(2, info[0]); // Nome
+                    pstmt.setString(3, info[1]); // Cognome
+                    pstmt.setString(4, info[2]); // Numero
+                    pstmt.setString(5, info[4]); // CF
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
@@ -329,6 +326,15 @@ public class GestoreDB {
         return s;
     }
 
+    public void cercaPassword(String id, String password) throws SQLException {
+        String sql = "UPDATE Dipendenti SET Password LIKE ? WHERE Id = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, BCrypt.hashpw(password, BCrypt.gensalt(12)));
+        stmt.setString(2, id);
+        ResultSet query = stmt.executeQuery();
+        stmt.close();
+    }
+
     public int calcolaGuadagno(String data) throws SQLException {
         String sql = "Select S.Prezzo as Prezzo from Appuntamenti as A, Servizi as S where A.Id_Servizio = S.Id and A.Data LIKE ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
@@ -348,9 +354,9 @@ public class GestoreDB {
         ArrayList<String> risultato = new ArrayList<String>();
         String sql;
         if(cerca){
-            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id and "+filtro+" LIKE ?;";
+            sql = "Select A.Id, A.CF_Cliente, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id and "+filtro+" LIKE ?;";
         }else{
-            sql = "Select A.Id, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id;";
+            sql = "Select A.Id,A.CF_Cliente, C.Email, C.Nome, C.Cognome, C.Numero, A.Data, D.Username, S.Tipo, S.Prezzo From Appuntamenti as A, Clienti as C, Dipendenti as D, Servizi as S Where A.CF_Cliente = C.CF and A.Id_Dipendente = D.Id and A.Id_Servizio = S.id;";
         }
         PreparedStatement stmt = con.prepareStatement(sql);
         if(cerca){
@@ -359,7 +365,7 @@ public class GestoreDB {
         ResultSet query = stmt.executeQuery();
         String s= "";
         while(query.next()) {
-            s+=query.getString("Id")+";"+query.getString("Email")+";"+query.getString("Nome")+";"+query.getString("Cognome")+";"+query.getString("Numero")+";"+query.getString("Data")+";"+query.getString("Username")+";"+query.getString("Tipo")+";"+query.getString("Prezzo");
+            s+=query.getString("Id")+";"+query.getString("CF_Cliente")+";"+query.getString("Email")+";"+query.getString("Nome")+";"+query.getString("Cognome")+";"+query.getString("Numero")+";"+query.getString("Data")+";"+query.getString("Username")+";"+query.getString("Tipo")+";"+query.getString("Prezzo");
             risultato.add(s);
             s = "";
         }
