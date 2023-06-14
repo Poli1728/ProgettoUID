@@ -132,10 +132,10 @@ public class AppuntamentiController{
     @FXML
     void generaScontrino(ActionEvent event) throws DocumentException, FileNotFoundException, SQLException {
         if(idScontrino.getText().equals("")){
-            SceneHandler.getInstance().generaAlert("Non hai inserito l'id da cercare.");
+            SceneHandler.getInstance().generaAlert("Non hai inserito l'id da cercare.",false);
         }else {
             if(!GestoreDB.getInstance().selezionaValore(GestoreDB.getInstance().getAppuntamenti(),"Id", idScontrino.getText()).equals(idScontrino.getText())){
-                SceneHandler.getInstance().generaAlert("L'id inserito non esiste.");
+                SceneHandler.getInstance().generaAlert("L'id inserito non esiste.", false);
             }else{
                 Document doc = new Document();
                 String id = idScontrino.getText();
@@ -165,9 +165,9 @@ public class AppuntamentiController{
     @FXML
     void cerca(ActionEvent event) throws SQLException {
         if(filtroBox.getValue() == null){
-            SceneHandler.getInstance().generaAlert("Non hai selezionato il filtro.");
+            SceneHandler.getInstance().generaAlert("Non hai selezionato il filtro.", false);
         } else if (cercaField.getText().equals("")) {
-            SceneHandler.getInstance().generaAlert("Non hai inserito il valore da cercare.");
+            SceneHandler.getInstance().generaAlert("Non hai inserito il valore da cercare.",false);
         } else {
             table.getItems().clear();
             String filtro = "";

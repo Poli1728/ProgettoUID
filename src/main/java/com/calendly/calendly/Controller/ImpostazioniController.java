@@ -2,6 +2,7 @@ package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.Settings;
 import com.calendly.calendly.View.MyFont;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,15 +23,26 @@ public class ImpostazioniController {
     private Text txtTemi;
 
     @FXML
+    private Label labelTemi;
+
+    @FXML
     private CheckBox checkDislessia;
 
     @FXML
     private Label labelDislessia;
 
     @FXML
-    private Label labelTemi;
-    @FXML
     private Text txtDislessia;
+
+    @FXML
+    private CheckBox checkNotifica;
+
+    @FXML
+    private Label labelNotifica;
+
+    @FXML
+    private Text txtNotifica;
+
     @FXML
     private Label labelRipristina;
     @FXML
@@ -43,9 +55,11 @@ public class ImpostazioniController {
         labelImpostazioni.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         labelDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         labelTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelNotifica.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         labelRipristina.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
         txtTemi.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         txtDislessia.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtNotifica.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         txtRipristina.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
     }
 
@@ -87,6 +101,16 @@ public class ImpostazioniController {
     }
 
     @FXML
+    void attivaNotifica(ActionEvent event) {
+        if(checkNotifica.isSelected()){
+            Settings.NOTIFICA = true;
+        }else{
+            Settings.NOTIFICA = false;
+        }
+    }
+
+
+    @FXML
     void ripristina(ActionEvent event) throws SQLException {
         GestoreDB.getInstance().svuota();
         SceneHandler.getInstance().launchLogin();
@@ -97,6 +121,9 @@ public class ImpostazioniController {
     public void initialize(){
         if(MyFont.getInstance().getFont().equals("Verdana")){
             checkDislessia.setSelected(true);
+        }
+        if(Settings.NOTIFICA){
+            checkNotifica.setSelected(true);
         }
 
         if (temiComboBox.getItems().size() == 0){

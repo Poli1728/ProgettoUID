@@ -12,6 +12,7 @@ public class Settings {
     public final static int MIN_WINDOW_WIDTH_LOGIN = 500;
     public final static int MIN_WINDOW_WIDTH_APP = 800;
     public final static int WIDTH_BREAKPOINT = 1000;
+    public static boolean NOTIFICA = false;
 
     public enum roles {
         PROPRIETARIO,

@@ -236,12 +236,12 @@ public class GestoreDB {
         return s.toString();
     }
 
-    public String cercaTramiteValore (entità ent, String parametro, String chiave) throws SQLException {
+    public String cercaTramiteValore (entità ent, String parametro, String valore) throws SQLException {
         String query;
         query = "Select * From "+ent.toString()+" Where ? LIKE ?;";
         PreparedStatement stmt = con.prepareStatement(query);
         stmt.setString(1, parametro);
-        stmt.setString(2, chiave);
+        stmt.setString(2, valore);
         ResultSet rs = stmt.executeQuery();
         StringBuilder s= new StringBuilder();
         while(rs.next()) {

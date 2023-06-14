@@ -167,9 +167,13 @@ public class SceneHandler {
         return name;
     }
 
-    public void generaAlert(String testo){
+    public void generaAlert(String testo, boolean notifica){
         Alert alert;
-        alert = new Alert(Alert.AlertType.WARNING);
+        if (notifica){
+            alert = new Alert(Alert.AlertType.INFORMATION);
+        }else {
+            alert = new Alert(Alert.AlertType.WARNING);
+        }
         String pathTheme = switch (MyFont.getInstance().getTema()) {
             case "DARK" -> Settings.themes[0];
             case "LIGHT" -> Settings.themes[1];
@@ -183,9 +187,15 @@ public class SceneHandler {
         dialog.getStylesheets().add(Objects.requireNonNull((SceneHandler.class.getResource(Settings.styles[0])).toExternalForm()));
         dialog.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
         dialog.getStyleClass().add("alert");
-        alert.setTitle("Attenzione");
-        alert.setHeaderText("Qualcosa è andato storto.");
-        alert.setContentText(testo);
+        if(notifica){
+            alert.setTitle("Notifica");
+            alert.setHeaderText("Ecco i tuoi appuntamenti giornalieri");
+            alert.setContentText(testo);
+        }else {
+            alert.setTitle("Attenzione");
+            alert.setHeaderText("Qualcosa è andato storto.");
+            alert.setContentText(testo);
+        }
         alert.setResizable(false);
         alert.initStyle(StageStyle.UNDECORATED);
         alert.showAndWait();

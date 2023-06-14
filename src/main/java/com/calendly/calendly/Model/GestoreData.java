@@ -54,6 +54,15 @@ public class GestoreData {
         return data;
     }
 
+    public String generaDataOdierna(){
+        String data = String.valueOf(java.time.LocalDateTime.now());
+        StringBuilder anno = GestoreData.getInstance().annoCorrente(data);
+        StringBuilder mese = GestoreData.getInstance().meseCorrente(data);
+        StringBuilder giorno = GestoreData.getInstance().giornoCorrente(data);
+        data = giorno.toString()+"/"+mese.toString()+"/"+anno.toString();
+        return data;
+    }
+
     public String generaDataSottratta(int x){
         String data = String.valueOf(java.time.LocalDateTime.now().minusDays(x));
         StringBuilder giorno = GestoreData.getInstance().giornoCorrente(data);

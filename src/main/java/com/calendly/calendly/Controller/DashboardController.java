@@ -1,10 +1,13 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.*;
+import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.Settings;
 import com.calendly.calendly.View.MyFont;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
@@ -48,8 +51,20 @@ public class DashboardController {
 
     @FXML
     private Label labelDashboard;
+
     @FXML
-    private Text txtDashboard;
+    private Label labelDati;
+    @FXML
+    private Text txtGuadagno;
+
+    @FXML
+    private Text txtGuadagnoCalcolare;
+
+    @FXML
+    private Text txtNumero;
+
+    @FXML
+    private Text txtNumeroCalcolare;
 
     @FXML
     private TableView<Appuntamento> tableGiornliera;
@@ -65,6 +80,26 @@ public class DashboardController {
         colonnaNomeCognome.setCellValueFactory(new PropertyValueFactory<>("identificativo"));
         colonnaNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         colonnaServizio.setCellValueFactory(new PropertyValueFactory<>("servizio"));
+    }
+
+    private void impostaTemi(){
+        labelDashboard.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        labelDati.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        txtGuadagno.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtNumero.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtGuadagnoCalcolare.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtNumeroCalcolare.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+    }
+
+    private String generaNotificaTesto(String data) throws SQLException {
+        ArrayList<String> app = GestoreDB.getInstance().creaLista(true, "Data", data);
+        StringBuilder s = new StringBuilder();
+        s.append("Nome ").append(" Cognome ").append(" Numero        ").append("Servizio\n");
+        for(String i : app){
+            String [] info = i.split(";");
+            s.append(info[2]).append(" ").append(info[3]).append("   ").append(info[4]).append(" ").append(info[7]).append("\n");
+        }
+        return s.toString();
     }
 
     // aggiunge gli elementi all'interno della table
@@ -87,23 +122,29 @@ public class DashboardController {
         lista = GestoreStatistiche.getInstance().statistiche(GestoreStatistiche.getInstance().getGiornaliero(), 0, 0, data);
         for (Statistiche i : lista) {
             appuntamenti.getData().add(new XYChart.Data<String, Number>(i.getData(), i.getNumeroApp()));
+            txtNumeroCalcolare.setText(i.getNumeroApp().toString());
         }
+        XYChart.Series<String, Number> guadagni = new XYChart.Series<String, Number>();
+        guadagni.setName("Ammontare (€)");
+        Guadagno guadagno = new Guadagno(data, 50);
+        guadagni.getData().add(new XYChart.Data<String, Number>(guadagno.getData(), guadagno.getGuadagno()));
+        txtGuadagnoCalcolare.setText(guadagno.getGuadagno().toString()+"€");
         chartGiornaliero.getData().add(appuntamenti);
+        chartGiornaliero.getData().add(guadagni);
     }
 
     // inizializza tutto
 
     @FXML
     void initialize() throws SQLException {
-        String data = String.valueOf(java.time.LocalDateTime.now());
-        StringBuilder anno = GestoreData.getInstance().annoCorrente(data);
-        StringBuilder mese = GestoreData.getInstance().meseCorrente(data);
-        StringBuilder giorno = GestoreData.getInstance().giornoCorrente(data);
-        data = giorno.toString()+"/"+mese.toString()+"/"+anno.toString();
-        labelDashboard.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
-        txtDashboard.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        String data = GestoreData.getInstance().generaDataOdierna();
+        impostaTemi();
         impostaTable(data);
         impostaChart(data);
+        if(Settings.NOTIFICA){
+            String appuntamentiNotifica = generaNotificaTesto(data);
+            SceneHandler.getInstance().generaAlert(appuntamentiNotifica,true);
+        }
     }
 
 }

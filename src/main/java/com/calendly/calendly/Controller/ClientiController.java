@@ -5,6 +5,7 @@ import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.ReusableDBResultsConverter;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.CardContainer;
+import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyFont;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,15 +71,15 @@ public class ClientiController {
 
     @FXML
     void actionAggiungiCliente(ActionEvent event) {
-
+        //Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.AGGIUNGI, -1, ancorPane);
     }
 
     @FXML
     void actionCerca(ActionEvent event) {
         if(filtro.getValue() == null){
-            SceneHandler.getInstance().generaAlert("Non hai selezionato il filtro.");
+            SceneHandler.getInstance().generaAlert("Non hai selezionato il filtro.", false);
         }else if(field.getText().equals("")){
-            SceneHandler.getInstance().generaAlert("Non hai inserito il valore da cercare.");
+            SceneHandler.getInstance().generaAlert("Non hai inserito il valore da cercare.", false);
         }else{
             generaCard(true, filtro.getValue(), field.getText());
         }
@@ -86,7 +87,7 @@ public class ClientiController {
 
     @FXML
     void actionRimuoviCliente(ActionEvent event) {
-
+        //Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.RIMUOVI, -1, ancorPane);
     }
 
     @FXML

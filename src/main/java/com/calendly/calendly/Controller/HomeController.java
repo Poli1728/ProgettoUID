@@ -10,15 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -32,7 +31,34 @@ public class HomeController {
     private AnchorPane anchorPaneImageView;
 
     @FXML
+    private Label labelInfo;
+
+    @FXML
     private ImageView logoView;
+
+    @FXML
+    private Text txtInfo;
+
+    @FXML
+    private Text txtInfo1;
+
+    @FXML
+    private Text txtInfo2;
+
+    @FXML
+    private Text txtInfo3;
+
+    @FXML
+    private Text txtInfo4;
+
+    @FXML
+    private Text txtInfo5;
+
+    @FXML
+    private Text txtInfo6;
+
+    @FXML
+    private Text txtInfo7;
 
     @FXML
     private Pane viewPane;
@@ -70,7 +96,16 @@ public class HomeController {
     }
 
     @FXML
-    void initialize() throws IOException {
+    void initialize() throws IOException{
+        labelInfo.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeLabel()));
+        txtInfo.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtInfo1.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtInfo2.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtInfo3.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtInfo4.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtInfo5.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtInfo6.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
+        txtInfo7.setFont(Font.font(MyFont.getInstance().getFont(), MyFont.getInstance().getSizeTxt()));
         Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/logo.png")));
         logoView.setImage(image);
 
@@ -119,8 +154,6 @@ public class HomeController {
             if (vbox.getHeight() != 0)
                 AnchorPane.setTopAnchor(vbox, (anchorPaneParent.getHeight() - vbox.getHeight())/2);
         });
-
-        avviaPane("fxml/Dashboard");
     }
 
 

@@ -26,12 +26,12 @@
       </Label>
       <TableView fx:id="table" editable="true" layoutX="5.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="591.0" styleClass="container-level-2" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="117.0">
          <columns>
-            <TableColumn fx:id="colonnaId" prefWidth="42.5" text="Id" />
-            <TableColumn fx:id="colonnaEmail" prefWidth="112.0" text="Email" />
+            <TableColumn fx:id="colonnaId" prefWidth="48.0" text="Id" />
+            <TableColumn fx:id="colonnaEmail" prefWidth="102.0" text="Email" />
             <TableColumn fx:id="colonnaNomeCognome" prefWidth="142.5" text="Nome e Cognome" />
             <TableColumn fx:id="colonnaNumero" minWidth="1.0" prefWidth="75.0" text="Numero" />
-            <TableColumn fx:id="colonnaData" prefWidth="89.0" text="Data" />
-            <TableColumn fx:id="colonnaDipendente" prefWidth="104.0" text="Dipendente" />
+            <TableColumn fx:id="colonnaData" prefWidth="85.0" text="Data" />
+            <TableColumn fx:id="colonnaDipendente" prefWidth="64.0" text="Dipendente" />
             <TableColumn fx:id="colonnaServizio" prefWidth="94.0" text="Servizio" />
             <TableColumn fx:id="colonnaPrezzo" prefWidth="94.0" text="Prezzo" />
          </columns>
