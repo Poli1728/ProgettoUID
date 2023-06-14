@@ -37,20 +37,12 @@ public class Appuntamento {
         return id.get();
     }
 
-    public SimpleIntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
     }
 
     public String getEmail() {
         return email.get();
-    }
-
-    public SimpleStringProperty emailProperty() {
-        return email;
     }
 
     public void setEmail(String email) {
@@ -61,20 +53,12 @@ public class Appuntamento {
         return identificativo.get();
     }
 
-    public SimpleStringProperty identificativoProperty() {
-        return identificativo;
-    }
-
     public void setIdentificativo(String identificativo) {
         this.identificativo.set(identificativo);
     }
 
     public String getNumero() {
         return numero.get();
-    }
-
-    public SimpleStringProperty numeroProperty() {
-        return numero;
     }
 
     public void setNumero(String numero) {
@@ -85,20 +69,12 @@ public class Appuntamento {
         return data.get();
     }
 
-    public SimpleStringProperty dataProperty() {
-        return data;
-    }
-
     public void setData(String data) {
         this.data.set(data);
     }
 
     public String getDipendente() {
         return dipendente.get();
-    }
-
-    public SimpleStringProperty dipendenteProperty() {
-        return dipendente;
     }
 
     public void setDipendente(String dipendente) {
@@ -109,20 +85,12 @@ public class Appuntamento {
         return servizio.get();
     }
 
-    public SimpleStringProperty servizioProperty() {
-        return servizio;
-    }
-
     public void setServizio(String servizio) {
         this.servizio.set(servizio);
     }
 
     public double getPrezzo() {
         return prezzo.get();
-    }
-
-    public SimpleDoubleProperty prezzoProperty() {
-        return prezzo;
     }
 
     public void setPrezzo(double prezzo) {
