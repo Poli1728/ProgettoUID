@@ -328,6 +328,19 @@ public class GestoreDB {
         return s;
     }
 
+    public int calcolaGuadagno(String data) throws SQLException {
+        String sql = "Select S.Prezzo as Prezzo from Appuntamenti as A, Servizi as S where A.Id_Servizio = S.Id and A.Data LIKE ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, data);
+        ResultSet query = stmt.executeQuery();
+        int s= 0;
+        while(query.next()) {
+            s+=query.getInt("Prezzo");
+        }
+        stmt.close();
+        return s;
+    }
+
     // crea la lista che viene aggiunta alla tabella degli appuntamenti, sia quella di ricerca che quella senza ricerca
 
     public ArrayList<String> creaLista(boolean cerca, String filtro, String valore) throws SQLException {
