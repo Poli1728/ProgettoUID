@@ -120,7 +120,7 @@ public class Card extends AnchorPane {
 
         HBox hBox = new HBox(imageView, vboxKeys, vboxValues);
         hBox.setAlignment(Pos.CENTER_LEFT);
-        hBox.setPadding(new Insets(0, 0, 0, 15));
+        hBox.setPadding(new Insets(0, 0, 0, 5));
 
 
         for (LinkedList g : groups)
@@ -142,7 +142,7 @@ public class Card extends AnchorPane {
         vboxValues.setFillWidth(true);
 
         vboxKeys.setPadding(new Insets(15, 5, 15, 15));
-        vboxValues.setPadding(new Insets(15, 15, 15, 0));
+        vboxValues.setPadding(new Insets(15, 15, 15, 5));
 
         
         this.getChildren().addAll(edit, hBox);
