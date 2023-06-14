@@ -68,7 +68,7 @@ public class DashboardController {
 
     @FXML
     private TableView<Appuntamento> tableGiornliera;
-    
+
     // associa i valori della singola colonna alla variabile presente all'interno di appuntamento
 
     private void setCellValue(){

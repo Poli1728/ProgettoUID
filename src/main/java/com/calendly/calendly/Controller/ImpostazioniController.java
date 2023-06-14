@@ -47,8 +47,13 @@ public class ImpostazioniController {
     private Label labelRipristina;
     @FXML
     private Text txtRipristina;
+
     @FXML
     private Button ripristinaButton;
+
+
+    @FXML
+    private Text txtBasso;
 
     // Funzione che imposta i tutti i dettagli dei font scelti: Tema, Font e Size(quest'ultima non è modificabile all'utente)
     private void impostaFont(){
@@ -61,6 +66,7 @@ public class ImpostazioniController {
         txtDislessia.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
         txtNotifica.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
         txtRipristina.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+        txtBasso.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
     }
 
     // É la funzione che imposta il tema dei testi e bottoni, ogni volta aggiorna anche i dati nel DB

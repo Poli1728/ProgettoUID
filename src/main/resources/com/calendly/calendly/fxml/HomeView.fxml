@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="anchorPaneParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="950.0" prefHeight="700.0" prefWidth="950.0" scaleShape="false" styleClass="external-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.HomeController">
    <children>
-      <VBox fx:id="vbox" alignment="CENTER_LEFT" layoutX="19.0" layoutY="186.0" prefHeight="321.0" prefWidth="172.0" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="100.0">
+      <VBox fx:id="vbox" alignment="CENTER_LEFT" layoutX="19.0" layoutY="186.0" prefHeight="321.0" prefWidth="189.0" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="100.0">
          <children>
             <AnchorPane fx:id="anchorPaneImageView">
                <children>
@@ -18,7 +18,7 @@
                </children>
             </AnchorPane>
          </children></VBox>
-      <Pane fx:id="viewPane" layoutX="183.0" layoutY="14.0" prefHeight="680.0" prefWidth="757.0" styleClass="primary-app-view" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <Pane fx:id="viewPane" layoutX="209.0" layoutY="14.0" prefHeight="680.0" prefWidth="731.0" styleClass="primary-app-view" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <Label fx:id="labelInfo" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="364.0" text="Benvenuto su Calendly">
                <font>
@@ -37,12 +37,12 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtInfo2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Dashboard: riporta l'andamento giornaliero dei tuoi appuntamenti e il guadagno previsto;" wrappingWidth="643.0">
+                  <Text fx:id="txtInfo2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Dashboard: riporta l'andamento giornaliero dei tuoi appuntamenti e il guadagno previsto;" wrappingWidth="710.5">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtInfo3" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Appuntamenti: inserisce, modifica e rimuove gli appuntamenti e genera scontrini;" wrappingWidth="645.0">
+                  <Text fx:id="txtInfo3" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Appuntamenti: inserisce, modifica e rimuove gli appuntamenti e genera scontrini;" wrappingWidth="705.5">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -62,7 +62,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtInfo7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Impostazioni: consente modifiche del tema, il ripristino dei dati e gestisce le notifiche;" wrappingWidth="635.0">
+                  <Text fx:id="txtInfo7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="- Impostazioni:  modifiche del tema, ripristino dei dati e gestione delle notifiche;" wrappingWidth="707.5">
                      <font>
                         <Font size="14.0" />
                      </font>

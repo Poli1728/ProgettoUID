@@ -56,7 +56,12 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Text fx:id="txtNotifica" layoutX="33.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Permette di attiva o disattivare la notifica giornaliera." wrappingWidth="618.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="450.0">
+      <Text fx:id="txtNotifica" layoutX="33.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Permette di attiva o disattivare la notifica giornaliera.*" wrappingWidth="618.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="450.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtBasso" layoutX="10.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text=" *(notifica che appare al primo avvio nella dashboard)" wrappingWidth="618.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
          <font>
             <Font size="14.0" />
          </font>

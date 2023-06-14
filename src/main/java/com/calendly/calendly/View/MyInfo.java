@@ -22,7 +22,6 @@ public class MyInfo {
         tema = info[0];
         notifica = Integer.parseInt(info[3]);
         contatore = 0;
-        System.out.println(info[3]);
     }
 
     private String tema;
