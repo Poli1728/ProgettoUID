@@ -13,10 +13,9 @@
 
 <AnchorPane fx:id="ancorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.DipendentiViewController">
     <children>
-        <HBox layoutX="14.0" layoutY="60.0" spacing="4.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="60.0">
+        <HBox layoutX="430.0" layoutY="68.0" spacing="4.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="75.0">
             <children>
                 <Button fx:id="removeButton" cancelButton="true" mnemonicParsing="false" onAction="#actionRemoveButton" styleClass="secondaryButton" text="Rimuovi" />
-                <Button fx:id="editButton" mnemonicParsing="false" onAction="#actionEditButton" styleClass="secondaryButton" text="Modifica" />
                 <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#actionAddButton" styleClass="secondaryButton" text="Aggiungi" />
             </children>
         </HBox>
@@ -25,7 +24,7 @@
                 <Font size="28.0" />
             </font>
         </Label>
-        <HBox fx:id="search_hbox" alignment="BASELINE_CENTER" layoutX="265.0" layoutY="18.0" spacing="4.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="22.0">
+        <HBox fx:id="search_hbox" alignment="BASELINE_CENTER" layoutX="15.0" layoutY="68.0" spacing="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="75.0">
             <children>
                 <ComboBox fx:id="filtroBox" onAction="#actionFiltroBox" promptText="Filtra" styleClass="secondaryButton" />
                 <TextField fx:id="cercaField" promptText="cerca" styleClass="searchField" />

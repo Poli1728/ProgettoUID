@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,6 +28,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AppuntamentiController{
+    @FXML
+    private HBox scontrino_hbox;
+
+    @FXML
+    private HBox search_hbox;
+
     @FXML
     private Label labelAppuntamenti;
     @FXML
@@ -101,7 +108,7 @@ public class AppuntamentiController{
     @FXML
     void aggiungiAppuntamento(ActionEvent event) throws IOException {
         //controlla se c'è l'appuntamento indicato
-        //Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.AGGIUNGI, -1, ancorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.AGGIUNGI, -1, ancorPane);
     }
 
     // modifica l'appuntamento presente nel db
@@ -109,7 +116,7 @@ public class AppuntamentiController{
     @FXML
     void modificaAppuntamento(ActionEvent event) throws IOException {
         //controlla se c'è l'appuntamento indicato
-        //Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.MODIFICA, -1, ancorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.MODIFICA, -1, ancorPane);
     }
 
     // rimuove l'appuntamento dal db
@@ -117,7 +124,7 @@ public class AppuntamentiController{
     @FXML
     void rimuoviAppuntamento(ActionEvent event) throws IOException {
         //controlla se c'è l'appuntamento indicato
-        //Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.RIMUOVI, -1, ancorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.RIMUOVI, -1, ancorPane);
     }
 
     // Questa funzione genera uno scontrino all'interno con presenti dei dati dell'appuntamento

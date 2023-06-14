@@ -16,7 +16,6 @@
       <HBox layoutX="353.0" layoutY="20.0" spacing="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
          <children>
             <Button fx:id="removeButton" defaultButton="true" mnemonicParsing="false" onAction="#actionRimuoviCliente" styleClass="secondaryButton" text="Rimuovi" />
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#actionModificaCliente" styleClass="secondaryButton" text="Modifica" />
             <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#actionAggiungiCliente" styleClass="secondaryButton" text="Aggiungi" />
          </children>
       </HBox>
@@ -25,13 +24,6 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <HBox layoutX="21.0" layoutY="76.0" prefHeight="25.0" prefWidth="298.0" spacing="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="75.0">
-         <children>
-            <ComboBox fx:id="filtro" onAction="#actionFiltro" prefHeight="25.0" prefWidth="84.0" promptText="Filtro" />
-            <TextField fx:id="field" prefHeight="24.0" prefWidth="127.0" promptText="Cerca" styleClass="searchField" />
-            <Button fx:id="cercaButton" mnemonicParsing="false" onAction="#actionCerca" styleClass="secondaryButton" text="Cerca" />
-         </children>
-      </HBox>
       <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="25.0" layoutY="132.0" pannable="true" styleClass="vbox-info" AnchorPane.bottomAnchor="31.333333333333314" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="132.0">
          <content>
             <VBox fx:id="vboxEsterno" alignment="TOP_CENTER" prefHeight="294.0" prefWidth="563.0" styleClass="vbox-info">
@@ -47,5 +39,12 @@
             <Insets bottom="5.0" top="5.0" />
          </opaqueInsets>
       </ScrollPane>
+      <HBox fx:id="searchHbox" alignment="BASELINE_CENTER" layoutX="25.0" layoutY="78.0" spacing="4.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="75.0">
+         <children>
+            <ComboBox fx:id="filtro" prefHeight="25.0" prefWidth="84.0" promptText="Filtro" />
+            <TextField fx:id="field" prefHeight="24.0" prefWidth="127.0" promptText="Cerca" styleClass="searchField" />
+            <Button fx:id="cercaButton" mnemonicParsing="false" onAction="#actionCerca" styleClass="secondaryButton" text="Cerca" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

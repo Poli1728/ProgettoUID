@@ -317,6 +317,7 @@
 
 .alert{
     -fx-background-color: thirdBackgroundColor;
+     -fx-background-radius: 0px;
 
 }
 

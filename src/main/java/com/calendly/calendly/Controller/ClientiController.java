@@ -13,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
@@ -45,6 +46,8 @@ public class ClientiController {
 
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private HBox searchHbox;
 
     @FXML
     private VBox vboxEsterno;
@@ -79,16 +82,6 @@ public class ClientiController {
         }else{
             generaCard(true, filtro.getValue(), field.getText());
         }
-    }
-
-    @FXML
-    void actionFiltro(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actionModificaCliente(ActionEvent event) {
-
     }
 
     @FXML
