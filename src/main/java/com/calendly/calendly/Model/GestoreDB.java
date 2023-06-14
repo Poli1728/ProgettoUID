@@ -94,18 +94,18 @@ public class GestoreDB {
                     pstmt.setString(2, BCrypt.hashpw(info[0], BCrypt.gensalt(12))); //Password
                     pstmt.setString(3, info[1]); //Nome
                     pstmt.setString(4, info[2]); //Cognome
-                    pstmt.setDouble(5, Double.parseDouble(info[3])); //Salario
-                    pstmt.setString(6, info[4]); //Ruolo
+                    pstmt.setDouble(5, Double.parseDouble(info[4])); //Salario
+                    pstmt.setString(6, info[3]); //Ruolo
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
             case Clienti -> {
                 try (PreparedStatement pstmt = con.prepareStatement("INSERT INTO Clienti(CF, Email, Nome, Cognome, Numero) VALUES(?,?, ?, ?, ?);")) {
-                    pstmt.setString(1, info[0]); //CF
-                    pstmt.setString(2, info[1]); //Email
-                    pstmt.setString(3, info[2]); //Nome
-                    pstmt.setString(4, info[3]); //Cognome
-                    pstmt.setString(5, info[4]); //Numero
+                    pstmt.setString(1, info[4]); //CF
+                    pstmt.setString(2, info[3]); //Email
+                    pstmt.setString(3, info[0]); //Nome
+                    pstmt.setString(4, info[1]); //Cognome
+                    pstmt.setString(5, info[2]); //Numero
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
