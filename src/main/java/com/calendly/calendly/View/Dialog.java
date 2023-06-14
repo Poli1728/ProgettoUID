@@ -34,7 +34,7 @@ public class Dialog {
     private boolean hasBeenSetUp = false;
 
 
-    public enum from { APPUNTAMENTI, DIPENDENTI, SERVIZI, SIGNUP }
+    public enum from { APPUNTAMENTI, CLIENTI, DIPENDENTI, SERVIZI }
     public enum actions {AGGIUNGI(0), MODIFICA(1), RIMUOVI(2);
         actions(int i) { }
     }
@@ -62,11 +62,16 @@ public class Dialog {
         okButton.setDisable(true);
         this.okButton = okButton;
 
+        if (exeAction == actions.RIMUOVI){
+            okButton.setText("Rimuovi");
+            okButton.getStylesheets().add("-fx-background-color:systemGray5; -fx-text-fill:systemRed;");
+        }
+
         VBox vbox = switch (fromView) {
             case DIPENDENTI -> setComponentsForDipendenti(fromView, exeAction, id);
-            case APPUNTAMENTI -> setComponentsForAppuntamenti(fromView, exeAction, id);
+            case APPUNTAMENTI -> null;
+            case CLIENTI -> setComponentsForClienti(fromView, exeAction, id);
             case SERVIZI -> setComponentsForServizi(fromView, exeAction, id);
-            case SIGNUP -> null; //todo da togliore o aggiungere
         };
 
         dialogPane.setContent(vbox);
@@ -78,7 +83,10 @@ public class Dialog {
         //todo fare prendere da database il giusto tema
         dialogPane.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(Settings.themes[0])).toExternalForm());
 
+    }
 
+    private VBox setComponentsForClienti(from fromView, actions exeAction, Integer id) {
+        return null;
     }
 
 
@@ -86,10 +94,6 @@ public class Dialog {
         return null;
     }
 
-    private VBox setComponentsForAppuntamenti(from fromView, actions exeAction, Integer id) {
-        VBox vbox = new VBox();
-        return vbox;
-    }
 
     private enum stato { NEVER_CLICKED, CLICKED, FORM_CORRECT}
     private LinkedList<stato> clicked;
@@ -117,12 +121,12 @@ public class Dialog {
 
         initializeClickedList(nodes, nodes.size());
         ifInModificaMode(nodes, fromView, exeAction, id);
-        setResultConverter(nodes);
+        setResultConverter(nodes, fromView, exeAction, id);
 
         Label errors = new Label();
         this.errors = errors;
 
-        VBox vbox = externalVbox(nodes);
+        VBox vbox = externalVbox(nodes, exeAction);
 
         return vbox;
     }
@@ -141,12 +145,12 @@ public class Dialog {
 
         initializeClickedList(nodes, nodes.size());
         ifInModificaMode(nodes, fromView, exeAction, id);
-        setResultConverter(nodes);
+        setResultConverter(nodes, fromView, exeAction, id);
 
         Label errors = new Label();
         this.errors = errors;
 
-        VBox vbox = externalVbox(nodes);
+        VBox vbox = externalVbox(nodes, exeAction);
 
         return vbox;
     }
@@ -173,11 +177,17 @@ public class Dialog {
                 }
                 else if (res.get(0).getClass().equals(Cliente.class)) {
                     Cliente resCliente = (Cliente) res.get(0);
-                    ((TextField) nodes.get(0)).setText(resCliente.getCF());
-                    ((TextField) nodes.get(1)).setText(resCliente.getNome());
-                    ((TextField) nodes.get(2)).setText(resCliente.getCognome());
-                    ((TextField) nodes.get(3)).setText(resCliente.getNumero());
-                    ((TextField) nodes.get(4)).setText(resCliente.getEmail());
+                    ((TextField) nodes.get(0)).setText(resCliente.getNome());
+                    ((TextField) nodes.get(1)).setText(resCliente.getCognome());
+                    ((TextField) nodes.get(2)).setText(resCliente.getNumero());
+                    ((TextField) nodes.get(3)).setText(resCliente.getEmail());
+                } else if (res.get(0).getClass().equals(Appuntamento.class)) {
+                    Appuntamento app = (Appuntamento) res.get(0);
+                    ((TextField) nodes.get(0)).setText(app.getData());
+                    //((TextField) nodes.get(1)).setText(app.getCF());
+                    ((TextField) nodes.get(2)).setText(app.getDipendente());
+                    ((TextField) nodes.get(3)).setText(app.getServizio());
+                    ((TextField) nodes.get(4)).setText(String.valueOf(app.getId()));
                 }
             }
 
@@ -188,9 +198,31 @@ public class Dialog {
     }
 
 
-    private void setResultConverter(LinkedList<Node> nodes) {
+    private void setResultConverter(LinkedList<Node> nodes, from fromView, actions exeAction, int id) {
         dialog.setResultConverter((ButtonType bt) -> {
+
             if (bt == ButtonType.OK) {
+
+                if (exeAction == actions.RIMUOVI){
+                    try {
+                        switch (fromView) {
+                            case APPUNTAMENTI -> {
+                                GestoreDB.getInstance().rimozione(GestoreDB.entità.Appuntamenti, String.valueOf(id)); }
+                            case CLIENTI -> {
+                                GestoreDB.getInstance().rimozione(GestoreDB.entità.Clienti, String.valueOf(id)); }
+                            case DIPENDENTI -> {
+                                GestoreDB.getInstance().rimozione(GestoreDB.entità.Dipendenti, String.valueOf(id)); }
+                            case SERVIZI -> {
+                                GestoreDB.getInstance().rimozione(GestoreDB.entità.Servizi, String.valueOf(id)); }
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    return null;
+                }
+
+
                 LinkedList<String> res = new LinkedList<>();
                 for(Node node : nodes) {
                     if (node.getClass().equals(TextField.class)) {
@@ -201,16 +233,67 @@ public class Dialog {
                         res.add(cb.getSelectionModel().getSelectedItem().toString());
                     }
                 }
+
+                if (exeAction == actions.MODIFICA) {
+                    try {
+                        res.add(String.valueOf(id));
+                        switch (fromView) {
+
+                            case APPUNTAMENTI -> {
+                                GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Appuntamenti, res.toArray(new String[res.size()]));
+                            }
+                            case CLIENTI -> {
+                                GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
+                            }
+                            case DIPENDENTI -> {
+                                GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
+                            }
+                            case SERVIZI -> {
+                                GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Servizi, res.toArray(new String[res.size()]));
+                            }
+                        }
+                        res.removeLast();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                if (exeAction == actions.AGGIUNGI) {
+                    try {
+                        switch (fromView) {
+                            case APPUNTAMENTI -> {
+                                GestoreDB.getInstance().inserimento(GestoreDB.entità.Appuntamenti, res.toArray(new String[res.size()]));
+                            }
+                            case CLIENTI -> {
+                                GestoreDB.getInstance().inserimento(GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
+                            }
+                            case DIPENDENTI -> {
+                                GestoreDB.getInstance().inserimento(GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
+                            }
+                            case SERVIZI -> {
+                                GestoreDB.getInstance().inserimento(GestoreDB.entità.Servizi, res.toArray(new String[res.size()]));
+                            }
+                        }
+                        res.removeLast();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
                 return new DialogResponse(res);
             }
+
+
             return null;
         });
     }
 
 
-    private VBox externalVbox(LinkedList<Node> nodes) {
+    private VBox externalVbox(LinkedList<Node> nodes, actions exeActions) {
         VBox vbox = new VBox(8);
-        doNotAllowChanges(nodes);
+
+        if (exeActions == actions.RIMUOVI)
+            doNotAllowChanges(nodes);
 
         for (Node node : nodes)
             vbox.getChildren().add(node);
@@ -226,8 +309,8 @@ public class Dialog {
         try {
 
             res = switch (fromView) {
-
                 case APPUNTAMENTI -> null;
+                case CLIENTI -> null;
                 case DIPENDENTI ->
                         ReusableDBResultsConverter.getInstance().getDipendenti(
                             new ArrayList<>(
@@ -244,7 +327,6 @@ public class Dialog {
                                                         GestoreDB.getInstance().getServizi(),
                                                         String.valueOf(id))))
                         );
-                case SIGNUP -> null;
             };
 
         } catch (SQLException e) {
@@ -324,13 +406,6 @@ public class Dialog {
         rightHomePane.setMouseTransparent(false);
     }
 
-
-    private HBox createHbox(String labelText, Node node) {
-        Label label = new Label(labelText);
-        label.setPrefWidth(65);
-        label.setAlignment(Pos.CENTER_LEFT);
-        return new HBox(20, label, node);
-    }
 
 
     //per il comboBox deve essere sempre selezionata tramite codice un'opzione di partenza (la più mediamente utilizzata)
