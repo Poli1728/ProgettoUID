@@ -18,7 +18,7 @@ public class GeneratoreStringheAlert {
         s.append("Nome ").append(" Cognome ").append(" Numero        ").append("Servizio\n");
         for(String i : app){
             String [] info = i.split(";");
-            s.append(info[2]).append(" ").append(info[3]).append("   ").append(info[4]).append(" ").append(info[7]).append("\n");
+            s.append(info[3]).append(" ").append(info[4]).append("   ").append(info[5]).append(" ").append(info[8]).append("\n");
         }
         return s.toString();
     }
