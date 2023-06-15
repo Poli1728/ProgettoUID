@@ -16,5 +16,6 @@ Funzioni:
   - creare dei servizi
 
 Username e password per test:
-  - "USERNAME":"PASSWORD"
+  - "Marco.Martino.7"
+  - "ciao"
 
