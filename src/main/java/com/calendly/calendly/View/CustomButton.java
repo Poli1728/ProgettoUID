@@ -1,10 +1,12 @@
 package com.calendly.calendly.View;
 
 import com.calendly.calendly.Main;
+import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -106,8 +108,6 @@ public class CustomButton extends Button {
 
     private void setImageInButton() {
 
-        //todo mettere un listener nella quale avviene il cambio di immagine da bianco a nero e viceversa quando si switcha tema
-        //todo oppure aggiungere un filtro che mi cambi il colore sulla imageview
         ImageView imageView = new ImageView();
         try {
             Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath)));
@@ -118,7 +118,6 @@ public class CustomButton extends Button {
 
 
         } catch (Exception e) {
-            System.out.println(e);
         }
         this.setGraphic(imageView);
     }

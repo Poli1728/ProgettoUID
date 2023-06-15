@@ -109,7 +109,6 @@ public class Dialog {
         for (String style : Settings.styles)
             dialogPane.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm());
 
-        //todo fare prendere da database il giusto tema
         dialogPane.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(Settings.themes[0])).toExternalForm());
 
     }
@@ -325,7 +324,6 @@ public class Dialog {
                     ((ComboBox) nodes.get(3)).getSelectionModel().select(app.getCf());
                     ((ComboBox) nodes.get(5)).getSelectionModel().select(app.getDipendente());
                     ((ComboBox) nodes.get(7)).getSelectionModel().select(app.getServizio());
-                    //((ComboBox) nodes.get(9)).getSelectionModel().select(String.valueOf(app.getId()));
                 }
             }
 
@@ -392,7 +390,12 @@ public class Dialog {
                             GestoreDbThreaded.getInstance().runQuery(2, GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
                         }
                         case DIPENDENTI -> {
-                            res.addFirst(""); //password vuota in posizione 0
+                            String psw = ""; //password vuota in posizione 0
+                            if ((res.get(3).equals(Settings.roles.PROPRIETARIO.toString()) || res.get(3).equals(Settings.roles.SEGRETARIO.toString()))) {
+                                SceneHandler.getInstance().generaAlert("La password predefinita dell'utente è nome.cognome.id\nLa password potrà essere modificata al primo login nella sezione impostazioni", true);
+                                psw = res.get(0) + "." + res.get(1) + "." + res.getLast();
+                            }
+                            res.addFirst(psw);
                             GestoreDbThreaded.getInstance().runQuery(2, GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
                         }
                         case SERVIZI -> {
@@ -463,7 +466,6 @@ public class Dialog {
     }
 
 
-    //todo return boolean per poi inserire nei vari controller se bisogna aggiornare la tabella o meno.
     //prende come parametro l'attuale ancorPane della view
     public Optional<DialogResponse> requestDialog(from fromView, actions exeAction, String id, AnchorPane anchorPane)  { //prende come parametri i nomi in minuscolo delle singole opzioni da richedere all'utente
 
