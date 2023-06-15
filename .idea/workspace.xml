@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Gestito il codice -2 in dialog">
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="rimossi sout e todo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,20 +121,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685201888491</updated>
-    </task>
-    <task id="LOCAL-00026" summary="CSS sulle tableView (nuovo design quando modifichi i valori + popup show/hide tables), aggiunte grafiche">
-      <created>1686135107814</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1686135107814</updated>
-    </task>
-    <task id="LOCAL-00027" summary="CSS sui bottoni in appuntamenti">
-      <created>1686136066076</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1686136066076</updated>
     </task>
     <task id="LOCAL-00028" summary="CSS sul Combo-Box&#10;Aggiunta filtro su Dipendenti">
       <created>1686138587285</created>
@@ -466,7 +451,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686863825239</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Dialog">
+      <created>1686864954977</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1686864954977</updated>
+    </task>
+    <task id="LOCAL-00076" summary="rimossi sout e todo">
+      <created>1686865294701</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1686865294701</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,8 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Login - X/Y Layout Property Bind" />
-    <MESSAGE value="Login - X/Y Layout Property Bind pt2" />
     <MESSAGE value="Aggiunta Labels in Dialog" />
     <MESSAGE value="New Login" />
     <MESSAGE value="Aggiustamenti grafici" />
@@ -518,6 +515,8 @@
     <MESSAGE value="Modifiche dialog / servizi / dipendenti / clienti" />
     <MESSAGE value="pulizia codice" />
     <MESSAGE value="Gestito il codice -2 in dialog" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gestito il codice -2 in dialog" />
+    <MESSAGE value="Dialog" />
+    <MESSAGE value="rimossi sout e todo" />
+    <option name="LAST_COMMIT_MESSAGE" value="rimossi sout e todo" />
   </component>
 </project>
