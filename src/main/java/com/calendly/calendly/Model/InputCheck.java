@@ -1,7 +1,5 @@
 package com.calendly.calendly.Model;
 
-import com.calendly.calendly.View.Dialog;
-
 public class InputCheck {
 
     public InputCheck() { }
@@ -16,11 +14,11 @@ public class InputCheck {
         }
     }
 
-    public boolean checkLettersNumbersUnderscore(String value) {
+    public boolean checkLettersNumbers(String value) {
         if (value.length() < 3)
             return false;
 
-        if (!value.matches("[a-zA-Z0-9_ ]+[a-zA-Z0-9_ ]"))
+        if (!value.matches("[a-zA-Z0-9 ]+[a-zA-Z0-9 ]"))
             return false;
 
         return true;
