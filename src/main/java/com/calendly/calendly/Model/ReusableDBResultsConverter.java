@@ -117,7 +117,6 @@ public class ReusableDBResultsConverter {
                 System.out.println("celle clienti < celle attese");
                 continue;
             }
-
              */
 
             notAvailable(rowValues);
