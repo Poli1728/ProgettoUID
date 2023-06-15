@@ -256,7 +256,6 @@ public class GestoreDB {
                 }
             }
         }
-        System.out.println(s.toString());
         return s.toString();
     }
 
@@ -326,7 +325,6 @@ public class GestoreDB {
     }
 
     public void cambiaPassword(String id, String password) throws SQLException {
-        System.out.println(id + password);
         String sql = "UPDATE Dipendenti SET Password = ? WHERE Id = ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1,BCrypt.hashpw(password, BCrypt.gensalt(12)));

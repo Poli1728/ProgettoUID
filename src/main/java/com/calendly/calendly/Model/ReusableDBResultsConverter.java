@@ -1,5 +1,6 @@
 package com.calendly.calendly.Model;
 
+import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 
 import java.util.ArrayList;
@@ -34,7 +35,6 @@ public class ReusableDBResultsConverter {
             System.out.println(i);
 
             if (rowValues.length < Settings.CELL_DB_SERVIZI) {
-                System.out.println("celle dipendenti < celle attese");
                 continue;
             }
 
@@ -113,25 +113,34 @@ public class ReusableDBResultsConverter {
             String[] rowValues = i.split(";");
             System.out.println(i);
 
-            if (rowValues.length < Settings.Cell_DB_APPUNTAMENTI) {
+            /*if (rowValues.length < Settings.Cell_DB_APPUNTAMENTI) {
                 System.out.println("celle clienti < celle attese");
                 continue;
             }
 
+             */
+
             notAvailable(rowValues);
 
-            // 0   1    2   3    4
-            // id data cf iddip idser
-            Appuntamento app = new Appuntamento(
-                    Integer.parseInt(rowValues[0]),
-                    rowValues[2],
-                    "",
-                    "",
-                    "",
-                    "",
-                    rowValues[1], rowValues[3], rowValues[4], 0.0);
 
-            results.add(app);
+            try {
+                // 0   1    2   3    4
+                // id data cf iddip idser
+                Appuntamento app = new Appuntamento(
+                        Integer.parseInt(rowValues[0]),
+                        rowValues[2],
+                        "",
+                        "",
+                        "",
+                        "",
+                        rowValues[1], rowValues[3], rowValues[4], 0.0);
+                results.add(app);
+            }
+            catch (Exception e) {
+                SceneHandler.getInstance().generaAlert("ID non esistente o rimosso in precedenza", false);
+            }
+
+
         }
 
         return results;

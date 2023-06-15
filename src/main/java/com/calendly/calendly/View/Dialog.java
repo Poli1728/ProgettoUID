@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
@@ -317,10 +318,10 @@ public class Dialog {
                 } else if (res.get(0).getClass().equals(Appuntamento.class)) {
                     Appuntamento app = (Appuntamento) res.get(0);
                     ((TextField) nodes.get(1)).setText(app.getData());
-                    ((TextField) nodes.get(3)).setText(app.getCf());
-                    ((TextField) nodes.get(5)).setText(app.getDipendente());
-                    ((TextField) nodes.get(7)).setText(app.getServizio());
-                    ((TextField) nodes.get(9)).setText(String.valueOf(app.getId()));
+                    ((ComboBox) nodes.get(3)).getSelectionModel().select(app.getCf());
+                    ((ComboBox) nodes.get(5)).getSelectionModel().select(app.getDipendente());
+                    ((ComboBox) nodes.get(7)).getSelectionModel().select(app.getServizio());
+                    //((ComboBox) nodes.get(9)).getSelectionModel().select(String.valueOf(app.getId()));
                 }
             }
 
@@ -342,7 +343,7 @@ public class Dialog {
                     } else if (node.getClass().equals(ComboBox.class)) {
                         ComboBox cb = (ComboBox) node;
                         if (cb.getSelectionModel().isEmpty()) {
-                            SceneHandler.getInstance().generaAlert("Non hai inserito un parametro", true);
+                            SceneHandler.getInstance().generaAlert("Non hai inserito un parametro", false);
                             return null;
                         }
 
@@ -462,10 +463,10 @@ public class Dialog {
     //prende come parametro l'attuale ancorPane della view
     public Optional<DialogResponse> requestDialog(from fromView, actions exeAction, String id, AnchorPane anchorPane)  { //prende come parametri i nomi in minuscolo delle singole opzioni da richedere all'utente
 
-        if (anchorPaneFather == null || anchorPane == null)
+        if (anchorPaneFather == null || anchorPane == null) {
+            SceneHandler.getInstance().generaAlert("Errore Generale. Prova di nuovo", false);
             return null;    //se null, non è stato possibile effettuare la richiesta
-        //todo aggiungere alert
-
+        }
 
         Pane rightHomePane = (Pane) anchorPane.getParent();
         if (!hasBeenSetUp) {
@@ -477,9 +478,7 @@ public class Dialog {
         Optional<DialogResponse> optionalResult = dialog.showAndWait();
         disableBlurEffect(rightHomePane);
 
-        //aggiungo ciò che l'utente ha messo nelle textField nell'ordine in cui vengono passati in params
         return optionalResult;
-
     }
 
 
@@ -503,13 +502,8 @@ public class Dialog {
 
 
 
-    //per il comboBox deve essere sempre selezionata tramite codice un'opzione di partenza (la più mediamente utilizzata)
     public enum type {FLOAT, NAME_LASTNAME, INT, LETTERS_NUMBERS, EMAIL, DATE}
-    private String[] errorMessages = {
-            "Inserire un numero intero o decimale valido",
-            "Può contenere solo lettere e spazi",
-            "Formato data errato",
-    };
+
     private boolean checkField(Node node, int index, String newValue, type tipo) {
 
         if (clicked.get(index) == stato.NEVER_CLICKED)

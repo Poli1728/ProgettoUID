@@ -1,5 +1,7 @@
 package com.calendly.calendly.Model;
 
+import com.calendly.calendly.SceneHandler;
+
 public class InputCheck {
 
     public InputCheck() { }
@@ -9,7 +11,7 @@ public class InputCheck {
             Double.parseDouble(newValue);
             return true;
         } catch (Exception e) {
-            System.out.println(e);
+            SceneHandler.getInstance().generaAlert("Qualcosa è andato storto!", false);
             return false;
         }
     }
@@ -29,7 +31,6 @@ public class InputCheck {
             return false;
 
         if (!newValue.matches("[a-zA-Z ]+[a-zA-Z ]")) {
-            System.out.println("match -> false: " + newValue);
             return false;
         }
 
