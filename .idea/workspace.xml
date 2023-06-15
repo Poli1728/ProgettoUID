@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Modifiche dialog / servizi / dipendenti">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/AppuntamentiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/AppuntamentiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ClientiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ClientiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ServiziViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ServiziViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/InputCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/InputCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/ReusableDBResultsConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/ReusableDBResultsConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +121,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685201888491</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Fixato 2.0 autoresize in LoginController.java">
-      <created>1685542641075</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1685542641075</updated>
     </task>
     <task id="LOCAL-00014" summary="Ora il LoginView.fxml posiziona gli elementi nella giusta posizione in ogni caso (quantomeno si spera :(  )">
       <created>1685551485285</created>
@@ -475,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686811199121</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Modifiche dialog / servizi / dipendenti">
+      <created>1686844856394</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1686844856394</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

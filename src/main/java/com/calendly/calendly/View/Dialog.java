@@ -296,10 +296,11 @@ public class Dialog {
                 }
                 else if (res.get(0).getClass().equals(Cliente.class)) {
                     Cliente resCliente = (Cliente) res.get(0);
-                    ((TextField) nodes.get(0)).setText(resCliente.getNome());
-                    ((TextField) nodes.get(1)).setText(resCliente.getCognome());
-                    ((TextField) nodes.get(2)).setText(resCliente.getNumero());
-                    ((TextField) nodes.get(3)).setText(resCliente.getEmail());
+                    ((TextField) nodes.get(0)).setText(resCliente.getCF());
+                    ((TextField) nodes.get(1)).setText(resCliente.getNome());
+                    ((TextField) nodes.get(2)).setText(resCliente.getCognome());
+                    ((TextField) nodes.get(3)).setText(resCliente.getNumero());
+                    ((TextField) nodes.get(4)).setText(resCliente.getEmail());
                 } else if (res.get(0).getClass().equals(Appuntamento.class)) {
                     Appuntamento app = (Appuntamento) res.get(0);
                     ((DatePicker) nodes.get(0)).setValue(LocalDate.parse(app.getData()));
@@ -363,6 +364,8 @@ public class Dialog {
                             GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.entità.Appuntamenti, res.toArray(new String[res.size()]));
                         }
                         case CLIENTI -> {
+                            for (String s: res)
+                                System.out.println(s);
                             GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
                         }
                         case DIPENDENTI -> {
