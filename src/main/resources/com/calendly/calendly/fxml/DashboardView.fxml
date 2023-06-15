@@ -44,14 +44,14 @@
       </BarChart>
       <VBox layoutX="346.0" layoutY="76.0" prefHeight="110.0" prefWidth="232.0" spacing="20.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="70.0">
          <children>
-            <Label fx:id="labelDati" prefHeight="34.0" prefWidth="87.0" text="Dati:">
+            <Label fx:id="labelDati" prefHeight="34.0" prefWidth="269.0" text="Dati:">
                <font>
                   <Font size="27.0" />
                </font>
             </Label>
             <HBox spacing="10.0">
                <children>
-                  <Text fx:id="txtNumero" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Appuntamenti:" wrappingWidth="125.0">
+                  <Text fx:id="txtNumero" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Appuntamenti:" wrappingWidth="169.0">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -65,7 +65,7 @@
             </HBox>
             <HBox spacing="10.0">
                <children>
-                  <Text fx:id="txtGuadagno" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Guadagno previsto:" wrappingWidth="174.0">
+                  <Text fx:id="txtGuadagno" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txt" text="Guadagno previsto:" wrappingWidth="202.0">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -1,9 +1,13 @@
 package com.calendly.calendly.View;
 
+import com.calendly.calendly.Controller.ImpostazioniController;
 import com.calendly.calendly.Model.GestoreDB;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MyInfo {
 
@@ -27,18 +31,11 @@ public class MyInfo {
     private String tema;
     private int notifica;
     private int contatore;
+    private int sizeTxt;
+    private int sizeLabel;
+    private String font;
 
     private MyInfo(){}
-
-    private enum tipiFont{Quicksand, Verdana}
-
-    public tipiFont getQuicksand(){
-        return tipiFont.Quicksand;
-    }
-
-    public tipiFont getVerdana(){return tipiFont.Verdana;}
-
-    private String font = "Quicksand Medium";
 
     public int getNotifica() {
         return notifica;
@@ -56,19 +53,22 @@ public class MyInfo {
         this.contatore = contatore;
     }
 
-    private int sizeTxt = 14;
-    private int sizeLabel = 28;
-
-    public void setFont(tipiFont t){
-        if (t.toString().equals("Quicksand")){
-            font = t.toString() + " Medium";
+    public void setFont(boolean scelta) throws IOException {
+        if (scelta){
+            font = "Dyslexie";
         }else{
-            font = t.toString();
+            font = "Quicksand Medium";
         }
     }
 
-    public String getFont(){
-        return font;
+    public String getFont(){return this.font;}
+
+    public InputStream getFontDyslexia() throws IOException {
+        return Objects.requireNonNull(ImpostazioniController.class.getClassLoader().getResource("DyslexieRegular.ttf")).openStream();
+    }
+
+    public String getFontQuicksand(){
+        return "Quicksand Medium";
     }
 
     public int getSizeTxt(){

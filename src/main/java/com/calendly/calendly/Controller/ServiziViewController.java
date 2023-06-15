@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
@@ -30,6 +31,11 @@ public class ServiziViewController {
 
     @FXML
     private HBox search_hbox;
+    @FXML
+    private TextField cercaField;
+
+    @FXML
+    private Button searchButton;
 
     @FXML
     private VBox vboxEsterno;
@@ -67,9 +73,21 @@ public class ServiziViewController {
 
 
     @FXML
-    void initialize() {
+    void initialize() throws IOException {
         vboxEsterno.setSpacing(15);
-        labelServizi.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
+            labelServizi.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()));
+            cercaField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),cercaField.getFont().getSize()-1));
+            searchButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), searchButton.getFont().getSize()-1));
+            addButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), addButton.getFont().getSize()-1));
+            removeButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), removeButton.getFont().getSize()-1));
+        }else{
+            labelServizi.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
+            cercaField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaField.getFont().getSize()));
+            searchButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), searchButton.getFont().getSize()));
+            addButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), addButton.getFont().getSize()));
+            removeButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), removeButton.getFont().getSize()));
+        }
         filtroBox.getItems().addAll("Id", "Nome", "Cognome", "Ruolo", "Salario");
 
         LinkedList<Servizio> res;

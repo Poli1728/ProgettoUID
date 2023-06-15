@@ -20,7 +20,7 @@
          </children></VBox>
       <Pane fx:id="viewPane" layoutX="209.0" layoutY="14.0" prefHeight="680.0" prefWidth="731.0" styleClass="primary-app-view" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-            <Label fx:id="labelInfo" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="364.0" text="Benvenuto su Calendly">
+            <Label fx:id="labelInfo" layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="624.0" text="Benvenuto su Calendly">
                <font>
                   <Font size="28.0" />
                </font>
