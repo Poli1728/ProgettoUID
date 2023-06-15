@@ -52,7 +52,7 @@ public class ClientiController {
     private VBox vboxEsterno;
 
     private void generaCard(boolean cerca, String filtro, String valore){
-        /*LinkedList<Cliente> res = null;
+        LinkedList<Cliente> res = null;
 
         if(!cerca){
              res = ReusableDBResultsConverter.getInstance().getClienti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Clienti, null));
@@ -63,9 +63,7 @@ public class ClientiController {
             clienti.add( (String) GestoreDbThreaded.getInstance().runQuery(6, GestoreDB.entità.Clienti, parametri));
             res = ReusableDBResultsConverter.getInstance().getClienti(clienti);
         }
-
-
-        CardContainer.getInstance().setCardContainer(res, vboxEsterno);*/
+        CardContainer.getInstance().setCardContainer(res, vboxEsterno);
     }
 
     @FXML
@@ -111,12 +109,6 @@ public class ClientiController {
         impostaTemi();
         filtro.getItems().addAll("CF", "Nome", "Cognome", "Email", "Numero");
         generaCard(false, "", "");
-
-
-        LinkedList<Cliente> res;
-        res = ReusableDBResultsConverter.getInstance().getClienti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Clienti, null));
-        CardContainer.getInstance().setCardContainer(res, vboxEsterno);
-
     }
 
 }
