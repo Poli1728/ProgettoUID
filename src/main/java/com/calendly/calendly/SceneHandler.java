@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -83,6 +84,15 @@ public class SceneHandler {
         //da utilizzare esclusivamente in contemporanea con launchTutorialFirstOpening()
     }
 
+    Pane paneRightContainerContent = null;
+    public void setRightPaneContainerContent(Pane paneRightContainerContent) {
+        this.paneRightContainerContent = paneRightContainerContent;
+    }
+
+    public Pane getPaneRightContainerContent() {
+        return paneRightContainerContent;
+    }
+
     public void launchLogin() {
         loadFXML("fxml/LoginView.fxml");
         LoginController controller = loader.getController();
@@ -90,14 +100,13 @@ public class SceneHandler {
         setWindowLoginDimension();
     }
 
-    public void launchSideBar() {
-        //da vedere se passare height and width come params per scegliere se utilizzare la sBar con solo icone o con icone+testo
-    }
 
     public void launchDashboard(){
         setWindowAppDimension();
         loadFXML("fxml/HomeView.fxml");
     }
+
+
 
     public FXMLLoader creaPane(String s) throws IOException {
         FXMLLoader loader = new FXMLLoader(SceneHandler.class.getResource(s + "View.fxml"));

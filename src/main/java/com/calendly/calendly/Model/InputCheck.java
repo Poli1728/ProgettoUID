@@ -16,6 +16,16 @@ public class InputCheck {
         }
     }
 
+    public boolean checkLettersNumbersUnderscore(String value) {
+        if (value.length() < 3)
+            return false;
+
+        if (!value.matches("[a-zA-Z0-9_ ]+[a-zA-Z0-9_ ]"))
+            return false;
+
+        return true;
+    }
+
     public boolean checkNameLastname(String newValue) {
         if (newValue.length() < 3)
             return false;
@@ -28,9 +38,21 @@ public class InputCheck {
         return true;
     }
 
-    public boolean checkDate(String toString) {
+    public boolean checkDate(String value) {
+        if (value.length() == 0)
+            return false;
+
+        if (!value.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
+            return false;
+        }
+
         return true;
-        //todo checkdata
     }
 
+    public boolean checkInt(String newValue) {
+        if (newValue.matches("[0-9]+[0-9]*")) {
+            return true;
+        }
+        return false;
+    }
 }
