@@ -126,9 +126,10 @@ public class ImpostazioniController {
         if(passwordField.getText().equals("")){
             SceneHandler.getInstance().generaAlert("Password non inserita.",false);
         }else{
-            String [] parametri = {Settings.id,passwordField.getText()};
+            String [] parametri = {String.valueOf(MyInfo.getInstance().getId()),passwordField.getText()};
             GestoreDbThreaded.getInstance().runQuery(9,null, parametri);
         }
+        passwordField.setPromptText("Nuova password");
     }
 
     // Funzione che attiva il font in base alla check box
