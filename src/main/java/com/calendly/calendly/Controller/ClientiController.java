@@ -1,5 +1,8 @@
 package com.calendly.calendly.Controller;
 
+import com.calendly.calendly.Model.GestoreDB;
+import com.calendly.calendly.Model.GestoreDbThreaded;
+import com.calendly.calendly.Model.ReusableDBResultsConverter;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyInfo;
@@ -16,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ClientiController {
     @FXML
@@ -50,15 +54,16 @@ public class ClientiController {
     private void generaCard(boolean cerca, String filtro, String valore){
         /*LinkedList<Cliente> res = null;
 
-        try {
-            if(!cerca){
-                res = ReusableDBResultsConverter.getInstance().getClienti(GestoreDB.getInstance().leggiEntità(GestoreDB.entità.Clienti));
-            }else{
-                ArrayList<String> clienti = new ArrayList<String>();
-                clienti.add(GestoreDB.getInstance().cercaTramiteValore(GestoreDB.entità.Clienti, filtro, valore));
-                res = ReusableDBResultsConverter.getInstance().getClienti(clienti);
-            }
-        } catch (SQLException e) {}
+        if(!cerca){
+             res = ReusableDBResultsConverter.getInstance().getClienti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Clienti, null));
+
+        }else{
+            ArrayList<String> clienti = new ArrayList<String>();
+            String [] parametri = {filtro , valore};
+            clienti.add( (String) GestoreDbThreaded.getInstance().runQuery(6, GestoreDB.entità.Clienti, parametri));
+            res = ReusableDBResultsConverter.getInstance().getClienti(clienti);
+        }
+
 
         CardContainer.getInstance().setCardContainer(res, vboxEsterno);*/
     }
@@ -105,7 +110,6 @@ public class ClientiController {
         vboxEsterno.setSpacing(15);
         impostaTemi();
         filtro.getItems().addAll("CF", "Nome", "Cognome", "Email", "Numero");
-
         generaCard(false, "", "");
 
     }

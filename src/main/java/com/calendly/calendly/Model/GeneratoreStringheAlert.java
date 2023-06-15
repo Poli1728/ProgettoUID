@@ -13,7 +13,8 @@ public class GeneratoreStringheAlert {
     private GeneratoreStringheAlert(){}
 
     public String generaNotificaTesto(String data) throws SQLException {
-        ArrayList<String> app = GestoreDB.getInstance().creaLista(true, "Data", data);
+        String [] parametri ={String.valueOf(true),"Data", data};
+        ArrayList <String> app = (ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(11, null, parametri);
         StringBuilder s = new StringBuilder();
         s.append("Nome ").append(" Cognome ").append(" Numero        ").append("Servizio\n");
         for(String i : app){

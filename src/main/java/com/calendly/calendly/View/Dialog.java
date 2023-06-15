@@ -107,28 +107,24 @@ public class Dialog {
         configTextField(cf, "Codice fiscale", 1, type.NAME_LASTNAME);
 
         ObservableList<String> optionsDip = FXCollections.observableArrayList();
-        try {
-            LinkedList<Dipendente> res_dip = ReusableDBResultsConverter.getInstance().getDipendenti(GestoreDB.getInstance().leggiEntità(GestoreDB.entità.Dipendenti));
-            for (Dipendente d : res_dip) {
-                optionsDip.add(d.getId() + " - " + d.getName() + " " + d.getLastName());
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        LinkedList<Dipendente> res_dip = ReusableDBResultsConverter.getInstance().getDipendenti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Dipendenti, null));
+        for (Dipendente d : res_dip) {
+            optionsDip.add(d.getId() + " - " + d.getName() + " " + d.getLastName());
         }
+
         ComboBox idDip = new ComboBox<>(optionsDip);
         nodes.add(idDip);
         idDip.getSelectionModel().selectLast();
 
 
         ObservableList<String> optionsServizi = FXCollections.observableArrayList();
-        try {
-            LinkedList<Servizio> res_serv = ReusableDBResultsConverter.getInstance().getServizi(GestoreDB.getInstance().leggiEntità(GestoreDB.entità.Servizi));
-            for (Servizio d : res_serv) {
-                optionsServizi.add(d.getId() + " - " + d.getTipo() + " " + d.getPrezzo());
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        LinkedList<Servizio> res_serv = ReusableDBResultsConverter.getInstance().getServizi((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Servizi, null));
+        for (Servizio d : res_serv) {
+            optionsServizi.add(d.getId() + " - " + d.getTipo() + " " + d.getPrezzo());
         }
+
         ComboBox idServizio = new ComboBox<>(optionsServizi);
         nodes.add(idServizio);
         idServizio.getSelectionModel().selectLast();
@@ -286,20 +282,25 @@ public class Dialog {
             if (bt == ButtonType.OK) {
 
                 if (exeAction == actions.RIMUOVI){
-                    try {
-                        switch (fromView) {
-                            case APPUNTAMENTI -> {
-                                GestoreDB.getInstance().rimozione(GestoreDB.entità.Appuntamenti, String.valueOf(id)); }
-                            case CLIENTI -> {
-                                GestoreDB.getInstance().rimozione(GestoreDB.entità.Clienti, String.valueOf(id)); }
-                            case DIPENDENTI -> {
-                                GestoreDB.getInstance().rimozione(GestoreDB.entità.Dipendenti, String.valueOf(id)); }
-                            case SERVIZI -> {
-                                GestoreDB.getInstance().rimozione(GestoreDB.entità.Servizi, String.valueOf(id)); }
+                    switch (fromView) {
+                        case APPUNTAMENTI -> {
+                            String[] parametri = {String.valueOf(id)};
+                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Appuntamenti, parametri);
                         }
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
+                        case CLIENTI -> {
+                            String[] parametri = {String.valueOf(id)};
+                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Clienti, parametri);
+                        }
+                        case DIPENDENTI -> {
+                            String[] parametri = {String.valueOf(id)};
+                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Dipendenti, parametri);
+                        }
+                        case SERVIZI -> {
+                            String[] parametri = {String.valueOf(id)};
+                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Servizi, parametri);
+                        }
                     }
+
                 }
 
 
@@ -315,50 +316,45 @@ public class Dialog {
                 }
 
                 if (exeAction == actions.MODIFICA) {
-                    try {
-                        res.add(String.valueOf(id));
-                        switch (fromView) {
+                    res.add(String.valueOf(id));
+                    switch (fromView) {
 
-                            case APPUNTAMENTI -> {
-                                GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Appuntamenti, res.toArray(new String[res.size()]));
-                            }
-                            case CLIENTI -> {
-                                GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
-                            }
-                            case DIPENDENTI -> {
-                                GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
-                            }
-                            case SERVIZI -> {
-                                GestoreDB.getInstance().aggiornamento(GestoreDB.entità.Servizi, res.toArray(new String[res.size()]));
-                            }
+                        case APPUNTAMENTI -> {
+                            GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.entità.Appuntamenti, res.toArray(new String[res.size()]));
                         }
-                        res.removeLast();
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
+                        case CLIENTI -> {
+                            GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
+                        }
+                        case DIPENDENTI -> {
+                            GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
+                        }
+                        case SERVIZI -> {
+                            GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.entità.Servizi, res.toArray(new String[res.size()]));
+                        }
                     }
+                    res.removeLast();
+
                 }
 
                 if (exeAction == actions.AGGIUNGI) {
-                    try {
-                        switch (fromView) {
-                            case APPUNTAMENTI -> {
-                                GestoreDB.getInstance().inserimento(GestoreDB.entità.Appuntamenti, res.toArray(new String[res.size()]));
-                            }
-                            case CLIENTI -> {
-                                GestoreDB.getInstance().inserimento(GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
-                            }
-                            case DIPENDENTI -> {
-                                res.addFirst(""); //password vuota in posizione 0
-                                GestoreDB.getInstance().inserimento(GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
-                            }
-                            case SERVIZI -> {
-                                GestoreDB.getInstance().inserimento(GestoreDB.entità.Servizi, res.toArray(new String[res.size()]));
-                            }
+
+                    switch (fromView) {
+                        case APPUNTAMENTI -> {
+                            GestoreDbThreaded.getInstance().runQuery(2, GestoreDB.entità.Appuntamenti, res.toArray(new String[res.size()]));
                         }
-                        res.removeLast();
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
+                        case CLIENTI -> {
+                            GestoreDbThreaded.getInstance().runQuery(2, GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
+                        }
+                        case DIPENDENTI -> {
+                            res.addFirst(""); //password vuota in posizione 0
+                            GestoreDbThreaded.getInstance().runQuery(2, GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
+                        }
+                        case SERVIZI -> {
+                            GestoreDbThreaded.getInstance().runQuery(2, GestoreDB.entità.Servizi, res.toArray(new String[res.size()]));
+                        }
                     }
+                    res.removeLast();
+
                 }
 
                 FXMLLoader loader = null;
@@ -429,33 +425,20 @@ public class Dialog {
     private LinkedList dbResults(from fromView, Integer id) {
 
         LinkedList res = null;
-        try {
+        String [] parametri = {String.valueOf(id)};
+        res = switch (fromView) {
+            case APPUNTAMENTI -> null;
+            case CLIENTI -> null;
+            case DIPENDENTI ->
 
-            res = switch (fromView) {
-                case APPUNTAMENTI -> null;
-                case CLIENTI -> null;
-                case DIPENDENTI ->
-                        ReusableDBResultsConverter.getInstance().getDipendenti(
-                            new ArrayList<>(
-                                    Collections.singleton(
-                                            GestoreDB.getInstance().cercaRiga(
-                                                    GestoreDB.getInstance().getDipendenti(),
-                                                    String.valueOf(id))))
-                        );
-                case SERVIZI ->
-                        ReusableDBResultsConverter.getInstance().getServizi(
-                                new ArrayList<>(
-                                        Collections.singleton(
-                                                GestoreDB.getInstance().cercaRiga(
-                                                        GestoreDB.getInstance().getServizi(),
-                                                        String.valueOf(id))))
-                        );
-            };
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-            //todo alert
-        }
+                    ReusableDBResultsConverter.getInstance().getDipendenti(
+                        new ArrayList<>(Collections.singleton((String)GestoreDbThreaded.getInstance().runQuery(7, GestoreDB.entità.Dipendenti, parametri)))
+                    );
+            case SERVIZI ->
+                    ReusableDBResultsConverter.getInstance().getServizi(
+                            new ArrayList<>(Collections.singleton((String)GestoreDbThreaded.getInstance().runQuery(7, GestoreDB.entità.Servizi, parametri)))
+                    );
+        };
 
         return res;
     }

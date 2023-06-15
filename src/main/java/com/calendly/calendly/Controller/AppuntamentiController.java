@@ -126,7 +126,8 @@ public class AppuntamentiController{
         if(idScontrino.getText().equals("")){
             SceneHandler.getInstance().generaAlert("Non hai inserito l'id da cercare.",false);
         }else {
-            if(!GestoreDB.getInstance().selezionaValore(GestoreDB.getInstance().getAppuntamenti(),"Id", idScontrino.getText()).equals(idScontrino.getText())){
+            String [] parametri ={"Id", idScontrino.getText()};
+            if(!GestoreDbThreaded.getInstance().runQuery(5,GestoreDB.getInstance().getAppuntamenti(), parametri).equals(idScontrino.getText())){
                 SceneHandler.getInstance().generaAlert("L'id inserito non esiste.", false);
             }else{
                 GeneraScontrino.getInstance().generaScontrino(idScontrino.getText());

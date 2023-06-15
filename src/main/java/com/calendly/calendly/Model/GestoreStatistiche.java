@@ -30,12 +30,16 @@ public class GestoreStatistiche {
         ArrayList<Statistiche> info = new ArrayList<Statistiche>();
         switch (p){
             case Giornaliero -> {
-                info.add(new Statistiche(data, GestoreDB.getInstance().conta(data, 0)));
+                String [] parametri ={data,"0"};
+                int query = (int) GestoreDbThreaded.getInstance().runQuery(8, null, parametri);
+                info.add(new Statistiche(data, query));
             }
             case Settimanale -> {
                 for(int i = 6; i>-1; i--){
                     String s = GestoreData.getInstance().generaDataSottratta(i);
-                    info.add(new Statistiche(s, GestoreDB.getInstance().conta(s+"%", 0)));
+                    String [] parametri ={s+"%","0"};
+                    int query = (int) GestoreDbThreaded.getInstance().runQuery(8, null, parametri);
+                    info.add(new Statistiche(s, query));
                 }
             }
             case Mensile -> {
@@ -49,13 +53,17 @@ public class GestoreStatistiche {
                 String m = GestoreData.getInstance().generaMese(mese);
                 for(int i = 1; i<=n; i++){
                     String dataGenerata = GestoreData.getInstance().generaDataMese(i, m, anno);
-                    info.add(new Statistiche(dataGenerata.substring(0,dataGenerata.length()-5), GestoreDB.getInstance().conta(dataGenerata+"%",0)));
+                    String [] parametri ={dataGenerata+"%","0"};
+                    int query = (int) GestoreDbThreaded.getInstance().runQuery(8, null, parametri);
+                    info.add(new Statistiche(dataGenerata.substring(0,dataGenerata.length()-5), query));
                 }
             }
             case Annuale -> {
                 for(int i = 1; i<=12; i++){
                     String dataGenerata = GestoreData.getInstance().generaDataAnno(i, anno);
-                    info.add(new Statistiche(dataGenerata.substring(2), GestoreDB.getInstance().conta(dataGenerata+"%", 0)));
+                    String [] parametri ={dataGenerata+"%","0"};
+                    int query = (int) GestoreDbThreaded.getInstance().runQuery(8, null, parametri);
+                    info.add(new Statistiche(dataGenerata.substring(2), query));
                 }
             }
         }

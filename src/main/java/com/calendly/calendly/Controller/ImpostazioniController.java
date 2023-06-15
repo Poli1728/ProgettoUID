@@ -1,6 +1,7 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.Model.GestoreDB;
+import com.calendly.calendly.Model.GestoreDbThreaded;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
@@ -10,7 +11,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 public class ImpostazioniController {
@@ -97,7 +97,7 @@ public class ImpostazioniController {
             MyInfo.getInstance().setTema("BLU");
         }
         String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
-        GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
+        GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.getInstance().getTemplate(), info.split(";"));
         SceneHandler.getInstance().setTheme();
         initialize();
     }
@@ -107,7 +107,7 @@ public class ImpostazioniController {
     void attivaDislessia(ActionEvent event) throws SQLException, IOException {
         MyInfo.getInstance().setFont(checkDislessia.isSelected());
         String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
-        GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
+        GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.getInstance().getTemplate(), info.split(";"));
         initialize();
     }
 
@@ -119,13 +119,13 @@ public class ImpostazioniController {
             MyInfo.getInstance().setNotifica(1);
         }
         String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
-        GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
+        GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.getInstance().getTemplate(), info.split(";"));
     }
 
 
     @FXML
     void ripristina(ActionEvent event) throws SQLException {
-        GestoreDB.getInstance().svuota();
+        GestoreDbThreaded.getInstance().runQuery(13, null, null);
         SceneHandler.getInstance().launchLogin();
     }
 

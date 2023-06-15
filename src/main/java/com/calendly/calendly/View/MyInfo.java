@@ -2,6 +2,7 @@ package com.calendly.calendly.View;
 
 import com.calendly.calendly.Controller.ImpostazioniController;
 import com.calendly.calendly.Model.GestoreDB;
+import com.calendly.calendly.Model.GestoreDbThreaded;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +19,8 @@ public class MyInfo {
     }
 
     public void prendiDati() throws SQLException {
-        ArrayList<String> template = GestoreDB.getInstance().leggiEntità(GestoreDB.getInstance().getTemplate());
+
+        ArrayList<String> template = (ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Template, null);
         String [] info = template.get(0).split(";");
         sizeTxt = Integer.parseInt(info[2]);
         sizeLabel = Integer.parseInt(info[2])+14;

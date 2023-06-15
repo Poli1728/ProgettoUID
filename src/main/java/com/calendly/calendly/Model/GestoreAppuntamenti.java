@@ -14,7 +14,8 @@ public class GestoreAppuntamenti {
 
     public ArrayList<Appuntamento> listaAppuntamenti (boolean cerca, String filtro, String valore) throws SQLException {
         ArrayList <Appuntamento> lista = new ArrayList<Appuntamento>();
-        ArrayList <String> query = GestoreDB.getInstance().creaLista(cerca,filtro, valore);
+        String [] parametri ={String.valueOf(cerca),filtro, valore};
+        ArrayList <String> query = (ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(11, null, parametri);
         for (String i : query){
             Appuntamento a = new Appuntamento(i.split(";"));
             lista.add(a);

@@ -1,5 +1,6 @@
 package com.calendly.calendly.Controller;
 
+import com.calendly.calendly.Model.GestoreDbThreaded;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginController {
     @FXML
@@ -36,11 +38,12 @@ public class LoginController {
     void accedi(ActionEvent event) {
         SceneHandler.getInstance().launchDashboard();
 
-        /*try {
-            if(GestoreDB.getInstance().login(usernameField.getText(), passwordField.getText())){
-                SceneHandler.getInstance().launchDashboard();
-            }
-        } catch (SQLException e) {}*/
+        /*String [] parametri ={usernameField.getText(), passwordField.getText()};
+        boolean query = (boolean) GestoreDbThreaded.getInstance().runQuery(12, null, parametri);
+        if(query){
+            SceneHandler.getInstance().launchDashboard();
+        }*/
+
     }
 
     private void impostaTemi() throws IOException {

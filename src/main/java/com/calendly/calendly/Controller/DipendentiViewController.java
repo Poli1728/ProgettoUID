@@ -1,5 +1,6 @@
 package com.calendly.calendly.Controller;
 
+import com.calendly.calendly.Model.GestoreDbThreaded;
 import com.calendly.calendly.View.CardContainer;
 import com.calendly.calendly.Model.Dipendente;
 import com.calendly.calendly.Model.GestoreDB;
@@ -17,6 +18,7 @@ import javafx.scene.text.Font;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class DipendentiViewController {
@@ -90,17 +92,7 @@ public class DipendentiViewController {
         filtroBox.getItems().addAll("ID", "Nome", "Cognome", "Ruolo", "Salario");
 
         LinkedList<Dipendente> res;
-
-        try {
-            res = ReusableDBResultsConverter.getInstance().getDipendenti(
-                    GestoreDB.getInstance().leggiEntità(GestoreDB.entità.Dipendenti)
-            );
-
-        } catch (SQLException e) {
-            //todo alert errore nel contattare il database
-            throw new RuntimeException(e);
-        }
-
+        res = ReusableDBResultsConverter.getInstance().getDipendenti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Dipendenti, null));
         CardContainer.getInstance().setCardContainer(res, vboxEsterno);
 
     }

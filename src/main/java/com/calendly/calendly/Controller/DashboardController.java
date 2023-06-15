@@ -125,7 +125,8 @@ public class DashboardController {
         }
         XYChart.Series<String, Number> guadagni = new XYChart.Series<String, Number>();
         guadagni.setName("Ammontare (€)");
-        Guadagno guadagno = new Guadagno(data, GestoreDB.getInstance().calcolaGuadagno(data));
+        String [] parametri = {data};
+        Guadagno guadagno = new Guadagno(data, (int)GestoreDbThreaded.getInstance().runQuery(10,null, parametri));
         guadagni.getData().add(new XYChart.Data<String, Number>(guadagno.getData(), guadagno.getGuadagno()));
         txtGuadagnoCalcolare.setText(guadagno.getGuadagno().toString()+"€");
         chartGiornaliero.getData().add(appuntamenti);

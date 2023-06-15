@@ -1,8 +1,5 @@
 package com.calendly.calendly;
 
-import com.calendly.calendly.Model.GestoreDB;
-import com.calendly.calendly.View.MyInfo;
-
 public class Settings {
 
     public final static String[] fonts = { };
