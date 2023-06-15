@@ -4,6 +4,7 @@ import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.GestoreDbThreaded;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
+import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,9 +40,12 @@ public class LoginController {
     @FXML
     void accedi(ActionEvent event) {
         SceneHandler.getInstance().launchDashboard();
-
-        /*String [] parametri ={usernameField.getText(), passwordField.getText()};
-        boolean query = (boolean) GestoreDbThreaded.getInstance().runQuery(12, null, parametri);
+        String [] parametri = {"", "1"};
+        if((int)GestoreDbThreaded.getInstance().runQuery(8, null, parametri)==0){
+            com.calendly.calendly.View.Dialog.getInstance().requestDialog(com.calendly.calendly.View.Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, "-2", ancorPane).isPresent();
+        }
+        /*String [] parametriPass ={usernameField.getText(), passwordField.getText()};
+        boolean query = (boolean) GestoreDbThreaded.getInstance().runQuery(12, null, parametriPass);
         if(query){
             String [] info = {"Username", usernameField.getText()};
             String riga = (String) GestoreDbThreaded.getInstance().runQuery(6, GestoreDB.entità.Dipendenti, info);
