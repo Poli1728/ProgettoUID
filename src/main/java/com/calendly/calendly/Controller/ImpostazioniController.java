@@ -129,6 +129,7 @@ public class ImpostazioniController {
             String [] parametri = {String.valueOf(MyInfo.getInstance().getId()),passwordField.getText()};
             GestoreDbThreaded.getInstance().runQuery(9,null, parametri);
         }
+        passwordField.setPromptText("Nuova password");
     }
 
     // Funzione che attiva il font in base alla check box
