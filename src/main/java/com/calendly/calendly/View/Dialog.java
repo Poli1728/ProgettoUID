@@ -144,7 +144,6 @@ public class Dialog {
         }
         ComboBox idDip = new ComboBox<>(optionsDip);
         nodes.add(idDip);
-        idDip.getSelectionModel().selectLast();
 
 
 
@@ -155,16 +154,12 @@ public class Dialog {
         }
         ComboBox idServizio = new ComboBox<>(optionsServizi);
         nodes.add(idServizio);
-        idServizio.getSelectionModel().selectLast();
 
 
 
         initializeClickedList(nodes, nodes.size());
         ifInModificaMode(nodes, fromView, exeAction, id);
         setResultConverter(nodes, fromView, exeAction, id);
-
-        Label errors = new Label();
-        this.errors = errors;
 
         VBox vbox = externalVbox(nodes, exeAction);
 
@@ -209,9 +204,6 @@ public class Dialog {
         ifInModificaMode(nodes, fromView, exeAction, id);
         setResultConverter(nodes, fromView, exeAction, id);
 
-        Label errors = new Label();
-        this.errors = errors;
-
         VBox vbox = externalVbox(nodes, exeAction);
 
         return vbox;
@@ -253,8 +245,6 @@ public class Dialog {
         ifInModificaMode(nodes, fromView, exeAction, id);
         setResultConverter(nodes, fromView, exeAction, id);
 
-        Label errors = new Label();
-        this.errors = errors;
 
         VBox vbox = externalVbox(nodes, exeAction);
 
@@ -282,8 +272,6 @@ public class Dialog {
         ifInModificaMode(nodes, fromView, exeAction, id);
         setResultConverter(nodes, fromView, exeAction, id);
 
-        Label errors = new Label();
-        this.errors = errors;
 
         VBox vbox = externalVbox(nodes, exeAction);
 
@@ -335,7 +323,6 @@ public class Dialog {
 
             if (bt == ButtonType.OK) {
 
-
                 LinkedList<String> res = new LinkedList<>();
                 for (Node node : nodes) {
                     if (node.getClass().equals(TextField.class)) {
@@ -343,7 +330,17 @@ public class Dialog {
                         res.add(tf.getText());
                     } else if (node.getClass().equals(ComboBox.class)) {
                         ComboBox cb = (ComboBox) node;
-                        res.add(cb.getSelectionModel().getSelectedItem().toString());
+                        if (cb.getSelectionModel().isEmpty()) {
+                            SceneHandler.getInstance().generaAlert("Non hai inserito un parametro", true);
+                            return null;
+                        }
+
+                        String add = cb.getSelectionModel().getSelectedItem().toString();
+                        String[] split = add.split(" - ");
+                        if (split.length == 2) {
+                            add = split[0];
+                        }
+                        res.add(add);
                     }
                 }
 
@@ -408,8 +405,6 @@ public class Dialog {
 
         for (Node node : nodes)
             vbox.getChildren().add(node);
-        errors.getStyleClass().add("errors-label");
-        vbox.getChildren().add(errors);
 
         return vbox;
     }
