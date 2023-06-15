@@ -25,6 +25,8 @@ public class AppuntamentiController{
 
     @FXML
     private HBox search_hbox;
+    @FXML
+    private TextField idField;
 
     @FXML
     private Label labelAppuntamenti;
@@ -174,6 +176,7 @@ public class AppuntamentiController{
         if(MyInfo.getInstance().getFont().equals("Dyslexie")){
             labelAppuntamenti.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()));
             cercaField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),cercaField.getFont().getSize()-1));
+            idField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),idField.getFont().getSize()-1));
             idScontrino.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),idScontrino.getFont().getSize()-1));
             cercaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), cercaButton.getFont().getSize()-1));
             generaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), generaButton.getFont().getSize()-1));
@@ -183,6 +186,7 @@ public class AppuntamentiController{
         }else{
             labelAppuntamenti.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
             cercaField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaField.getFont().getSize()));
+            idField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), idField.getFont().getSize()));
             idScontrino.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), idScontrino.getFont().getSize()));
             cercaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaButton.getFont().getSize()));
             generaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), generaButton.getFont().getSize()));
