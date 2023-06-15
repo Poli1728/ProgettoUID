@@ -14,6 +14,8 @@ public class Settings {
     public final static int MIN_WINDOW_WIDTH_APP = 1000;
     public final static int WIDTH_BREAKPOINT = 1100;
 
+    public static String id = "";
+
     public enum roles {
         PROPRIETARIO,
         SEGRETARIO,
