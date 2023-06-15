@@ -110,7 +110,12 @@ public class AppuntamentiController{
     @FXML
     void modificaAppuntamento(ActionEvent event) throws IOException {
         if(!idField.getText().equals("")){
-            Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.MODIFICA, idField.getText(), ancorPane);
+            String [] parametri ={"Id", idField.getText()};
+            if(!GestoreDbThreaded.getInstance().runQuery(5,GestoreDB.getInstance().getAppuntamenti(), parametri).toString().equals(idField.getText())){
+                SceneHandler.getInstance().generaAlert("Id inserito non trovato.",false);
+            }else {
+                Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.MODIFICA, idField.getText(), ancorPane);
+            }
         }else{
             SceneHandler.getInstance().generaAlert("Non hai inserito l'id per modificare",false);
         }
@@ -121,10 +126,17 @@ public class AppuntamentiController{
     @FXML
     void rimuoviAppuntamento(ActionEvent event) throws IOException {
         if(!idField.getText().equals("")){
-            Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.RIMUOVI, idField.getText(), ancorPane);
+            String [] parametri ={"Id",idField.getText()};
+            if(!GestoreDbThreaded.getInstance().runQuery(5,GestoreDB.getInstance().getAppuntamenti(), parametri).toString().equals(idField.getText())){
+                SceneHandler.getInstance().generaAlert("Id inserito non trovato.",false);
+            }else {
+                String [] par ={idField.getText()};
+                GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Appuntamenti, par);
+            }
         }else{
-            SceneHandler.getInstance().generaAlert("Non hai inserito l'id per rimuovere",false);
+            SceneHandler.getInstance().generaAlert("Non hai inserito l'id per modificare",false);
         }
+        initialize();
     }
 
     // Questa funzione genera uno scontrino all'interno con presenti dei dati dell'appuntamento

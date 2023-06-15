@@ -41,9 +41,6 @@ public class ClientiController {
     private Label labelClienti;
 
     @FXML
-    private Button removeButton;
-
-    @FXML
     private ScrollPane scrollPane;
     @FXML
     private HBox searchHbox;
@@ -82,24 +79,17 @@ public class ClientiController {
         }
     }
 
-    @FXML
-    void actionRimuoviCliente(ActionEvent event) {
-        Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.RIMUOVI, "-1", anchorPane);
-    }
-
     private void impostaTemi() throws IOException {
         if(MyInfo.getInstance().getFont().equals("Dyslexie")){
             labelClienti.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()));
             cercaField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),cercaField.getFont().getSize()-1));
             cercaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), cercaButton.getFont().getSize()-1));
             addButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), addButton.getFont().getSize()-1));
-            removeButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), removeButton.getFont().getSize()-1));
         }else{
             labelClienti.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
             cercaField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaField.getFont().getSize()));
             cercaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaButton.getFont().getSize()));
             addButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), addButton.getFont().getSize()));
-            removeButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), removeButton.getFont().getSize()));
         }
     }
 

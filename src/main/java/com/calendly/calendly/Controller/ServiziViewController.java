@@ -28,9 +28,6 @@ public class ServiziViewController {
     private AnchorPane ancorPane;
 
     @FXML
-    private Button removeButton;
-
-    @FXML
     private HBox search_hbox;
     @FXML
     private TextField cercaField;
@@ -62,12 +59,6 @@ public class ServiziViewController {
     }
 
     @FXML
-    void actionRemoveButton(ActionEvent event) {
-        Dialog.getInstance().requestDialog(Dialog.from.SERVIZI, Dialog.actions.RIMUOVI, "-1", ancorPane);
-
-    }
-
-    @FXML
     void actionSearchButton(ActionEvent event) {
 
     }
@@ -81,13 +72,11 @@ public class ServiziViewController {
             cercaField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),cercaField.getFont().getSize()-1));
             searchButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), searchButton.getFont().getSize()-1));
             addButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), addButton.getFont().getSize()-1));
-            removeButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), removeButton.getFont().getSize()-1));
         }else{
             labelServizi.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
             cercaField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaField.getFont().getSize()));
             searchButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), searchButton.getFont().getSize()));
             addButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), addButton.getFont().getSize()));
-            removeButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), removeButton.getFont().getSize()));
         }
         filtroBox.getItems().addAll("Id", "Nome", "Cognome", "Ruolo", "Salario");
 
