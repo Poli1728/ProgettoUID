@@ -46,6 +46,10 @@ public class InputCheck {
             return false;
         }
 
+        if (!value.matches("[0-9]{2}/[0-9]{2}/[0-9]{4} [0-9]{1,2}:[0-9]{2}")) {
+            return false;
+        }
+
         return true;
     }
 
