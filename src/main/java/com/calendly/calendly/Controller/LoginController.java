@@ -1,13 +1,17 @@
 package com.calendly.calendly.Controller;
 
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginController {
     @FXML
@@ -39,9 +43,27 @@ public class LoginController {
         } catch (SQLException e) {}*/
     }
 
+    private void impostaTemi() throws IOException {
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
+            loginLabel.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),loginLabel.getFont().getSize()-2));
+            passwordField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),passwordField.getFont().getSize()-3));
+            usernameField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),usernameField.getFont().getSize()-3));
+            usernameLabel.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), usernameLabel.getFont().getSize()-3));
+            passwordLabel.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), passwordLabel.getFont().getSize()-3));
+            accediButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), accediButton.getFont().getSize()-3));
+        }else{
+            loginLabel.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),loginLabel.getFont().getSize()));
+            passwordField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), passwordField.getFont().getSize()));
+            usernameField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), usernameField.getFont().getSize()));
+            usernameLabel.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), usernameLabel.getFont().getSize()));
+            passwordLabel.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), passwordLabel.getFont().getSize()));
+            accediButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), accediButton.getFont().getSize()));
+        }
+    }
 
     @FXML
-    void initialize() {
+    void initialize() throws IOException {
+        impostaTemi();
         usernameField.setOnKeyReleased(this::handleKeyReleasedUsernameField);
         passwordField.setOnKeyReleased(this::handleKeyReleasedPasswordField);
     }

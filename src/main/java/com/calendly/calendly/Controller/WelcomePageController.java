@@ -2,6 +2,7 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.Main;
 import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
+import com.calendly.calendly.View.MyInfo;
 import com.calendly.calendly.View.MyTransition;
 import javafx.animation.*;
 import javafx.application.Platform;
@@ -13,9 +14,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -42,15 +45,24 @@ public class WelcomePageController {
 
     private Stage stage;
 
-    public void initialize() {
+    /*private void impostaTemi() throws IOException {
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
+            labelTitle.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),labelTitle.getFont().getSize()-2));
+            continueButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), continueButton.getFont().getSize()-3));
+        }else{
+            labelTitle.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),labelTitle.getFont().getSize()));
+            continueButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), continueButton.getFont().getSize()));
+        }
+    }*/
+
+    public void initialize() throws IOException {
         continueButton.setDisable(true);
         labelTitle.setText(Settings.INIT_TITLE);
         labelTitle.setTextAlignment(TextAlignment.CENTER);
-
         configStackPane();
         setImages();
         configContinueButton();
-
+        //impostaTemi();
     }
 
     private void configStackPane() {

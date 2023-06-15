@@ -8,6 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 public class ImpostazioniController {
@@ -55,22 +58,37 @@ public class ImpostazioniController {
     private Text txtBasso;
 
     // Funzione che imposta i tutti i dettagli dei font scelti: Tema, Font e Size(quest'ultima non è modificabile all'utente)
-    private void impostaFont(){
-        labelImpostazioni.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
-        labelDislessia.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
-        labelTemi.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
-        labelNotifica.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
-        labelRipristina.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
-        txtTemi.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtDislessia.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtNotifica.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtRipristina.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtBasso.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+    private void impostaFont() throws IOException {
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
+            labelImpostazioni.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
+            labelDislessia.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
+            labelTemi.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
+            labelRipristina.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
+            labelNotifica.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
+            txtRipristina.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+            txtTemi.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+            txtDislessia.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+            txtBasso.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+            txtNotifica.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+            ripristinaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), ripristinaButton.getFont().getSize()-1));
+        }else{
+            labelImpostazioni.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
+            labelDislessia.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
+            labelTemi.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
+            labelNotifica.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
+            labelRipristina.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
+            txtTemi.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
+            txtDislessia.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
+            txtNotifica.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
+            txtRipristina.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
+            txtBasso.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
+            ripristinaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), ripristinaButton.getFont().getSize()));
+        }
     }
 
     // É la funzione che imposta il tema dei testi e bottoni, ogni volta aggiorna anche i dati nel DB
     @FXML
-    void scegliTema(ActionEvent event) throws SQLException {
+    void scegliTema(ActionEvent event) throws SQLException, IOException {
         if (temiComboBox.getSelectionModel().isSelected(0)){
             MyInfo.getInstance().setTema("DARK");
         }else if (temiComboBox.getSelectionModel().isSelected(1)){
@@ -86,19 +104,15 @@ public class ImpostazioniController {
 
     // Funzione che attiva il font in base alla check box
     @FXML
-    void attivaDislessia(ActionEvent event) throws SQLException {
-        if(checkDislessia.isSelected()){
-            MyInfo.getInstance().setFont(MyInfo.getInstance().getVerdana());
-        }else{
-            MyInfo.getInstance().setFont(MyInfo.getInstance().getQuicksand());
-        }
+    void attivaDislessia(ActionEvent event) throws SQLException, IOException {
+        MyInfo.getInstance().setFont(checkDislessia.isSelected());
         String info = MyInfo.getInstance().getTema()+";"+ MyInfo.getInstance().getFont()+";"+MyInfo.getInstance().getNotifica();
         GestoreDB.getInstance().aggiornamento(GestoreDB.getInstance().getTemplate(), info.split(";"));
         initialize();
     }
 
     @FXML
-    void attivaNotifica(ActionEvent event) throws SQLException {
+    void attivaNotifica(ActionEvent event) throws SQLException, IOException {
         if(checkNotifica.isSelected()){
             MyInfo.getInstance().setNotifica(0);
         }else{
@@ -117,8 +131,8 @@ public class ImpostazioniController {
 
     //Initialize, vengono inserite tutte le cose all'inizio
     @FXML
-    public void initialize(){
-        if(MyInfo.getInstance().getFont().equals("Verdana")){
+    public void initialize() throws IOException {
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
             checkDislessia.setSelected(true);
         }
         if(MyInfo.getInstance().getNotifica() == 0){

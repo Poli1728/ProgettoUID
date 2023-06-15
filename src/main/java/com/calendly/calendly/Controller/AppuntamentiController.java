@@ -167,11 +167,33 @@ public class AppuntamentiController{
         cercaField.setPromptText("Cerca");
     }
 
+    //Imposta i temi di testi e bottoni
+
+    private void impostaTemi() throws IOException {
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
+            labelAppuntamenti.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()));
+            cercaField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),cercaField.getFont().getSize()-1));
+            idScontrino.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),idScontrino.getFont().getSize()-1));
+            cercaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), cercaButton.getFont().getSize()-1));
+            generaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), generaButton.getFont().getSize()-1));
+            addButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), addButton.getFont().getSize()-1));
+            removeButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), removeButton.getFont().getSize()-1));
+        }else{
+            labelAppuntamenti.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
+            cercaField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaField.getFont().getSize()));
+            idScontrino.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), idScontrino.getFont().getSize()));
+            cercaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaButton.getFont().getSize()));
+            generaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), generaButton.getFont().getSize()));
+            addButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), addButton.getFont().getSize()));
+            removeButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), removeButton.getFont().getSize()));
+        }
+    }
+
     //Funzione initialize che inserisci gli oggetti nella tabella e imposta le scritte e il combo box
 
     @FXML
-    public void initialize() {
-        labelAppuntamenti.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+    public void initialize() throws IOException {
+        impostaTemi();
         aggiungiItems();
         table.getItems().clear();
         try {

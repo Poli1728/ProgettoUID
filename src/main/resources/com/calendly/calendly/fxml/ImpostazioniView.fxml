@@ -14,7 +14,7 @@
       <ComboBox fx:id="temiComboBox" layoutX="500.0" layoutY="130.0" onAction="#scegliTema" prefHeight="24.0" prefWidth="132.0" promptText="Scegli Tema" styleClass="primaryButton" visibleRowCount="5" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="145.0" />
       <CheckBox fx:id="checkDislessia" layoutX="614.0" layoutY="256.0" mnemonicParsing="false" onAction="#attivaDislessia" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="250.0" />
       <HBox layoutX="633.0" layoutY="431.0" AnchorPane.rightAnchor="15.0" />
-      <Label fx:id="labelDislessia" layoutX="10.0" layoutY="200.0" prefHeight="35.0" prefWidth="373.0" text="Carattere per la dislessia" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="277.0" AnchorPane.topAnchor="200.0">
+      <Label fx:id="labelDislessia" layoutX="10.0" layoutY="200.0" prefHeight="35.0" prefWidth="460.0" text="Carattere per la dislessia" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="182.0" AnchorPane.topAnchor="200.0">
          <font>
             <Font size="28.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Label fx:id="labelTemi" layoutX="10.0" layoutY="100.0" prefHeight="35.0" prefWidth="333.0" text="Scegli il tema dell'app" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="317.0" AnchorPane.topAnchor="100.0">
+      <Label fx:id="labelTemi" layoutX="10.0" layoutY="100.0" prefHeight="35.0" prefWidth="411.0" text="Scegli il tema dell'app" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="100.0">
          <font>
             <Font size="28.0" />
          </font>
@@ -39,7 +39,7 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Label fx:id="labelRipristina" layoutX="10.0" layoutY="330.0" prefHeight="35.0" prefWidth="217.0" text="Ripristina dati" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="300.0">
+      <Label fx:id="labelRipristina" layoutX="10.0" layoutY="330.0" prefHeight="35.0" prefWidth="411.0" text="Ripristina dati" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="300.0">
          <font>
             <Font size="28.0" />
          </font>
@@ -51,7 +51,7 @@
          </font>
       </Text>
       <CheckBox fx:id="checkNotifica" layoutX="622.0" layoutY="450.0" mnemonicParsing="false" onAction="#attivaNotifica" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="450.0" />
-      <Label fx:id="labelNotifica" layoutX="18.0" layoutY="394.0" prefHeight="35.0" prefWidth="373.0" text="Notifica giornaliera" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="400.0">
+      <Label fx:id="labelNotifica" layoutX="18.0" layoutY="394.0" prefHeight="35.0" prefWidth="411.0" text="Notifica giornaliera" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="400.0">
          <font>
             <Font size="28.0" />
          </font>

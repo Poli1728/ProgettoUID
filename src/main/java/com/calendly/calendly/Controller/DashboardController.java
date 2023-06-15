@@ -15,6 +15,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -81,13 +83,22 @@ public class DashboardController {
         colonnaServizio.setCellValueFactory(new PropertyValueFactory<>("servizio"));
     }
 
-    private void impostaTemi(){
-        labelDashboard.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
-        labelDati.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
-        txtGuadagno.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtNumero.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtGuadagnoCalcolare.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtNumeroCalcolare.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+    private void impostaTemi() throws IOException {
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
+            labelDashboard.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
+            labelDati.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
+            txtGuadagno.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+            txtNumero.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+            txtGuadagnoCalcolare.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+            txtNumeroCalcolare.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+        }else{
+            labelDashboard.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
+            labelDati.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
+            txtGuadagno.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtNumero.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtGuadagnoCalcolare.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtNumeroCalcolare.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+        }
     }
 
     // aggiunge gli elementi all'interno della table
@@ -134,7 +145,7 @@ public class DashboardController {
     // inizializza tutto
 
     @FXML
-    void initialize() throws SQLException {
+    void initialize() throws SQLException, IOException {
         String data = GestoreData.getInstance().generaDataOdierna();
         impostaTemi();
         impostaTable(data);

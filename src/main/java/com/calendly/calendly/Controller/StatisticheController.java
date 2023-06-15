@@ -9,6 +9,8 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
+
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -64,8 +66,12 @@ public class StatisticheController{
     }
 
     @FXML
-    public void initialize() {
-        labelStatistiche.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+    public void initialize() throws IOException {
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
+            labelStatistiche.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()));
+        }else{
+            labelStatistiche.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
+        }
         String data = String.valueOf(java.time.LocalDateTime.now());
         StringBuilder anno = GestoreData.getInstance().annoCorrente(data);
         StringBuilder mese = GestoreData.getInstance().meseCorrente(data);

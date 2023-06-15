@@ -15,6 +15,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+import java.io.IOException;
+
 public class ClientiController {
     @FXML
     private AnchorPane anchorPane;
@@ -26,10 +28,7 @@ public class ClientiController {
     private Button cercaButton;
 
     @FXML
-    private Button editButton;
-
-    @FXML
-    private TextField field;
+    private TextField cercaField;
 
     @FXML
     private ComboBox<String> filtro;
@@ -73,10 +72,10 @@ public class ClientiController {
     void actionCerca(ActionEvent event) {
         if(filtro.getValue() == null){
             SceneHandler.getInstance().generaAlert("Non hai selezionato il filtro.", false);
-        }else if(field.getText().equals("")){
+        }else if(cercaField.getText().equals("")){
             SceneHandler.getInstance().generaAlert("Non hai inserito il valore da cercare.", false);
         }else{
-            generaCard(true, filtro.getValue(), field.getText());
+            generaCard(true, filtro.getValue(), cercaField.getText());
         }
     }
 
@@ -85,10 +84,26 @@ public class ClientiController {
         Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.RIMUOVI, -1, anchorPane);
     }
 
+    private void impostaTemi() throws IOException {
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
+            labelClienti.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()));
+            cercaField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),cercaField.getFont().getSize()-1));
+            cercaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), cercaButton.getFont().getSize()-1));
+            addButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), addButton.getFont().getSize()-1));
+            removeButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), removeButton.getFont().getSize()-1));
+        }else{
+            labelClienti.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
+            cercaField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaField.getFont().getSize()));
+            cercaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaButton.getFont().getSize()));
+            addButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), addButton.getFont().getSize()));
+            removeButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), removeButton.getFont().getSize()));
+        }
+    }
+
     @FXML
-    void initialize(){
+    void initialize() throws IOException {
         vboxEsterno.setSpacing(15);
-        labelClienti.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
+        impostaTemi();
         filtro.getItems().addAll("CF", "Nome", "Cognome", "Email", "Numero");
 
         generaCard(false, "", "");

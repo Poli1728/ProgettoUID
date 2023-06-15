@@ -95,17 +95,33 @@ public class HomeController {
         }
     }
 
+    private void impostaTemi() throws IOException {
+        if(MyInfo.getInstance().getFont().equals("Dyslexie")){
+            labelInfo.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
+            txtInfo.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-2.5));
+            txtInfo1.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-2.5));
+            txtInfo2.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-4));
+            txtInfo3.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-3));
+            txtInfo4.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-2.5));
+            txtInfo5.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-2.5));
+            txtInfo6.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-2.5));
+            txtInfo7.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-2.5));
+        }else{
+            labelInfo.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
+            txtInfo.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtInfo1.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtInfo2.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtInfo3.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtInfo4.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtInfo5.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtInfo6.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+            txtInfo7.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeTxt()));
+        }
+    }
+
     @FXML
     void initialize() throws IOException{
-        labelInfo.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeLabel()));
-        txtInfo.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtInfo1.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtInfo2.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtInfo3.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtInfo4.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtInfo5.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtInfo6.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
-        txtInfo7.setFont(Font.font(MyInfo.getInstance().getFont(), MyInfo.getInstance().getSizeTxt()));
+        impostaTemi();
         Image image = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("img/logo.png")));
         logoView.setImage(image);
 
