@@ -38,9 +38,6 @@ public class DipendentiViewController {
     private Label labelDipendenti;
 
     @FXML
-    private Button removeButton;
-
-    @FXML
     private Button searchButton;
 
     @FXML
@@ -63,11 +60,6 @@ public class DipendentiViewController {
     }
 
     @FXML
-    void actionRemoveButton(ActionEvent event) {
-
-    }
-
-    @FXML
     void actionSearchButton(ActionEvent event) {
 
     }
@@ -81,13 +73,11 @@ public class DipendentiViewController {
             cercaField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),cercaField.getFont().getSize()-1));
             searchButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), searchButton.getFont().getSize()-1));
             addButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), addButton.getFont().getSize()-1));
-            removeButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), removeButton.getFont().getSize()-1));
         }else{
             labelDipendenti.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
             cercaField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaField.getFont().getSize()));
             searchButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), searchButton.getFont().getSize()));
             addButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), addButton.getFont().getSize()));
-            removeButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), removeButton.getFont().getSize()));
         }
         filtroBox.getItems().addAll("ID", "Nome", "Cognome", "Ruolo", "Salario");
 

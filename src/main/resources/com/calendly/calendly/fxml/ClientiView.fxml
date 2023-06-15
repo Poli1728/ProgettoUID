@@ -15,7 +15,6 @@
    <children>
       <HBox layoutX="353.0" layoutY="20.0" spacing="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0">
          <children>
-            <Button fx:id="removeButton" defaultButton="true" mnemonicParsing="false" onAction="#actionRimuoviCliente" styleClass="secondaryButton" text="Rimuovi" />
             <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#actionAggiungiCliente" styleClass="secondaryButton" text="Aggiungi" />
          </children>
       </HBox>
