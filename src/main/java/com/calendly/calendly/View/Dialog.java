@@ -567,8 +567,6 @@ public class Dialog {
                 clicked.add(stato.NEVER_CLICKED);
     }
 
-
-
     private void reloadInterface(from fromView) {
         FXMLLoader loader = null;
         try {
