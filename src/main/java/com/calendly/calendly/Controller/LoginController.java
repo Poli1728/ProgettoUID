@@ -44,14 +44,14 @@ public class LoginController {
         while((int)GestoreDbThreaded.getInstance().runQuery(8, null, parametri)==0){
             com.calendly.calendly.View.Dialog.getInstance().requestDialog(com.calendly.calendly.View.Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, "-2", ancorPane).isPresent();
         }
-        /*String [] parametriPass ={usernameField.getText(), passwordField.getText()};
+        String [] parametriPass ={usernameField.getText(), passwordField.getText()};
         boolean query = (boolean) GestoreDbThreaded.getInstance().runQuery(12, null, parametriPass);
         if(query){
             String [] info = {"Username", usernameField.getText()};
             String riga = (String) GestoreDbThreaded.getInstance().runQuery(6, GestoreDB.entità.Dipendenti, info);
             Settings.id = riga.split(";")[0];
             SceneHandler.getInstance().launchDashboard();
-        }*/
+        }
 
     }
 
