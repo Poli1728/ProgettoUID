@@ -23,9 +23,9 @@ public class ReusableDBResultsConverter {
         return convertiFormatoGestoreDBToListServizi(dbResults);
     }
 
-    /*public LinkedList<Cliente> getClienti(ArrayList<String> dbResults) {
+    public LinkedList<Cliente> getClienti(ArrayList<String> dbResults) {
         return convertiFormatoGestoreDBToListClienti(dbResults);
-    }*/
+    }
 
     private LinkedList<Servizio> convertiFormatoGestoreDBToListServizi(ArrayList<String> dbResults) {
         LinkedList<Servizio> results = new LinkedList<>();
@@ -73,23 +73,6 @@ public class ReusableDBResultsConverter {
         return results;
     }
 
-    /*private LinkedList<Cliente> convertiFormatoGestoreDBToListClienti(ArrayList<String> dbResults) {
-        LinkedList<Cliente> results = new LinkedList<>();
-        for (String i : dbResults) {
-            String[] rowValues = i.split(";");
-            System.out.println(i);
-            Cliente cliente = new Cliente(rowValues[0],
-                    rowValues[1],
-                    rowValues[2],
-                    rowValues[3],
-                    rowValues[4]);
-
-            results.add(cliente);
-        }
-
-        return results;
-    }*/
-
     private void notAvailable(String[] rowValues) {
         for(int i = 0; i < rowValues.length; i++)
             if (rowValues[i].equals("null") || rowValues[i].isEmpty())
@@ -97,7 +80,7 @@ public class ReusableDBResultsConverter {
     }
 
 
-    public LinkedList<Cliente> getClienti(ArrayList<String> dbResults) {
+    public LinkedList<Cliente> convertiFormatoGestoreDBToListClienti(ArrayList<String> dbResults) {
         LinkedList<Cliente> results = new LinkedList<>();
         for (String i : dbResults) {
             String[] rowValues = i.split(";");
@@ -117,6 +100,36 @@ public class ReusableDBResultsConverter {
                     rowValues[4]);
 
             results.add(cliente);
+        }
+
+        return results;
+    }
+
+    public LinkedList<Appuntamento> getAppuntamenti(ArrayList<String> dbResults) {
+        LinkedList<Appuntamento> results = new LinkedList<>();
+        for (String i : dbResults) {
+            String[] rowValues = i.split(";");
+            System.out.println(i);
+
+            if (rowValues.length < Settings.Cell_DB_APPUNTAMENTI) {
+                System.out.println("celle clienti < celle attese");
+                continue;
+            }
+
+            notAvailable(rowValues);
+
+            // 0   1    2   3    4
+            // id data cf iddip idser
+            Appuntamento app = new Appuntamento(
+                    Integer.parseInt(rowValues[0]),
+                    rowValues[2],
+                    "",
+                    "",
+                    "",
+                    "",
+                    rowValues[1], rowValues[3], rowValues[4], 0.0);
+
+            results.add(app);
         }
 
         return results;

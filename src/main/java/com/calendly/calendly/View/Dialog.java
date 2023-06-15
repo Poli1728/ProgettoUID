@@ -98,43 +98,41 @@ public class Dialog {
         nodes.add(data);
         configTextField(data, "Data appuntamento", 0, type.DATE);
 
+        System.out.println("set 1");
 
         ObservableList<String> optionsClienti = FXCollections.observableArrayList();
         LinkedList<Cliente> res_clienti = ReusableDBResultsConverter.getInstance().getClienti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Clienti, null));
         for (Cliente d : res_clienti) {
             optionsClienti.add(d.getCF() + " - " + d.getNome() + " " + d.getCognome());
         }
-
         ComboBox idClienti = new ComboBox<>(optionsClienti);
         nodes.add(idClienti);
         idClienti.setPromptText("Scegli un cliente");
 
-        /*
-        TextField cf = new TextField();
-        nodes.add(cf);
-        configTextField(cf, "Codice fiscale", 1, type.NAME_LASTNAME);*/
+        System.out.println("set 2");
 
         ObservableList<String> optionsDip = FXCollections.observableArrayList();
         LinkedList<Dipendente> res_dip = ReusableDBResultsConverter.getInstance().getDipendenti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Dipendenti, null));
         for (Dipendente d : res_dip) {
             optionsDip.add(d.getId() + " - " + d.getName() + " " + d.getLastName());
         }
-
         ComboBox idDip = new ComboBox<>(optionsDip);
         nodes.add(idDip);
         idDip.getSelectionModel().selectLast();
 
+        System.out.println("set 3");
+
 
         ObservableList<String> optionsServizi = FXCollections.observableArrayList();
-
         LinkedList<Servizio> res_serv = ReusableDBResultsConverter.getInstance().getServizi((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Servizi, null));
         for (Servizio d : res_serv) {
             optionsServizi.add(d.getId() + " - " + d.getTipo() + " " + d.getPrezzo());
         }
-
         ComboBox idServizio = new ComboBox<>(optionsServizi);
         nodes.add(idServizio);
         idServizio.getSelectionModel().selectLast();
+
+        System.out.println("set 4");
 
 
         if (exeAction == actions.MODIFICA || exeAction == actions.RIMUOVI) {
@@ -288,7 +286,6 @@ public class Dialog {
                 }
                 else if (res.get(0).getClass().equals(Dipendente.class)) {
                     Dipendente resDip = (Dipendente) res.get(0);
-                    System.out.println("------- " + nodes);
                     ((TextField) nodes.get(0)).setText(resDip.getName());
                     ((TextField) nodes.get(1)).setText(resDip.getLastName());
                     ((ComboBox)  nodes.get(2)).getSelectionModel().select(resDip.getRole());
@@ -365,7 +362,7 @@ public class Dialog {
                         }
                         case CLIENTI -> {
                             for (String s: res)
-                                System.out.println(s);
+                                System.out.println("Sono qui:" + s);
                             GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
                         }
                         case DIPENDENTI -> {
@@ -469,17 +466,22 @@ public class Dialog {
         LinkedList res = null;
         String [] parametri = {String.valueOf(id)};
         res = switch (fromView) {
-            case APPUNTAMENTI -> null;
-            case CLIENTI -> null;
+            case APPUNTAMENTI ->
+                ReusableDBResultsConverter.getInstance().getAppuntamenti(
+                    new ArrayList<>(Collections.singleton((String)GestoreDbThreaded.getInstance().runQuery(7, GestoreDB.entità.Appuntamenti, parametri)))
+                );
+            case CLIENTI ->
+                ReusableDBResultsConverter.getInstance().getClienti(
+                    new ArrayList<>(Collections.singleton((String)GestoreDbThreaded.getInstance().runQuery(7, GestoreDB.entità.Clienti, parametri)))
+                );
             case DIPENDENTI ->
-
-                    ReusableDBResultsConverter.getInstance().getDipendenti(
-                        new ArrayList<>(Collections.singleton((String)GestoreDbThreaded.getInstance().runQuery(7, GestoreDB.entità.Dipendenti, parametri)))
-                    );
+                ReusableDBResultsConverter.getInstance().getDipendenti(
+                    new ArrayList<>(Collections.singleton((String)GestoreDbThreaded.getInstance().runQuery(7, GestoreDB.entità.Dipendenti, parametri)))
+                );
             case SERVIZI ->
-                    ReusableDBResultsConverter.getInstance().getServizi(
-                            new ArrayList<>(Collections.singleton((String)GestoreDbThreaded.getInstance().runQuery(7, GestoreDB.entità.Servizi, parametri)))
-                    );
+                ReusableDBResultsConverter.getInstance().getServizi(
+                    new ArrayList<>(Collections.singleton((String)GestoreDbThreaded.getInstance().runQuery(7, GestoreDB.entità.Servizi, parametri)))
+                );
         };
 
         return res;
