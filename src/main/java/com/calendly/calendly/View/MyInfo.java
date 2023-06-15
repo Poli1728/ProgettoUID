@@ -29,8 +29,18 @@ public class MyInfo {
         notifica = Integer.parseInt(info[3]);
         contatore = 0;
     }
+    private int id = 0;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     private String tema;
+
     private int notifica;
     private int contatore;
     private int sizeTxt;

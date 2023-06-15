@@ -39,7 +39,7 @@ public class LoginController {
 
     @FXML
     void accedi(ActionEvent event) {
-        SceneHandler.getInstance().launchDashboard();
+        //SceneHandler.getInstance().launchDashboard();
         String [] parametri = {"", "1"};
         while((int)GestoreDbThreaded.getInstance().runQuery(8, null, parametri)==0){
             com.calendly.calendly.View.Dialog.getInstance().requestDialog(com.calendly.calendly.View.Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, "-2", ancorPane).isPresent();
@@ -49,7 +49,7 @@ public class LoginController {
         if(query){
             String [] info = {"Username", usernameField.getText()};
             String riga = (String) GestoreDbThreaded.getInstance().runQuery(6, GestoreDB.entità.Dipendenti, info);
-            Settings.id = riga.split(";")[0];
+            MyInfo.getInstance().setId(Integer.parseInt(riga.split(";")[0]));
             SceneHandler.getInstance().launchDashboard();
         }
 

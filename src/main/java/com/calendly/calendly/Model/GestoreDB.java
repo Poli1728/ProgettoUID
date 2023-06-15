@@ -325,12 +325,11 @@ public class GestoreDB {
     }
 
     public void cambiaPassword(String id, String password) throws SQLException {
-        String sql = "UPDATE Dipendenti SET Password = ? WHERE Id = ?;";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1,BCrypt.hashpw(password, BCrypt.gensalt(12)));
-        stmt.setInt(2, Integer.parseInt(id));
-        ResultSet query = stmt.executeQuery();
-        stmt.close();
+        try (PreparedStatement pstmt = con.prepareStatement("UPDATE Dipendenti SET Password = ? WHERE Id = ?;")) {
+            pstmt.setString(1, BCrypt.hashpw(password, BCrypt.gensalt(12)));
+            pstmt.setString(2, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {}
     }
 
     public int calcolaGuadagno(String data) throws SQLException {
