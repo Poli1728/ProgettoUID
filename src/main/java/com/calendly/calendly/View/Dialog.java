@@ -282,21 +282,18 @@ public class Dialog {
             if (bt == ButtonType.OK) {
 
                 if (exeAction == actions.RIMUOVI){
+                    String[] parametri = {String.valueOf(id)};
                     switch (fromView) {
                         case APPUNTAMENTI -> {
-                            String[] parametri = {String.valueOf(id)};
                             GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Appuntamenti, parametri);
                         }
                         case CLIENTI -> {
-                            String[] parametri = {String.valueOf(id)};
                             GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Clienti, parametri);
                         }
                         case DIPENDENTI -> {
-                            String[] parametri = {String.valueOf(id)};
                             GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Dipendenti, parametri);
                         }
                         case SERVIZI -> {
-                            String[] parametri = {String.valueOf(id)};
                             GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Servizi, parametri);
                         }
                     }
