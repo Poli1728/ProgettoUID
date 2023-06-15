@@ -127,7 +127,7 @@ public class ImpostazioniController {
     void ripristina(ActionEvent event) throws SQLException {
         if(SceneHandler.getInstance().generaAlertConfirm()) {
             GestoreDbThreaded.getInstance().runQuery(13, null, null);
-            SceneHandler.getInstance().launchLogin();
+            SceneHandler.getInstance().launchWelcomeFirstOpening();
         }
     }
 
