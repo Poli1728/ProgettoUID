@@ -68,7 +68,7 @@ public class SceneHandler {
             loader = fxmlLoader;
 
         } catch (IOException e) {
-
+            SceneHandler.getInstance().generaAlert("Qualcosa è andato storto!", false);
         }
     }
 
