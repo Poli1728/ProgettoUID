@@ -109,16 +109,22 @@ public class AppuntamentiController{
 
     @FXML
     void modificaAppuntamento(ActionEvent event) throws IOException {
-        //controlla se c'è l'appuntamento indicato
-        Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.MODIFICA, "-1", ancorPane);
+        if(!idField.getText().equals("")){
+            Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.MODIFICA, idField.getText(), ancorPane);
+        }else{
+            SceneHandler.getInstance().generaAlert("Non hai inserito l'id per modificare",false);
+        }
     }
 
     // rimuove l'appuntamento dal db
 
     @FXML
     void rimuoviAppuntamento(ActionEvent event) throws IOException {
-        //controlla se c'è l'appuntamento indicato
-        Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.RIMUOVI, "-1", ancorPane);
+        if(!idField.getText().equals("")){
+            Dialog.getInstance().requestDialog(Dialog.from.APPUNTAMENTI, Dialog.actions.RIMUOVI, idField.getText(), ancorPane);
+        }else{
+            SceneHandler.getInstance().generaAlert("Non hai inserito l'id per rimuovere",false);
+        }
     }
 
     // Questa funzione genera uno scontrino all'interno con presenti dei dati dell'appuntamento

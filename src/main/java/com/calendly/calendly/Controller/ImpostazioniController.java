@@ -3,6 +3,7 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.GestoreDbThreaded;
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.Settings;
 import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
@@ -57,6 +58,14 @@ public class ImpostazioniController {
     @FXML
     private Button ripristinaButton;
 
+    @FXML
+    private Button cambiaButton;
+
+    @FXML
+    private Label labelCambia;
+
+    @FXML
+    private PasswordField passwordField;
 
     @FXML
     private Text txtBasso;
@@ -69,24 +78,30 @@ public class ImpostazioniController {
             labelTemi.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
             labelRipristina.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
             labelNotifica.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
+            labelCambia.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeLabel()-1));
             txtRipristina.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
             txtTemi.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
             txtDislessia.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
             txtBasso.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
             txtNotifica.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
+            passwordField.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
             ripristinaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), MyInfo.getInstance().getSizeTxt()-3));
+            cambiaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), MyInfo.getInstance().getSizeTxt()-3));
         }else{
             labelImpostazioni.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
             labelDislessia.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
             labelTemi.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
             labelNotifica.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
             labelRipristina.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
+            labelCambia.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
             txtTemi.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
             txtDislessia.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
             txtNotifica.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
             txtRipristina.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
             txtBasso.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
+            passwordField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeTxt()));
             ripristinaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), ripristinaButton.getFont().getSize()));
+            cambiaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), ripristinaButton.getFont().getSize()));
         }
     }
 
@@ -104,6 +119,16 @@ public class ImpostazioniController {
         GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.getInstance().getTemplate(), info.split(";"));
         SceneHandler.getInstance().setTheme();
         initialize();
+    }
+
+    @FXML
+    void cambiaPassword(ActionEvent event) {
+        if(passwordField.getText().equals("")){
+            SceneHandler.getInstance().generaAlert("Password non inserita.",false);
+        }else{
+            String [] parametri = {Settings.id,passwordField.getText()};
+            GestoreDbThreaded.getInstance().runQuery(9,null, parametri);
+        }
     }
 
     // Funzione che attiva il font in base alla check box
@@ -130,8 +155,8 @@ public class ImpostazioniController {
     @FXML
     void ripristina(ActionEvent event) throws SQLException {
         if(SceneHandler.getInstance().generaAlertConfirm()) {
-            if(Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, "-1", ancorPane).isPresent()){
-                //GestoreDbThreaded.getInstance().runQuery(13, null, null);
+            //GestoreDbThreaded.getInstance().runQuery(13, null, null);
+            if(Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, "-2", ancorPane).isPresent()){
                 SceneHandler.getInstance().launchLogin();
             }
         }

@@ -80,7 +80,7 @@ public class GestoreDbThreaded {
                 }
                 case 9 -> {
                     try {
-                        GestoreDB.getInstance().cercaPassword(parametri[0], parametri[1]);
+                        GestoreDB.getInstance().cambiaPassword(parametri[0], parametri[1]);
                     } catch (SQLException e) {}
                 }
                 case 10 -> {

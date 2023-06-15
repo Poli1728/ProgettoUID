@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -66,5 +67,16 @@
             <Font size="14.0" />
          </font>
       </Text>
+      <Label fx:id="labelCambia" layoutX="10.0" layoutY="495.0" prefHeight="35.0" prefWidth="411.0" text="Cambia password" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="500.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Button fx:id="cambiaButton" defaultButton="true" layoutX="553.0" layoutY="535.0" mnemonicParsing="false" onAction="#cambiaPassword" styleClass="secondaryButton" text="Cambia" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="535.0" />
+      <PasswordField fx:id="passwordField" layoutX="371.0" layoutY="534.0" prefHeight="25.0" prefWidth="142.0" promptText="password" styleClass="loginField" AnchorPane.rightAnchor="139.0" AnchorPane.topAnchor="534.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </PasswordField>
    </children>
 </AnchorPane>

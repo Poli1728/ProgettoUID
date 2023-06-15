@@ -235,10 +235,9 @@ public class GestoreDB {
 
     public String cercaTramiteValore (entità ent, String parametro, String valore) throws SQLException {
         String query;
-        query = "Select * From "+ent.toString()+" Where ? LIKE ?;";
+        query = "Select * From "+ent.toString()+" Where "+parametro+" LIKE ?;";
         PreparedStatement stmt = con.prepareStatement(query);
-        stmt.setString(1, parametro);
-        stmt.setString(2, valore);
+        stmt.setString(1, valore);
         ResultSet rs = stmt.executeQuery();
         StringBuilder s= new StringBuilder();
         while(rs.next()) {
@@ -257,6 +256,7 @@ public class GestoreDB {
                 }
             }
         }
+        System.out.println(s.toString());
         return s.toString();
     }
 
@@ -325,11 +325,12 @@ public class GestoreDB {
         return s;
     }
 
-    public void cercaPassword(String id, String password) throws SQLException {
+    public void cambiaPassword(String id, String password) throws SQLException {
+        System.out.println(id + password);
         String sql = "UPDATE Dipendenti SET Password = ? WHERE Id = ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, BCrypt.hashpw(password, BCrypt.gensalt(12)));
-        stmt.setString(2, id);
+        stmt.setString(1,BCrypt.hashpw(password, BCrypt.gensalt(12)));
+        stmt.setInt(2, Integer.parseInt(id));
         ResultSet query = stmt.executeQuery();
         stmt.close();
     }
