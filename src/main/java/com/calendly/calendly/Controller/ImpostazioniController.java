@@ -157,7 +157,7 @@ public class ImpostazioniController {
     void ripristina(ActionEvent event) throws SQLException {
         if(SceneHandler.getInstance().generaAlertConfirm()) {
             if(Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, "-2", ancorPane).isPresent()){
-                //GestoreDbThreaded.getInstance().runQuery(13, null, null);
+                GestoreDbThreaded.getInstance().runQuery(13, null, null);
                 SceneHandler.getInstance().launchLogin();
             }
         }
