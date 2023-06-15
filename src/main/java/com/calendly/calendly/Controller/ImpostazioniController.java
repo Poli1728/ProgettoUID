@@ -155,8 +155,8 @@ public class ImpostazioniController {
     @FXML
     void ripristina(ActionEvent event) throws SQLException {
         if(SceneHandler.getInstance().generaAlertConfirm()) {
-            //GestoreDbThreaded.getInstance().runQuery(13, null, null);
             if(Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, "-2", ancorPane).isPresent()){
+                //GestoreDbThreaded.getInstance().runQuery(13, null, null);
                 SceneHandler.getInstance().launchLogin();
             }
         }

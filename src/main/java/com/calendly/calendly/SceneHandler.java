@@ -225,7 +225,7 @@ public class SceneHandler {
         dialog.getStyleClass().add("alert");
         alert.setTitle("Conferma");
         alert.setHeaderText("Confermi di voler eliminare i dati?");
-        alert.setContentText("Nota: Dovrai inserire il proprietario.\n(Con username uguale a Nome.Cognome.1)");
+        alert.setContentText("Nota: Dovrai inserire il proprietario.\n(Con username e password \n uguale a Nome.Cognome.1)");
         alert.setResizable(false);
         alert.initStyle(StageStyle.UNDECORATED);
         Optional<ButtonType> result = alert.showAndWait();
