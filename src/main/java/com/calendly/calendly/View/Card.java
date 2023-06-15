@@ -19,7 +19,7 @@ import javafx.scene.text.Font;
 
 import java.util.LinkedList;
 import java.util.Objects;
-import java.util.WeakHashMap;
+
 
 public class Card extends AnchorPane {
     private Integer identifier;
@@ -83,7 +83,7 @@ public class Card extends AnchorPane {
 
         } else if (obj.getClass().equals(Cliente.class)) {
             imagePath = IMAGE_USER;
-            from = Dialog.from.SERVIZI;
+            from = Dialog.from.CLIENTI;
             Cliente cliente = (Cliente) obj;
             identifier = cliente.getCF();
             

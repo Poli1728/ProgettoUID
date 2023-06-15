@@ -93,11 +93,13 @@ public class ReusableDBResultsConverter {
 
             notAvailable(rowValues);
 
+            //0   1    2     3       4
+            //cf email nome cognome numero
             Cliente cliente = new Cliente(rowValues[0],
-                    rowValues[1],
                     rowValues[2],
                     rowValues[3],
-                    rowValues[4]);
+                    rowValues[4],
+                    rowValues[1]);
 
             results.add(cliente);
         }

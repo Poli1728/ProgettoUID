@@ -5,6 +5,8 @@ import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -22,6 +24,8 @@ import java.util.*;
 public class Dialog {
 
     private final static Dialog instance = new Dialog();
+    private Button rimuoviBt;
+
     private Dialog() { }
     public static Dialog getInstance() { return instance; }
 
@@ -61,9 +65,32 @@ public class Dialog {
         okButton.setDisable(true);
         this.okButton = okButton;
 
-        if (exeAction == actions.RIMUOVI){
-            okButton.setText("Rimuovi");
-            okButton.getStylesheets().add("-fx-background-color:systemGray5; -fx-text-fill:systemRed;");
+        if (exeAction == actions.MODIFICA){
+            dialogPane.getButtonTypes().add(ButtonType.FINISH);
+            Button rimuoviBt = (Button) dialogPane.lookupButton(ButtonType.FINISH);
+            rimuoviBt.setText("Rimuovi");
+            rimuoviBt.getStyleClass().add("rimuoviButton");
+            rimuoviBt.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    String[] parametri = {String.valueOf(id)};
+                    System.out.println("removeButton id:" + id + " from: " + fromView);
+                    switch (fromView) {
+                        case APPUNTAMENTI -> {
+                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Appuntamenti, parametri);
+                        }
+                        case CLIENTI -> {
+                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Clienti, parametri);
+                        }
+                        case DIPENDENTI -> {
+                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Dipendenti, parametri);
+                        }
+                        case SERVIZI -> {
+                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Servizi, parametri);
+                        }
+                    }
+                }
+            });
         }
 
         VBox vbox = switch (fromView) {
@@ -96,9 +123,8 @@ public class Dialog {
 
         TextField data = new TextField();
         nodes.add(data);
-        configTextField(data, "Data appuntamento", 0, type.DATE);
+        configTextField(data, "dd/mm/YYYY hh:mm", 0, type.DATE);
 
-        System.out.println("set 1");
 
         ObservableList<String> optionsClienti = FXCollections.observableArrayList();
         LinkedList<Cliente> res_clienti = ReusableDBResultsConverter.getInstance().getClienti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Clienti, null));
@@ -109,7 +135,6 @@ public class Dialog {
         nodes.add(idClienti);
         idClienti.setPromptText("Scegli un cliente");
 
-        System.out.println("set 2");
 
         ObservableList<String> optionsDip = FXCollections.observableArrayList();
         LinkedList<Dipendente> res_dip = ReusableDBResultsConverter.getInstance().getDipendenti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Dipendenti, null));
@@ -120,7 +145,6 @@ public class Dialog {
         nodes.add(idDip);
         idDip.getSelectionModel().selectLast();
 
-        System.out.println("set 3");
 
 
         ObservableList<String> optionsServizi = FXCollections.observableArrayList();
@@ -132,15 +156,7 @@ public class Dialog {
         nodes.add(idServizio);
         idServizio.getSelectionModel().selectLast();
 
-        System.out.println("set 4");
 
-
-        if (exeAction == actions.MODIFICA || exeAction == actions.RIMUOVI) {
-            TextField idApp = new TextField();
-            nodes.addFirst(idApp);
-            configTextField(idApp, "id", 0, type.INT);
-            //todo nel caso va aggiunto hbox con label a sx
-        }
 
         initializeClickedList(nodes, nodes.size());
         ifInModificaMode(nodes, fromView, exeAction, id);
@@ -318,25 +334,6 @@ public class Dialog {
 
             if (bt == ButtonType.OK) {
 
-                if (exeAction == actions.RIMUOVI){
-                    String[] parametri = {String.valueOf(id)};
-                    switch (fromView) {
-                        case APPUNTAMENTI -> {
-                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Appuntamenti, parametri);
-                        }
-                        case CLIENTI -> {
-                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Clienti, parametri);
-                        }
-                        case DIPENDENTI -> {
-                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Dipendenti, parametri);
-                        }
-                        case SERVIZI -> {
-                            GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Servizi, parametri);
-                        }
-                    }
-
-                }
-
 
                 LinkedList<String> res = new LinkedList<>();
                 for(Node node : nodes) {
@@ -440,6 +437,7 @@ public class Dialog {
 
                 return new DialogResponse(res);
             }
+            //todo else if (bt == ButtonT)
 
 
             return null;
@@ -465,6 +463,7 @@ public class Dialog {
 
         LinkedList res = null;
         String [] parametri = {String.valueOf(id)};
+
         res = switch (fromView) {
             case APPUNTAMENTI ->
                 ReusableDBResultsConverter.getInstance().getAppuntamenti(

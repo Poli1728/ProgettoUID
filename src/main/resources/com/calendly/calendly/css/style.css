@@ -324,3 +324,9 @@
 .alert:header *.header-panel{
     -fx-background-color: secondaryBackgroundColor;
 }
+
+
+.rimuoviButton {
+    -fx-background-color: secondaryBackgroundColor;
+    -fx-text-fill: systemRed;
+}

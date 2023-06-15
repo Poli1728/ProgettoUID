@@ -29,9 +29,7 @@ public class CardContainer {
                 if (i+1 < res.size()) {
                     obj2 = new Card(res.get(i + 1), vboxEsterno);
                     hbox.getChildren().add(obj2);
-
                 }
-
 
                 vboxEsterno.getChildren().add(hbox);
             }
