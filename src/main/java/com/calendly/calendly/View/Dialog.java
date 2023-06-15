@@ -246,7 +246,11 @@ public class Dialog {
         ObservableList<Settings.roles> options = FXCollections.observableArrayList(Settings.roles.values());
         ComboBox role = new ComboBox<>(options);
         nodes.add(role);
-        role.getSelectionModel().selectLast();
+        if (id.equals(String.valueOf(-2))) {
+            role.getSelectionModel().selectFirst();
+            role.setDisable(true);
+        } else
+            role.getSelectionModel().selectLast();
 
         nodes.add(new Label("Salario"));
         TextField salary = new TextField();

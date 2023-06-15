@@ -68,7 +68,7 @@ public class SceneHandler {
             loader = fxmlLoader;
 
         } catch (IOException e) {
-
+            SceneHandler.getInstance().generaAlert("Qualcosa è andato storto!", false);
         }
     }
 
@@ -83,9 +83,6 @@ public class SceneHandler {
         setWindowLoginDimension();
     }
 
-    public void launchCreateAccountOwner() {
-        //da utilizzare esclusivamente in contemporanea con launchTutorialFirstOpening()
-    }
 
     Pane paneRightContainerContent = null;
     public void setRightPaneContainerContent(Pane paneRightContainerContent) {

@@ -226,6 +226,8 @@ public class AppuntamentiController{
             ObservableList<Appuntamento> observableApp = FXCollections.observableArrayList(app);
             table.setItems(observableApp);
             setCellValue();
-        } catch (SQLException e) {}
+        } catch (SQLException e) {
+            SceneHandler.getInstance().generaAlert("Qualcosa è andato storto!", false);
+        }
     }
 }
