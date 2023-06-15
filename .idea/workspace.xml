@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="pulizia codice">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/AppuntamentiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/AppuntamentiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" afterDir="false" />
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Gestito il codice -2 in dialog">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,13 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685201888491</updated>
-    </task>
-    <task id="LOCAL-00025" summary="CSS sulle tableView">
-      <created>1685998970382</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1685998970382</updated>
     </task>
     <task id="LOCAL-00026" summary="CSS sulle tableView (nuovo design quando modifichi i valori + popup show/hide tables), aggiunte grafiche">
       <created>1686135107814</created>
@@ -467,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686863262693</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Gestito il codice -2 in dialog">
+      <created>1686863825239</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1686863825239</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -494,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="-" />
     <MESSAGE value="Login - X/Y Layout Property Bind" />
     <MESSAGE value="Login - X/Y Layout Property Bind pt2" />
     <MESSAGE value="Aggiunta Labels in Dialog" />
@@ -519,6 +517,7 @@
     <MESSAGE value="Modifiche dialog / servizi / dipendenti" />
     <MESSAGE value="Modifiche dialog / servizi / dipendenti / clienti" />
     <MESSAGE value="pulizia codice" />
-    <option name="LAST_COMMIT_MESSAGE" value="pulizia codice" />
+    <MESSAGE value="Gestito il codice -2 in dialog" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gestito il codice -2 in dialog" />
   </component>
 </project>

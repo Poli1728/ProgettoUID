@@ -325,7 +325,6 @@ public class Dialog {
                     ((ComboBox) nodes.get(3)).getSelectionModel().select(app.getCf());
                     ((ComboBox) nodes.get(5)).getSelectionModel().select(app.getDipendente());
                     ((ComboBox) nodes.get(7)).getSelectionModel().select(app.getServizio());
-                    //((ComboBox) nodes.get(9)).getSelectionModel().select(String.valueOf(app.getId()));
                 }
             }
 
@@ -392,7 +391,12 @@ public class Dialog {
                             GestoreDbThreaded.getInstance().runQuery(2, GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
                         }
                         case DIPENDENTI -> {
-                            res.addFirst(""); //password vuota in posizione 0
+                            String psw = ""; //password vuota in posizione 0
+                            if ((res.get(3).equals(Settings.roles.PROPRIETARIO.toString()) || res.get(3).equals(Settings.roles.SEGRETARIO.toString()))) {
+                                SceneHandler.getInstance().generaAlert("La password predefinita dell'utente è nome.cognome.id\nLa password potrà essere modificata al primo login nella sezione impostazioni", true);
+                                psw = res.get(0) + "." + res.get(1) + "." + res.getLast();
+                            }
+                            res.addFirst(psw);
                             GestoreDbThreaded.getInstance().runQuery(2, GestoreDB.entità.Dipendenti, res.toArray(new String[res.size()]));
                         }
                         case SERVIZI -> {
