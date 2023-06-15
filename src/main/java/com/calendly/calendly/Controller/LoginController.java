@@ -38,16 +38,16 @@ public class LoginController {
 
     @FXML
     void accedi(ActionEvent event) {
-        //SceneHandler.getInstance().launchDashboard();
+        SceneHandler.getInstance().launchDashboard();
 
-        String [] parametri ={usernameField.getText(), passwordField.getText()};
+        /*String [] parametri ={usernameField.getText(), passwordField.getText()};
         boolean query = (boolean) GestoreDbThreaded.getInstance().runQuery(12, null, parametri);
         if(query){
             String [] info = {"Username", usernameField.getText()};
             String riga = (String) GestoreDbThreaded.getInstance().runQuery(6, GestoreDB.entità.Dipendenti, info);
             Settings.id = riga.split(";")[0];
             SceneHandler.getInstance().launchDashboard();
-        }
+        }*/
 
     }
 
