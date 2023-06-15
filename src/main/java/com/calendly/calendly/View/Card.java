@@ -4,6 +4,7 @@ import com.calendly.calendly.Main;
 import com.calendly.calendly.Model.Cliente;
 import com.calendly.calendly.Model.Dipendente;
 import com.calendly.calendly.Model.Servizio;
+import com.calendly.calendly.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -113,7 +114,6 @@ public class Card extends AnchorPane {
         edit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println(finalIdentifier);
                 Dialog.getInstance().requestDialog(
                         finalFrom,
                         Dialog.actions.MODIFICA,
@@ -131,7 +131,7 @@ public class Card extends AnchorPane {
             imageView.setFitWidth(50);
             imageView.setPreserveRatio(true);
         } catch (Exception e) {
-            System.out.println(e);
+            SceneHandler.getInstance().generaAlert("Qualcosa è andato storto!", false);
         }
 
 

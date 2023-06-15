@@ -35,7 +35,6 @@ public class ReusableDBResultsConverter {
             System.out.println(i);
 
             if (rowValues.length < Settings.CELL_DB_SERVIZI) {
-                System.out.println("celle dipendenti < celle attese");
                 continue;
             }
 

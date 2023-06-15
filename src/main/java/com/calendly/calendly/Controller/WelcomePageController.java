@@ -108,7 +108,7 @@ public class WelcomePageController {
                 if (i == 4)
                     imageView.setImage(image);
             } catch (Exception e) {
-                System.out.println(i + " " + e.toString());
+                SceneHandler.getInstance().generaAlert("Qualcosa è andato storto!", false);
             }
         }
 
