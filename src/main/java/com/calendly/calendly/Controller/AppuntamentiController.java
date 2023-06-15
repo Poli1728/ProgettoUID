@@ -179,6 +179,7 @@ public class AppuntamentiController{
             generaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), generaButton.getFont().getSize()-1));
             addButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), addButton.getFont().getSize()-1));
             removeButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), removeButton.getFont().getSize()-1));
+            editButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), editButton.getFont().getSize()-1));
         }else{
             labelAppuntamenti.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
             cercaField.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), cercaField.getFont().getSize()));
@@ -187,6 +188,7 @@ public class AppuntamentiController{
             generaButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), generaButton.getFont().getSize()));
             addButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), addButton.getFont().getSize()));
             removeButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), removeButton.getFont().getSize()));
+            editButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), editButton.getFont().getSize()));
         }
     }
 

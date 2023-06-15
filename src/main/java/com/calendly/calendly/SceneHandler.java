@@ -6,6 +6,7 @@ import com.calendly.calendly.View.MyInfo;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -16,6 +17,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.Optional;
 
 import static java.lang.System.exit;
 
@@ -49,6 +51,7 @@ public class SceneHandler {
                 try {
                     GestoreDB.getInstance().closeConnection();
                 } catch (SQLException e) {}
+                System.exit(0);
             });
         }
     }
@@ -207,6 +210,32 @@ public class SceneHandler {
         alert.setResizable(false);
         alert.initStyle(StageStyle.UNDECORATED);
         alert.showAndWait();
+    }
+    public boolean generaAlertConfirm(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        dialog = alert.getDialogPane();
+        String pathTheme = switch (MyInfo.getInstance().getTema()) {
+            case "DARK" -> Settings.themes[0];
+            case "LIGHT" -> Settings.themes[1];
+            case "BLU" -> Settings.themes[2];
+            default -> {
+                exit(11);
+                yield Settings.themes[0];
+            }
+        };
+        dialog.getStylesheets().add(Objects.requireNonNull((SceneHandler.class.getResource(Settings.styles[0])).toExternalForm()));
+        dialog.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(pathTheme)).toExternalForm());
+        dialog.getStyleClass().add("alert");
+        alert.setTitle("Conferma");
+        alert.setHeaderText("Confermi di voler eliminare i dati?");
+        alert.setResizable(false);
+        alert.initStyle(StageStyle.UNDECORATED);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

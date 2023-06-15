@@ -70,7 +70,7 @@ public class ImpostazioniController {
             txtDislessia.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
             txtBasso.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
             txtNotifica.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(),MyInfo.getInstance().getSizeTxt()-1));
-            ripristinaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), ripristinaButton.getFont().getSize()-1));
+            ripristinaButton.setFont(Font.loadFont(MyInfo.getInstance().getFontDyslexia(), MyInfo.getInstance().getSizeTxt()-3));
         }else{
             labelImpostazioni.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(),MyInfo.getInstance().getSizeLabel()));
             labelDislessia.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), MyInfo.getInstance().getSizeLabel()));
@@ -125,8 +125,10 @@ public class ImpostazioniController {
 
     @FXML
     void ripristina(ActionEvent event) throws SQLException {
-        GestoreDbThreaded.getInstance().runQuery(13, null, null);
-        SceneHandler.getInstance().launchLogin();
+        if(SceneHandler.getInstance().generaAlertConfirm()) {
+            GestoreDbThreaded.getInstance().runQuery(13, null, null);
+            SceneHandler.getInstance().launchLogin();
+        }
     }
 
     //Initialize, vengono inserite tutte le cose all'inizio
