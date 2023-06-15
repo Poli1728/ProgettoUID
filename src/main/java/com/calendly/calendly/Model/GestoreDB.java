@@ -166,7 +166,7 @@ public class GestoreDB {
                 try (PreparedStatement pstmt = con.prepareStatement("UPDATE Servizi SET Tipo = ?, Prezzo = ? WHERE Id = ?;")) {
                     pstmt.setString(1, info[0]); // Tipo
                     pstmt.setDouble(2, Double.parseDouble(info[1])); // Prezzo
-                    pstmt.setInt(2, Integer.parseInt(info[2])); // Id
+                    pstmt.setInt(3, Integer.parseInt(info[2])); // Id
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
