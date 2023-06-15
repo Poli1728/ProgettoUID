@@ -316,7 +316,7 @@ public class Dialog {
                     ((TextField) nodes.get(4)).setText(resCliente.getEmail());
                 } else if (res.get(0).getClass().equals(Appuntamento.class)) {
                     Appuntamento app = (Appuntamento) res.get(0);
-                    ((DatePicker) nodes.get(0)).setValue(LocalDate.parse(app.getData()));
+                    ((TextField) nodes.get(0)).setText(app.getData());
                     ((TextField) nodes.get(1)).setText(app.getCf());
                     ((TextField) nodes.get(2)).setText(app.getDipendente());
                     ((TextField) nodes.get(3)).setText(app.getServizio());
