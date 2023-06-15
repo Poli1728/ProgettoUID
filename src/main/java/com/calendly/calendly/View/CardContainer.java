@@ -33,9 +33,7 @@ public class CardContainer {
 
                 vboxEsterno.getChildren().add(hbox);
             }
-        else {
-            //todo put a label saying no results
-        }
+
     }
 
 

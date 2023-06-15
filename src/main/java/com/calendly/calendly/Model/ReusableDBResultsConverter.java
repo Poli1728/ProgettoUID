@@ -32,7 +32,6 @@ public class ReusableDBResultsConverter {
         LinkedList<Servizio> results = new LinkedList<>();
         for (String i : dbResults) {
             String[] rowValues = i.split(";");
-            System.out.println(i);
 
             if (rowValues.length < Settings.CELL_DB_SERVIZI) {
                 continue;
@@ -52,7 +51,6 @@ public class ReusableDBResultsConverter {
         LinkedList<Dipendente> results = new LinkedList<>();
         for (String i : dbResults) {
             String[] rowValues = i.split(";");
-            System.out.println(i);
 
             if (rowValues.length < Settings.CELL_DB_DIPENDENTI) {
                 System.out.println("celle dipendenti < celle attese");
@@ -84,7 +82,7 @@ public class ReusableDBResultsConverter {
         LinkedList<Cliente> results = new LinkedList<>();
         for (String i : dbResults) {
             String[] rowValues = i.split(";");
-            System.out.println(i);
+
 
             if (rowValues.length < Settings.CELL_DB_CLIENTI) {
                 System.out.println("celle clienti < celle attese");
@@ -111,7 +109,7 @@ public class ReusableDBResultsConverter {
         LinkedList<Appuntamento> results = new LinkedList<>();
         for (String i : dbResults) {
             String[] rowValues = i.split(";");
-            System.out.println(i);
+
 
             /*if (rowValues.length < Settings.Cell_DB_APPUNTAMENTI) {
                 System.out.println("celle clienti < celle attese");

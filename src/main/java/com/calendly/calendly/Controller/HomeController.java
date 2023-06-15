@@ -151,8 +151,8 @@ public class HomeController {
         clickButtonAction(dashboard, appuntamenti, statistiche, servizi, clienti, dipendenti, impostazioni, logout);
 
 
-        //todo aggiungere un listner all'apfather per modificare la grandezza del right pane
-        //todo da sostituire i bottoni che vengono aggiunti da scenebuilder con CustomButton
+
+
 
         vbox.getChildren().addAll(dashboard, appuntamenti, statistiche, servizi, clienti, dipendenti, impostazioni, logout);
 

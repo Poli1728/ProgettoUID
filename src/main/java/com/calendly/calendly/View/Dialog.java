@@ -109,7 +109,6 @@ public class Dialog {
         for (String style : Settings.styles)
             dialogPane.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm());
 
-        //todo fare prendere da database il giusto tema
         dialogPane.getStylesheets().add(Objects.requireNonNull(SceneHandler.class.getResource(Settings.themes[0])).toExternalForm());
 
     }
@@ -467,7 +466,6 @@ public class Dialog {
     }
 
 
-    //todo return boolean per poi inserire nei vari controller se bisogna aggiornare la tabella o meno.
     //prende come parametro l'attuale ancorPane della view
     public Optional<DialogResponse> requestDialog(from fromView, actions exeAction, String id, AnchorPane anchorPane)  { //prende come parametri i nomi in minuscolo delle singole opzioni da richedere all'utente
 
