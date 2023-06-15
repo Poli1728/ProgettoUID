@@ -42,7 +42,6 @@ public class InputCheck {
             return false;
 
         if (!value.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
-            System.out.println("primo");
             return false;
         }
 
