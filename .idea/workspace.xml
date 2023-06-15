@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Modifiche dialog / servizi / dipendenti / clienti">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/ReusableDBResultsConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/ReusableDBResultsConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CardContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CardContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +36,6 @@
       </branch-storage>
     </favorite-branches>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -127,20 +123,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685201888491</updated>
-    </task>
-    <task id="LOCAL-00017" summary="aggiunta metodo setTheme nel SceneHandler">
-      <created>1685696475877</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1685696475877</updated>
-    </task>
-    <task id="LOCAL-00018" summary="aggiunta metodo setTheme nel SceneHandler">
-      <created>1685703368002</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1685703368002</updated>
     </task>
     <task id="LOCAL-00019" summary="Aggiunta immagini e animazione a immagini in WelcomePageController.java">
       <created>1685733661457</created>
@@ -471,7 +453,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686851740525</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Modifiche dialog / servizi / dipendenti / clienti">
+      <created>1686854799240</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1686854799240</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Modifiche dialog / servizi / dipendenti / clienti">
+      <created>1686854853127</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1686854853127</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

@@ -89,6 +89,7 @@ public class Dialog {
                             GestoreDbThreaded.getInstance().runQuery(4, GestoreDB.entità.Servizi, parametri);
                         }
                     }
+                    reloadInterface(fromView);
                 }
             });
         }
@@ -336,17 +337,13 @@ public class Dialog {
 
 
                 LinkedList<String> res = new LinkedList<>();
-                for(Node node : nodes) {
+                for (Node node : nodes) {
                     if (node.getClass().equals(TextField.class)) {
                         TextField tf = (TextField) node;
                         res.add(tf.getText());
                     } else if (node.getClass().equals(ComboBox.class)) {
                         ComboBox cb = (ComboBox) node;
                         res.add(cb.getSelectionModel().getSelectedItem().toString());
-                    } else if (node.getClass().equals(DatePicker.class)) {
-                        DatePicker dp = (DatePicker) node;
-                        res.add(dp.getValue().format(DateTimeFormatter.ofPattern("dd/mm/YYYY hh:mm")));
-                        System.out.println(dp.getValue().format(DateTimeFormatter.ofPattern("dd/mm/YYYY hh:mm")));
                     }
                 }
 
@@ -358,7 +355,7 @@ public class Dialog {
                             GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.entità.Appuntamenti, res.toArray(new String[res.size()]));
                         }
                         case CLIENTI -> {
-                            for (String s: res)
+                            for (String s : res)
                                 System.out.println("Sono qui:" + s);
                             GestoreDbThreaded.getInstance().runQuery(3, GestoreDB.entità.Clienti, res.toArray(new String[res.size()]));
                         }
@@ -394,52 +391,10 @@ public class Dialog {
 
                 }
 
-                FXMLLoader loader = null;
-                try {
-                    switch (fromView) {
-                        case APPUNTAMENTI -> {
-                            loader = SceneHandler.getInstance().creaPane("fxml/Appuntamenti");
-                        }
-                        case CLIENTI -> {
-                            loader = SceneHandler.getInstance().creaPane("fxml/Clienti");
-                        }
-                        case DIPENDENTI -> {
-                            loader = SceneHandler.getInstance().creaPane("fxml/Dipendenti");
-                        }
-                        case SERVIZI -> {
-                            loader = SceneHandler.getInstance().creaPane("fxml/Servizi");
-
-                        }
-                    }
-                } catch (IOException e) {
-
-                }
-
-                Pane pane = null;
-                try {
-                    pane = (Pane) loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-                Pane viewPane = SceneHandler.getInstance().getPaneRightContainerContent();
-                viewPane.getChildren().clear();
-
-                pane.setPrefSize(viewPane.getWidth(), viewPane.getHeight());
-
-                Pane finalPane = pane;
-                viewPane.layoutBoundsProperty().addListener(obs -> {
-                    finalPane.setPrefSize(viewPane.getWidth(), viewPane.getHeight());
-                });
-
-                Dialog.getInstance().setAnchorPaneFather(anchorPaneFather);
-                viewPane.getChildren().add(pane);
-
+                reloadInterface(fromView);
                 return new DialogResponse(res);
+
             }
-            //todo else if (bt == ButtonT)
-
-
             return null;
         });
     }
@@ -527,16 +482,6 @@ public class Dialog {
 
 
 
-
-
-
-
-
-
-
-
-
-
     private void setUpBlurEffect(Pane rightHomePane) {
         hasBeenSetUp = true;
         ColorAdjust adj = new ColorAdjust(0, -0.9, -0.5, 0);
@@ -604,7 +549,6 @@ public class Dialog {
             if (node.getClass().equals(TextField.class)) {
                 TextField textField = (TextField) node;
                 textField.setEditable(false);
-                continue;
             }
 
             else if (node.getClass().equals(ComboBox.class)) {
@@ -625,4 +569,47 @@ public class Dialog {
     }
 
 
+
+    private void reloadInterface(from fromView) {
+        FXMLLoader loader = null;
+        try {
+            switch (fromView) {
+                case APPUNTAMENTI -> {
+                    loader = SceneHandler.getInstance().creaPane("fxml/Appuntamenti");
+                }
+                case CLIENTI -> {
+                    loader = SceneHandler.getInstance().creaPane("fxml/Clienti");
+                }
+                case DIPENDENTI -> {
+                    loader = SceneHandler.getInstance().creaPane("fxml/Dipendenti");
+                }
+                case SERVIZI -> {
+                    loader = SceneHandler.getInstance().creaPane("fxml/Servizi");
+
+                }
+            }
+        } catch (IOException e) {
+
+        }
+
+        Pane pane = null;
+        try {
+            pane = (Pane) loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Pane viewPane = SceneHandler.getInstance().getPaneRightContainerContent();
+        viewPane.getChildren().clear();
+
+        pane.setPrefSize(viewPane.getWidth(), viewPane.getHeight());
+
+        Pane finalPane = pane;
+        viewPane.layoutBoundsProperty().addListener(obs -> {
+            finalPane.setPrefSize(viewPane.getWidth(), viewPane.getHeight());
+        });
+
+        Dialog.getInstance().setAnchorPaneFather(anchorPaneFather);
+        viewPane.getChildren().add(pane);
+    }
 }
