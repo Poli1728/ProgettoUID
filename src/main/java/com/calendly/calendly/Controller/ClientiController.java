@@ -49,6 +49,7 @@ public class ClientiController {
     private VBox vboxEsterno;
 
     private void generaCard(boolean cerca, String filtro, String valore){
+        vboxEsterno.getChildren().clear();
         LinkedList<Cliente> res = null;
 
         if(!cerca){

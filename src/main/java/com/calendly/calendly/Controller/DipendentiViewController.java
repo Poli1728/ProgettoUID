@@ -1,10 +1,8 @@
 package com.calendly.calendly.Controller;
 
-import com.calendly.calendly.Model.GestoreDbThreaded;
+import com.calendly.calendly.Model.*;
+import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.CardContainer;
-import com.calendly.calendly.Model.Dipendente;
-import com.calendly.calendly.Model.GestoreDB;
-import com.calendly.calendly.Model.ReusableDBResultsConverter;
 import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
@@ -59,9 +57,31 @@ public class DipendentiViewController {
 
     }
 
+    private void generaCard(boolean cerca, String filtro, String valore){
+        vboxEsterno.getChildren().clear();
+        LinkedList<Dipendente> res = null;
+
+        if(!cerca){
+            res = ReusableDBResultsConverter.getInstance().getDipendenti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Dipendenti, null));
+
+        }else{
+            ArrayList<String> dipendenti = new ArrayList<String>();
+            String [] parametri = {filtro , valore};
+            dipendenti.add( (String) GestoreDbThreaded.getInstance().runQuery(6, GestoreDB.entità.Dipendenti, parametri));
+            res = ReusableDBResultsConverter.getInstance().getDipendenti(dipendenti);
+        }
+        CardContainer.getInstance().setCardContainer(res, vboxEsterno);
+    }
+
     @FXML
     void actionSearchButton(ActionEvent event) {
-
+        if(filtroBox.getValue() == null){
+            SceneHandler.getInstance().generaAlert("Non hai selezionato il filtro.", false);
+        }else if(cercaField.getText().equals("")){
+            SceneHandler.getInstance().generaAlert("Non hai inserito il valore da cercare.", false);
+        }else{
+            generaCard(true, filtroBox.getValue(), cercaField.getText());
+        }
     }
 
 
@@ -81,9 +101,7 @@ public class DipendentiViewController {
         }
         filtroBox.getItems().addAll("ID", "Nome", "Cognome", "Ruolo", "Salario");
 
-        LinkedList<Dipendente> res;
-        res = ReusableDBResultsConverter.getInstance().getDipendenti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Dipendenti, null));
-        CardContainer.getInstance().setCardContainer(res, vboxEsterno);
+        generaCard(false, "", "");
 
     }
 

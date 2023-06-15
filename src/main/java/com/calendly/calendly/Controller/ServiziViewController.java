@@ -1,9 +1,7 @@
 package com.calendly.calendly.Controller;
 
-import com.calendly.calendly.Model.GestoreDB;
-import com.calendly.calendly.Model.GestoreDbThreaded;
-import com.calendly.calendly.Model.ReusableDBResultsConverter;
-import com.calendly.calendly.Model.Servizio;
+import com.calendly.calendly.Model.*;
+import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.View.CardContainer;
 import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyInfo;
@@ -45,7 +43,7 @@ public class ServiziViewController {
     private Label labelServizi;
 
     @FXML
-    private ComboBox filtroBox;
+    private ComboBox <String> filtroBox;
 
     @FXML
     void actionAddButton(ActionEvent event) {
@@ -53,17 +51,33 @@ public class ServiziViewController {
 
     }
 
-    @FXML
-    void actionFiltroBox(ActionEvent event) {
-
-    }
 
     @FXML
     void actionSearchButton(ActionEvent event) {
-
+        if(filtroBox.getValue() == null){
+            SceneHandler.getInstance().generaAlert("Non hai selezionato il filtro.", false);
+        }else if(cercaField.getText().equals("")){
+            SceneHandler.getInstance().generaAlert("Non hai inserito il valore da cercare.", false);
+        }else{
+            generaCard(true, filtroBox.getValue(), cercaField.getText());
+        }
     }
 
+    private void generaCard(boolean cerca, String filtro, String valore){
+        vboxEsterno.getChildren().clear();
+        LinkedList<Servizio> res = null;
 
+        if(!cerca){
+            res = ReusableDBResultsConverter.getInstance().getServizi((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Servizi, null));
+
+        }else{
+            ArrayList<String> servizi = new ArrayList<String>();
+            String [] parametri = {filtro , valore};
+            servizi.add( (String) GestoreDbThreaded.getInstance().runQuery(6, GestoreDB.entità.Servizi, parametri));
+            res = ReusableDBResultsConverter.getInstance().getServizi(servizi);
+        }
+        CardContainer.getInstance().setCardContainer(res, vboxEsterno);
+    }
     @FXML
     void initialize() throws IOException {
         vboxEsterno.setSpacing(15);
@@ -78,14 +92,9 @@ public class ServiziViewController {
             searchButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), searchButton.getFont().getSize()));
             addButton.setFont(Font.font(MyInfo.getInstance().getFontQuicksand(), addButton.getFont().getSize()));
         }
-        filtroBox.getItems().addAll("Id", "Nome", "Cognome", "Ruolo", "Salario");
+        filtroBox.getItems().addAll("Id", "Tipo", "Prezzo");
 
-        LinkedList<Servizio> res;
-
-        res = ReusableDBResultsConverter.getInstance().getServizi((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Servizi, null));
-
-
-        CardContainer.getInstance().setCardContainer(res, vboxEsterno);
+        generaCard(false, "", "");
     }
 
 
