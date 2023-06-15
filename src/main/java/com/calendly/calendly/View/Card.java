@@ -1,6 +1,7 @@
 package com.calendly.calendly.View;
 
 import com.calendly.calendly.Main;
+import com.calendly.calendly.Model.Cliente;
 import com.calendly.calendly.Model.Dipendente;
 import com.calendly.calendly.Model.Servizio;
 import javafx.event.ActionEvent;
@@ -18,6 +19,7 @@ import javafx.scene.text.Font;
 
 import java.util.LinkedList;
 import java.util.Objects;
+import java.util.WeakHashMap;
 
 public class Card extends AnchorPane {
     private Integer identifier;
@@ -79,6 +81,18 @@ public class Card extends AnchorPane {
             createLabelsLines(groups, "Servizio:", serv.getTipo());
             createLabelsLines(groups, "Prezzo", serv.getPrezzo());
 
+        } else if (obj.getClass().equals(Cliente.class)) {
+            imagePath = IMAGE_USER;
+            from = Dialog.from.SERVIZI;
+            Cliente cliente = (Cliente) obj;
+            identifier = cliente.getCF();
+            
+            createLabelsLines(groups, "Codice Fiscale:", cliente.getCF());
+            createLabelsLines(groups, "Nome:", cliente.getNome());
+            createLabelsLines(groups, "Cognome:", cliente.getCognome());
+            createLabelsLines(groups, "Cellulare:", cliente.getNumero());
+            createLabelsLines(groups, "Email:", cliente.getEmail());
+
         } else {
             System.out.println("Imposta bene il riconoscimento degli oggetti in Card.setLayout()");
             return;
@@ -99,7 +113,7 @@ public class Card extends AnchorPane {
         edit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println(finalIdentifier + "  " + Integer.parseInt(finalIdentifier));
+                System.out.println(finalIdentifier);
                 Dialog.getInstance().requestDialog(
                         finalFrom,
                         Dialog.actions.MODIFICA,

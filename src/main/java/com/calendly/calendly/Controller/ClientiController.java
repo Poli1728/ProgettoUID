@@ -1,9 +1,8 @@
 package com.calendly.calendly.Controller;
 
-import com.calendly.calendly.Model.GestoreDB;
-import com.calendly.calendly.Model.GestoreDbThreaded;
-import com.calendly.calendly.Model.ReusableDBResultsConverter;
+import com.calendly.calendly.Model.*;
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.View.CardContainer;
 import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
@@ -20,6 +19,7 @@ import javafx.scene.text.Font;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ClientiController {
     @FXML
@@ -111,6 +111,11 @@ public class ClientiController {
         impostaTemi();
         filtro.getItems().addAll("CF", "Nome", "Cognome", "Email", "Numero");
         generaCard(false, "", "");
+
+
+        LinkedList<Cliente> res;
+        res = ReusableDBResultsConverter.getInstance().getClienti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Clienti, null));
+        CardContainer.getInstance().setCardContainer(res, vboxEsterno);
 
     }
 
