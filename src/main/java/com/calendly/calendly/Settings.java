@@ -5,6 +5,7 @@ public class Settings {
     public final static String[] fonts = { };
     public final static String[] styles = {"css/style.css"};
     public final static String[] themes = {"css/dark.css", "css/light.css", "css/blu.css"};
+    public static final int CELL_DB_CLIENTI = 5;
 
     public enum theme { DARK, LIGHT , BLU}
     public final static int DEFAULT_WINDOW_HEIGHT = 900;

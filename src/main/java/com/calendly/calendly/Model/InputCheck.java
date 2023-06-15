@@ -55,4 +55,12 @@ public class InputCheck {
         }
         return false;
     }
+
+    public boolean checkEmail(String newValue) {
+        if (newValue.matches("[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}")) {
+            return true;
+        }
+
+        return false;
+    }
 }

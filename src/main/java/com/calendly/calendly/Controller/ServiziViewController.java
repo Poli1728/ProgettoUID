@@ -52,7 +52,7 @@ public class ServiziViewController {
 
     @FXML
     void actionAddButton(ActionEvent event) {
-        Dialog.getInstance().requestDialog(Dialog.from.SERVIZI, Dialog.actions.AGGIUNGI, -1, ancorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.SERVIZI, Dialog.actions.AGGIUNGI, "-1", ancorPane);
 
     }
 
@@ -63,7 +63,7 @@ public class ServiziViewController {
 
     @FXML
     void actionRemoveButton(ActionEvent event) {
-        Dialog.getInstance().requestDialog(Dialog.from.SERVIZI, Dialog.actions.RIMUOVI, -1, ancorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.SERVIZI, Dialog.actions.RIMUOVI, "-1", ancorPane);
 
     }
 

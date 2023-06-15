@@ -103,7 +103,7 @@ public class Card extends AnchorPane {
                 Dialog.getInstance().requestDialog(
                         finalFrom,
                         Dialog.actions.MODIFICA,
-                        Integer.parseInt(finalIdentifier),
+                        finalIdentifier,
                         (AnchorPane) parent.getParent().getParent().getParent().getParent() );
             }
         });

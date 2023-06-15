@@ -54,7 +54,7 @@ public class DipendentiViewController {
 
     @FXML
     void actionAddButton(ActionEvent event) {
-        Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, -1, ancorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, "-1", ancorPane);
     }
 
     @FXML

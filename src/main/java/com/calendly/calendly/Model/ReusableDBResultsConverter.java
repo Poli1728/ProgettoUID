@@ -97,4 +97,28 @@ public class ReusableDBResultsConverter {
     }
 
 
+    public LinkedList<Cliente> getClienti(ArrayList<String> dbResults) {
+        LinkedList<Cliente> results = new LinkedList<>();
+        for (String i : dbResults) {
+            String[] rowValues = i.split(";");
+            System.out.println(i);
+
+            if (rowValues.length < Settings.CELL_DB_CLIENTI) {
+                System.out.println("celle clienti < celle attese");
+                continue;
+            }
+
+            notAvailable(rowValues);
+
+            Cliente cliente = new Cliente(rowValues[0],
+                    rowValues[1],
+                    rowValues[2],
+                    rowValues[3],
+                    rowValues[4]);
+
+            results.add(cliente);
+        }
+
+        return results;
+    }
 }

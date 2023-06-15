@@ -5,22 +5,18 @@ import com.calendly.calendly.SceneHandler;
 import com.calendly.calendly.Settings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Dialog {
@@ -51,7 +47,7 @@ public class Dialog {
     private Button okButton;
 
 
-    private void setDialog(from fromView, actions exeAction, Integer id) {
+    private void setDialog(from fromView, actions exeAction, String id) {
         javafx.scene.control.Dialog<DialogResponse> dialog = new javafx.scene.control.Dialog<>();
         this.dialog = dialog;
         dialog.setTitle("Calendly - " + exeAction.toString().toLowerCase());
@@ -88,7 +84,7 @@ public class Dialog {
 
     }
 
-    private VBox setComponentsForAppuntamenti(from fromView, actions exeAction, Integer id) {
+    private VBox setComponentsForAppuntamenti(from fromView, actions exeAction, String id) {
         LinkedList<Node> nodes = new LinkedList<>();
 
         String[] labels = {
@@ -102,12 +98,23 @@ public class Dialog {
         nodes.add(data);
         configTextField(data, "Data appuntamento", 0, type.DATE);
 
+
+        ObservableList<String> optionsClienti = FXCollections.observableArrayList();
+        LinkedList<Cliente> res_clienti = ReusableDBResultsConverter.getInstance().getClienti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Clienti, null));
+        for (Cliente d : res_clienti) {
+            optionsClienti.add(d.getCF() + " - " + d.getNome() + " " + d.getCognome());
+        }
+
+        ComboBox idClienti = new ComboBox<>(optionsClienti);
+        nodes.add(idClienti);
+        idClienti.setPromptText("Scegli un cliente");
+
+        /*
         TextField cf = new TextField();
         nodes.add(cf);
-        configTextField(cf, "Codice fiscale", 1, type.NAME_LASTNAME);
+        configTextField(cf, "Codice fiscale", 1, type.NAME_LASTNAME);*/
 
         ObservableList<String> optionsDip = FXCollections.observableArrayList();
-
         LinkedList<Dipendente> res_dip = ReusableDBResultsConverter.getInstance().getDipendenti((ArrayList<String>) GestoreDbThreaded.getInstance().runQuery(1, GestoreDB.entità.Dipendenti, null));
         for (Dipendente d : res_dip) {
             optionsDip.add(d.getId() + " - " + d.getName() + " " + d.getLastName());
@@ -150,14 +157,49 @@ public class Dialog {
 
     }
 
-    private VBox setComponentsForClienti(from fromView, actions exeAction, Integer id) {
+    private VBox setComponentsForClienti(from fromView, actions exeAction, String id) {
+        LinkedList<Node> nodes = new LinkedList<>();
+
         String[] labels = {
-                "Data appuntamento",
-                "Codice fiscale",
-                "Dipendente",
-                "Servizio"
+                "Codice Fiscale",
+                "Nome",
+                "Cognome",
+                "Numero",
+                "Email"
         };
-        return null;
+
+
+        TextField cf = new TextField();
+        nodes.add(cf);
+        configTextField(cf, labels[0], 0, type.NAME_LASTNAME);
+
+        TextField nome = new TextField();
+        nodes.add(nome);
+        configTextField(nome, labels[1], 1, type.NAME_LASTNAME);
+
+        TextField cognome = new TextField();
+        nodes.add(cognome);
+        configTextField(cognome, labels[2], 2, type.NAME_LASTNAME);
+
+        TextField numero = new TextField();
+        nodes.add(numero);
+        configTextField(numero, labels[3], 3, type.INT);
+
+        TextField email = new TextField();
+        nodes.add(email);
+        configTextField(email, labels[4], 4, type.EMAIL);
+
+
+        initializeClickedList(nodes, nodes.size());
+        ifInModificaMode(nodes, fromView, exeAction, id);
+        setResultConverter(nodes, fromView, exeAction, id);
+
+        Label errors = new Label();
+        this.errors = errors;
+
+        VBox vbox = externalVbox(nodes, exeAction);
+
+        return vbox;
     }
 
 
@@ -165,7 +207,7 @@ public class Dialog {
     private LinkedList<stato> clicked;
     private Label errors;
 
-    private VBox setComponentsForDipendenti(from fromView, actions exeAction, Integer id) {
+    private VBox setComponentsForDipendenti(from fromView, actions exeAction, String id) {
         LinkedList<Node> nodes = new LinkedList<>();
 
         String[] labels = {
@@ -205,7 +247,7 @@ public class Dialog {
     }
 
 
-    private VBox setComponentsForServizi(from fromView, actions exeAction, Integer id) {
+    private VBox setComponentsForServizi(from fromView, actions exeAction, String id) {
         LinkedList<Node> nodes = new LinkedList<>();
 
         String[] labels = {
@@ -233,13 +275,12 @@ public class Dialog {
         return vbox;
     }
 
-    private void ifInModificaMode(LinkedList<Node> nodes, from fromView, actions exeAction, int id) {
+    private void ifInModificaMode(LinkedList<Node> nodes, from fromView, actions exeAction, String id) {
 
-        if (exeAction == actions.MODIFICA && id > -1) {
+        if (exeAction == actions.MODIFICA ) {
             LinkedList res = dbResults(fromView, id);
 
             if (res.size() != 0) {
-
                 if (res.get(0).getClass().equals(Servizio.class)) {
                     Servizio resServizio = (Servizio) res.get(0);
                     ((TextField) nodes.get(0)).setText(resServizio.getTipo());
@@ -261,7 +302,7 @@ public class Dialog {
                     ((TextField) nodes.get(3)).setText(resCliente.getEmail());
                 } else if (res.get(0).getClass().equals(Appuntamento.class)) {
                     Appuntamento app = (Appuntamento) res.get(0);
-                    ((TextField) nodes.get(0)).setText(app.getData());
+                    ((DatePicker) nodes.get(0)).setValue(LocalDate.parse(app.getData()));
                     ((TextField) nodes.get(1)).setText(app.getCf());
                     ((TextField) nodes.get(2)).setText(app.getDipendente());
                     ((TextField) nodes.get(3)).setText(app.getServizio());
@@ -270,13 +311,11 @@ public class Dialog {
             }
 
 
-        } else if (id < -1) { //se in modifica con codice -1
-            System.out.println("Probabile errore nel passaggio dell'id");
         }
     }
 
 
-    private void setResultConverter(LinkedList<Node> nodes, from fromView, actions exeAction, int id) {
+    private void setResultConverter(LinkedList<Node> nodes, from fromView, actions exeAction, String id) {
         dialog.setResultConverter((ButtonType bt) -> {
 
             if (bt == ButtonType.OK) {
@@ -309,6 +348,10 @@ public class Dialog {
                     } else if (node.getClass().equals(ComboBox.class)) {
                         ComboBox cb = (ComboBox) node;
                         res.add(cb.getSelectionModel().getSelectedItem().toString());
+                    } else if (node.getClass().equals(DatePicker.class)) {
+                        DatePicker dp = (DatePicker) node;
+                        res.add(dp.getValue().format(DateTimeFormatter.ofPattern("dd/mm/YYYY hh:mm")));
+                        System.out.println(dp.getValue().format(DateTimeFormatter.ofPattern("dd/mm/YYYY hh:mm")));
                     }
                 }
 
@@ -365,7 +408,6 @@ public class Dialog {
                         }
                         case DIPENDENTI -> {
                             loader = SceneHandler.getInstance().creaPane("fxml/Dipendenti");
-
                         }
                         case SERVIZI -> {
                             loader = SceneHandler.getInstance().creaPane("fxml/Servizi");
@@ -419,7 +461,7 @@ public class Dialog {
         return vbox;
     }
 
-    private LinkedList dbResults(from fromView, Integer id) {
+    private LinkedList dbResults(from fromView, String id) {
 
         LinkedList res = null;
         String [] parametri = {String.valueOf(id)};
@@ -455,7 +497,7 @@ public class Dialog {
 
     //todo return boolean per poi inserire nei vari controller se bisogna aggiornare la tabella o meno.
     //prende come parametro l'attuale ancorPane della view
-    public Optional<DialogResponse> requestDialog(from fromView, actions exeAction, Integer id, AnchorPane anchorPane)  { //prende come parametri i nomi in minuscolo delle singole opzioni da richedere all'utente
+    public Optional<DialogResponse> requestDialog(from fromView, actions exeAction, String id, AnchorPane anchorPane)  { //prende come parametri i nomi in minuscolo delle singole opzioni da richedere all'utente
 
         if (anchorPaneFather == null || anchorPane == null)
             return null;    //se null, non è stato possibile effettuare la richiesta
@@ -509,7 +551,7 @@ public class Dialog {
 
 
     //per il comboBox deve essere sempre selezionata tramite codice un'opzione di partenza (la più mediamente utilizzata)
-    public enum type {FLOAT, NAME_LASTNAME, INT, LETTERS_NUMBERS_UNDERSCORE, DATE}
+    public enum type {FLOAT, NAME_LASTNAME, INT, LETTERS_NUMBERS_UNDERSCORE, EMAIL, DATE}
     private String[] errorMessages = {
             "Inserire un numero intero o decimale valido",
             "Può contenere solo lettere e spazi",
@@ -526,6 +568,7 @@ public class Dialog {
                 case NAME_LASTNAME -> new InputCheck().checkNameLastname(newValue);
                 case INT -> new InputCheck().checkInt(newValue);
                 case LETTERS_NUMBERS_UNDERSCORE -> new InputCheck().checkLettersNumbersUnderscore(newValue);
+                case EMAIL -> new InputCheck().checkEmail(newValue);
                 case DATE -> new InputCheck().checkDate(newValue);
             };
 
