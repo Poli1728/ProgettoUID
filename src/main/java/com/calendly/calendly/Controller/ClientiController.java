@@ -70,7 +70,7 @@ public class ClientiController {
 
     @FXML
     void actionAggiungiCliente(ActionEvent event) {
-        Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.AGGIUNGI, -1, anchorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.AGGIUNGI, "-1", anchorPane);
     }
 
     @FXML
@@ -86,7 +86,7 @@ public class ClientiController {
 
     @FXML
     void actionRimuoviCliente(ActionEvent event) {
-        Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.RIMUOVI, -1, anchorPane);
+        Dialog.getInstance().requestDialog(Dialog.from.CLIENTI, Dialog.actions.RIMUOVI, "-1", anchorPane);
     }
 
     private void impostaTemi() throws IOException {
