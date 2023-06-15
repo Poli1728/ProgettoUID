@@ -15,6 +15,7 @@
       <HBox layoutX="361.0" layoutY="75.0" spacing="10.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="75.0">
          <children>
             <Button fx:id="removeButton" defaultButton="true" mnemonicParsing="false" onAction="#rimuoviAppuntamento" styleClass="secondaryButton" text="Rimuovi" />
+            <TextField fx:id="idField" prefHeight="25.0" prefWidth="55.0" promptText="Id" styleClass="searchField" />
             <Button fx:id="editButton" mnemonicParsing="false" onAction="#modificaAppuntamento" styleClass="secondaryButton" text="Modifica" />
             <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#aggiungiAppuntamento" styleClass="secondaryButton" text="Aggiungi" />
          </children>
