@@ -3,10 +3,12 @@ package com.calendly.calendly.Controller;
 import com.calendly.calendly.Model.GestoreDB;
 import com.calendly.calendly.Model.GestoreDbThreaded;
 import com.calendly.calendly.SceneHandler;
+import com.calendly.calendly.View.Dialog;
 import com.calendly.calendly.View.MyInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -15,6 +17,8 @@ import java.sql.SQLException;
 
 public class ImpostazioniController {
 
+    @FXML
+    private AnchorPane ancorPane;
     @FXML
     private Label labelImpostazioni;
 
@@ -126,8 +130,10 @@ public class ImpostazioniController {
     @FXML
     void ripristina(ActionEvent event) throws SQLException {
         if(SceneHandler.getInstance().generaAlertConfirm()) {
-            GestoreDbThreaded.getInstance().runQuery(13, null, null);
-            SceneHandler.getInstance().launchWelcomeFirstOpening();
+            if(Dialog.getInstance().requestDialog(Dialog.from.DIPENDENTI, Dialog.actions.AGGIUNGI, "-1", ancorPane).isPresent()){
+                //GestoreDbThreaded.getInstance().runQuery(13, null, null);
+                SceneHandler.getInstance().launchLogin();
+            }
         }
     }
 
