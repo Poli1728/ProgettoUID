@@ -1,13 +1,20 @@
 # Calendly
 
-Calendly ti aiuta a gestire in maniera efficiente utenti e appuntamenti!
-
+Calendly è un software gestionale che aiuta a gestire utenti e appuntamenti.
 -> [Prototype](https://www.figma.com/file/hxejHJMfXeGXO0b9sOTse9/UID---Calendly?type=design&node-id=0%3A1&t=wlUBAmXDjeJvOWdc-1) <-
 
-Cosa fa
+-----------------------
+• BRUNO MARIO GIORDANO
+• MARTINO MARCO
+• PANTISANO MATTIA
+-----------------------
 
-Username e password
+Funzioni: 
+  - prendere un appuntamento
+  - registrare i cliente
+  - registrare i dipendenti
+  - creare dei servizi
 
-funzioni del programma
+Username e password per test:
+  - "USERNAME":"PASSWORD"
 
-togliere da commento il login e il ripristina
