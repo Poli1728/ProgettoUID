@@ -330,3 +330,10 @@
     -fx-background-color: secondaryBackgroundColor;
     -fx-text-fill: systemRed;
 }
+
+.rimuoviButton:hover {
+    -fx-background-color: thirdBackgroundColor;
+    -fx-text-fill: systemRed;
+}
+
+
