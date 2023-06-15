@@ -184,25 +184,25 @@ public class GestoreDB {
     public void rimozione(entità ent, String chiave) throws SQLException {
         switch (ent){
             case Dipendenti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("DELETE Dipendenti WHERE Id LIKE ?;")) {
+                try (PreparedStatement pstmt = con.prepareStatement("DELETE FROM Dipendenti WHERE Id LIKE ?;")) {
                     pstmt.setString(1, chiave);
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
             case Clienti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("DELETE Clienti WHERE CF LIKE ?;")) {
+                try (PreparedStatement pstmt = con.prepareStatement("DELETE FROM Clienti WHERE CF LIKE ?;")) {
                     pstmt.setString(1, chiave);
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
             case Appuntamenti -> {
-                try (PreparedStatement pstmt = con.prepareStatement("DELETE Appuntamenti WHERE Id LIKE ?;")) {
+                try (PreparedStatement pstmt = con.prepareStatement("DELETE FROM Appuntamenti WHERE Id LIKE ?;")) {
                     pstmt.setString(1, chiave);
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
             }
             case Servizi -> {
-                try (PreparedStatement pstmt = con.prepareStatement("DELETE Servizi WHERE Id LIKE ?;")) {
+                try (PreparedStatement pstmt = con.prepareStatement("DELETE FROM Servizi WHERE Id LIKE ?;")) {
                     pstmt.setString(1, chiave);
                     pstmt.executeUpdate();
                 } catch (SQLException e) {}
