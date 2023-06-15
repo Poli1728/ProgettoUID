@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane cacheShape="false" centerShape="false" focusTraversable="true" onMouseMoved="#avviaNotifica" prefHeight="747.0" prefWidth="714.0" scaleShape="false" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.DashboardController">
+<AnchorPane cacheShape="false" centerShape="false" focusTraversable="true" onMouseMoved="#avviaNotifica" prefHeight="747.0" prefWidth="714.0" scaleShape="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calendly.calendly.Controller.DashboardController">
    <children>
       <Label fx:id="labelDashboard" layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="364.0" text="Dashboard" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
