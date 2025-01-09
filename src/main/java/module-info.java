@@ -1,4 +1,4 @@
-module com.calendly.calendly {
+module com.ppbarber.ppbarber {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,11 +6,11 @@ module com.calendly.calendly {
     requires java.sql;
     requires spring.security.crypto;
     requires itextpdf;
-    opens com.calendly.calendly.Model;
-    opens com.calendly.calendly to javafx.fxml;
-    exports com.calendly.calendly;
-    exports com.calendly.calendly.Controller;
-    opens com.calendly.calendly.Controller to javafx.fxml;
-    opens com.calendly.calendly.View;
+    opens com.ppbarber.ppbarber.Model;
+    opens com.ppbarber.ppbarber to javafx.fxml;
+    exports com.ppbarber.ppbarber;
+    exports com.ppbarber.ppbarber.Controller;
+    opens com.ppbarber.ppbarber.Controller to javafx.fxml;
+    opens com.ppbarber.ppbarber.View;
 
 }

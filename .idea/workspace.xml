@@ -4,7 +4,83 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="rimossi sout e todo" />
+    <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="rimossi sout e todo">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/Benvenuto1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/Benvenuto2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/Benvenuto3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/Benvenuto4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/Logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/AppuntamentiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/AppuntamentiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ClientiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/ClientiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/DipendentiViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ImpostazioniController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/ImpostazioniController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/ServiziViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/ServiziViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/StatisticheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/StatisticheController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/WelcomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Appuntamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/Appuntamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/DialogResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/DialogResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Dipendente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/Dipendente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Evento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/Evento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GeneraScontrino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/GeneraScontrino.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GeneratoreStringheAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/GeneratoreStringheAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreAppuntamenti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/GestoreAppuntamenti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/GestoreDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/GestoreData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreDbThreaded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/GestoreDbThreaded.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/GestoreStatistiche.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/GestoreStatistiche.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Guadagno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/Guadagno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/InputCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/InputCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/ReusableDBResultsConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/ReusableDBResultsConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Servizio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/Servizio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Model/Statistiche.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Model/Statistiche.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/SceneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/SceneHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CardContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/CardContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/CustomButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/Dialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/MyInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/MyInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/calendly/calendly/View/MyTransition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/MyTransition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/blu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/css/blu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/css/dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/css/light.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/db/progetto.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/db/progetto.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/font/DyslexieRegular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/font/DyslexieRegular.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/AppuntamentiView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/AppuntamentiView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/ClientiView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/ClientiView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/DashboardView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/DashboardView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/DipendentiView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/DipendentiView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/HomeView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/HomeView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/ImpostazioniView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/ImpostazioniView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/LoginView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/LoginView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/ServiziView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/ServiziView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/StatisticheView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/StatisticheView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/fxml/WelcomePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/WelcomePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/clients.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/clients.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/dashboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/dashboard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/edit.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/edit.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/employee.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/employee.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/event.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/event.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/logout.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/logout.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/settings.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/settings.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/stats.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/stats.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/task.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/task.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/img/user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/welcome1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/welcome2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/welcome3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img/welcome4.png" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,6 +133,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2QNlOQuhC405Ic5zpGGDEcQmiWV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -68,11 +147,23 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.run.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mario/IdeaProjects/Calendly/src/main/resources/com/calendly/calendly/img&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Utente/IdeaProjects/PP-Barber/src/main/resources/com/ppbarber/ppbarber/img&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -80,6 +171,7 @@
       <recent name="com.calendly.calendly.View" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Utente\IdeaProjects\PP-Barber\src\main\resources\com\ppbarber\ppbarber\img" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/img" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/calendly/calendly/images" />
     </key>
@@ -104,12 +196,20 @@
   </component>
   <component name="RunManager">
     <configuration name="run" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.calendly.calendly.Main" />
-      <module name="Calendly" />
+      <option name="MAIN_CLASS_NAME" value="com.ppbarber.ppbarber.Main" />
+      <module name="PPBarber" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -119,6 +219,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685201888491</updated>
+      <workItem from="1736357711903" duration="2513000" />
+      <workItem from="1736360271522" duration="481000" />
+      <workItem from="1736360916145" duration="97000" />
+      <workItem from="1736361094584" duration="16000" />
+      <workItem from="1736361124211" duration="418000" />
+      <workItem from="1736361577219" duration="576000" />
+      <workItem from="1736362175765" duration="106000" />
+      <workItem from="1736362299450" duration="2295000" />
+      <workItem from="1736364642604" duration="1290000" />
+      <workItem from="1736369020823" duration="1454000" />
+      <workItem from="1736370521173" duration="867000" />
+      <workItem from="1736432285243" duration="100000" />
+      <workItem from="1736432508917" duration="5086000" />
     </task>
     <task id="LOCAL-00031" summary="bug in login view">
       <created>1686212825121</created>
@@ -465,6 +578,9 @@
     </task>
     <option name="localTasksCounter" value="80" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
