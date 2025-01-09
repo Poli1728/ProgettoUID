@@ -40,14 +40,12 @@
     &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="2f6c520f-1dcf-4514-96a8-72b6f630fb7d" />
-        <option name="url" value="https://github.com/mario-bruno/Calendly" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Poli1728/ProgettoUID.git",
+    "accountId": "1e29ea21-4839-4de5-84ed-b3e1dd9ef56c"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
@@ -157,7 +155,7 @@
       <workItem from="1736369020823" duration="1454000" />
       <workItem from="1736370521173" duration="867000" />
       <workItem from="1736432285243" duration="100000" />
-      <workItem from="1736432508917" duration="5730000" />
+      <workItem from="1736432508917" duration="6375000" />
     </task>
     <task id="LOCAL-00031" summary="bug in login view">
       <created>1686212825121</created>
@@ -502,7 +500,7 @@
       <option name="project" value="LOCAL" />
       <updated>1686866022728</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
