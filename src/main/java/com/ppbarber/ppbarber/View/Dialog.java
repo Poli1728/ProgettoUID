@@ -53,7 +53,7 @@ public class Dialog {
     private void setDialog(from fromView, actions exeAction, String id) {
         javafx.scene.control.Dialog<DialogResponse> dialog = new javafx.scene.control.Dialog<>();
         this.dialog = dialog;
-        dialog.setTitle("Calendly - " + exeAction.toString().toLowerCase());
+        dialog.setTitle("P&P Barber - " + exeAction.toString().toLowerCase());
         dialog.setHeaderText(headerDescriptions[exeAction.ordinal()]);
 
         DialogPane dialogPane = dialog.getDialogPane();

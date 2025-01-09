@@ -43,7 +43,7 @@ public class SceneHandler {
         if (this.stage == null) {
             this.stage = stage;
             stage.setTitle(Settings.INIT_TITLE);
-            launchDashboard();
+            launchWelcomeFirstOpening();
             stage.setScene(scene);
             GestoreDB.getInstance().createConnection();
             MyInfo.getInstance().prendiDati();

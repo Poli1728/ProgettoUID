@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e5fc6b9-e585-42b7-a8ab-649e1dad7d70" name="Changes" comment="Prog">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/SceneHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/SceneHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ppbarber/ppbarber/View/Dialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/db/progetto.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/db/progetto.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/LoginView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ppbarber/ppbarber/fxml/LoginView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +49,12 @@
     &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Poli1728/ProgettoUID.git",
-    "accountId": "1e29ea21-4839-4de5-84ed-b3e1dd9ef56c"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Poli1728/ProgettoUID.git&quot;,
+    &quot;accountId&quot;: &quot;1e29ea21-4839-4de5-84ed-b3e1dd9ef56c&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/DipendentiViewController.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/calendly/calendly/Controller/WelcomePageController.java" root0="FORCE_HIGHLIGHTING" />
@@ -155,7 +164,11 @@
       <workItem from="1736369020823" duration="1454000" />
       <workItem from="1736370521173" duration="867000" />
       <workItem from="1736432285243" duration="100000" />
-      <workItem from="1736432508917" duration="6375000" />
+      <workItem from="1736432508917" duration="17586000" />
+      <workItem from="1736461339942" duration="20000" />
+      <workItem from="1736461422643" duration="11000" />
+      <workItem from="1736461905980" duration="61000" />
+      <workItem from="1736462031651" duration="30000" />
     </task>
     <task id="LOCAL-00031" summary="bug in login view">
       <created>1686212825121</created>
